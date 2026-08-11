@@ -1,0 +1,16 @@
+{
+  "name": "qtrly-plan-agent",
+  "version": "0.1.0",
+  "description": "LFX Marketing OS Quarterly Plan Agent — guides a Linux Foundation ED/Project Leader through the quarterly review cycle (review outcomes vs. goals, set business-outcome direction, define ranked goals with KPIs, budgets, timelines, and risks) and produces a Google Slides-ready quarterly marketing plan deck.",
+  "author": {
+    "name": "Paul Hinz, The Linux Foundation"
+  },
+  "keywords": [
+    "lfx-marketing-os",
+    "quarterly-plan",
+    "qbr",
+    "goals",
+    "okr",
+    "linux-foundation"
+  ]
+}

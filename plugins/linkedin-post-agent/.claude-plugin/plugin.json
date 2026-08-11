@@ -1,0 +1,9 @@
+{
+  "name": "linkedin-post-agent",
+  "version": "0.1.0",
+  "description": "Drafts LinkedIn posts about Linux Foundation and open source ecosystem work in the user's authentic voice. Learns the user's profile and tone once, then turns any piece of content into 3 ready-to-post options.",
+  "author": {
+    "name": "Paul Hinz"
+  },
+  "keywords": ["linkedin", "social-media", "content", "linux-foundation", "open-source"]
+}

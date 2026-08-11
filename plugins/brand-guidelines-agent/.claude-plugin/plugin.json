@@ -1,0 +1,9 @@
+{
+  "name": "brand-guidelines-agent",
+  "version": "0.1.0",
+  "description": "Guides an LF project leader through a short intake, then generates a project Brand Kit document — positioning, voice, audience messaging, competitive guardrails, and a five-component visual identity direction — following the LFX Marketing OS Brand Kit standard.",
+  "author": {
+    "name": "Paul Hinz, Linux Foundation"
+  },
+  "keywords": ["lfx", "marketing-os", "brand", "brand-kit", "linux-foundation"]
+}

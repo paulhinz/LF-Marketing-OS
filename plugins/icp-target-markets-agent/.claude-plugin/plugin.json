@@ -1,0 +1,9 @@
+{
+  "name": "icp-target-markets-agent",
+  "version": "0.1.0",
+  "description": "LFX Marketing OS: Develop Target Markets and ICP. Interviews a Linux Foundation project leader, reads the project's Brand Kit, Message Foundation Doc, and GitHub README, optionally pulls live LFX membership data, and produces a '[Project Name] Target Markets and ICP' Word document (market segments, organization-level ICPs, personas, and fit/warmth scoring).",
+  "author": {
+    "name": "Paul Hinz, Linux Foundation"
+  },
+  "keywords": ["lfx", "marketing-os", "icp", "target-markets", "persona", "linux-foundation"]
+}

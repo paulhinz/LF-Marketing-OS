@@ -1,0 +1,11 @@
+{
+  "name": "plain-writing",
+  "version": "0.1.0",
+  "description": "Writes and revises prose in a plain style: simple words, complete sentences, no dashes, no jargon, no filler. Includes an optional HTML revision view that shows what changed and why.",
+  "author": {
+    "name": "Paul Hinz"
+  },
+  "homepage": "https://github.com/docwriter-org/plain-writing-skill",
+  "license": "MIT",
+  "keywords": ["writing", "editing", "style", "plain-language"]
+}

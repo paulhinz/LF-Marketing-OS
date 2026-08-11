@@ -1,0 +1,115 @@
+{
+  "name": "lfx-marketing-os",
+  "owner": {
+    "name": "Paul Hinz",
+    "email": "phinz@linuxfoundation.org"
+  },
+  "description": "Private plugin marketplace for The Linux Foundation's LFX Marketing OS agents and skills.",
+  "plugins": [
+    {
+      "name": "brand-guidelines-agent",
+      "source": "./plugins/brand-guidelines-agent",
+      "description": "Guides an LF project leader through a short intake, then generates a project Brand Kit document — positioning, voice, audience messaging, competitive guardrails, and a five-component visual identity direction — following the LFX Marketing OS Brand Kit standard.",
+      "category": "Foundation Agents",
+      "tags": ["brand", "brand-kit", "foundation-setup"]
+    },
+    {
+      "name": "message-foundation-agent",
+      "source": "./plugins/message-foundation-agent",
+      "description": "Interviews a Linux Foundation project lead and produces a '[Project Name] Message Foundation' document (word-count-locked summaries, boilerplate, llms.txt, elevator pitch, plus full positioning, voice, audience, and messaging-pillar framework) for use across web, content, social, and campaigns.",
+      "category": "Foundation Agents",
+      "tags": ["messaging", "positioning", "foundation-setup"]
+    },
+    {
+      "name": "icp-target-markets-agent",
+      "source": "./plugins/icp-target-markets-agent",
+      "description": "Interviews a Linux Foundation project leader, reads the project's Brand Kit, Message Foundation Doc, and GitHub README, optionally pulls live LFX membership data, and produces a '[Project Name] Target Markets and ICP' document (market segments, organization-level ICPs, personas, and fit/warmth scoring).",
+      "category": "Foundation Agents",
+      "tags": ["icp", "target-markets", "personas", "foundation-setup"]
+    },
+    {
+      "name": "plain-writing",
+      "source": "./plugins/plain-writing",
+      "description": "Writes and revises prose in a plain style: simple words, complete sentences, no dashes, no jargon, no filler. Includes an optional HTML revision view that shows what changed and why.",
+      "category": "Foundation Agents",
+      "tags": ["writing", "editing", "style"]
+    },
+    {
+      "name": "website-designer-agent",
+      "source": "./plugins/website-designer-agent",
+      "description": "Turns an LF project's three foundation docs into an approved sitemap, a complete Hugo website, and a GitHub-deployed, DNS-ready launch package — with four human approval gates.",
+      "category": "Foundation Agents",
+      "tags": ["website", "hugo", "github", "foundation-setup"]
+    },
+    {
+      "name": "qtrly-plan-agent",
+      "source": "./plugins/qtrly-plan-agent",
+      "description": "Guides a Linux Foundation ED/Project Leader through the quarterly review cycle (review outcomes vs. goals, set business-outcome direction, define ranked goals with KPIs, budgets, timelines, and risks) and produces a Google Slides-ready quarterly marketing plan deck.",
+      "category": "Planning Agents",
+      "tags": ["quarterly-plan", "qbr", "goals"]
+    },
+    {
+      "name": "linkedin-post-agent",
+      "source": "./plugins/linkedin-post-agent",
+      "description": "Drafts LinkedIn posts about Linux Foundation and open source ecosystem work in the user's authentic voice. Learns the user's profile and tone once, then turns any piece of content into ready-to-post options.",
+      "category": "Creating Agents",
+      "tags": ["linkedin", "social-media", "content"]
+    },
+    {
+      "name": "pitch-deck-agent",
+      "source": "./plugins/pitch-deck-agent",
+      "description": "Generates the standard first-meeting membership pitch deck (max 20 slides, Google Slides-ready) for any Linux Foundation project or foundation, grounded in the project's Brand Kit, Message Foundation, and ICP documents.",
+      "category": "Creating Agents",
+      "tags": ["pitch-deck", "membership", "member-growth"]
+    },
+    {
+      "name": "aeo-geo-analyzer",
+      "source": "./plugins/aeo-geo-analyzer",
+      "description": "Analyzes any website's AEO (Answer Engine Optimization) and GEO (Generative Engine Optimization) performance — AI crawler access, llms.txt, on-page answerability, structured data, and third-party citation authority — and produces a scored report with prioritized recommendations.",
+      "category": "Monitoring Agents",
+      "tags": ["aeo", "geo", "seo", "ai-search"]
+    },
+    {
+      "name": "social-listening-report",
+      "source": "./plugins/social-listening-report",
+      "description": "On-demand social listening reports from LFX Lens data: Voices That Matter (high-reach creators), Campaign Echo (launch/announcement pickup), and Ask-Anything briefings — with Google Doc output for historical tracking.",
+      "category": "Monitoring Agents",
+      "tags": ["social-listening", "lfx-lens"]
+    },
+    {
+      "name": "marketing-agent-class",
+      "source": "./plugins/marketing-agent-class",
+      "description": "Delivers The Linux Foundation's Claude Agent Workshop marketing training as personalized PowerPoint decks, one section at a time, with live student Q&A captured in a companion deck.",
+      "category": "Additional",
+      "tags": ["training", "course", "pptx"]
+    },
+    {
+      "name": "lf-foundation-sample-data",
+      "source": "./plugins/lf-foundation-sample-data",
+      "description": "Bulk-generates Brand Kit, Message Foundation, and ICP & Target Markets sample documents for any number of Linux Foundation projects/foundations, for testing and refining LFX Marketing OS agents.",
+      "category": "Additional",
+      "tags": ["sample-data", "brand-kit", "message-foundation", "icp"]
+    },
+    {
+      "name": "run-lf-top-projects",
+      "source": "./plugins/run-lf-top-projects",
+      "description": "Ranks Linux Foundation umbrella foundations and projects by total sub-projects, total active members, and total annual membership revenue, and exports the results to a Google Sheet.",
+      "category": "Additional",
+      "tags": ["reporting", "ranking"]
+    },
+    {
+      "name": "marketing-data-sources-agent",
+      "source": "./plugins/marketing-data-sources-agent",
+      "description": "Builds the LF-wide Marketing Data Sources Map — a spreadsheet that tells marketing agents (and humans) exactly where every piece of marketing content and data lives, live-verified against LFX, Asana, HubSpot, Google Drive, and Slack.",
+      "category": "Additional",
+      "tags": ["data-sources", "mapping"]
+    },
+    {
+      "name": "agent-development-workshop",
+      "source": "./plugins/agent-development-workshop",
+      "description": "Guided workshop that interviews a marketing subject matter expert, LF business leader, or LF technical leader to define the inputs for a new LFX Marketing OS agent, producing an Agent Definition File plus before/after workflow diagrams.",
+      "category": "Additional",
+      "tags": ["agent-definition", "workshop"]
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "social-listening-report",
+  "version": "0.2.0",
+  "description": "On-demand social listening reports from LFX Lens data: Voices That Matter (high-reach creators), Campaign Echo (launch/announcement pickup), and Ask-Anything briefings — with Google Doc output for historical tracking.",
+  "author": {
+    "name": "Paul Hinz, The Linux Foundation"
+  },
+  "keywords": ["social-listening", "lfx-lens", "marketing", "lfx-marketing-os"]
+}

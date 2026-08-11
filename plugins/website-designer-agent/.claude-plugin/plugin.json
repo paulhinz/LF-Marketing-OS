@@ -1,0 +1,9 @@
+{
+  "name": "website-designer-agent",
+  "version": "0.1.0",
+  "description": "LFX Marketing OS Website Designer Agent (Creative Services, Agent No. 9, Foundation Setup). Turns an LF project's three foundation docs into an approved sitemap, a complete Hugo website, and a GitHub-deployed, DNS-ready launch package — with four human approval gates.",
+  "author": {
+    "name": "Paul Hinz / The Linux Foundation"
+  },
+  "keywords": ["linux-foundation", "lfx-marketing-os", "website", "hugo", "github", "foundation-setup"]
+}

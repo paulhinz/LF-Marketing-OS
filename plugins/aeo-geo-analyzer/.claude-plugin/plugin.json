@@ -1,0 +1,9 @@
+{
+  "name": "aeo-geo-analyzer",
+  "version": "0.1.0",
+  "description": "Analyzes any website's AEO (Answer Engine Optimization) and GEO (Generative Engine Optimization) performance — AI crawler access, llms.txt, on-page answerability, structured data, and third-party citation authority — and produces a scored report with prioritized recommendations.",
+  "author": {
+    "name": "Paul Hinz, The Linux Foundation"
+  },
+  "keywords": ["aeo", "geo", "seo", "ai-search", "llms-txt", "marketing"]
+}

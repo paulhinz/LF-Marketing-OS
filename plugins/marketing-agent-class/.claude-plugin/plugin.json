@@ -1,0 +1,9 @@
+{
+  "name": "marketing-agent-class",
+  "version": "0.1.0",
+  "description": "Delivers The Linux Foundation's Claude Agent Workshop marketing training as personalized PowerPoint decks, one section at a time, with live student Q&A captured in a companion deck.",
+  "author": {
+    "name": "The Linux Foundation"
+  },
+  "keywords": ["marketing", "training", "course", "claude-cowork", "pptx", "linux-foundation"]
+}

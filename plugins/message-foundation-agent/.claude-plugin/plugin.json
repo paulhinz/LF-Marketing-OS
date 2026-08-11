@@ -1,0 +1,9 @@
+{
+  "name": "message-foundation-agent",
+  "version": "0.1.0",
+  "description": "LFX Marketing OS Message Foundation Agent — interviews a Linux Foundation project lead and produces a '[Project Name] Message Foundation' document (word-count-locked summaries, boilerplate, llms.txt, elevator pitch, plus full positioning, voice, audience, and messaging-pillar framework) for use across web, content, social, and campaigns.",
+  "author": {
+    "name": "Paul Hinz, Linux Foundation"
+  },
+  "keywords": ["marketing", "messaging", "linux-foundation", "lfx-marketing-os", "positioning", "brand"]
+}
