@@ -1,9 +1,0 @@
-{
-  "name": "lf-foundation-sample-data",
-  "version": "0.1.0",
-  "description": "Bulk-generates Brand Kit, Message Foundation, and ICP & Target Markets sample documents for any number of Linux Foundation projects/foundations, for testing and refining LFX Marketing OS agents.",
-  "author": {
-    "name": "Paul Hinz"
-  },
-  "keywords": ["lfx", "marketing-os", "linux-foundation", "sample-data", "brand-kit", "message-foundation", "icp"]
-}

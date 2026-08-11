@@ -1,9 +1,0 @@
-{
-  "name": "agent-development-workshop",
-  "version": "0.1.0",
-  "description": "Guided workshop that interviews a marketing subject matter expert, LF business leader, or LF technical leader to define the inputs for a new LFX Marketing OS agent, producing an Agent Definition File plus before/after workflow diagrams.",
-  "author": {
-    "name": "Paul Hinz"
-  },
-  "keywords": ["marketing-os", "lfx", "agent-definition", "linux-foundation"]
-}

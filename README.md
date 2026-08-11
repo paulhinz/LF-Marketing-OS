@@ -33,20 +33,3 @@ To ship a change to a plugin:
 3. Commit and push to `main`.
 
 Team members pick up the change the next time they click "Update" on this marketplace in Cowork. No other steps are needed — the marketplace itself does not need a version bump.
-
-## First-time push
-
-This repo has not been pushed to GitHub yet. Once you've created an empty repository on GitHub (or another git host) for this, run the following from inside this folder:
-
-```
-git init
-git add .
-git commit -m "Initial marketplace"
-git branch -M main
-git remote add origin <YOUR_GITHUB_REPO_URL>
-git push -u origin main
-```
-
-Replace `<YOUR_GITHUB_REPO_URL>` with the URL of the repository you create (for example `https://github.com/linuxfoundation/lfx-marketing-os-plugins.git`).
-
-After that, anyone who wants to use these plugins in Cowork can add this marketplace by its repo URL.

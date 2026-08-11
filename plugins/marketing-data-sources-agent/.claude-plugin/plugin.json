@@ -1,9 +1,0 @@
-{
-  "name": "marketing-data-sources-agent",
-  "version": "0.1.0",
-  "description": "Builds the LF-wide Marketing Data Sources Map — a spreadsheet that tells marketing agents (and humans) exactly where every piece of marketing content and data lives, live-verified against LFX, Asana, HubSpot, Google Drive, and Slack.",
-  "author": {
-    "name": "Paul Hinz, The Linux Foundation"
-  },
-  "keywords": ["linux-foundation", "lfx-marketing-os", "data-sources", "marketing"]
-}
