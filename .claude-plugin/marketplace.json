@@ -4,7 +4,7 @@
     "name": "Paul Hinz",
     "email": "phinz@linuxfoundation.org"
   },
-  "description": "Private plugin marketplace for The Linux Foundation's LFX Marketing OS agents and skills.",
+  "description": "Public plugin marketplace for The Linux Foundation's LFX Marketing OS agents and skills.",
   "plugins": [
     {
       "name": "brand-guidelines-agent",
@@ -91,32 +91,11 @@
       "tags": ["training", "course", "pptx"]
     },
     {
-      "name": "lf-foundation-sample-data",
-      "source": "./plugins/lf-foundation-sample-data",
-      "description": "Bulk-generates Brand Kit, Message Foundation, and ICP & Target Markets sample documents for any number of Linux Foundation projects/foundations, for testing and refining LFX Marketing OS agents.",
-      "category": "Additional",
-      "tags": ["sample-data", "brand-kit", "message-foundation", "icp"]
-    },
-    {
       "name": "run-lf-top-projects",
       "source": "./plugins/run-lf-top-projects",
       "description": "Ranks Linux Foundation umbrella foundations and projects by total sub-projects, total active members, and total annual membership revenue, and exports the results to a Google Sheet.",
       "category": "Additional",
       "tags": ["reporting", "ranking"]
-    },
-    {
-      "name": "marketing-data-sources-agent",
-      "source": "./plugins/marketing-data-sources-agent",
-      "description": "Builds the LF-wide Marketing Data Sources Map — a spreadsheet that tells marketing agents (and humans) exactly where every piece of marketing content and data lives, live-verified against LFX, Asana, HubSpot, Google Drive, and Slack.",
-      "category": "Additional",
-      "tags": ["data-sources", "mapping"]
-    },
-    {
-      "name": "agent-development-workshop",
-      "source": "./plugins/agent-development-workshop",
-      "description": "Guided workshop that interviews a marketing subject matter expert, LF business leader, or LF technical leader to define the inputs for a new LFX Marketing OS agent, producing an Agent Definition File plus before/after workflow diagrams.",
-      "category": "Additional",
-      "tags": ["agent-definition", "workshop"]
     }
   ]
 }
