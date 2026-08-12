@@ -1,6 +1,6 @@
 # LFX Marketing OS Plugin Marketplace
 
-Private Claude plugin marketplace for The Linux Foundation's LFX Marketing OS. It holds all of the marketing agents in one git repository so the team can install and update them from a single source in Cowork.
+Public Claude plugin marketplace for The Linux Foundation's LFX Marketing OS. It holds all of the marketing agents in one git repository so the team can install and update them from a single source in Cowork.
 
 ## 1. What is LFX Marketing OS
 
@@ -16,7 +16,7 @@ The agents are organized by where they sit in a marketing workflow:
 
 This repo is the distribution point for that agent set: a git-based marketplace that Cowork (or Claude Code) reads directly, so plugins can be installed and updated without emailing files around.
 
-## 2. The 12 plugins in this marketplace
+## 2. The 13 plugins in this marketplace
 
 **Foundation**
 - `brand-guidelines-agent` — Short intake with an LF project leader, then generates a Brand Kit: positioning, voice, audience messaging, competitive guardrails, and a five-part visual identity direction.
@@ -46,16 +46,16 @@ This repo is the distribution point for that agent set: a git-based marketplace 
 ## 3. Add this marketplace in Cowork
 
 1. Open **Customize** in the sidebar, then **Plugins**.
-2. Click **Add marketplace** and enter this repo: `paulhinz/LF_Marketing_OS` (or the full URL, `https://github.com/paulhinz/LF_Marketing_OS`).
-3. Click **Browse plugins** — the 12 plugins above will be listed.
+2. Click **Add marketplace** and enter this repo: `paulhinz/LF-Marketing-OS` (or the full URL, `https://github.com/paulhinz/LF-Marketing-OS`).
+3. Click **Browse plugins** — the 13 plugins above will be listed.
 4. Select and **Install** whichever ones you need.
 
-This is a private repo, so you need read access to it (ask Paul Hinz, phinz@linuxfoundation.org to add you as a collaborator) and to be signed in to GitHub on your machine. To get updates later, come back to Customize → Plugins, find this marketplace, and click **Update**.
+This repo is public, so anyone can browse the code or add it as a marketplace without needing collaborator access or GitHub sign-in. To get updates later, come back to Customize → Plugins, find this marketplace, and click **Update**.
 
 If you use the Claude Code CLI instead of Cowork, the equivalent is:
 
 ```
-/plugin marketplace add paulhinz/LF_Marketing_OS
+/plugin marketplace add paulhinz/LF-Marketing-OS
 /plugin install brand-guidelines-agent@lfx-marketing-os
 ```
 
