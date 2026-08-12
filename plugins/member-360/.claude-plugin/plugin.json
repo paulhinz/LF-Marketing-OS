@@ -1,0 +1,15 @@
+{
+  "name": "member-360",
+  "version": "0.1.0",
+  "description": "LFX Marketing OS Member 360 Agent — scores each LF project member's engagement across events, speaking, ambassadors, committees, content, and marketing activity; identifies gaps; and recommends the next best action for Marketing, Member Success, or Sales. Outputs a ranked spreadsheet for quarterly business reviews.",
+  "author": {
+    "name": "Linux Foundation — LFX Marketing OS"
+  },
+  "keywords": [
+    "lfx",
+    "member-engagement",
+    "member-360",
+    "qbr",
+    "linux-foundation"
+  ]
+}

@@ -77,6 +77,13 @@
       "tags": ["social-listening", "lfx-lens"]
     },
     {
+      "name": "member-360",
+      "source": "./plugins/member-360",
+      "description": "Scores each LF project member's engagement across events, speaking, ambassadors, committees, content, and marketing activity; identifies gaps; and recommends the next best action for Marketing, Member Success, or Sales. Outputs a ranked spreadsheet built for quarterly business reviews.",
+      "category": "Monitoring Agents",
+      "tags": ["member-engagement", "member-360", "qbr", "reporting"]
+    },
+    {
       "name": "marketing-agent-class",
       "source": "./plugins/marketing-agent-class",
       "description": "Delivers The Linux Foundation's Claude Agent Workshop marketing training as personalized PowerPoint decks, one section at a time, with live student Q&A captured in a companion deck.",

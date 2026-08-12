@@ -34,6 +34,7 @@ This repo is the distribution point for that agent set: a git-based marketplace 
 **Monitoring**
 - `aeo-geo-analyzer` — Scores a website's AEO/GEO performance (AI crawler access, `llms.txt`, answerability, structured data, citation authority) and returns prioritized recommendations.
 - `social-listening-report` — Builds Voices That Matter, Campaign Echo, and Ask-Anything reports from LFX Lens/Octolens social listening data.
+- `member-360` — Scores each project member's engagement across events, speaking, ambassadors, committees, content, and marketing activity; flags gaps; and recommends a next best action for Marketing, Member Success, or Sales in a ranked spreadsheet built for QBRs.
 
 **Additional (not part of the core Marketing OS)**
 - `marketing-agent-class` — Delivers The Linux Foundation's Claude Agent Workshop training as personalized slide decks, with live student Q&A captured in a companion deck.
@@ -46,7 +47,7 @@ This repo is the distribution point for that agent set: a git-based marketplace 
 3. Click **Browse plugins** — the 12 plugins above will be listed.
 4. Select and **Install** whichever ones you need.
 
-This is a private repo, so you need read access to it (ask Paul to add you as a collaborator) and to be signed in to GitHub on your machine. To get updates later, come back to Customize → Plugins, find this marketplace, and click **Update**.
+This is a private repo, so you need read access to it (ask Paul Hinz, phinz@linuxfoundation.org to add you as a collaborator) and to be signed in to GitHub on your machine. To get updates later, come back to Customize → Plugins, find this marketplace, and click **Update**.
 
 If you use the Claude Code CLI instead of Cowork, the equivalent is:
 
