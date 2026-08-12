@@ -12,6 +12,7 @@ The agents are organized by where they sit in a marketing workflow:
 - **Planning Agents** — turn foundation work and past results into a quarter's goals.
 - **Creating Agents** — produce outbound content (decks, posts) grounded in the foundation docs.
 - **Monitoring Agents** — check how content and campaigns are performing after they ship.
+- **Community Engagement Agents** — track how members and the community are engaging with a project, and turn that into next actions.
 
 This repo is the distribution point for that agent set: a git-based marketplace that Cowork (or Claude Code) reads directly, so plugins can be installed and updated without emailing files around.
 
@@ -34,6 +35,8 @@ This repo is the distribution point for that agent set: a git-based marketplace 
 **Monitoring**
 - `aeo-geo-analyzer` — Scores a website's AEO/GEO performance (AI crawler access, `llms.txt`, answerability, structured data, citation authority) and returns prioritized recommendations.
 - `social-listening-report` — Builds Voices That Matter, Campaign Echo, and Ask-Anything reports from LFX Lens/Octolens social listening data.
+
+**Community Engagement**
 - `member-360` — Scores each project member's engagement across events, speaking, ambassadors, committees, content, and marketing activity; flags gaps; and recommends a next best action for Marketing, Member Success, or Sales in a ranked spreadsheet built for QBRs.
 
 **Additional (not part of the core Marketing OS)**

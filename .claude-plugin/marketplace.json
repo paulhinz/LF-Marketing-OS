@@ -80,7 +80,7 @@
       "name": "member-360",
       "source": "./plugins/member-360",
       "description": "Scores each LF project member's engagement across events, speaking, ambassadors, committees, content, and marketing activity; identifies gaps; and recommends the next best action for Marketing, Member Success, or Sales. Outputs a ranked spreadsheet built for quarterly business reviews.",
-      "category": "Monitoring Agents",
+      "category": "Community Engagement Agents",
       "tags": ["member-engagement", "member-360", "qbr", "reporting"]
     },
     {
