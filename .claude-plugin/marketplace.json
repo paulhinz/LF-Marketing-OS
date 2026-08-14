@@ -84,6 +84,13 @@
       "tags": ["member-engagement", "member-360", "qbr", "reporting"]
     },
     {
+      "name": "kubecon-ambassador-content",
+      "source": "./plugins/kubecon-ambassador-content",
+      "description": "Matches a project's ambassadors against the KubeCon (or any LF event) schedule and generates personalized content assignments — video prompts, social copy, hashtags, tags, and posting recommendations — as a tracker spreadsheet, per-ambassador briefs, and outreach drafts. Then tracks who actually posts via LFX Lens social listening and drafts nudges.",
+      "category": "Community Engagement Agents",
+      "tags": ["kubecon", "ambassadors", "events", "social-media", "content"]
+    },
+    {
       "name": "marketing-agent-class",
       "source": "./plugins/marketing-agent-class",
       "description": "Delivers The Linux Foundation's Claude Agent Workshop marketing training as personalized PowerPoint decks, one section at a time, with live student Q&A captured in a companion deck.",
