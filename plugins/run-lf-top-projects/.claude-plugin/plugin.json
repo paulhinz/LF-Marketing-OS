@@ -1,9 +1,0 @@
-{
-  "name": "run-lf-top-projects",
-  "version": "0.1.0",
-  "description": "Ranks Linux Foundation umbrella foundations and projects by total sub-projects, total active members, and total annual membership revenue, and exports the results to a Google Sheet.",
-  "author": {
-    "name": "Paul Hinz, Linux Foundation"
-  },
-  "keywords": ["linux-foundation", "lfx", "marketing-ops", "reporting"]
-}
