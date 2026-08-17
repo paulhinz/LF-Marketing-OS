@@ -16,7 +16,7 @@ The agents are organized by where they sit in a marketing workflow:
 
 This repo is the distribution point for that agent set: a git-based marketplace that Cowork (or Claude Code) reads directly, so plugins can be installed and updated without emailing files around.
 
-## 2. The 15 plugins in this marketplace
+## 2. The 16 plugins in this marketplace
 
 **Foundation**
 - `brand-guidelines-agent` — Short intake with an LF project leader, then generates a Brand Kit: positioning, voice, audience messaging, competitive guardrails, and a five-part visual identity direction.
@@ -31,6 +31,7 @@ This repo is the distribution point for that agent set: a git-based marketplace 
 **Creating**
 - `linkedin-post-agent` — Drafts LinkedIn posts about LF and open source work in the user's own voice, from any source content.
 - `pitch-deck-agent` — Generates the standard first-meeting membership pitch deck ("Golden Deck"), grounded in a project's Brand Kit, Message Foundation, and ICP docs.
+- `case-study-agent` — Converts any source content (YouTube video, interview transcript, meeting notes, recording, or raw text) into an on-brand Word doc — a case study by default, or a blog post, article, summary, or Q&A — grounded in the project's Brand Kit and Message Foundation docs.
 
 **Monitoring**
 - `aeo-geo-analyzer` — Scores a website's AEO/GEO performance (AI crawler access, `llms.txt`, answerability, structured data, citation authority) and returns prioritized recommendations.
@@ -38,7 +39,7 @@ This repo is the distribution point for that agent set: a git-based marketplace 
 
 **Community Engagement**
 - `member-360` — Scores each project member's engagement across events, speaking, ambassadors, committees, content, and marketing activity; flags gaps; and recommends a next best action for Marketing, Member Success, or Sales in a ranked spreadsheet built for QBRs.
-- `kubecon-ambassador-content` — Matches ambassadors against the KubeCon (or any LF event) schedule, generates personalized content assignments (video prompts, social copy, hashtags, tags, posting times) as a tracker spreadsheet, per-ambassador briefs, and outreach drafts, then tracks who actually posts via LFX Lens and drafts nudges.
+- `ambassador-content-assignment` — Matches ambassadors against the KubeCon (or any LF event) schedule, generates personalized content assignments (video prompts, social copy, hashtags, tags, posting times) as a tracker spreadsheet, per-ambassador briefs, and outreach drafts, then tracks who actually posts via LFX Lens and drafts nudges.
 - `committee-health-agent` — Monitors committee participation, flags inactive or outdated representatives, identifies member companies without an active contact, and drafts follow-up or replacement outreach for review — a committee-health workbook plus an approval-ready outreach queue.
 - `community-monitor-agent` — Watches chosen Slack channels and GitHub repos on a user-set schedule, ranks new community questions by sentiment and asker value (community activity, member-company standing), and delivers a live report with drafted replies that can be sent to Slack with one click.
 
@@ -49,7 +50,7 @@ This repo is the distribution point for that agent set: a git-based marketplace 
 
 1. Open **Customize** in the sidebar, then **Plugins**.
 2. Click **Add marketplace** and enter this repo: `paulhinz/LF-Marketing-OS` (or the full URL, `https://github.com/paulhinz/LF-Marketing-OS`).
-3. Click **Browse plugins** — the 15 plugins above will be listed.
+3. Click **Browse plugins** — the 16 plugins above will be listed.
 4. Select and **Install** whichever ones you need.
 
 This repo is public, so anyone can browse the code or add it as a marketplace without needing collaborator access or GitHub sign-in. To get updates later, come back to Customize → Plugins, find this marketplace, and click **Update**.
