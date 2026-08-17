@@ -110,13 +110,6 @@
       "description": "Delivers The Linux Foundation's Claude Agent Workshop marketing training as personalized PowerPoint decks, one section at a time, with live student Q&A captured in a companion deck.",
       "category": "Additional",
       "tags": ["training", "course", "pptx"]
-    },
-    {
-      "name": "run-lf-top-projects",
-      "source": "./plugins/run-lf-top-projects",
-      "description": "Ranks Linux Foundation umbrella foundations and projects by total sub-projects, total active members, and total annual membership revenue, and exports the results to a Google Sheet.",
-      "category": "Additional",
-      "tags": ["reporting", "ranking"]
     }
   ]
 }
