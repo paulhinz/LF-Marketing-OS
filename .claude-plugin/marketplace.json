@@ -84,11 +84,11 @@
       "tags": ["member-engagement", "member-360", "qbr", "reporting"]
     },
     {
-      "name": "ambassador-content-assignment",
-      "source": "./plugins/ambassador-content-assignment",
-      "description": "Asks which community the run is for, matches that community's ambassadors against any LF event schedule (KubeCon, OSCon, etc.) and generates personalized content assignments — video prompts, social copy, hashtags, tags, and posting recommendations — as a tracker spreadsheet, per-ambassador briefs, and outreach drafts. Then tracks who actually posts via LFX Lens social listening and drafts nudges.",
+      "name": "kubecon-ambassador-content",
+      "source": "./plugins/kubecon-ambassador-content",
+      "description": "Matches a project's ambassadors against the KubeCon (or any LF event) schedule and generates personalized content assignments — video prompts, social copy, hashtags, tags, and posting recommendations — as a tracker spreadsheet, per-ambassador briefs, and outreach drafts. Then tracks who actually posts via LFX Lens social listening and drafts nudges.",
       "category": "Community Engagement Agents",
-      "tags": ["ambassadors", "events", "social-media", "content"]
+      "tags": ["kubecon", "ambassadors", "events", "social-media", "content"]
     },
     {
       "name": "committee-health-agent",
@@ -96,6 +96,13 @@
       "description": "Monitors committee participation across an LF project, flags inactive or outdated representatives, identifies member companies without an active contact, and drafts follow-up or replacement outreach for review — a committee-health workbook plus a ready-to-approve outreach queue.",
       "category": "Community Engagement Agents",
       "tags": ["committees", "committee-health", "member-contacts", "outreach"]
+    },
+    {
+      "name": "community-monitor-agent",
+      "source": "./plugins/community-monitor-agent",
+      "description": "Monitors a project's Slack channels and GitHub repositories on a user-defined schedule, surfaces community questions ranked by sentiment and asker value (community activity and member-company standing), and delivers a live report with drafted replies that can be sent to Slack with one click.",
+      "category": "Community Engagement Agents",
+      "tags": ["community", "slack", "github", "monitoring", "response"]
     },
     {
       "name": "marketing-agent-class",
