@@ -1,15 +1,15 @@
 {
-    "name": "ambassador-content-assignment",
-    "version": "0.2.0",
-    "description": "LFX Marketing OS agent that matches a community's ambassadors to any LF event schedule, generates personalized content assignments — video prompts, social copy, hashtags, tags, posting recommendations — and tracks who actually posts via LFX Lens social listening.",
-    "author": {
-          "name": "The Linux Foundation"
-    },
-    "keywords": [
-          "ambassadors",
-          "social",
-          "lfx-marketing-os",
-          "events",
-          "content"
-    ]
+  "name": "ambassador-content-assignment",
+  "version": "0.2.0",
+  "description": "LFX Marketing OS agent that matches a community's ambassadors to any LF event schedule, generates personalized content assignments — video prompts, social copy, hashtags, tags, posting recommendations — and tracks who actually posts via LFX Lens social listening.",
+  "author": {
+    "name": "The Linux Foundation"
+  },
+  "keywords": [
+    "ambassadors",
+    "social",
+    "lfx-marketing-os",
+    "events",
+    "content"
+  ]
 }
