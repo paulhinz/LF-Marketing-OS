@@ -38,7 +38,7 @@ This repo is the distribution point for that agent set: a git-based marketplace 
 
 **Community Engagement**
 - `member-360` — Scores each project member's engagement across events, speaking, ambassadors, committees, content, and marketing activity; flags gaps; and recommends a next best action for Marketing, Member Success, or Sales in a ranked spreadsheet built for QBRs.
-- `kubecon-ambassador-content` — Matches ambassadors against the KubeCon (or any LF event) schedule, generates personalized content assignments (video prompts, social copy, hashtags, tags, posting times) as a tracker spreadsheet, per-ambassador briefs, and outreach drafts, then tracks who actually posts via LFX Lens and drafts nudges.
+- `ambassador-content-assignment` — Asks which community the run is for, matches that community's ambassadors against any LF event schedule (KubeCon, OSCon, etc.), generates personalized content assignments (video prompts, social copy, hashtags, tags, posting times) as a tracker spreadsheet, per-ambassador briefs, and outreach drafts, then tracks who actually posts via LFX Lens and drafts nudges.
 - `committee-health-agent` — Monitors committee participation, flags inactive or outdated representatives, identifies member companies without an active contact, and drafts follow-up or replacement outreach for review — a committee-health workbook plus an approval-ready outreach queue.
 
 **Additional (not part of the core Marketing OS)**
