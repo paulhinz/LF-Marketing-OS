@@ -1,0 +1,17 @@
+{
+  "name": "community-monitor-agent",
+  "version": "0.1.0",
+  "description": "LFX Marketing OS Community Monitor Agent — monitors a project's Slack channels and GitHub repositories on a user-defined schedule, surfaces community questions ranked by sentiment and asker value (community activity and member-company standing), and delivers a live report with drafted replies that can be sent to Slack with one click.",
+  "author": {
+    "name": "Linux Foundation — LFX Marketing OS"
+  },
+  "keywords": [
+    "lfx",
+    "community",
+    "slack",
+    "github",
+    "monitoring",
+    "community-response",
+    "linux-foundation"
+  ]
+}
