@@ -1,0 +1,15 @@
+{
+  "name": "committee-health-agent",
+  "version": "0.1.0",
+  "description": "LFX Marketing OS Committee Health Agent — monitors committee participation across an LF project, flags inactive or outdated representatives, identifies member companies without an active contact, and drafts follow-up or replacement outreach for review. Outputs a committee-health workbook plus a ready-to-approve outreach queue.",
+  "author": {
+    "name": "Linux Foundation — LFX Marketing OS"
+  },
+  "keywords": [
+    "lfx",
+    "committee-health",
+    "committee-participation",
+    "member-contacts",
+    "linux-foundation"
+  ]
+}
