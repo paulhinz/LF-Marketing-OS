@@ -91,6 +91,13 @@
       "tags": ["kubecon", "ambassadors", "events", "social-media", "content"]
     },
     {
+      "name": "committee-health-agent",
+      "source": "./plugins/committee-health-agent",
+      "description": "Monitors committee participation across an LF project, flags inactive or outdated representatives, identifies member companies without an active contact, and drafts follow-up or replacement outreach for review — a committee-health workbook plus a ready-to-approve outreach queue.",
+      "category": "Community Engagement Agents",
+      "tags": ["committees", "committee-health", "member-contacts", "outreach"]
+    },
+    {
       "name": "marketing-agent-class",
       "source": "./plugins/marketing-agent-class",
       "description": "Delivers The Linux Foundation's Claude Agent Workshop marketing training as personalized PowerPoint decks, one section at a time, with live student Q&A captured in a companion deck.",
