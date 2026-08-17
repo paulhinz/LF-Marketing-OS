@@ -84,11 +84,11 @@
       "tags": ["member-engagement", "member-360", "qbr", "reporting"]
     },
     {
-      "name": "kubecon-ambassador-content",
-      "source": "./plugins/kubecon-ambassador-content",
-      "description": "Matches a project's ambassadors against the KubeCon (or any LF event) schedule and generates personalized content assignments — video prompts, social copy, hashtags, tags, and posting recommendations — as a tracker spreadsheet, per-ambassador briefs, and outreach drafts. Then tracks who actually posts via LFX Lens social listening and drafts nudges.",
+      "name": "ambassador-content-assignment",
+      "source": "./plugins/ambassador-content-assignment",
+      "description": "Asks which community the run is for, matches that community's ambassadors against any LF event schedule (KubeCon, OSCon, etc.) and generates personalized content assignments — video prompts, social copy, hashtags, tags, and posting recommendations — as a tracker spreadsheet, per-ambassador briefs, and outreach drafts. Then tracks who actually posts via LFX Lens social listening and drafts nudges.",
       "category": "Community Engagement Agents",
-      "tags": ["kubecon", "ambassadors", "events", "social-media", "content"]
+      "tags": ["ambassadors", "events", "social-media", "content"]
     },
     {
       "name": "committee-health-agent",
