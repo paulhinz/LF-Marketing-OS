@@ -63,6 +63,13 @@
       "tags": ["pitch-deck", "membership", "member-growth"]
     },
     {
+      "name": "case-study-agent",
+      "source": "./plugins/case-study-agent",
+      "description": "Converts any source content — a YouTube video, interview transcript, meeting notes, recording, or raw text — into an on-brand Word document for an LF project or foundation. Loads the project's Brand Kit and Message Foundation (web-research fallback) and produces a first-draft case study by default, or a blog post, article, summary, or Q&A on request.",
+      "category": "Creating Agents",
+      "tags": ["case-study", "content", "video", "transcript", "docx"]
+    },
+    {
       "name": "aeo-geo-analyzer",
       "source": "./plugins/aeo-geo-analyzer",
       "description": "Analyzes any website's AEO (Answer Engine Optimization) and GEO (Generative Engine Optimization) performance — AI crawler access, llms.txt, on-page answerability, structured data, and third-party citation authority — and produces a scored report with prioritized recommendations.",
@@ -84,8 +91,8 @@
       "tags": ["member-engagement", "member-360", "qbr", "reporting"]
     },
     {
-      "name": "kubecon-ambassador-content",
-      "source": "./plugins/kubecon-ambassador-content",
+      "name": "ambassador-content-assignment",
+      "source": "./plugins/ambassador-content-assignment",
       "description": "Matches a project's ambassadors against the KubeCon (or any LF event) schedule and generates personalized content assignments — video prompts, social copy, hashtags, tags, and posting recommendations — as a tracker spreadsheet, per-ambassador briefs, and outreach drafts. Then tracks who actually posts via LFX Lens social listening and drafts nudges.",
       "category": "Community Engagement Agents",
       "tags": ["kubecon", "ambassadors", "events", "social-media", "content"]
