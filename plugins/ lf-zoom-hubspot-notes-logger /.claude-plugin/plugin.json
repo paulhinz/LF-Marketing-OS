@@ -1,0 +1,9 @@
+{
+  "name": "lf-zoom-hubspot-notes-logger",
+  "version": "0.1.0",
+  "description": "Syncs Zoom meeting notes into HubSpot meeting records, creates opportunity follow-up tasks, and flags anything that needs manual review. Built for any Linux Foundation Marketing or Sales team, not just membership sales.",
+  "author": {
+    "name": "Linux Foundation Marketing & Sales"
+  },
+  "keywords": ["hubspot", "zoom", "crm", "sales", "marketing", "meeting-notes"]
+}
