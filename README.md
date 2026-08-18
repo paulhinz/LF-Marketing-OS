@@ -16,7 +16,7 @@ The agents are organized by where they sit in a marketing workflow:
 
 This repo is the distribution point for that agent set: a git-based marketplace that Cowork (or Claude Code) reads directly, so plugins can be installed and updated without emailing files around.
 
-## 2. The 16 plugins in this marketplace
+## 2. The 17 plugins in this marketplace
 
 **Foundation**
 - `brand-guidelines-agent` — Short intake with an LF project leader, then generates a Brand Kit: positioning, voice, audience messaging, competitive guardrails, and a five-part visual identity direction.
@@ -27,6 +27,7 @@ This repo is the distribution point for that agent set: a git-based marketplace 
 
 **Planning**
 - `qtrly-plan-agent` — Walks an ED/Project Leader through the quarterly review cycle (results vs. goals, direction, ranked goals with KPIs/budget/timeline/risk) and produces a Google Slides-ready quarterly plan deck.
+- `lf-zoom-hubspot-notes-logger` — Pulls a team member's Zoom meeting notes for today and yesterday, writes them into the matching HubSpot meeting records, opens follow-up tasks on opportunities, and flags ambiguous matches over Slack for manual review.
 
 **Creating**
 - `linkedin-post-agent` — Drafts LinkedIn posts about LF and open source work in the user's own voice, from any source content.
@@ -50,7 +51,7 @@ This repo is the distribution point for that agent set: a git-based marketplace 
 
 1. Open **Customize** in the sidebar, then **Plugins**.
 2. Click **Add marketplace** and enter this repo: `paulhinz/LF-Marketing-OS` (or the full URL, `https://github.com/paulhinz/LF-Marketing-OS`).
-3. Click **Browse plugins** — the 16 plugins above will be listed.
+3. Click **Browse plugins** — the 17 plugins above will be listed.
 4. Select and **Install** whichever ones you need.
 
 This repo is public, so anyone can browse the code or add it as a marketplace without needing collaborator access or GitHub sign-in. To get updates later, come back to Customize → Plugins, find this marketplace, and click **Update**.
