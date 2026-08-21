@@ -94,8 +94,11 @@ def main():
             for e in errors:
                 print(f"ERROR: {e}", file=sys.stderr)
             sys.exit(1)
-        README.write_text(new_readme)
-        print(f"Regenerated README.md plugin block ({len(plugins)} plugins)")
+        if new_readme != readme:
+            README.write_text(new_readme)
+            print(f"Regenerated README.md plugin block ({len(plugins)} plugins)")
+        else:
+            print(f"README.md plugin block already up to date ({len(plugins)} plugins)")
 
 
 if __name__ == "__main__":
