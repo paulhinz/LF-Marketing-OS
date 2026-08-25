@@ -1,0 +1,16 @@
+{
+  "name": "member-benefits-briefing",
+  "version": "0.1.0",
+  "description": "LFX Marketing OS Member Benefits Briefing Agent \u2014 builds the LF CEO-style member executive briefing deck for any LF member company: pulls the member's live LFX footprint (memberships, dues, code contributions, maintainers, event participation, training), combines it with the current Linux Foundation and open-source-AI narrative, and produces a PowerPoint styled to the LF executive briefing template, ready for the member meeting.",
+  "author": {
+    "name": "Linux Foundation \u2014 LFX Marketing OS"
+  },
+  "keywords": [
+    "lfx",
+    "executive-briefing",
+    "member-engagement",
+    "membership",
+    "pptx",
+    "linux-foundation"
+  ]
+}

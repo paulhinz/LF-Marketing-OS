@@ -16,114 +16,200 @@
     {
       "name": "brand-guidelines-agent",
       "source": "./plugins/brand-guidelines-agent",
-      "description": "Guides an LF project leader through a short intake, then generates a project Brand Kit document — positioning, voice, audience messaging, competitive guardrails, and a five-component visual identity direction — following the LFX Marketing OS Brand Kit standard.",
+      "description": "Guides an LF project leader through a short intake, then generates a project Brand Kit document \u2014 positioning, voice, audience messaging, competitive guardrails, and a five-component visual identity direction \u2014 following the LFX Marketing OS Brand Kit standard.",
       "category": "Foundation Agents",
-      "tags": ["brand", "brand-kit", "foundation-setup"]
+      "tags": [
+        "brand",
+        "brand-kit",
+        "foundation-setup"
+      ]
     },
     {
       "name": "message-foundation-agent",
       "source": "./plugins/message-foundation-agent",
       "description": "Interviews a Linux Foundation project lead and produces a '[Project Name] Message Foundation' document (word-count-locked summaries, boilerplate, llms.txt, elevator pitch, plus full positioning, voice, audience, and messaging-pillar framework) for use across web, content, social, and campaigns.",
       "category": "Foundation Agents",
-      "tags": ["messaging", "positioning", "foundation-setup"]
+      "tags": [
+        "messaging",
+        "positioning",
+        "foundation-setup"
+      ]
     },
     {
       "name": "icp-target-markets-agent",
       "source": "./plugins/icp-target-markets-agent",
       "description": "Interviews a Linux Foundation project leader, reads the project's Brand Kit, Message Foundation Doc, and GitHub README, optionally pulls live LFX membership data, and produces a '[Project Name] Target Markets and ICP' document (market segments, organization-level ICPs, personas, and fit/warmth scoring).",
       "category": "Foundation Agents",
-      "tags": ["icp", "target-markets", "personas", "foundation-setup"]
+      "tags": [
+        "icp",
+        "target-markets",
+        "personas",
+        "foundation-setup"
+      ]
     },
     {
       "name": "plain-writing",
       "source": "./plugins/plain-writing",
       "description": "Writes and revises prose in a plain style: simple words, complete sentences, no dashes, no jargon, no filler. Includes an optional HTML revision view that shows what changed and why.",
       "category": "Foundation Agents",
-      "tags": ["writing", "editing", "style"]
+      "tags": [
+        "writing",
+        "editing",
+        "style"
+      ]
     },
     {
       "name": "website-designer-agent",
       "source": "./plugins/website-designer-agent",
-      "description": "Turns an LF project's three foundation docs into an approved sitemap, a complete Hugo website, and a GitHub-deployed, DNS-ready launch package — with four human approval gates.",
+      "description": "Turns an LF project's three foundation docs into an approved sitemap, a complete Hugo website, and a GitHub-deployed, DNS-ready launch package \u2014 with four human approval gates.",
       "category": "Foundation Agents",
-      "tags": ["website", "hugo", "github", "foundation-setup"]
+      "tags": [
+        "website",
+        "hugo",
+        "github",
+        "foundation-setup"
+      ]
     },
     {
       "name": "qtrly-plan-agent",
       "source": "./plugins/qtrly-plan-agent",
       "description": "Guides a Linux Foundation ED/Project Leader through the quarterly review cycle (review outcomes vs. goals, set business-outcome direction, define ranked goals with KPIs, budgets, timelines, and risks) and produces a Google Slides-ready quarterly marketing plan deck.",
       "category": "Planning Agents",
-      "tags": ["quarterly-plan", "qbr", "goals"]
+      "tags": [
+        "quarterly-plan",
+        "qbr",
+        "goals"
+      ]
     },
     {
       "name": "linkedin-post-agent",
       "source": "./plugins/linkedin-post-agent",
       "description": "Drafts LinkedIn posts about Linux Foundation and open source ecosystem work in the user's authentic voice. Learns the user's profile and tone once, then turns any piece of content into ready-to-post options.",
       "category": "Creating Agents",
-      "tags": ["linkedin", "social-media", "content"]
+      "tags": [
+        "linkedin",
+        "social-media",
+        "content"
+      ]
     },
     {
       "name": "pitch-deck-agent",
       "source": "./plugins/pitch-deck-agent",
       "description": "Generates the standard first-meeting membership pitch deck (max 20 slides, Google Slides-ready) for any Linux Foundation project or foundation, grounded in the project's Brand Kit, Message Foundation, and ICP documents.",
       "category": "Creating Agents",
-      "tags": ["pitch-deck", "membership", "member-growth"]
+      "tags": [
+        "pitch-deck",
+        "membership",
+        "member-growth"
+      ]
     },
     {
       "name": "case-study-agent",
       "source": "./plugins/case-study-agent",
-      "description": "Converts any source content — a YouTube video, interview transcript, meeting notes, recording, or raw text — into an on-brand Word document for an LF project or foundation. Loads the project's Brand Kit and Message Foundation (web-research fallback) and produces a first-draft case study by default, or a blog post, article, summary, or Q&A on request.",
+      "description": "Converts any source content \u2014 a YouTube video, interview transcript, meeting notes, recording, or raw text \u2014 into an on-brand Word document for an LF project or foundation. Loads the project's Brand Kit and Message Foundation (web-research fallback) and produces a first-draft case study by default, or a blog post, article, summary, or Q&A on request.",
       "category": "Creating Agents",
-      "tags": ["case-study", "content", "video", "transcript", "docx"]
+      "tags": [
+        "case-study",
+        "content",
+        "video",
+        "transcript",
+        "docx"
+      ]
+    },
+    {
+      "name": "member-benefits-briefing",
+      "source": "./plugins/member-benefits-briefing",
+      "description": "Builds the LF CEO-style member executive briefing deck \u2014 \u201c[Company] and the Linux Foundation\u201d \u2014 for any LF member: pulls the member's live LFX footprint (memberships, dues, code contributions, maintainers, event participation, training), merges it with the standing LF and open-source-AI narrative, and produces a PowerPoint styled to the LF executive briefing template.",
+      "category": "Creating Agents",
+      "tags": [
+        "executive-briefing",
+        "membership",
+        "member-engagement",
+        "pptx"
+      ]
     },
     {
       "name": "aeo-geo-analyzer",
       "source": "./plugins/aeo-geo-analyzer",
-      "description": "Analyzes any website's AEO (Answer Engine Optimization) and GEO (Generative Engine Optimization) performance — AI crawler access, llms.txt, on-page answerability, structured data, and third-party citation authority — and produces a scored report with prioritized recommendations.",
+      "description": "Analyzes any website's AEO (Answer Engine Optimization) and GEO (Generative Engine Optimization) performance \u2014 AI crawler access, llms.txt, on-page answerability, structured data, and third-party citation authority \u2014 and produces a scored report with prioritized recommendations.",
       "category": "Monitoring Agents",
-      "tags": ["aeo", "geo", "seo", "ai-search"]
+      "tags": [
+        "aeo",
+        "geo",
+        "seo",
+        "ai-search"
+      ]
     },
     {
       "name": "social-listening-report",
       "source": "./plugins/social-listening-report",
-      "description": "On-demand social listening reports from LFX Lens data: Voices That Matter (high-reach creators), Campaign Echo (launch/announcement pickup), and Ask-Anything briefings — with Google Doc output for historical tracking.",
+      "description": "On-demand social listening reports from LFX Lens data: Voices That Matter (high-reach creators), Campaign Echo (launch/announcement pickup), and Ask-Anything briefings \u2014 with Google Doc output for historical tracking.",
       "category": "Monitoring Agents",
-      "tags": ["social-listening", "lfx-lens"]
+      "tags": [
+        "social-listening",
+        "lfx-lens"
+      ]
     },
     {
       "name": "member-360",
       "source": "./plugins/member-360",
       "description": "Scores each LF project member's engagement across events, speaking, ambassadors, committees, content, and marketing activity; identifies gaps; and recommends the next best action for Marketing, Member Success, or Sales. Outputs a ranked spreadsheet built for quarterly business reviews.",
       "category": "Community Engagement Agents",
-      "tags": ["member-engagement", "member-360", "qbr", "reporting"]
+      "tags": [
+        "member-engagement",
+        "member-360",
+        "qbr",
+        "reporting"
+      ]
     },
     {
       "name": "ambassador-content-assignment",
       "source": "./plugins/ambassador-content-assignment",
-      "description": "Matches a project's ambassadors against the KubeCon (or any LF event) schedule and generates personalized content assignments — video prompts, social copy, hashtags, tags, and posting recommendations — as a tracker spreadsheet, per-ambassador briefs, and outreach drafts. Then tracks who actually posts via LFX Lens social listening and drafts nudges.",
+      "description": "Matches a project's ambassadors against the KubeCon (or any LF event) schedule and generates personalized content assignments \u2014 video prompts, social copy, hashtags, tags, and posting recommendations \u2014 as a tracker spreadsheet, per-ambassador briefs, and outreach drafts. Then tracks who actually posts via LFX Lens social listening and drafts nudges.",
       "category": "Community Engagement Agents",
-      "tags": ["kubecon", "ambassadors", "events", "social-media", "content"]
+      "tags": [
+        "kubecon",
+        "ambassadors",
+        "events",
+        "social-media",
+        "content"
+      ]
     },
     {
       "name": "committee-health-agent",
       "source": "./plugins/committee-health-agent",
-      "description": "Monitors committee participation across an LF project, flags inactive or outdated representatives, identifies member companies without an active contact, and drafts follow-up or replacement outreach for review — a committee-health workbook plus a ready-to-approve outreach queue.",
+      "description": "Monitors committee participation across an LF project, flags inactive or outdated representatives, identifies member companies without an active contact, and drafts follow-up or replacement outreach for review \u2014 a committee-health workbook plus a ready-to-approve outreach queue.",
       "category": "Community Engagement Agents",
-      "tags": ["committees", "committee-health", "member-contacts", "outreach"]
+      "tags": [
+        "committees",
+        "committee-health",
+        "member-contacts",
+        "outreach"
+      ]
     },
     {
       "name": "community-monitor-agent",
       "source": "./plugins/community-monitor-agent",
       "description": "Monitors a project's Slack channels and GitHub repositories on a user-defined schedule, surfaces community questions ranked by sentiment and asker value (community activity and member-company standing), and delivers a live report with drafted replies that can be sent to Slack with one click.",
       "category": "Community Engagement Agents",
-      "tags": ["community", "slack", "github", "monitoring", "response"]
+      "tags": [
+        "community",
+        "slack",
+        "github",
+        "monitoring",
+        "response"
+      ]
     },
     {
       "name": "marketing-agent-class",
       "source": "./plugins/marketing-agent-class",
       "description": "Delivers The Linux Foundation's Claude Agent Workshop marketing training as personalized PowerPoint decks, one section at a time, with live student Q&A captured in a companion deck.",
       "category": "Additional",
-      "tags": ["training", "course", "pptx"]
+      "tags": [
+        "training",
+        "course",
+        "pptx"
+      ]
     }
   ]
 }
