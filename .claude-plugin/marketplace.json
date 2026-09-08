@@ -7,6 +7,13 @@
   "description": "Public plugin marketplace for The Linux Foundation's LFX Marketing OS agents and skills.",
   "plugins": [
     {
+      "name": "marketing-plan-workbook-agent",
+      "source": "./plugins/marketing-plan-workbook-agent",
+      "description": "Generates a pre-filled, question-driven marketing plan workbook (.pptx, Google Slides-ready) for an LF project/foundation, modeled on the PyTorch 2026 integrated plan — pulling the LF master tracker, past marketing plans, and LFX metrics, with DRAFT badges and YOUR INPUT question slides for the foundation leader to complete before a planning interview. The completed workbook feeds the final marketing plan generation step.",
+      "category": "Planning Agents",
+      "tags": ["marketing-plan", "workbook", "planning", "discovery"]
+    },
+    {
       "name": "brand-guidelines-agent",
       "source": "./plugins/brand-guidelines-agent",
       "description": "Guides an LF project leader through a short intake, then generates a project Brand Kit document — positioning, voice, audience messaging, competitive guardrails, and a five-component visual identity direction — following the LFX Marketing OS Brand Kit standard.",
