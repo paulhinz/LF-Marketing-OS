@@ -27,7 +27,7 @@ This repo is the distribution point for that agent set: a git-based marketplace 
 
 **Planning**
 - `qtrly-plan-agent` — Walks an ED/Project Leader through the quarterly review cycle (results vs. goals, direction, ranked goals with KPIs/budget/timeline/risk) and produces a Google Slides-ready quarterly plan deck.
-- `marketing-plan-workbook-agent` — Generates a pre-filled marketing plan workbook (.pptx) for a foundation, modeled on the PyTorch 2026 integrated plan: pulls the LF master tracker, past marketing plans, and LFX metrics, drafts all five plan parts with DRAFT badges, and ends each part with YOUR INPUT question slides for the foundation leader to complete before a planning interview. The completed workbook feeds the final plan generation step.
+- `marketing-plan-workbook-agent` — Generates a pre-filled marketing plan workbook (.pptx) for a foundation, modeled on the Linux Foundation template for an integrated plan: pulls the LF master tracker, past marketing plans, and LFX metrics, drafts all five plan parts with DRAFT badges, and ends each part with YOUR INPUT question slides for the foundation leader to complete before a planning interview. The completed workbook feeds the final plan generation step.
 - `lf-zoom-hubspot-notes-logger` — Pulls a team member's Zoom meeting notes for today and yesterday, writes them into the matching HubSpot meeting records, opens follow-up tasks on opportunities, and flags ambiguous matches over Slack for manual review.
 
 **Creating**
