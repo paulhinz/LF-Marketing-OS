@@ -9,9 +9,14 @@
     {
       "name": "marketing-plan-workbook-agent",
       "source": "./plugins/marketing-plan-workbook-agent",
-      "description": "Generates a pre-filled, question-driven marketing plan workbook (.pptx, Google Slides-ready) for an LF project/foundation, modeled on the PyTorch 2026 integrated plan — pulling the LF master tracker, past marketing plans, and LFX metrics, with DRAFT badges and YOUR INPUT question slides for the foundation leader to complete before a planning interview. The completed workbook feeds the final marketing plan generation step.",
+      "description": "Generates a pre-filled, question-driven marketing plan workbook (.pptx, Google Slides-ready) for an LF project/foundation, modeled on the PyTorch 2026 integrated plan \u2014 pulling the LF master tracker, past marketing plans, and LFX metrics, with DRAFT badges and YOUR INPUT question slides for the foundation leader to complete before a planning interview. The completed workbook feeds the final marketing plan generation step.",
       "category": "Planning Agents",
-      "tags": ["marketing-plan", "workbook", "planning", "discovery"]
+      "tags": [
+        "marketing-plan",
+        "workbook",
+        "planning",
+        "discovery"
+      ]
     },
     {
       "name": "brand-guidelines-agent",
@@ -79,6 +84,19 @@
         "quarterly-plan",
         "qbr",
         "goals"
+      ]
+    },
+    {
+      "name": "lf-zoom-hubspot-notes-logger",
+      "source": "./plugins/lf-zoom-hubspot-notes-logger",
+      "description": "Pulls a team member's Zoom meeting notes for today and yesterday, writes them into the matching HubSpot meeting records, opens follow-up tasks on opportunities, and flags ambiguous matches over Slack for manual review. Built for any Linux Foundation Marketing or Sales team.",
+      "category": "Planning Agents",
+      "tags": [
+        "hubspot",
+        "zoom",
+        "crm",
+        "meeting-notes",
+        "sales"
       ]
     },
     {
