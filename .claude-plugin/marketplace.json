@@ -9,7 +9,7 @@
     {
       "name": "marketing-plan-workbook-agent",
       "source": "./plugins/marketing-plan-workbook-agent",
-      "description": "Generates a pre-filled, question-driven marketing plan workbook (.pptx, Google Slides-ready) for an LF project/foundation, modeled on the PyTorch 2026 integrated plan \u2014 pulling the LF master tracker, past marketing plans, and LFX metrics, with DRAFT badges and YOUR INPUT question slides for the foundation leader to complete before a planning interview. The completed workbook feeds the final marketing plan generation step.",
+      "description": "Generates a pre-filled, question-driven marketing plan workbook (.pptx, Google Slides-ready) for an LF project/foundation, modeled on the Linux Foundation template for an integrated plan — pulling the LF master tracker, past marketing plans, LFX metrics, and, when available, the foundation's completed Quarterly Marketing Review workbook (from qtrly-marketing-review-agent), whose Executive Summary is surfaced at the top of the plan workbook for the ED presentation. DRAFT badges and YOUR INPUT question slides for the foundation leader to complete before a planning interview; the completed workbook feeds the final marketing plan generation step.",
       "category": "Planning Agents",
       "tags": [
         "marketing-plan",
@@ -19,9 +19,21 @@
       ]
     },
     {
+      "name": "qtrly-marketing-review-agent",
+      "source": "./plugins/qtrly-marketing-review-agent",
+      "description": "Generates a pre-filled Quarterly Marketing Review workbook (.pptx) for a foundation's marketing team at quarter end — goals-vs-actuals scorecard, business outcomes, engine-health conversions, channel indicators, vehicle scorecards, market signals, and a structured insights retrospective, pre-filled from LFX and marketing platform data with DRAFT badges and YOUR INPUT questions. The completed review is an input to marketing-plan-workbook-agent, and its Executive Summary is presented to the ED at the quarterly plan review.",
+      "category": "Planning Agents",
+      "tags": [
+        "quarterly-review",
+        "retrospective",
+        "marketing-metrics",
+        "planning"
+      ]
+    },
+    {
       "name": "brand-guidelines-agent",
       "source": "./plugins/brand-guidelines-agent",
-      "description": "Guides an LF project leader through a short intake, then generates a project Brand Kit document \u2014 positioning, voice, audience messaging, competitive guardrails, and a five-component visual identity direction \u2014 following the LFX Marketing OS Brand Kit standard.",
+      "description": "Guides an LF project leader through a short intake, then generates a project Brand Kit document — positioning, voice, audience messaging, competitive guardrails, and a five-component visual identity direction — following the LFX Marketing OS Brand Kit standard.",
       "category": "Foundation Agents",
       "tags": [
         "brand",
@@ -66,7 +78,7 @@
     {
       "name": "website-designer-agent",
       "source": "./plugins/website-designer-agent",
-      "description": "Turns an LF project's three foundation docs into an approved sitemap, a complete Hugo website, and a GitHub-deployed, DNS-ready launch package \u2014 with four human approval gates.",
+      "description": "Turns an LF project's three foundation docs into an approved sitemap, a complete Hugo website, and a GitHub-deployed, DNS-ready launch package — with four human approval gates.",
       "category": "Foundation Agents",
       "tags": [
         "website",
@@ -124,7 +136,7 @@
     {
       "name": "case-study-agent",
       "source": "./plugins/case-study-agent",
-      "description": "Converts any source content \u2014 a YouTube video, interview transcript, meeting notes, recording, or raw text \u2014 into an on-brand Word document for an LF project or foundation. Loads the project's Brand Kit and Message Foundation (web-research fallback) and produces a first-draft case study by default, or a blog post, article, summary, or Q&A on request.",
+      "description": "Converts any source content — a YouTube video, interview transcript, meeting notes, recording, or raw text — into an on-brand Word document for an LF project or foundation. Loads the project's Brand Kit and Message Foundation (web-research fallback) and produces a first-draft case study by default, or a blog post, article, summary, or Q&A on request.",
       "category": "Creating Agents",
       "tags": [
         "case-study",
@@ -137,7 +149,7 @@
     {
       "name": "member-benefits-briefing",
       "source": "./plugins/member-benefits-briefing",
-      "description": "Builds the LF CEO-style member executive briefing deck \u2014 \u201c[Company] and the Linux Foundation\u201d \u2014 for any LF member: pulls the member's live LFX footprint (memberships, dues, code contributions, maintainers, event participation, training), merges it with the standing LF and open-source-AI narrative, and produces a PowerPoint styled to the LF executive briefing template.",
+      "description": "Builds the LF CEO-style member executive briefing deck — “[Company] and the Linux Foundation” — for any LF member: pulls the member's live LFX footprint (memberships, dues, code contributions, maintainers, event participation, training), merges it with the standing LF and open-source-AI narrative, and produces a PowerPoint styled to the LF executive briefing template.",
       "category": "Creating Agents",
       "tags": [
         "executive-briefing",
@@ -149,7 +161,7 @@
     {
       "name": "aeo-geo-analyzer",
       "source": "./plugins/aeo-geo-analyzer",
-      "description": "Analyzes any website's AEO (Answer Engine Optimization) and GEO (Generative Engine Optimization) performance \u2014 AI crawler access, llms.txt, on-page answerability, structured data, and third-party citation authority \u2014 and produces a scored report with prioritized recommendations.",
+      "description": "Analyzes any website's AEO (Answer Engine Optimization) and GEO (Generative Engine Optimization) performance — AI crawler access, llms.txt, on-page answerability, structured data, and third-party citation authority — and produces a scored report with prioritized recommendations.",
       "category": "Monitoring Agents",
       "tags": [
         "aeo",
@@ -161,7 +173,7 @@
     {
       "name": "social-listening-report",
       "source": "./plugins/social-listening-report",
-      "description": "On-demand social listening reports from LFX Lens data: Voices That Matter (high-reach creators), Campaign Echo (launch/announcement pickup), and Ask-Anything briefings \u2014 with Google Doc output for historical tracking.",
+      "description": "On-demand social listening reports from LFX Lens data: Voices That Matter (high-reach creators), Campaign Echo (launch/announcement pickup), and Ask-Anything briefings — with Google Doc output for historical tracking.",
       "category": "Monitoring Agents",
       "tags": [
         "social-listening",
@@ -183,7 +195,7 @@
     {
       "name": "ambassador-content-assignment",
       "source": "./plugins/ambassador-content-assignment",
-      "description": "Matches a project's ambassadors against the KubeCon (or any LF event) schedule and generates personalized content assignments \u2014 video prompts, social copy, hashtags, tags, and posting recommendations \u2014 as a tracker spreadsheet, per-ambassador briefs, and outreach drafts. Then tracks who actually posts via LFX Lens social listening and drafts nudges.",
+      "description": "Matches a project's ambassadors against the KubeCon (or any LF event) schedule and generates personalized content assignments — video prompts, social copy, hashtags, tags, and posting recommendations — as a tracker spreadsheet, per-ambassador briefs, and outreach drafts. Then tracks who actually posts via LFX Lens social listening and drafts nudges.",
       "category": "Community Engagement Agents",
       "tags": [
         "kubecon",
@@ -196,7 +208,7 @@
     {
       "name": "committee-health-agent",
       "source": "./plugins/committee-health-agent",
-      "description": "Monitors committee participation across an LF project, flags inactive or outdated representatives, identifies member companies without an active contact, and drafts follow-up or replacement outreach for review \u2014 a committee-health workbook plus a ready-to-approve outreach queue.",
+      "description": "Monitors committee participation across an LF project, flags inactive or outdated representatives, identifies member companies without an active contact, and drafts follow-up or replacement outreach for review — a committee-health workbook plus a ready-to-approve outreach queue.",
       "category": "Community Engagement Agents",
       "tags": [
         "committees",
