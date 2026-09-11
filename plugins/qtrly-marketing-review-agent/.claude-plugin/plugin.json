@@ -1,0 +1,16 @@
+{
+  "name": "qtrly-marketing-review-agent",
+  "version": "0.1.0",
+  "description": "LFX Marketing OS Quarterly Marketing Review Workbook Agent — generates a pre-filled quarterly marketing review workbook (.pptx, Google Slides-ready) for a Linux Foundation project/foundation's marketing team at quarter end. Pre-fills prior-quarter outcomes from LFX (memberships, churn, contributors, events, training, social listening) and marketing platforms, structured as: Executive Summary (goals-vs-actuals scorecard), Business Outcomes, Engine Health (the two engine conversions), Channel Indicators, Vehicle Scorecards, Market & Community Signals, and an Insights & Learnings retrospective. The completed workbook is an input to the Marketing Plan Workbook Agent (marketing-plan-workbook-agent), and its Executive Summary is presented to the Executive Director at the quarterly plan review.",
+  "author": {
+    "name": "Paul Hinz, The Linux Foundation"
+  },
+  "keywords": [
+    "lfx-marketing-os",
+    "quarterly-review",
+    "retrospective",
+    "marketing-metrics",
+    "planning",
+    "linux-foundation"
+  ]
+}
