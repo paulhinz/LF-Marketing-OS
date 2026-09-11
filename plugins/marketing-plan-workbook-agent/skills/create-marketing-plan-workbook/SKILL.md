@@ -1,6 +1,6 @@
 ---
 name: create-marketing-plan-workbook
-description: Generates a pre-filled marketing plan workbook (.pptx) for a Linux Foundation project/foundation, modeled on the PyTorch 2026 integrated plan, for the foundation leader to review before a planning interview. Trigger on "create a marketing plan workbook for [foundation]", "build the [foundation] workbook", "run the workbook agent", "prepare the planning workbook for my call with [leader]", or similar requests to prepare a common-marketing-plan discovery document for an LF foundation leader. This is the LFX Marketing OS "Marketing Plan Workbook Agent" (Plan-type agent); its completed workbook is the input to the final marketing plan generation step.
+description: Generates a pre-filled marketing plan workbook (.pptx) for a Linux Foundation project/foundation, modeled on the PyTorch 2026 integrated plan, for the foundation leader to review before a planning interview. Trigger on "create a marketing plan workbook for [foundation]", "build the [foundation] workbook", "run the workbook agent", "prepare the planning workbook for my call with [leader]", or similar requests to prepare a common-marketing-plan discovery document for an LF foundation leader. This is the LFX Marketing OS "Marketing Plan Workbook Agent" (Plan-type agent); its completed workbook is the input to the final marketing plan generation step. Accepts a completed Quarterly Marketing Review workbook (create-quarterly-marketing-review-workbook) as an input when available, surfacing its Executive Summary at the top of the output.
 ---
 
 # Create Marketing Plan Workbook
@@ -35,7 +35,9 @@ Gather from three sources. If a source is unavailable (connector not authorized,
 
 **c. LFX metrics** — Via the LFX connector: call `read_lfx_standard_metrics_guidance` / `read_lfx_semantic_layer_guidance` first, then query for the foundation (find its project via `search_projects`): contributing organizations (total and trend by year), active members and membership trend, sub-project counts, meeting/committee activity, and any marketing-impact or project-health metrics available. Use these as draft baselines for goals and as proof points for the story.
 
-**d. Market context (optional but recommended)** — One or two web searches for the foundation's technology domain to draft Part I stakes data (market size, growth, a supporting analyst/exec quote). Mark all such figures as drafts to verify.
+**d. Completed Quarterly Marketing Review workbook (use when available)** — Ask the user for, or search Drive/the working folder for, the foundation's most recent completed "[Foundation] [Quarter] Marketing Review Workbook" (produced by the create-quarterly-marketing-review-workbook skill and filled in by the marketing team). Extract: the goals-vs-actuals scorecard, wins/gaps/decisions, the team's insights and top recommendations, and any corrected metrics. Use it as the authoritative record of last quarter's outcomes — it supersedes drafts inferred from raw data.
+
+**e. Market context (optional but recommended)** — One or two web searches for the foundation's technology domain to draft Part I stakes data (market size, growth, a supporting analyst/exec quote). Mark all such figures as drafts to verify.
 
 ### Step 3 — Generate the workbook (.pptx)
 
@@ -52,12 +54,13 @@ Read the pptx skill (SKILL.md) before building. Build one deck named:
 **Deck outline (~25–32 slides):**
 1. Cover: foundation name, "[Year] Marketing Plan Workbook", status DRAFT, date.
 2. "How to complete this workbook": explains the leader reviews drafts, corrects them, and answers the YOUR INPUT boxes before the interview call; estimated time 45–60 minutes; who to contact (the user).
-3. **Part I — The Story** (drafted stakes data, stack/position, distinction table vs. adjacent orgs, "only place to…" positioning). YOUR INPUT: What is the era-level story only your project can tell? Who are your true alternatives, and what can they not claim? What would you put on the positioning slide in one sentence?
-4. **Part II — The Goals** (five drafted, ranked goals with baselines from LFX + past plan; one deep-dive slide per drafted goal where data supports it; note any goal from the old plan proposed for retirement). YOUR INPUT: Confirm or re-rank the five goals; give the one number per goal that defines success; name anything to retire.
-5. **Part III — Message & Audiences** (drafted messaging house table mapped to goals; say/avoid/anchor; segment×goal matrix). YOUR INPUT: sound bite per goal in the leader's own words; the one primary audience per goal; anything on the avoid list.
-6. **Part IV — One Plan, One Engine** (inventory of current teams/calendars/reports from spreadsheet roster; drafted anchor moments from the LF Events calendar; amplification/member-committee opportunities; media mix). YOUR INPUT: which teams market this project today and where do the seams show; the 3–4 anchor moments of the year; which member companies would amplify.
-7. **Part V — Execution** (team roster and budget lines from the master spreadsheet; drafted decisions-needed list with dates). YOUR INPUT: confirm team and budget; name the decisions you need and by when; note constraints.
-8. Closing slide: next steps — return the workbook, interview call, final plan generation.
+3. **Last Quarter at a Glance** (only when a completed Quarterly Marketing Review workbook was provided): 1–2 slides reproducing its Executive Summary — the goals-vs-actuals scorecard, top wins and gaps, and the marketing team's top recommendations — placed before Part I so the marketing team can present last quarter's outcomes to the ED at the quarterly plan review. Cite the review workbook as the source.
+4. **Part I — The Story** (drafted stakes data, stack/position, distinction table vs. adjacent orgs, "only place to…" positioning). YOUR INPUT: What is the era-level story only your project can tell? Who are your true alternatives, and what can they not claim? What would you put on the positioning slide in one sentence?
+5. **Part II — The Goals** (five drafted, ranked goals with baselines from LFX + past plan; one deep-dive slide per drafted goal where data supports it; note any goal from the old plan proposed for retirement). YOUR INPUT: Confirm or re-rank the five goals; give the one number per goal that defines success; name anything to retire.
+6. **Part III — Message & Audiences** (drafted messaging house table mapped to goals; say/avoid/anchor; segment×goal matrix). YOUR INPUT: sound bite per goal in the leader's own words; the one primary audience per goal; anything on the avoid list.
+7. **Part IV — One Plan, One Engine** (inventory of current teams/calendars/reports from spreadsheet roster; drafted anchor moments from the LF Events calendar; amplification/member-committee opportunities; media mix). YOUR INPUT: which teams market this project today and where do the seams show; the 3–4 anchor moments of the year; which member companies would amplify.
+8. **Part V — Execution** (team roster and budget lines from the master spreadsheet; drafted decisions-needed list with dates). YOUR INPUT: confirm team and budget; name the decisions you need and by when; note constraints.
+9. Closing slide: next steps — return the workbook, interview call, final plan generation.
 
 ### Step 4 — Deliver
 
