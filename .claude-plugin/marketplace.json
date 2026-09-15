@@ -99,6 +99,19 @@
       ]
     },
     {
+      "name": "qtrly-campaign-plan-agent",
+      "source": "./plugins/qtrly-campaign-plan-agent",
+      "description": "Takes the quarterly marketing plan produced by qtrly-plan-agent (plus the Brand Kit, Message Foundation, ICP & Target Markets, and Pitch Deck) and produces a single Quarterly Campaign Brief (.docx): the set of campaigns supporting each goal, each with a leader, mediums and sources, and per source the target markets, ICP/personas, key messages, assets to be created, CTAs, and message sequences — plus the ordered list of content creation and source execution agents to run. CFT strategy layer only; does not create content or execute channels.",
+      "category": "Planning Agents",
+      "tags": [
+        "campaign-plan",
+        "campaign-brief",
+        "channels",
+        "planning",
+        "cft"
+      ]
+    },
+    {
       "name": "lf-zoom-hubspot-notes-logger",
       "source": "./plugins/lf-zoom-hubspot-notes-logger",
       "description": "Pulls a team member's Zoom meeting notes for today and yesterday, writes them into the matching HubSpot meeting records, opens follow-up tasks on opportunities, and flags ambiguous matches over Slack for manual review. Built for any Linux Foundation Marketing or Sales team.",
