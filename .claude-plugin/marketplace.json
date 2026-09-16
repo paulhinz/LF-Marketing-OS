@@ -44,7 +44,7 @@
     {
       "name": "message-foundation-agent",
       "source": "./plugins/message-foundation-agent",
-      "description": "Interviews a Linux Foundation project lead and produces a '[Project Name] Message Foundation' document (word-count-locked summaries, boilerplate, llms.txt, elevator pitch, plus full positioning, voice, audience, and messaging-pillar framework) for use across web, content, social, and campaigns.",
+      "description": "Interviews a Linux Foundation project lead and produces a '[Project Name] Message Foundation' document built on the LF communications framework: Vision → Mission → Positioning Platform → Tagline, a one-page Message Matrix, word-count-locked summaries, boilerplate, llms.txt and elevator pitch, plus voice, audiences with persona ROI angles, tagged messaging pillars, a sourced Stat Bank, origin story and cases, objections and stance, and a tiered CTA library — for web, content, social, campaigns, pitch decks and member briefings.",
       "category": "Foundation Agents",
       "tags": [
         "messaging",
