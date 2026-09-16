@@ -20,7 +20,7 @@ This repo is the distribution point for that agent set: a git-based marketplace 
 
 **Foundation**
 - `brand-guidelines-agent` — Short intake with an LF project leader, then generates a Brand Kit: positioning, voice, audience messaging, competitive guardrails, and a five-part visual identity direction.
-- `message-foundation-agent` — Interviews a project lead and produces a Message Foundation doc: word-count-locked summaries, boilerplate, `llms.txt`, elevator pitch, positioning, voice, audiences, and messaging pillars.
+- `message-foundation-agent` — Interviews a project lead (reading the Brand Kit section by section) and produces a Message Foundation doc built on the LF communications framework: Vision → Mission → Positioning Platform → Tagline, a one-page Message Matrix, word-count-locked summaries, boilerplate, `llms.txt`, elevator pitch, voice, audiences with persona ROI angles, tagged messaging pillars, a sourced Stat Bank, origin story and cases, objections and stance, and a tiered CTA library. (v0.2.0)
 - `icp-target-markets-agent` — Reads the Brand Kit, Message Foundation, and GitHub README (and optionally live LFX membership data) to produce a Target Markets & ICP document with personas and fit/warmth scoring.
 - `plain-writing` — Writes and revises prose in a plain style (simple words, complete sentences, no jargon or filler). Applies automatically whenever Claude drafts or edits prose.
 - `website-designer-agent` — Turns the three foundation docs into an approved sitemap, a complete Hugo site, and a GitHub-deployed, DNS-ready launch package.
