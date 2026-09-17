@@ -16,12 +16,13 @@ The agents are organized by where they sit in a marketing workflow:
 
 This repo is the distribution point for that agent set: a git-based marketplace that Cowork (or Claude Code) reads directly, so plugins can be installed and updated without emailing files around.
 
-## 2. The 21 plugins in this marketplace
+## 2. The 22 plugins in this marketplace
 
 **Foundation**
-- `brand-guidelines-agent` — Short intake with an LF project leader, then generates a Brand Kit: positioning, voice, audience messaging, competitive guardrails, and a five-part visual identity direction.
-- `message-foundation-agent` — Interviews a project lead (reading the Brand Kit section by section) and produces a Message Foundation doc built on the LF communications framework: Vision → Mission → Positioning Platform → Tagline, a one-page Message Matrix, word-count-locked summaries, boilerplate, `llms.txt`, elevator pitch, voice, audiences with persona ROI angles, tagged messaging pillars, a sourced Stat Bank, origin story and cases, objections and stance, and a tiered CTA library. (v0.2.0)
-- `icp-target-markets-agent` — Reads the Brand Kit, Message Foundation, and GitHub README (and optionally live LFX membership data) to produce a Target Markets & ICP document with personas and fit/warmth scoring.
+- `brand-guidelines-agent` — Pulls the project's LFX record and runs a research sweep, then a short intake with an LF project leader (or pre-fill mode for ED review), and generates a Brand Kit: positioning, voice, audience messaging, competitive guardrails, LFX-derived governance and trademark wording, and a five-part visual identity direction. (v0.2.0)
+- `message-foundation-agent` — Interviews a project lead (reading the Brand Kit section by section) and produces a Message Foundation doc built on the LF communications framework: Vision → Mission → Positioning Platform → Tagline, a one-page Message Matrix, word-count-locked summaries, boilerplate, `llms.txt`, elevator pitch, voice, audiences with persona ROI angles, tagged messaging pillars, a verified and audience-marked Stat Bank, origin story and cases, objections and stance, and a tiered CTA library — with LFX-derived governance wording, a claims lint, pre-fill mode, a QA gate and a one-page digest. (v0.3.0)
+- `icp-target-markets-agent` — Reads the Brand Kit, Message Foundation, and GitHub README, pulls live LFX membership data, runs a competitor scan that includes members' like-for-like products, and produces a Target Markets & ICP document with personas, fit/warmth scoring and a run-rate SOM proposal (pre-fill mode for ED review). (v0.2.0)
+- `lfx-marketing-os-qa` — The QA gate for the three foundation documents and their derivatives: LFX-derived entity and trademark lint, Stat Bank re-verification through the LFX MCP, a beyond-the-brief research sweep, a claims/dates/superlatives check, a brand review against the project's own Brand Kit, and cross-document consistency — returning PASS / PASS WITH FIXES / FAIL, a ranked fix list and a two-page digest. (v0.1.0)
 - `plain-writing` — Writes and revises prose in a plain style (simple words, complete sentences, no jargon or filler). Applies automatically whenever Claude drafts or edits prose.
 - `website-designer-agent` — Turns the three foundation docs into an approved sitemap, a complete Hugo site, and a GitHub-deployed, DNS-ready launch package.
 
@@ -56,7 +57,7 @@ This repo is the distribution point for that agent set: a git-based marketplace 
 
 1. Open **Customize** in the sidebar, then **Plugins**.
 2. Click **Add marketplace** and enter this repo: `paulhinz/LF-Marketing-OS` (or the full URL, `https://github.com/paulhinz/LF-Marketing-OS`).
-3. Click **Browse plugins** — the 21 plugins above will be listed.
+3. Click **Browse plugins** — the 22 plugins above will be listed.
 4. Select and **Install** whichever ones you need.
 
 This repo is public, so anyone can browse the code or add it as a marketplace without needing collaborator access or GitHub sign-in. To get updates later, come back to Customize → Plugins, find this marketplace, and click **Update**.
