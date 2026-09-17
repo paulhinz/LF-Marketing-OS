@@ -8,23 +8,24 @@
  * verify freshness before reuse. See ../references/ for the style guide,
  * deck outline, and LFX query recipes.
  *
- * Prereqs: pptxgenjs on NODE_PATH; /tmp/gradbar.png (run make_gradient.py first).
+ * Prereqs: pptxgenjs on NODE_PATH; /tmp/gradbar.png (make_gradient.py) and /tmp/lf-stacked-*.png (make_logos.py).
  * Run: node example-build-deck.js "Company and the Linux Foundation.pptx"
  */
 const pptxgen = require("pptxgenjs");
 const p = new pptxgen();
 p.layout = "LAYOUT_WIDE"; // 13.33 x 7.5
 
+/* Approved Linux Foundation brand palette — https://www.linuxfoundation.org/brand-guidelines */
 const C = {
-  navy: "0F2439",      // dark navy (cards, section bg)
-  navyD: "0B1C2E",     // deeper navy (title bg)
-  title: "17293B",     // slide-title text
-  ink: "2E3B49",       // body text on light
-  gray: "5A6B7F",
-  cyan: "39ACD3",      // accent stripe
-  skyDark: "5CB6DF",   // caps kicker on dark
-  sky: "7CC8E8",       // light-blue text on navy
-  card: "F4F6F7", cardLine: "DFE5EA",
+  navy: "002857",      // Deep Navy (LF primary shade) — dark cards, quote boxes, table headers
+  navyD: "00183C",     // Darkest Navy (LF primary shade) — title & section-divider background
+  title: "003778",     // Royal Navy (LF primary) — slide titles, stat numbers
+  ink: "222222",       // LF gray — body text on light
+  gray: "6E6E6E",      // LF gray — captions, caps kickers on light
+  cyan: "0094FF",      // Azure (LF primary) — accent stripes
+  skyDark: "0094FF",   // Azure (LF primary) — caps kickers on dark
+  sky: "12E2E2",       // Cyan (LF accent) — italic/emphasis text on navy
+  card: "F6F7FA", cardLine: "D6D6D6",   // LF grays — light cards
   white: "FFFFFF"
 };
 const F = "Arial";
@@ -32,22 +33,14 @@ const W = 13.33, MX = 0.6, CW = W - 2 * MX;
 const GRAD = "/tmp/gradbar.png";
 let pageNo = 0;
 
-/* ---- LF logo lockup drawn from shapes (recreation; swap for official asset externally) ---- */
+/* ---- Official LF logo (approved asset from linuxfoundation.org/brand-guidelines).
+   PNGs are rendered from assets/lf-stacked-*.svg by make_logos.py. Never redraw,
+   edit, or recolor the logo; keep clear space around it (min: the height of the
+   'X' in the FOUNDATION type). ---- */
+const LOGO_AR = 1000 / 328.9; // intrinsic aspect ratio of the official stacked logo
 function lfLogo(s, x, y, sc, dark) {
-  const fg = dark ? C.white : C.title;
-  const bg = dark ? C.navy : C.white;
-  const m = 0.34 * sc;            // mark size
-  const t = 0.075 * sc;           // frame thickness
-  s.addShape("rect", { x, y, w: m, h: m, fill: { color: fg } });
-  s.addShape("rect", { x: x + t, y: y + t, w: m - 2 * t, h: m - 2 * t, fill: { color: bg } });
-  s.addShape("rect", { x: x + m * 0.58, y, w: m * 0.42, h: t, fill: { color: bg } });
-  s.addShape("rect", { x: x + m - t, y, w: t, h: m * 0.42, fill: { color: bg } });
-  s.addShape("rect", { x: x + t + 0.035 * sc, y: y + t + 0.035 * sc, w: 0.09 * sc, h: 0.09 * sc, fill: { color: fg } });
-  s.addText([
-    { text: "THE", options: { fontSize: 5.5 * sc, bold: true, color: fg, charSpacing: 2, breakLine: true } },
-    { text: "LINUX", options: { fontSize: 9 * sc, bold: true, color: fg, charSpacing: 1, breakLine: true } },
-    { text: "FOUNDATION", options: { fontSize: 4.6 * sc, color: fg, charSpacing: 2 } }
-  ], { x: x + m + 0.06 * sc, y: y - 0.05 * sc, w: 1.1 * sc, h: m + 0.12 * sc, fontFace: F, margin: 0, valign: "middle", lineSpacingMultiple: 0.9 });
+  const h = 0.34 * sc;
+  s.addImage({ path: dark ? "/tmp/lf-stacked-white.png" : "/tmp/lf-stacked-color.png", x, y, w: h * LOGO_AR, h });
 }
 
 function gradBar(s) { s.addImage({ path: GRAD, x: 0, y: 0, w: W, h: 0.1 }); }
@@ -57,7 +50,7 @@ function chrome(s, opts) { // per-slide furniture on light slides
   gradBar(s);
   lfLogo(s, 0.55, 6.98, 0.95, false);
   s.addText(String(pageNo), { x: W - 1.0, y: 7.02, w: 0.5, h: 0.3, fontSize: 10, color: C.gray, align: "right", fontFace: F, margin: 0 });
-  if (opts && opts.src) s.addText(opts.src, { x: 3.2, y: 7.06, w: 9.0, h: 0.3, fontSize: 8, italic: true, color: "8CA0B8", align: "right", fontFace: F, margin: 0, valign: "middle" });
+  if (opts && opts.src) s.addText(opts.src, { x: 3.2, y: 7.06, w: 9.0, h: 0.3, fontSize: 8, italic: true, color: "A1A1A4", align: "right", fontFace: F, margin: 0, valign: "middle" });
 }
 function darkChrome(s) {
   pageNo++;
@@ -108,13 +101,13 @@ function twoCards(t, cards, foot, src, titleSize) {
       s.addShape("rect", { x, y, w, h, fill: { color: C.navy } });
       s.addShape("rect", { x, y, w, h: 0.09, fill: { color: C.cyan } });
     } else {
-      s.addShape("rect", { x, y, w, h, fill: { color: "FAFBFC" }, line: { color: C.cardLine, width: 1 } });
+      s.addShape("rect", { x, y, w, h, fill: { color: "F6F7FA" }, line: { color: C.cardLine, width: 1 } });
       s.addShape("rect", { x, y, w: 0.09, h, fill: { color: C.cyan } });
     }
     const head = dark ? C.skyDark : C.gray;
     const stmt = dark ? C.white : C.title;
     const lead = dark ? C.sky : C.title;
-    const body = dark ? "E8F1F8" : C.ink;
+    const body = dark ? "F6F7FA" : C.ink;
     const items = [
       { text: c.head, options: { fontSize: 10, bold: true, color: head, charSpacing: 1, breakLine: true, paraSpaceAfter: 8 } },
       { text: c.tag, options: { fontSize: 15, bold: true, color: stmt, breakLine: true, paraSpaceAfter: 10 } }
@@ -172,7 +165,7 @@ function sectionSlide(kicker, t, sub) {
   s.addText("Open source and AI: what the community built and the challenges we face.", { x: 0.62, y: 4.55, w: 11.2, h: 0.6, fontSize: 18, color: C.sky, fontFace: F, margin: 0 });
   s.addText([
     { text: "Jim Zemlin", options: { bold: true, color: C.white } },
-    { text: "   ·   CEO, The Linux Foundation", options: { color: "D3DEE8" } }
+    { text: "   ·   CEO, The Linux Foundation", options: { color: "F6F7FA" } }
   ], { x: 0.62, y: 5.55, w: CW, h: 0.5, fontSize: 15, fontFace: F, margin: 0 });
 }
 
@@ -341,7 +334,7 @@ statSlide(
     showLegend: false, showTitle: true, titleFontSize: 13, titleColor: C.title,
     showValue: true, dataLabelPosition: "outEnd", dataLabelColor: C.ink, dataLabelFontSize: 11,
     chartColors: [C.navy], catAxisLabelColor: C.gray, valAxisLabelColor: C.gray,
-    valGridLine: { color: "E4EBF5", size: 0.5 }, catGridLine: { style: "none" }
+    valGridLine: { color: "D6D6D6", size: 0.5 }, catGridLine: { style: "none" }
   };
   s.addChart(p.ChartType.bar, [{ name: "Members", labels: ["2015", "2026"], values: [481, 2187] }],
     Object.assign({}, common, { x: MX, y: 1.45, w: 5.85, h: 4.5, title: "LF member organizations", barDir: "col" }));
@@ -454,7 +447,7 @@ statSlide(
     s.addShape("rect", { x: MX, y, w: 0.09, h, fill: { color: C.cyan } });
     s.addText(r[0], { x: MX + 0.35, y: y + 0.1, w: 2.55, h: h - 0.2, fontSize: 15, bold: true, color: isG ? C.white : C.title, fontFace: F, margin: 0, valign: "middle" });
     s.addText(r[1], { x: MX + 3.0, y: y + 0.1, w: 3.6, h: h - 0.2, fontSize: 12, bold: true, color: isG ? C.sky : C.title, fontFace: F, margin: 0, valign: "middle" });
-    s.addText(r[2], { x: MX + 6.8, y: y + 0.1, w: CW - 7.1, h: h - 0.2, fontSize: 10, color: isG ? "E8F1F8" : C.ink, fontFace: F, margin: 0, valign: "middle" });
+    s.addText(r[2], { x: MX + 6.8, y: y + 0.1, w: CW - 7.1, h: h - 0.2, fontSize: 10, color: isG ? "F6F7FA" : C.ink, fontFace: F, margin: 0, valign: "middle" });
   });
   s.addText("#3 by total dues — #1 in core membership dollars. Google holds the broadest committed portfolio in the LF: 44 memberships spanning every strategic domain.", { x: MX, y: 6.35, w: CW, h: 0.42, fontSize: 12, italic: true, bold: true, color: C.title, fontFace: F, align: "center", margin: 0 });
   chrome(s, { src: "Source: LFX membership records, as of August 25, 2026. Core = memberships excluding special directed funds." });
@@ -523,7 +516,7 @@ statSlide(
     s.addShape("rect", { x: MX, y, w: 0.09, h, fill: { color: C.cyan } });
     const dark = !(i % 2);
     s.addText(l[0], { x: MX + 0.3, y: y + 0.1, w: 2.5, h: h - 0.2, fontSize: 14, bold: true, color: dark ? C.white : C.title, charSpacing: 1.5, fontFace: F, margin: 0, valign: "middle" });
-    s.addText(l[1], { x: MX + 2.95, y: y + 0.1, w: 6.35, h: h - 0.2, fontSize: 11, color: dark ? "E8F1F8" : C.ink, fontFace: F, margin: 0, valign: "middle" });
+    s.addText(l[1], { x: MX + 2.95, y: y + 0.1, w: 6.35, h: h - 0.2, fontSize: 11, color: dark ? "F6F7FA" : C.ink, fontFace: F, margin: 0, valign: "middle" });
     s.addText([
       { text: l[2] + "  ", options: { fontSize: 16, bold: true, color: dark ? C.sky : C.title } },
       { text: l[3], options: { fontSize: 9.5, color: dark ? C.sky : C.gray } }
@@ -759,9 +752,9 @@ gridCards(
   s.addText([
     { text: "WHAT IT IS", options: { fontSize: 10, bold: true, color: C.skyDark, charSpacing: 1, breakLine: true, paraSpaceAfter: 8 } },
     { text: "The open protocol for agents to discover each other, exchange tasks, and collaborate across vendors.", options: { fontSize: 14.5, bold: true, color: C.white, breakLine: true, paraSpaceAfter: 8 } },
-    { text: "Launched by Google in April 2025 with 50+ partners and donated to the Linux Foundation — now an AAIF Growth-stage project under neutral governance. Agent Cards for discovery, task lifecycle and streaming, enterprise-grade auth — Apache 2.0, SDKs across major languages. The peer-to-peer complement to MCP’s agent-to-tool connectivity.", options: { fontSize: 10.5, color: "E8F1F8" } }
+    { text: "Launched by Google in April 2025 with 50+ partners and donated to the Linux Foundation — now an AAIF Growth-stage project under neutral governance. Agent Cards for discovery, task lifecycle and streaming, enterprise-grade auth — Apache 2.0, SDKs across major languages. The peer-to-peer complement to MCP’s agent-to-tool connectivity.", options: { fontSize: 10.5, color: "F6F7FA" } }
   ], { x: MX + 0.32, y: y + 0.26, w: w - 0.64, h: h - 0.5, fontFace: F, margin: 0, valign: "top" });
-  s.addShape("rect", { x: MX + w + gap, y, w, h, fill: { color: "FAFBFC" }, line: { color: C.cardLine, width: 1 } });
+  s.addShape("rect", { x: MX + w + gap, y, w, h, fill: { color: "F6F7FA" }, line: { color: C.cardLine, width: 1 } });
   s.addShape("rect", { x: MX + w + gap, y, w: 0.09, h, fill: { color: C.cyan } });
   s.addText([
     { text: "WHY IT MATTERS FOR GOOGLE", options: { fontSize: 10, bold: true, color: C.gray, charSpacing: 1, breakLine: true, paraSpaceAfter: 8 } },
@@ -799,9 +792,9 @@ sectionSlide("CHALLENGE ONE", "Open data", "Every layer of compute is open. Data
   layers.forEach((l, i) => {
     const y = y0 + i * (h + 0.1);
     s.addShape("rect", { x: MX, y, w: 5.6, h, fill: { color: l[1] ? C.card : C.navy }, line: { color: C.cardLine, width: 0.75 } });
-    s.addShape("rect", { x: MX, y, w: 0.07, h, fill: { color: l[1] ? C.cyan : "E05B4B" } });
+    s.addShape("rect", { x: MX, y, w: 0.07, h, fill: { color: l[1] ? C.cyan : "FF00AA" } });
     s.addText(l[0], { x: MX + 0.25, y, w: 3.6, h, fontSize: 13, bold: true, color: l[1] ? C.title : C.white, charSpacing: 1.5, fontFace: F, margin: 0, valign: "middle" });
-    s.addText(l[1] ? "OPEN" : "CLOSED", { x: MX + 3.9, y, w: 1.5, h, fontSize: 13, bold: true, color: l[1] ? "2E8B57" : "F2A196", align: "right", fontFace: F, margin: 0, valign: "middle" });
+    s.addText(l[1] ? "OPEN" : "CLOSED", { x: MX + 3.9, y, w: 1.5, h, fontSize: 13, bold: true, color: l[1] ? "0077CC" : "FF00AA", align: "right", fontFace: F, margin: 0, valign: "middle" });
   });
   s.addText([
     { text: "DATA — THE NEXT OPEN FRONTIER", options: { fontSize: 11, bold: true, color: C.gray, charSpacing: 1, breakLine: true, paraSpaceAfter: 8 } },
@@ -1029,9 +1022,9 @@ twoCards(
   s.addText([
     { text: "LAUNCHED BY THE LINUX FOUNDATION — JUNE 25, 2026", options: { fontSize: 10, bold: true, color: C.skyDark, charSpacing: 1, breakLine: true, paraSpaceAfter: 6 } },
     { text: "One trusted front door for maintainers, at the speed AI-assisted attackers now operate.", options: { fontSize: 15, bold: true, color: C.white, breakLine: true, paraSpaceAfter: 6 } },
-    { text: "19 founding organizations running a shared, confidential security incident response team (SIRT) for the hundreds of thousands of upstream open-source projects critical infrastructure depends on. AI finder tools surface the vulnerabilities; Akrites validates them, coordinates the fix, and synchronizes disclosure.", options: { fontSize: 11, color: "E8F1F8" } }
+    { text: "19 founding organizations running a shared, confidential security incident response team (SIRT) for the hundreds of thousands of upstream open-source projects critical infrastructure depends on. AI finder tools surface the vulnerabilities; Akrites validates them, coordinates the fix, and synchronizes disclosure.", options: { fontSize: 11, color: "F6F7FA" } }
   ], { x: MX + 0.35, y: 1.55, w: CW - 0.7, h: 1.95, fontFace: F, margin: 0, valign: "top" });
-  s.addShape("rect", { x: MX, y: 3.9, w: CW, h: 2.0, fill: { color: "FAFBFC" }, line: { color: C.cardLine, width: 1 } });
+  s.addShape("rect", { x: MX, y: 3.9, w: CW, h: 2.0, fill: { color: "F6F7FA" }, line: { color: C.cardLine, width: 1 } });
   s.addShape("rect", { x: MX, y: 3.9, w: 0.09, h: 2.0, fill: { color: C.cyan } });
   s.addText([
     { text: "GOOGLE JOINED AT PREMIER — JULY 2026", options: { fontSize: 10, bold: true, color: C.gray, charSpacing: 1, breakLine: true, paraSpaceAfter: 6 } },
@@ -1096,7 +1089,7 @@ gridCards(
   s.addText("Thank you", { x: 0.62, y: 3.2, w: CW, h: 1.1, fontSize: 48, bold: true, color: C.white, fontFace: F, margin: 0 });
   s.addText([
     { text: "Jim Zemlin", options: { bold: true, color: C.white } },
-    { text: "   ·   CEO, The Linux Foundation", options: { color: "D3DEE8" } }
+    { text: "   ·   CEO, The Linux Foundation", options: { color: "F6F7FA" } }
   ], { x: 0.62, y: 4.5, w: CW, h: 0.5, fontSize: 15, fontFace: F, margin: 0 });
 }
 

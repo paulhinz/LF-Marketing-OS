@@ -1,11 +1,14 @@
 # Generates the LF executive-briefing template's gradient top bar as /tmp/gradbar.png
+# Built exclusively from approved Linux Foundation brand colors
+# (https://www.linuxfoundation.org/brand-guidelines).
 # Usage: python3 make_gradient.py   (requires Pillow)
 from PIL import Image
 
 W, H = 2000, 26
 img = Image.new("RGB", (W, H))
-# gradient stops (position, rgb): pale blue -> light cyan -> teal -> navy
-stops = [(0.0, (224, 240, 250)), (0.28, (126, 205, 232)), (0.55, (38, 174, 200)), (1.0, (14, 38, 66))]
+# gradient stops (position, rgb), left to right:
+# Lightest Gray #F6F7FA -> Azure #0094FF -> Royal Navy #003778 -> Darkest Navy #00183C
+stops = [(0.0, (246, 247, 250)), (0.35, (0, 148, 255)), (0.70, (0, 55, 120)), (1.0, (0, 24, 60))]
 
 def lerp(a, b, t):
     return tuple(int(a[i] + (b[i] - a[i]) * t) for i in range(3))
