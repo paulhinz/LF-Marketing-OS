@@ -1,0 +1,55 @@
+{
+  "skill_name": "lfx-marketing-os-qa",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "The Brand Setup, Message Foundation and ICP agents just finished the x402 package (x402_Brand_Kit, x402_Message_Foundation, x402_Target_Markets_and_ICP, all Draft v1, Sept 16 2026 — they're in ./inputs/x402/). Paul wants to send them to the x402 Foundation marketing lead tomorrow. Run the QA gate and tell me whether they can go, and what has to change first.",
+      "expected_output": "A QA report in the skill's format with gate decision PASS WITH FIXES, a Stat Bank stamp table covering every S-row, a found-beyond-the-brief table, a ranked fix list with exact replacement text, and a two-page digest.",
+      "files": ["evals/files/README.md"],
+      "expectations": [
+        "Derives the governance sentence from the LFX records (x402 a Series of LF Projects, LLC for the protocol; x402 Foundation under The Linux Foundation) and flags 'x402 Foundation, a Series of LF Projects, LLC' as a High finding with every location listed (at least the Brand Kit, the Message Foundation boilerplate, Pillar 2 and the ICP persona B2)",
+        "Flags the trademark-holder statement and cites the technical charter (marks held by LF Projects, LLC)",
+        "Re-runs the membership figures through the LFX MCP and reports 53 organizations / 17 Premier / 24 General / 12 Associate with a verification timestamp",
+        "Re-runs new_members by month and reports 11/13/8/9/9/3 for April–September 2026",
+        "Reports contributors = 0 as NOT ONBOARDED rather than as zero contributors",
+        "Flags '402 was reserved in 1999 / 27 years' as wrong and cites RFC 2068 (January 1997) as the primary source",
+        "Flags 'the only payment standard that lives inside the HTTP request itself' as an unsubstantiated superlative and proposes a rewrite without 'only'",
+        "Finds Stripe/Tempo's Machine Payments Protocol missing from the ICP competitive landscape and recommends adding it with peer (member) framing",
+        "Names the four x402 working groups (Domain Discovery, Identity, Tax, Card Acceptance) as material found beyond the brief and maps them to CTA and persona sections",
+        "Flags the Coinbase 'largest single contributor' / 'operator of the public facilitator' admission as unverified and violating the document's own superlative rule",
+        "Flags the comparative cost claim 'for less than most single-vendor integrations cost'",
+        "Lists membership list-price/revenue figures as a confidentiality flag for agency-consumable copies",
+        "Provides before/after text for at least the boilerplate clause, the UVP, the sound bite and the positioning statement",
+        "Gate decision is PASS WITH FIXES, not PASS and not FAIL"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Here's a draft press boilerplate paragraph and a LinkedIn post that the Website Designer Agent derived from the x402 Message Foundation. They go to the comms team at 3pm. Check them:\n\nBoilerplate: 'x402 is the only open standard for internet-native payments over HTTP. Stewarded by the x402 Foundation, a Series of LF Projects, LLC, it lets any client pay any server on any network with zero protocol fees. Learn more at x402.org.'\n\nLinkedIn: '75M transactions in 30 days over an open standard. 53 companies at one table — and none of them holds the keys. The payment layer of the internet is being standardized now, with Visa, Mastercard, Stripe, AWS, Google and Coinbase already in the room. #x402 #agenticcommerce'",
+      "expected_output": "A short QA report on the two derivatives: the governance clause, the 'only' claim, the undated metric, 'companies' vs 'organizations', member naming sourced to the public members page or the press release, and drop-in rewrites for both pieces.",
+      "files": [],
+      "expectations": [
+        "Flags 'a Series of LF Projects, LLC' attached to the Foundation as a High finding and supplies the corrected clause",
+        "Flags 'the only open standard' and rewrites without the superlative",
+        "Flags the undated '75M transactions in 30 days' and adds the window and date",
+        "Changes '53 companies' to '53 organizations' or explains why",
+        "Confirms the named members against the public members page or the July 14, 2026 press release rather than LFX",
+        "Provides a complete rewritten boilerplate and a complete rewritten LinkedIn post"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "The Brand Setup Agent produced a Brand Kit for a different LF project this morning (it's at ./inputs/brand-kit.md — a new foundation with a technical project under it, the requester filled in the governance line from memory). Before the Message Foundation Agent consumes it, run the entity lint and the research sweep only; I don't need the full brand review yet.",
+      "expected_output": "A partial QA report with sections 1 and 3 only: LFX-derived governance and trademark sentences with the project's records quoted, every contradicting location in the Brand Kit, and a found-beyond-the-brief table built from the project site, GitHub org, LF press archive and a competitor scan.",
+      "files": [],
+      "expectations": [
+        "Calls search_projects and get_project and quotes legal_entity_name, legal_entity_type and the resolved legal parent for both the technical project and the foundation record",
+        "Fetches the technical charter when charter_url is present and cites its license and trademark clauses",
+        "Produces a governance sentence and a trademark sentence derived from the records, and lists every contradicting sentence in the Brand Kit with its section",
+        "Opens the project site navigation (get involved, members, announcements, docs), the GitHub org and the LF press archive, and runs at least one competitor web search",
+        "Reports findings in a table with source URLs and the destination document section for each item",
+        "Does not perform the brand review or the Stat Bank re-verification, and says so"
+      ]
+    }
+  ]
+}
