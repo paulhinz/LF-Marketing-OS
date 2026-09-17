@@ -17,7 +17,9 @@ Read it section by section, not as one blob. For each row below: open the named 
 | §1 Mission | — | not in Brand Kit | Interview / charter / README. TBD if none. |
 | §1 Positioning Platform | §2 Positioning Statement | derive | The Brand Kit statement is usually close to the user's one-liner; the Positioning Platform restates it as the industry role + relevance to key audiences. Must not contradict §2. |
 | §1 Tagline (locked) | §8 Tagline Options (Starter Set) | derive | Ask the user which option is locked, or mark TBD and list the options as alternates. |
-| §2 What it is | §1 "About [Project]" paragraph + "At a Glance" table | copy | Governance, license, repository come from the At a Glance table. |
+| §0, §2, §2a, §7, §9, §15 governance and trademark sentences | Appendix C LFX Project Record (Brand Kit 0.2.0+) | copy verbatim | The one place these sentences are derived from the LFX record and the charter. If the Brand Kit has no Appendix C, or its At a Glance governance line disagrees with Appendix C or with LFX, derive from LFX yourself (SKILL.md Step 0, governance paragraph) and log the conflict for Legal. Never "[Project] Foundation, a Series of LF Projects, LLC". |
+| §2 What it is | §1 "About [Project]" paragraph + "At a Glance" table | copy | Description, license, repository come from the At a Glance table; governance from Appendix C. |
+| §10 date rows, §11 origin story timeline, §14 Engage CTAs (working groups, directories), §12 objection 3 alternatives | Appendix C "Found beyond the brief" table and timeline | derive | Working groups, directories, member like-for-like products, the origin timeline and primary-source dates all originate here; do not rebuild them from the README alone. |
 | §2 Elevator pitch (long) | §1 About + §2 Positioning + §5 Key Brand Strengths | derive | |
 | §2a Word-count derivatives | §1, §2, §5 | derive | The Brand Kit explicitly defers these to the MF ("Do not produce those derivatives here"). Boilerplate governance/license lines come from the At a Glance table. |
 | §3 Voice adjectives + meaning | §3 Voice Attributes tables (We are / We are not / Sounds like / Doesn't sound like) | copy | Reference the tables; do not rewrite them. |
@@ -48,6 +50,7 @@ Read it section by section, not as one blob. For each row below: open the named 
 - If the Brand Kit's Positioning Statement and the user's interview answers diverge, show both and ask which governs; the Message Foundation must not silently pick one.
 - If a Brand Kit proof point names an organization, treat it as confirmed only if the Brand Kit's Appendix B shows the user supplied it; otherwise re-confirm in the interview before citing it.
 - Voice: the Brand Kit owns voice. If the user asks for a voice change during the Message Foundation interview, make the change in the Message Foundation, flag it in Appendix C as a deviation, and recommend updating the Brand Kit.
+- Governance: LFX owns governance. If the Brand Kit, the interview and the LFX project record disagree about the legal entity, the foundation, or who holds the marks, the LFX record and the charter govern; record the other versions as conflicts for LF Legal and do not lock the boilerplate until Legal has answered.
 
 ## When there is no Brand Kit
 
