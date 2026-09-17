@@ -1,7 +1,7 @@
 {
   "name": "message-foundation-agent",
-  "version": "0.2.0",
-  "description": "LFX Marketing OS Message Foundation Agent — interviews a Linux Foundation project lead and produces a '[Project Name] Message Foundation' document built on the LF communications framework: Vision → Mission → Positioning Platform → Tagline hierarchy, a one-page Message Matrix, word-count-locked summaries, boilerplate, llms.txt and elevator pitch, plus voice, audiences with persona ROI angles, tagged messaging pillars, a sourced Stat Bank, origin story and cases, objections and stance, talking points, and a tiered CTA library — for use across web, content, social, campaigns, pitch decks and member briefings.",
+  "version": "0.3.0",
+  "description": "LFX Marketing OS Message Foundation Agent — interviews a Linux Foundation project lead (or pre-fills the interview in batch mode for ED review) and produces a '[Project Name] Message Foundation' document built on the LF communications framework: Vision → Mission → Positioning Platform → Tagline hierarchy, a one-page Message Matrix, word-count-locked summaries, boilerplate, llms.txt and elevator pitch, plus voice, audiences with persona ROI angles, tagged messaging pillars, a verified and audience-marked Stat Bank, origin story and cases, objections and stance, talking points, and a tiered CTA library — with LFX-derived governance wording, a claims lint, a QA gate and a one-page digest — for use across web, content, social, campaigns, pitch decks and member briefings.",
   "author": {
     "name": "Paul Hinz, Linux Foundation"
   },
