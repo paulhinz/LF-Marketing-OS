@@ -22,10 +22,14 @@ versus in the sibling documents.
 ## 1. Project Definition
 
 - **About [Project]**: one paragraph combining the user's one-line description
-  with governance/license context if known (e.g. Linux Foundation governance,
-  Apache 2.0 — ask or infer from the GitHub README if not given).
-- **At a Glance** table: One-line description, Repository, Governance, License,
-  Primary audiences.
+  with the governance and license sentences derived from the LFX project record
+  in Step 0 (`references/lfx-project-record.md`). Do not ask the user for
+  governance wording and do not infer it from the README; the README describes
+  the code, not the legal structure.
+- **At a Glance** table: One-line description, Repository, Governance (the
+  derived sentence, verbatim), License (from the repository LICENSE file and
+  the charter), Primary audiences. If a live metric is shown here, give its
+  window and the date read.
 
 ## 2. Positioning
 
@@ -79,6 +83,14 @@ introducing a disconnected list.
 - **Hard Constraints**: list every color/mark/reference constraint the user
   gave, as explicit rules (e.g. "do not use [Brand]'s palette or reference its
   [capability] by name").
+- **Trademark hygiene**: the trademark sentence derived in Step 0 (marks are
+  held by LF Projects, LLC unless the charter says otherwise), the project's
+  casing rule, the no-derivative-marks rule, and the pointer to the LF Projects
+  trademark policy.
+- **Members are never competitors in copy.** If the sweep found a like-for-like
+  product from a member organization, name it here as a peer with the
+  category-level difference, and make sure no claim elsewhere in the document
+  ("the only…") is false because of it.
 - **How to Differentiate Without Naming Names**: 3-5 bullets reframing the
   differentiation by category (open source vs. proprietary, no lock-in, neutral
   governance, pricing model, etc.) rather than disparaging the named brand —
@@ -152,7 +164,10 @@ plus a Do / Don't table with concrete examples (not generic platitudes).
 
 ## 8. Tagline Options (Starter Set)
 
-2-3 tagline options with a one-line rationale each.
+2-4 tagline options with a one-line rationale each, then a **Recommended**
+line: which option for the website hero, which for developer channels, which
+for events — marked "awaiting lock by [requester]". The Message Foundation
+records "TBD — none locked" only when this section declines to recommend.
 
 ## 9. Channel Quick Reference
 
@@ -170,4 +185,18 @@ the exact wording.
 ## Appendix B: Source Intake
 
 Table recording the raw answers to all seven intake questions verbatim, with
-the date, for traceability.
+the date, for traceability. In pre-fill mode, each row also carries its source
+and a label (`Sourced` / `Inferred` / `Needs input`), and the document ends with
+the **YOUR INPUT** section listing what the project leader must confirm.
+
+## Appendix C: LFX Project Record & Research Sweep
+
+Two tables the sibling agents copy from rather than re-derive:
+
+- **LFX project record**: each record used (name, slug, uid, legal entity,
+  legal entity type, legal parent, charter URL, formation date), the derived
+  governance sentence, the derived trademark sentence, and the date pulled.
+- **Found beyond the brief**: Item | Source (URL, date read) | Which document
+  and section should use it | Why it matters — plus the dated timeline (origin,
+  foundation announcement, intent to launch, operational launch, major
+  integrations) with a source per row. See `references/research-sweep.md`.

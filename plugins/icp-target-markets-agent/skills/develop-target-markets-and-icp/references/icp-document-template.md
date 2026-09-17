@@ -34,29 +34,45 @@ weren't discussed or aren't reasonably inferable from the README.
 ### 1.2 Competitive & Peer Landscape
 
 Table: Alternative | Category Position | Where [Project] Differentiates — one
-row per real competitor/peer the user named. Never invent a competitor's
-positioning from nothing; if the user only named the product, describe its
-category position from general knowledge but flag anything uncertain.
-Close with a one-line "Whitespace" note: the specific combination this
+row per real competitor/peer the user named **plus every like-for-like
+alternative the competitor scan found** (SKILL.md Step 0; the Brand Kit's
+Appendix C "Found beyond the brief" table). The user's list is a starting
+point, not the landscape: a past run's interview named four alternatives and
+missed the most direct one, a Premier member's own like-for-like protocol
+launched six months earlier. Check each Premier member for a product in the
+same category. Never invent a competitor's positioning
+from nothing; if only the product name is known, describe its category
+position from general knowledge and flag anything uncertain. Where a public
+integration between the project and an alternative exists (an official
+extension, a joint announcement), state it as a fact with its source rather
+than as a framing to confirm. Member organizations' products are peers: the
+row says so, and no claim elsewhere ("the only…") may be false because of the
+row. Close with a one-line "Whitespace" note: the specific combination this
 project's ICP wants that competitors force customers to piece together
-themselves.
+themselves — and make sure the note still holds once every row is present.
 
 ### 1.3 Addressable Landscape (TAM / SAM / SOM)
 
 Table: Tier | Definition | [Project] Framing. Keep TAM/SAM qualitative and
 grounded (channel reach, community size) rather than inventing false-precision
-numbers. For SOM, if the user didn't give a specific numeric target, write
-**TBD — needs input** for the number itself, but still anchor the framing to
-real current counts if available (e.g., actual active member count from live
-LFX data).
+numbers. For SOM, if the user didn't give a specific numeric target, anchor
+the framing to real current counts (the active member count from live LFX
+data) and propose a target derived from the install run-rate
+(`new_members period=month` from the LFX standard metrics), labeled
+"proposal — run-rate estimate from LFX, for the ED to confirm or replace";
+write **TBD — needs input** only when no data exists to derive from.
 
 ### 1.4 Current Member/Adopter Segments
 
 If live LFX membership data (or equivalent real adopter data) was pulled: a
 table of Tier | Organizations | What This Tier Represents, built from the real
-records — never a hypothetical roster. If no live data was available, replace
-this subsection with **TBD — needs input: no member/adopter data source was
-connected for this run** rather than inventing example companies.
+records — never a hypothetical roster. Mark the subsection **Internal — LFX
+export**: external roster references (web copy, decks, press) cite the
+project's public members page or the LF press release, never this table, and
+membership list prices or revenue never leave this document. If no live data
+was available, replace this subsection with **TBD — needs input: no
+member/adopter data source was connected for this run** rather than inventing
+example companies.
 
 ## 2. ICP Definitions (Organization-Level)
 
@@ -142,6 +158,31 @@ Appendix B/Interview Record.
 ### Section-completeness self-check (apply before finalizing)
 
 Every fact in Sections 1, 2, 3, and 5 must trace to: the Brand Kit, the
-Message Foundation Doc, the GitHub README, a live data pull, or an interview
-answer. Anything else gets written as **TBD — needs input** or an explicitly
-labeled **inferred draft**, never smoothed over with generic language.
+Message Foundation Doc, the GitHub README, a live data pull, the research
+sweep (with URL and date), or an interview answer. Anything else gets written
+as **TBD — needs input** or an explicitly labeled **inferred draft**, never
+smoothed over with generic language.
+
+Also confirm before finalizing:
+
+1. §1.2 contains every like-for-like alternative the competitor scan found,
+   including any from member organizations, and the Whitespace note still
+   holds with all rows present.
+2. Persona "Statements to share with the boss" pass the claims lint: no cost
+   or performance comparison without a cited basis ("for less than most
+   integrations cost" is out), no transactional framing of governance
+   ("General buys a vote" becomes "General members elect a representative to
+   the Governing Board"), no superlative without its Stat Bank ID.
+3. The governance sentence in any persona statement is the Brand Kit
+   Appendix C sentence verbatim; the technical charter is not cited as the
+   source of board seats or membership rights (those come from the
+   participation agreement and the published member benefits).
+4. The five ICP dimensions are labeled as ICP dimensions in the document;
+   "Velocity Engine" is an internal schema name and is defined once in
+   Appendix B or not mentioned.
+5. §1.4 carries the Internal marking, and the delivery message names which
+   copy (internal or agency-safe) is being delivered.
+6. Working groups, directories and public integrations found by the sweep
+   appear where they belong: working groups as persona hooks and Engage CTAs,
+   directories as ICP-C use cases and case-study inputs, integrations as
+   facts in §1.2.

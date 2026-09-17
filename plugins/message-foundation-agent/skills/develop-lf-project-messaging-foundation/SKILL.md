@@ -1,6 +1,16 @@
 ---
 name: develop-lf-project-messaging-foundation
-description: Interviews a Linux Foundation project lead through a structured, sequential discovery process (project identity, GitHub context, Brand Kit or brand-discovery questions, then up to 8 gap-filling questions) and produces a "[Project Name] Message Foundation" document built on the Linux Foundation communications framework — Vision → Mission → Positioning Platform → Tagline hierarchy, a one-page Message Matrix (value proposition → key message → supporting points → sound bites per pillar), word-count-locked summaries, boilerplate, llms.txt and elevator pitch, plus voice, audiences with persona-specific ROI angles, messaging pillars with content tags, a sourced Stat Bank, origin story and before→after cases, objections and stance, talking points, and a tiered CTA library — for use across web, content, social, campaigns, pitch decks and member briefings. This is the LFX Marketing OS "Message Foundation Agent" (LF Media dept, 9-Agent category 1: Foundation Setup). Trigger on the exact command "Develop LF Project Messaging Foundation", or requests to build/create a messaging foundation, message house, message platform, or positioning document for an LF project.
+description: >
+  Interviews a Linux Foundation project lead (or pre-fills the interview in batch mode) and
+  produces a "[Project Name] Message Foundation" document on the LF communications framework:
+  Vision, Mission, Positioning Platform and Tagline, a one-page Message Matrix, word-count-locked
+  summaries, boilerplate, llms.txt and elevator pitch, voice, audiences with persona ROI angles,
+  tagged messaging pillars, a verified Stat Bank, origin story and cases, objections and stance,
+  talking points and a tiered CTA library, for web, content, social, campaigns, pitch decks and
+  member briefings. This is the LFX Marketing OS Message Foundation Agent. Trigger on the exact
+  command "Develop LF Project Messaging Foundation", on "pre-fill the Message Foundation for
+  [project]", or on any request to build a messaging foundation, message house, message platform
+  or positioning document for an LF project.
 ---
 
 # Develop LF Project Messaging Foundation
@@ -12,6 +22,12 @@ Benchmark quality against `references/lf-message-framework.md` (the LF's own com
 ## Step 0 — check for a Brand Kit first
 
 Before asking anything, check whether a `[Project Name] Brand Kit` already exists (in the working folder, a connected Drive, or wherever the user points). If the companion "Develop LF Project Brand Kit" skill has produced one, it is the primary source for identity, voice, positioning, audiences, strengths, constraints and tagline options — this agent's job is to extend it, not duplicate it. Read it **section by section using `references/brand-kit-field-mapping.md`**, which says exactly which Brand Kit section feeds which Message Foundation section and which fields the Brand Kit never contains (Vision, Mission, origin story, objections, Stat Bank provenance). If the Brand Kit's own document-architecture notes define a narrower scope for "the Message Foundation" than this skill's default, surface that conflict and ask which scope the user wants for this run — don't silently pick one.
+
+**Governance and trademark wording, and the research sweep, come from the Brand Kit's Appendix C.** A Brand Kit produced by `brand-guidelines-agent` 0.2.0 or later carries an "LFX Project Record & Research Sweep" appendix: the governance sentence and trademark sentence derived from the LFX project record, the "Found beyond the brief" table and the timeline. Copy the two sentences verbatim into §0, §2a, §7, §9 and §15; build §11's origin story and the Stat Bank's date rows from the timeline; take working groups, directories and member like-for-like products from the table. If the Brand Kit predates Appendix C, or its governance wording disagrees with LFX, derive the sentences yourself with `search_projects` / `get_project` and the charter (the method is in that plugin's `references/lfx-project-record.md`; the short form: the technical project is "[Project], a Series of LF Projects, LLC" under LF Projects, LLC; a "[Project] Foundation" record funded by memberships is the membership program at The Linux Foundation; never merge the two into "[Project] Foundation, a Series of LF Projects, LLC"; marks are held by LF Projects, LLC unless the charter says otherwise) and log the disagreement in Appendix C as a conflict for LF Legal. The README and the interview never supply governance wording.
+
+## Pre-fill mode (no interviewee)
+
+When the user says "pre-fill for [project]" or "run in batch for [project]", or an orchestrator passes `mode: prefill`, there is no project lead on the call. Skip the one-question-at-a-time interview. Answer each question in Step 1 yourself from sources in this order: the Brand Kit and its Appendix C, the LFX project record and standard metrics, the project site, the GitHub organization, the LF press archive, existing marketing materials the user points to (past plans, decks, a messaging framework in a shared Drive), then labeled inference. Record every answer in Appendix A with its source and one of `Sourced` / `Inferred` / `Needs input`, set the status to "DRAFT — pre-filled, awaiting ED review", and end the document with a **YOUR INPUT** section listing what the project leader must confirm or answer (vision and mission wording, the tagline lock, adopters who may be named, the objections' honest answers, the CTA anchors). Then continue with Steps 2–4. The approved version, after the ED's edits, gets the status "Approved v1 — [name], [date]".
 
 ## Step 1 — run the interview one question at a time, in this exact order
 
@@ -36,7 +52,7 @@ This is a conversational interview, not a form dump. Ask each question as a shor
    3. **Proof points to confirm** — any adopters, benchmarks, milestones or figures that need confirming before they're cited by name. Naming real organizations is a factual/legal claim: always confirm rather than assume. Ask for the source and date of any figure the user supplies so it can enter the Stat Bank with provenance.
    4. **Audience scope and outreach objectives** — whether the audience set extends beyond technical personas (business champions, economic buyers, policy) and which outreach objectives this document must support (awareness, membership sales, event attendance/sponsorship, education sales, contributor growth).
    5. **Positioned against** — direct alternatives, adjacent LF projects, or "the status quo of doing X manually," needed for the positioning statement's "unlike ___."
-   6. **Origin story** — "How did the project come to be — who donated or founded it, what problem or closed market did it address, and what has changed since?" Also ask for one or two before→after adopter stories if the user has them.
+   6. **Origin story** — "How did the project come to be — who donated or founded it, what problem or closed market did it address, and what has changed since?" Also ask for one or two before→after adopter stories if the user has them. Build the dated timeline from the Brand Kit's Appendix C (or the LF press archive and the originator's announcements) rather than from LFX formation dates, which record when the LF record was created, not when the project began; the interview answer adds color, the timeline supplies the dates.
    7. **Objections and threats** — "What are the two or three hardest questions skeptics, press, prospects or regulators ask about the project — and what's the honest answer, including anything you'd concede?"
    8. **CTAs and timeliness** — whether there's a specific membership tier, sponsorship package, working group, or event to reference in calls to action, and whether talking points should anchor to an upcoming milestone or stay evergreen.
 
@@ -47,10 +63,16 @@ This is a conversational interview, not a form dump. Ask each question as a shor
 Before writing, do a short internal pass: for each section of `references/message-foundation-template.md`, confirm you have a real source (interview answer, README, Brand Kit, or a named Stat Bank source) — not an inference dressed as a fact. Mark anything unsupported as **TBD — needs input**. Then:
 
 - **Build the Stat Bank first.** Collect every number you intend to use anywhere in the document into the §10 table with claim, figure, unit, period/as-of date, source, caveat and type (`Live-LFX` / `Published` / `Third-party` / `Interview`). If LFX MCP tools are connected (`query_lfx_standard_metrics`, `query_lfx_semantic_layer`, `search_projects`, membership and meetings tools), offer to pull live figures — contributors, contributing organizations, memberships, meetings — and record the metric name and the data window on each row so downstream decks can regenerate them. If the `lfx-mcp-playbooks` skills are installed, follow `lfx-data-querying` for the pull and `lfx-figure-checking` before quoting. If the tools aren't connected, write `TBD — pull from LFX` with the metric named rather than guessing.
-- **Check the positioning chain.** The §1 Positioning Platform, the §4 Positioning Statement and the Brand Kit's Positioning Statement must agree. If they don't, stop and ask.
+- **Check the positioning chain.** The §1 Positioning Platform, the §4 Positioning Statement and the Brand Kit's Positioning Statement must agree. If they don't, stop and ask. Keep each of those sentences under about 40 words; a positioning sentence that runs to 80–90 words fails the voice's own "Direct" rule even when every clause is true.
 - **Fill the Message Matrix last.** §8 is a view of §7 and §9, not new content; fill it after those sections exist and verify every cell matches.
+- **Third-party dates come from the primary document.** An RFC, a standard, a filing, a release — fetch it and record the month and year in the Stat Bank row. A year copied from a summary or another marketing document is not verified, and a wrong year inside a sound bite gets quoted on stage (see the worked example in the `lfx-marketing-os-qa` plugin for how this happened).
+- **Competitive claims survive the sweep.** If the Brand Kit's Appendix C (or your own scan) shows a like-for-like alternative — especially one from a member organization — then "the only", "no other" and "first" are off the table in §5, §12 and §13; differentiate by the combination of properties instead, and keep member products as peers.
 
 This is the single biggest quality gate. Read `references/lf-message-framework.md` §3 once more before generating so the voice rules and the shape downstream decks expect are fresh.
+
+## Step 2b — lint the claims before you finalize
+
+After the draft exists and before the self-check, search it for "only", "first", "largest", "most", "fastest", "the major", "every", "no other", cost and performance comparisons ("for less than", "in seconds", "for fractions of a cent"), and every year or date. Each must carry its Stat Bank ID or a primary source in the same sentence, or be rewritten. Then search §12 admissions and every sound bite for a fact about, or a motive attributed to, a named organization; each needs a verified record or that organization's published words (the LF press releases supply member quotes). Run this pass twice over §13 — sound bites are quoted on stage and checked by nobody. Finally, mark every Stat Bank row that carries list price, revenue or an LFX-export roster as `Internal` and produce the agency-safe copy without them.
 
 ## Step 3 — generate the document
 
@@ -59,6 +81,8 @@ Produce `[Project Name] Message Foundation.md` following `references/message-fou
 Offer a `.docx` version (read the `docx` skill first if it's available) formatted consistently with any companion Brand Kit document, since the two sit side by side in the same document family. Render §1, §6a, §8, §10 and §14 as tables — downstream agents and human readers both scan them.
 
 ## Step 4 — deliver and offer next steps
+
+Before presenting, run the `lfx-marketing-os-qa` skill on the finished document if it is installed (it is in this marketplace): apply its High fixes and attach its fix list and Stat Bank stamp table to the delivery message. A document with an open High finding is "blocked on <finding>", not "for review". Open the delivery message with a one-page digest for the marketing lead and project leadership, who will not read the long form: the verdict, the recommendations you made (a tagline per surface, the case to pursue), what the sweep found beyond the brief, and the decisions the requester still owes.
 
 Save the final file to the user's workspace folder and present it. Close by naming what it unlocks next — web copy, social bios, press boilerplate, campaign briefs, the membership pitch deck, member executive briefings, board marketing updates — and which LFX Marketing OS agents consume it (ICP & Target Markets, Pitch Deck, Website Designer, Quarterly Campaign Plan, Case Study, Member Benefits Briefing). Do not generate those yet; this document is the input for them.
 

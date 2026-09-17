@@ -109,17 +109,20 @@ A structured list: **Value message** (a single claim, e.g. "We reduce operationa
 
 Every number used anywhere in this document, and every number a downstream deck may need, in one table:
 
-| ID | Claim (as displayed) | Figure | Unit / grain | Period or as-of date | Source | Caveat | Type |
-|---|---|---|---|---|---|---|---|
-| S1 | "1,500+ open source efforts" | 1,500+ | projects, umbrella-wide | as of Sept 2026 | LF 2025 Annual Report | non-additive with sub-project counts | Published |
+| ID | Claim (as displayed) | Figure | Unit / grain | Period or as-of date | Source | Caveat | Type | Verified at / with | Audience |
+|---|---|---|---|---|---|---|---|---|---|
+| S1 | "1,500+ open source efforts" | 1,500+ | projects, umbrella-wide | as of Sept 2026 | LF 2025 Annual Report | non-additive with sub-project counts | Published | 2026-09-16, fetched report p.4 | External |
 
 Rules:
-- **Type** is one of `Live-LFX` (regenerable from LFX Insights/Meetings/membership via the LFX MCP tools; record the exact query or metric name), `Published` (annual report, press release, transparency report), `Third-party` (analyst, academic, press — record author, title, year), or `Interview` (user-stated, not yet independently verified — flag it).
+- **Type** is one of `Live-LFX` (regenerable from LFX Insights/Meetings/membership via the LFX MCP tools; record the exact query or metric name), `Published` (annual report, press release, transparency report), `Third-party` (analyst, academic, press, a standard or RFC — record author, title, year, and fetch the primary document: a date taken from a summary or another marketing document is not verified), or `Interview` (user-stated, not yet independently verified — flag it).
+- **Verified at / with** records the date and the tool call or fetch that confirmed the figure (`query_lfx_standard_metrics memberships by=tier`, `search_members`, a URL). A row without it is unverified and says so.
+- **Audience** is `External` or `Internal`. Membership list-price and revenue figures, and anything derived from an LFX export rather than a public page, are `Internal`: they stay in an internal appendix and are stripped from any copy an outside agency consumes. External roster references cite the project's public members page or the press release, never the LFX export.
 - **Caveat** is mandatory when the figure is an undercount, a floor, non-additive across sub-brands, or uses a different unit from a published count. Reproduce the standard LF caveat phrasing: "every figure here is a floor," "matched on corporate email domains only," "a company joining three foundations counts three times."
 - Record the **canonical data window** for Live-LFX figures once at the top of the section (e.g. "trailing 12 months, Sept 1 2025 – Aug 31 2026; snapshots as of Sept 1 2026") so every downstream deck reuses the same window and stays mutually consistent.
 - **Hero-number sets**: below the table, list 2–4 pre-packaged "big four" groups (four Stat Bank IDs + a one-sentence thesis + a kicker line) by theme — e.g. Scale, Momentum, Community, Return. These are the standard four-tile slide grammar in LF executive decks.
-- If the LFX MCP tools are connected, the skill offers to pull Live-LFX figures during generation; otherwise the row is `TBD — pull from LFX` with the metric named.
+- If the LFX MCP tools are connected, the skill offers to pull Live-LFX figures during generation; otherwise the row is `TBD — pull from LFX` with the metric named. The standard-metric families worth offering for a foundation: `member_organizations` (today and at the launch date), `memberships by=tier`, `new_members period=month`, `contributors` and `contributing_organizations` (a zero usually means the GitHub org is not onboarded to LFX Insights — say that, not "no contributors"), `event_registrations`, `speakers`, `training_enrollments`, `certifications`, `maintainers`, plus committee and past-meeting counts. Read `read_lfx_standard_metrics_guidance` once before the first call.
 - Named adopters and customers appear here only after the user confirmed them (interview record must show it).
+- Counts of governance bodies name the bodies: "4 committees onboarded" that includes an LF staff group is "three governance committees (Governing Board, TSC, Marketing)".
 
 ## 11. Origin Story & Before → After Case Library
 
@@ -135,14 +138,14 @@ Rules:
 - **Our thesis** — one sentence stating the position.
 - **Evidence** — Stat Bank IDs or named facts.
 - **Rebuttal / reframe** — 2–3 sentences, confident and fair, never disparaging a named competitor (per the Brand Kit's competitive-tone rule).
-- **What we admit** — the part of the criticism that is true and what the project is doing about it. LF's own decks publish declining metrics and at-risk lists plainly ("we publish our own bad news — and act on it"); this document should permit and model that.
+- **What we admit** — the part of the criticism that is true and what the project is doing about it. LF's own decks publish declining metrics and at-risk lists plainly ("we publish our own bad news — and act on it"); this document should permit and model that. Two limits: an admission states facts about the project, not about a named member (no "Coinbase remains the largest contributor" without a Stat Bank row, and no role assigned to a member — "operates the public facilitator" — without a verified source); and a rebuttal never assigns motives to named organizations ("regulated participants join because…") — quote their published words instead, which the press releases supply.
 
 ## 13. Talking Points & Soundbites
 
 - **Executive soundbite** — one quotable sentence for a keynote or exec quote.
 - **Short/social message** — one paragraph sized for a social post or newsletter blurb.
 - **Audience-specific angles** — one line each for the audiences in §6, consistent with §6a.
-- **Sound bite bank** — 6–10 additional quotable lines, each tagged with the pillar it serves and where it is appropriate (keynote, press, member meeting, social).
+- **Sound bite bank** — 6–10 additional quotable lines, each tagged with the pillar it serves and where it is appropriate (keynote, press, member meeting, social). Sound bites are the most quoted and least checked text in the package: every date or number inside one is checked against its primary source before the line is written (a past run shipped a keynote-tagged sound bite whose year was wrong by two years), and a roster that includes nonprofits and foundations is "organizations", never "companies".
 
 ## 14. CTA Library
 
@@ -201,4 +204,10 @@ When a Brand Kit exists, a short table listing each Message Foundation section a
 4. §8 Message Matrix cells are consistent with §7 and §9 — same claims, same numbers.
 5. Every CTA used in §2a, §6 and §6a exists in §14.
 6. No named organization appears as an adopter or customer without an explicit confirmation in Appendix A.
-7. No superlative appears without its Stat Bank ID and qualifier.
+7. No superlative appears without its Stat Bank ID and qualifier — including "only", "first", "the major" (implies all) and "no other", and including inside §5, §12 admissions and §13 sound bites.
+8. The governance and trademark sentences in §0, §2a, §7, §9, §12 and §15 are the ones in the Brand Kit's Appendix C (LFX-derived), verbatim. The foundation and the Series LLC are never merged into one entity.
+9. Every date in the document traces to a primary source fetched during this run (an RFC, a release, a filing), not to another marketing document.
+10. No cost or performance comparison ("for less than…", "clears in seconds…") appears without a cited basis; no motive or role is attributed to a named organization without its published words or a verified record.
+11. No sentence in §1 or §4 exceeds about 40 words; a 90-word positioning sentence fails the voice's own "Direct" rule even when every clause is true.
+12. Every Stat Bank row marked `Internal` is absent from the agency-safe copy, and the document says which copy it is.
+13. The delivery message carries the one-page digest and, if the `lfx-marketing-os-qa` skill is installed, its fix list.

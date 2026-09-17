@@ -1,0 +1,9 @@
+{
+  "name": "lfx-marketing-os-qa",
+  "version": "0.1.0",
+  "description": "LFX Marketing OS QA gate — run before a Brand Kit, Message Foundation, ICP / Target Markets document or any derivative is marked 'for review' or handed to a downstream agent. Derives legal-entity and trademark wording from the LFX project record, re-runs every Live-LFX figure through the LFX MCP, refreshes published counters, sweeps the project site / GitHub org / LF press archive for material the intake missed, scans for competitors the brief left out, checks superlatives and dates, and applies a brand-review rubric with severity-ranked before/after fixes. Produces a gate decision (PASS / PASS WITH FIXES / FAIL), a ranked fix list and a two-page digest.",
+  "author": {
+    "name": "Kieran McDermott, Linux Foundation"
+  },
+  "keywords": ["lfx", "marketing-os", "qa", "fact-check", "brand-review", "linux-foundation", "foundation-setup"]
+}
