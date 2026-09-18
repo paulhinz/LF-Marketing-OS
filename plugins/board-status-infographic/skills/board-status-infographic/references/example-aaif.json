@@ -1,0 +1,81 @@
+{
+  "header": {
+    "organization": "Agentic AI Foundation",
+    "title": "Governing Board pre-read",
+    "subtitle": "2027 strategy at a glance",
+    "byline": "Mazin Gilbert, Executive Director",
+    "date": "September 2026"
+  },
+  "headline": "Our problem is not membership, but gaining momentum and a global brand.",
+  "ask_label": "The ask",
+  "ask": "Direct the $2.5M projected 2026 surplus into six investment areas for 2027, and vote on two items: the 2027 Tier 2 event portfolio and the ANDxOR end user group charter.",
+  "blocks": [
+    {
+      "type": "scorecard",
+      "title": "Nine months in",
+      "subtitle": "At inception → today",
+      "items": [
+        {"from": "49", "to": "270", "label": "Member organizations"},
+        {"from": "18", "to": "45", "label": "Gold members"},
+        {"from": "0", "to": "90", "label": "Local chapters"},
+        {"from": "0", "to": "140", "label": "Ambassadors"},
+        {"from": "3", "to": "6", "label": "Hosted projects"},
+        {"from": "1x", "to": "4–10x", "label": "Project SDK downloads"}
+      ]
+    },
+    {
+      "type": "stats",
+      "title": "What members told us",
+      "subtitle": "2026 Member Pulse Survey, ~200 respondents",
+      "items": [
+        {"value": "81%", "label": "run agentic AI in production today"},
+        {"value": "75%", "label": "say we are moving in the right direction"},
+        {"value": "+14", "label": "net recommendation score"}
+      ],
+      "table": {
+        "title": "Net recommendation by tier",
+        "rows": [["Platinum", "+56"], ["Gold", "0"], ["Silver", "0"]]
+      },
+      "callout": {
+        "tag": "#1 request",
+        "text": "Shipped code: interoperability and conformance testing across the protocols we touch, with published results."
+      }
+    },
+    {
+      "type": "risks",
+      "title": "Risks that need board action",
+      "items": [
+        {"value": "69%", "label": "US-based members.", "text": "The board does not look like the community it governs. 12 companies want to upgrade to Platinum."},
+        {"value": "Dec", "label": "Silver renewals open.", "text": "Silver scores 0 on net recommendation; a member value program must be in market before notices go out."},
+        {"value": "<4%", "label": "Academic members.", "text": "Weakens our talent pipeline and neutral standing."},
+        {"value": "27", "label": "Financial services end users, plus 8 telecoms.", "text": "They buy rather than build, and have no forum today."}
+      ]
+    },
+    {
+      "type": "numbered",
+      "title": "Six places to invest the $2.5M surplus",
+      "subtitle": "Allocations come with the 2027 budget in October",
+      "items": [
+        "Marketing and brand",
+        "Projects",
+        "Working groups and committees",
+        "Events and global reach",
+        "Community and member support",
+        "People and skills"
+      ]
+    },
+    {
+      "type": "decisions",
+      "title": "Five questions for the board",
+      "subtitle": "Items 4 and 5 carry votes",
+      "items": [
+        {"question": "Are these the right six investment areas?", "detail": "Including a member value program for Gold, Silver and smaller members.", "reference": "Exhibit A", "action": "DISCUSS"},
+        {"question": "What belongs in the foundation?", "detail": "Test the scope boundary on two live projects: Open Sandbox and Open Responses.", "reference": "Exhibit B", "action": "DISCUSS"},
+        {"question": "Should the board expand?", "detail": "Raise the Platinum cap, add Gold seats, create a Startup Community Committee. No approval sought today.", "reference": "Exhibit C", "action": "REVIEW"},
+        {"question": "Approve the 2027 Tier 2 event portfolio, ~$2.2M?", "detail": "Approving now gets us into 2027 sponsor budget cycles.", "reference": "Exhibit D", "action": "VOTE"},
+        {"question": "Approve the ANDxOR end user group charter?", "detail": "Gives end users a forum and our projects real production requirements.", "reference": "Exhibit E", "action": "VOTE"}
+      ]
+    }
+  ],
+  "footer": "Source: foundation operating data and 2026 Member Pulse Survey, September 2026. Exhibits A–E are in the full board pre-read."
+}

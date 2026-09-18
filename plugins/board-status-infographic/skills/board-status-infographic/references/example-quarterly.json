@@ -1,0 +1,74 @@
+{
+  "header": {
+    "organization": "Example Foundation",
+    "title": "Board update: Q3 2026",
+    "subtitle": "Quarter in review and the Q4 plan at a glance",
+    "byline": "Jane Doe, Executive Director",
+    "date": "October 2026"
+  },
+  "headline": "We hit adoption and event targets; membership growth stalled in the mid-market and needs a decision on pricing.",
+  "ask": "Approve the Q4 marketing budget of $410K, and decide whether to open a Silver tier at $20K for companies under 1,000 employees.",
+  "blocks": [
+    {
+      "type": "goals",
+      "title": "Q3 goals vs outcomes",
+      "subtitle": "From the Q3 marketing plan, approved 2 July",
+      "items": [
+        {"goal": "Grow developer adoption of the core SDK", "kpi": "Monthly active installs", "target": "40K", "actual": "46K", "status": "done"},
+        {"goal": "Sell out the annual summit", "kpi": "Paid registrations", "target": "1,200", "actual": "1,240", "status": "done"},
+        {"goal": "Add 12 new members", "kpi": "Signed members", "target": "12", "actual": "5", "status": "off-track", "note": "Seven prospects stalled on price; all are 200 to 900 employee companies."},
+        {"goal": "Launch training and certification", "kpi": "Enrollments", "target": "500", "actual": "310", "status": "at-risk", "note": "Course shipped 6 weeks late; enrollment pace since launch is on target."}
+      ]
+    },
+    {
+      "type": "scorecard",
+      "title": "Foundation health",
+      "subtitle": "Start of quarter → today",
+      "items": [
+        {"from": "58", "to": "63", "label": "Member organizations"},
+        {"from": "2,100", "to": "2,640", "label": "Active contributors"},
+        {"from": "14", "to": "17", "label": "Hosted projects"},
+        {"from": "9.2K", "to": "12.8K", "label": "Newsletter subscribers"}
+      ]
+    },
+    {
+      "type": "timeline",
+      "title": "Q4 milestones",
+      "items": [
+        {"when": "Oct 15", "label": "Q4 campaigns live.", "text": "Adoption, membership and training tracks."},
+        {"when": "Nov 4–6", "label": "Community days, Berlin.", "text": "First European event; 300 seats."},
+        {"when": "Dec 1", "label": "Renewal notices go out.", "text": "18 memberships renew in Q1."},
+        {"when": "Jan 12", "label": "Next board meeting.", "text": "2027 plan and budget for approval."}
+      ]
+    },
+    {
+      "type": "risks",
+      "title": "Risks that need board attention",
+      "items": [
+        {"value": "7", "label": "Mid-market prospects stalled on price.", "text": "Without a lower tier we lose them to a competing foundation launching in November."},
+        {"value": "18", "label": "Renewals due in Q1.", "text": "Six are members who have not engaged this year; Member Success is on each one."},
+        {"value": "2", "label": "Maintainers leaving a top project.", "text": "Succession plan is in place; TOC reviews it 20 October."}
+      ]
+    },
+    {
+      "type": "bullets",
+      "title": "Q4 plan highlights",
+      "items": [
+        {"label": "Budget $410K.", "text": "52% adoption, 28% membership, 20% training; 10% held as reserve."},
+        {"label": "Three goals carried forward,", "text": "one new: a European community program."},
+        {"label": "Board asks:", "text": "introductions to two named prospects each; speaking slots at member events."}
+      ]
+    },
+    {
+      "type": "decisions",
+      "title": "Decisions for this meeting",
+      "subtitle": "Items 1 and 2 carry votes",
+      "items": [
+        {"question": "Approve the Q4 marketing budget of $410K?", "detail": "Detail in the Q4 plan deck, slides 9 and 10.", "action": "VOTE"},
+        {"question": "Open a Silver membership tier at $20K for companies under 1,000 employees?", "detail": "Projected 7 signings in Q4 and $140K in 2027 revenue; dilution analysis attached.", "action": "VOTE"},
+        {"question": "Should the foundation host the proposed governance working group?", "detail": "Scope and staffing options for discussion; no decision needed today.", "action": "DISCUSS"}
+      ]
+    }
+  ],
+  "footer": "Sources: LFX Insights and Q3 marketing plan review, 3 October 2026. Budget figures from the Q4 marketing plan deck."
+}
