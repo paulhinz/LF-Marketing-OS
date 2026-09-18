@@ -16,7 +16,7 @@ The agents are organized by where they sit in a marketing workflow:
 
 This repo is the distribution point for that agent set: a git-based marketplace that Cowork (or Claude Code) reads directly, so plugins can be installed and updated without emailing files around.
 
-## 2. The 22 plugins in this marketplace
+## 2. The 23 plugins in this marketplace
 
 **Foundation**
 - `brand-guidelines-agent` — Pulls the project's LFX record and runs a research sweep, then a short intake with an LF project leader (or pre-fill mode for ED review), and generates a Brand Kit: positioning, voice, audience messaging, competitive guardrails, LFX-derived governance and trademark wording, and a five-part visual identity direction. (v0.2.0)
@@ -31,6 +31,7 @@ This repo is the distribution point for that agent set: a git-based marketplace 
 - `qtrly-campaign-plan-agent` — Takes the quarterly plan deck from `qtrly-plan-agent` (plus the Brand Kit, Message Foundation, ICP & Target Markets, and Pitch Deck) and produces the Quarterly Campaign Brief (.docx): the set of campaigns supporting each goal, each with a leader, mediums and sources, and per source the target markets, ICP/personas, key messages, assets to be created, CTAs, and message sequences — plus the ordered list of content creation and source execution agents to run. The CFT's campaign-definition step; strategy only, no content or execution.
 - `qtrly-marketing-review-agent` — Generates a pre-filled Quarterly Marketing Review workbook (.pptx) for a foundation's marketing team at quarter end: goals-vs-actuals scorecard, business outcomes, the two engine-health conversions, channel indicators, vehicle scorecards, market signals, and a structured insights retrospective — pre-filled from LFX and marketing platform data, with unknowns as labeled blanks, never invented. The completed review is the retrospective input to `marketing-plan-workbook-agent`.
 - `marketing-plan-workbook-agent` — Generates a pre-filled marketing plan workbook (.pptx) for a foundation, modeled on the Linux Foundation template for an integrated plan: pulls the LF master tracker, past marketing plans, LFX metrics, and — when available — the foundation's completed Quarterly Marketing Review workbook (from `qtrly-marketing-review-agent`), surfacing that review's Executive Summary at the top of the plan workbook so the marketing team can present last quarter's outcomes to the ED during the quarterly plan review. Drafts all five plan parts with DRAFT badges and YOUR INPUT question slides for the foundation leader to complete before a planning interview. The completed workbook feeds the final plan generation step.
+- `board-status-infographic` — **New in v0.1.0.** Produces the one-page "State of the Foundation" board infographic (print-ready PDF plus HTML) before each board meeting: an inception-to-today scorecard, goals vs outcomes from the quarterly plan, member survey figures, risks that need board action, investment areas, and the decisions the board must take, each tagged DISCUSS / REVIEW / VOTE. Reads the Quarterly Marketing Plan deck from `qtrly-plan-agent` and the ED's board pre-read first, then interviews the ED for gaps. Adaptive block layout that always lands on exactly one page. Command: "Build the board infographic for [foundation]". (v0.1.0)
 - `lf-zoom-hubspot-notes-logger` — Pulls a team member's Zoom meeting notes for today and yesterday, writes them into the matching HubSpot meeting records, opens follow-up tasks on opportunities, and flags ambiguous matches over Slack for manual review.
 
 **Creating**
@@ -57,7 +58,7 @@ This repo is the distribution point for that agent set: a git-based marketplace 
 
 1. Open **Customize** in the sidebar, then **Plugins**.
 2. Click **Add marketplace** and enter this repo: `paulhinz/LF-Marketing-OS` (or the full URL, `https://github.com/paulhinz/LF-Marketing-OS`).
-3. Click **Browse plugins** — the 22 plugins above will be listed.
+3. Click **Browse plugins** — the 23 plugins above will be listed.
 4. Select and **Install** whichever ones you need.
 
 This repo is public, so anyone can browse the code or add it as a marketplace without needing collaborator access or GitHub sign-in. To get updates later, come back to Customize → Plugins, find this marketplace, and click **Update**.
