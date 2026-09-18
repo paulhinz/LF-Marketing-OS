@@ -148,14 +148,15 @@
       ]
     },
     {
-      "name": "pitch-deck-agent",
-      "source": "./plugins/pitch-deck-agent",
-      "description": "Generates the standard first-meeting membership pitch deck (max 20 slides, Google Slides-ready) for any Linux Foundation project or foundation, grounded in the project's Brand Kit, Message Foundation, and ICP documents.",
+      "name": "member-pitch-deck",
+      "source": "./plugins/member-pitch-deck",
+      "description": "Member Pitch Deck (v1.0.0, replaces pitch-deck-agent): generates the standard first-meeting membership pitch deck (max 20 slides) for any Linux Foundation project or foundation, always formatted on the LF 2025 Google Slides template and grounded in the project's Brand Kit, Message Foundation, and ICP documents. Command: lf-member-pitch-deck.",
       "category": "Creating Agents",
       "tags": [
         "pitch-deck",
         "membership",
-        "member-growth"
+        "member-growth",
+        "lf-template"
       ]
     },
     {
