@@ -124,6 +124,19 @@
       ]
     },
     {
+      "name": "board-status-infographic",
+      "source": "./plugins/board-status-infographic",
+      "description": "Produces the one-page State of the Foundation board infographic (print-ready PDF plus HTML) for an LF project or foundation ahead of each board meeting: inception-to-today scorecard, goals vs outcomes from the quarterly marketing plan, member survey figures, risks that need board action, investment areas, and the decisions the board must take tagged DISCUSS / REVIEW / VOTE. Reads the Quarterly Marketing Plan deck and the ED's board pre-read first, then interviews the ED for gaps; adaptive block layout, always exactly one page.",
+      "category": "Planning Agents",
+      "tags": [
+        "board-update",
+        "state-of-the-foundation",
+        "infographic",
+        "governing-board",
+        "reporting"
+      ]
+    },
+    {
       "name": "lf-zoom-hubspot-notes-logger",
       "source": "./plugins/lf-zoom-hubspot-notes-logger",
       "description": "Pulls a team member's Zoom meeting notes for today and yesterday, writes them into the matching HubSpot meeting records, opens follow-up tasks on opportunities, and flags ambiguous matches over Slack for manual review. Built for any Linux Foundation Marketing or Sales team.",
