@@ -1,0 +1,16 @@
+{
+  "name": "board-status-infographic",
+  "version": "0.1.0",
+  "description": "LFX Marketing OS State of Foundation Board Update agent — produces the one-page board infographic (print-ready PDF plus HTML) for a Linux Foundation project or foundation ahead of each board meeting: key metrics, goals vs outcomes, risks, investment areas, and the decisions the board must take, tagged DISCUSS / REVIEW / VOTE. Reads the Quarterly Marketing Plan deck and the ED's board pre-read first, then interviews the ED for anything missing.",
+  "author": {
+    "name": "Paul Hinz, The Linux Foundation"
+  },
+  "keywords": [
+    "lfx-marketing-os",
+    "board-update",
+    "state-of-the-foundation",
+    "infographic",
+    "governing-board",
+    "linux-foundation"
+  ]
+}
