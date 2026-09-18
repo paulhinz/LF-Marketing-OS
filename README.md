@@ -38,7 +38,7 @@ This repo is the distribution point for that agent set: a git-based marketplace 
 - `pitch-deck-agent` — Generates the standard first-meeting membership pitch deck ("Golden Deck"), grounded in a project's Brand Kit, Message Foundation, and ICP docs.
 - `case-study-agent` — Converts any source content (YouTube video, interview transcript, meeting notes, recording, or raw text) into an on-brand Word doc — a case study by default, or a blog post, article, summary, or Q&A — grounded in the project's Brand Kit and Message Foundation docs.
 
-- `member-benefits-briefing` — Builds the LF CEO-style member executive briefing deck (“[Company] and the Linux Foundation”) for any member company: live LFX footprint (memberships, dues, contribution/maintainer rankings, events, training) merged with the standing LF and open-source-AI narrative, output as a template-styled PowerPoint using the approved LF brand palette and official LF logo assets. (v0.2.0)
+- `member-benefits-briefing` — Builds the LF CEO-style member executive briefing deck (“[Company] and the Linux Foundation”) for any member company: live LFX footprint (memberships, dues, contribution/maintainer rankings, events, training) merged with the standing LF and open-source-AI narrative, output as a PowerPoint always formatted to the canonical LF 2025 Template (Google Slides), with the approved LF brand palette and official LF logo assets. (v0.3.0 — **new:** output slides now always follow the LF 2025 Template's exact design: template gradients, blue-header zebra tables, Open Sans)
 
 **Monitoring**
 - `aeo-geo-analyzer` — Scores a website's AEO/GEO performance (AI crawler access, `llms.txt`, answerability, structured data, citation authority) and returns prioritized recommendations.
