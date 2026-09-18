@@ -10,7 +10,12 @@ description: >
   member briefings. This is the LFX Marketing OS Message Foundation Agent. Trigger on the exact
   command "Develop LF Project Messaging Foundation", on "pre-fill the Message Foundation for
   [project]", or on any request to build a messaging foundation, message house, message platform
-  or positioning document for an LF project.
+  or positioning document for an LF project. Delivers the document Google Docs-ready on the
+  LF Agent DOCS Template, with the project's name and logo on the cover and the project's
+  brand colors applied.
+metadata:
+  version: "0.4.0"
+  author: "Paul Hinz, Linux Foundation"
 ---
 
 # Develop LF Project Messaging Foundation
@@ -78,13 +83,16 @@ After the draft exists and before the self-check, search it for "only", "first",
 
 Produce `[Project Name] Message Foundation.md` following `references/message-foundation-template.md` section-for-section, including Appendix B (definitions glossary) and Appendix C (Brand Kit source trace, or the statement that no Brand Kit existed). Every claim in §1, §2, §2a, §4, §7, §8, §9, §10, §11 and §12 must trace to something the user said, the README stated, the Brand Kit defined, or a Stat Bank row — if unsure, write TBD rather than smoothing it over. Run the template's section-completeness self-check before finalizing.
 
-Offer a `.docx` version (read the `docx` skill first if it's available) formatted consistently with any companion Brand Kit document, since the two sit side by side in the same document family. Render §1, §6a, §8, §10 and §14 as tables — downstream agents and human readers both scan them.
+Then render the document on the **LF Agent DOCS Template** with `scripts/build_lf_doc.py`, as `references/lf-docs-template.md` describes — this is the deliverable, not an optional extra, and it is not built with the generic `docx` skill. The Markdown you just wrote is the input; render §1, §6a, §8, §10 and §14 as pipe tables so they become real tables (downstream agents and human readers both scan them), put `llms.txt` and the elevator-pitch slide in fenced code blocks, and a `<<<PAGEBREAK>>>` line before each appendix. Pass `--project`, `--doc-type "Message Foundation"`, `--status`, `--agent "Message Foundation Agent"`, `--subtitle "Brand message hierarchy, message matrix, word-count-locked copy, stat bank and activation layers — one of three LFX Marketing OS foundational documents"`, `--other` with the copy label (`Internal` or `Agency-safe`), `--detail` rows for Repository, Source Brand Kit (file and date, or "none — built from interview and README") and Prepared for, and the brand:
+
+- **Logo and colors come from the Brand Kit.** `--primary` and `--secondary` are the Brand Kit §7 Component 2 primary and secondary hexes, verbatim; `--logo` is the mark the Brand Kit's Component 1 names or the project's current logo (LFX record, project site, GitHub org avatar — in that order). With no Brand Kit, read the project site's computed styles for the dominant brand color and say in the delivery message that the colors came from the site. Never generate a logo.
+- Save `[Project Name] Message Foundation.docx` (fonts embedded), a `--strip-fonts` build named `[Project Name] Message Foundation (Drive upload).docx`, and the `.md`. Convert to PDF and look at every page before delivering: logo on the cover, header reading `[Project] Message Foundation · <status> · <copy label>`, tables inside the margins, no `{Placeholder}` text. Fix the Markdown and rebuild rather than editing the `.docx`.
 
 ## Step 4 — deliver and offer next steps
 
 Before presenting, run the `lfx-marketing-os-qa` skill on the finished document if it is installed (it is in this marketplace): apply its High fixes and attach its fix list and Stat Bank stamp table to the delivery message. A document with an open High finding is "blocked on <finding>", not "for review". Open the delivery message with a one-page digest for the marketing lead and project leadership, who will not read the long form: the verdict, the recommendations you made (a tagline per surface, the case to pursue), what the sweep found beyond the brief, and the decisions the requester still owes.
 
-Save the final file to the user's workspace folder and present it. Close by naming what it unlocks next — web copy, social bios, press boilerplate, campaign briefs, the membership pitch deck, member executive briefings, board marketing updates — and which LFX Marketing OS agents consume it (ICP & Target Markets, Pitch Deck, Website Designer, Quarterly Campaign Plan, Case Study, Member Benefits Briefing). Do not generate those yet; this document is the input for them.
+Save the final files to the user's workspace folder and present them; then get the document into the project's shared Drive folder as a Google Doc per the "Deliver as a Google Doc" section of `references/lf-docs-template.md` (browser upload of the Drive-upload build with the requester's go-ahead, or hand them the file to drag in). Close by naming what it unlocks next — web copy, social bios, press boilerplate, campaign briefs, the membership pitch deck, member executive briefings, board marketing updates — and which LFX Marketing OS agents consume it (ICP & Target Markets, Pitch Deck, Website Designer, Quarterly Campaign Plan, Case Study, Member Benefits Briefing). Do not generate those yet; this document is the input for them.
 
 ## Reference files
 
@@ -92,6 +100,8 @@ Save the final file to the user's workspace folder and present it. Close by nami
 - `references/lf-message-framework.md` — the Linux Foundation's own communications framework (Vision → Mission → Positioning Platform → Tagline; the Message Matrix; element definitions) and what LF executive decks consume from a message platform. Read it before generating so the bar and the shape are calibrated.
 - `references/brand-kit-field-mapping.md` — which Brand Kit section populates which Message Foundation section, what the Brand Kit never contains, and how to resolve conflicts between the two.
 - `references/cncf-messaging-framework-2026.md` — a real prior LF-family messaging framework, used as a quality benchmark.
+- `references/lf-docs-template.md` — the LF Agent DOCS Template: what it fixes, how the project's logo and Brand Kit colors are applied, the cover spec, the Markdown the builder understands, the build command, the visual check and the Google Docs delivery.
+- `scripts/build_lf_doc.py` — renders the Markdown document onto `assets/lf-agent-docs-template.docx` (the template with fonts and the LF logo embedded). `python3 scripts/build_lf_doc.py --help` lists every option.
 - `references/example-notes.md` — structural lessons pulled from the CNCF file, other LF-family messaging docs, and the September 2026 LF executive decks.
 - `examples/opensearch-message-foundation-sample.md` — a full worked example generated during this skill's first test run (v0.1 structure; it predates §1, §6a, §8, §10, §11, §12 and §14 and is kept for calibration of tone and grounding, not section order).
 
