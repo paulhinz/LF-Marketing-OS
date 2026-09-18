@@ -35,7 +35,7 @@ This repo is the distribution point for that agent set: a git-based marketplace 
 
 **Creating**
 - `linkedin-post-agent` — Drafts LinkedIn posts about LF and open source work in the user's own voice, from any source content.
-- `pitch-deck-agent` — Generates the standard first-meeting membership pitch deck ("Golden Deck"), grounded in a project's Brand Kit, Message Foundation, and ICP docs.
+- `member-pitch-deck` — **New in v1.0.0 (replaces `pitch-deck-agent`).** Generates the standard first-meeting membership pitch deck ("Golden Deck"), grounded in a project's Brand Kit, Message Foundation, and ICP docs, and always formatted on the bundled LF 2025 Google Slides template. Command: `lf-member-pitch-deck`. If you installed `pitch-deck-agent`, uninstall it and install this one. (v1.0.0)
 - `case-study-agent` — Converts any source content (YouTube video, interview transcript, meeting notes, recording, or raw text) into an on-brand Word doc — a case study by default, or a blog post, article, summary, or Q&A — grounded in the project's Brand Kit and Message Foundation docs.
 
 - `member-benefits-briefing` — Builds the LF CEO-style member executive briefing deck (“[Company] and the Linux Foundation”) for any member company: live LFX footprint (memberships, dues, contribution/maintainer rankings, events, training) merged with the standing LF and open-source-AI narrative, output as a PowerPoint always formatted to the canonical LF 2025 Template (Google Slides), with the approved LF brand palette and official LF logo assets. (v0.3.0 — **new:** output slides now always follow the LF 2025 Template's exact design: template gradients, blue-header zebra tables, Open Sans)
