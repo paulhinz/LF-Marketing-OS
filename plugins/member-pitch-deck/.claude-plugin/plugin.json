@@ -1,0 +1,10 @@
+{
+  "name": "member-pitch-deck",
+  "version": "1.0.0",
+  "description": "LFX Marketing OS Member Pitch Deck (Member Growth, Agent No. 3): generates the standard first-meeting membership pitch deck (max 20 slides) for any Linux Foundation project or foundation, always formatted on the LF 2025 Google Slides template and grounded in the project's Brand Kit, Message Foundation, and ICP documents. Command: lf-member-pitch-deck.",
+  "author": {
+    "name": "Paul Hinz, The Linux Foundation"
+  },
+  "keywords": ["linux-foundation", "lfx-marketing-os", "pitch-deck", "membership", "member-growth", "lf-template"],
+  "license": "MIT"
+}
