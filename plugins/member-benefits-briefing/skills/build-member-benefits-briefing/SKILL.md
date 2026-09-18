@@ -15,12 +15,12 @@ Read these before the corresponding step:
 
 - `references/lfx-data-pull.md` — the exact LFX connector and semantic-layer queries for the member's footprint, with known gotchas (literal name variants, single-metric queries, missing metrics). Read before Step 2.
 - `references/deck-outline.md` — the canonical slide-by-slide outline: which slides are standing narrative (reuse, but verify freshness) and which are member-specific (rebuild every run). Read before Step 4.
-- `references/template-style-guide.md` — the LF executive briefing template design system, aligned to the approved Linux Foundation brand (https://www.linuxfoundation.org/brand-guidelines): official palette, gradient bar, official logo usage, quote box, card patterns, typography, plus pptxgenjs build/QA gotchas. Read before Step 4.
+- `references/template-style-guide.md` — the LF executive briefing template design system, extracted from the canonical **LF 2025 Template** Google Slides deck (https://docs.google.com/presentation/d/1gOJakd6SdB7MLGflP-B0TVqsVU5lq-HGjI1TH4boCe8/) and aligned to the approved Linux Foundation brand (https://www.linuxfoundation.org/brand-guidelines): exact gradient stops for the top bar and dark-slide background, table style, official palette, logo usage, quote box, card patterns, typography, plus pptxgenjs build/QA gotchas. **Every output slide must be formatted to this template — no other slide styling.** Read before Step 4.
 
 Asset files in `assets/`:
 
 - `assets/example-build-deck.js` — a complete, working pptxgenjs generator (the Google briefing, August 2026), styled with the approved LF brand palette and official logo. Copy it and modify content; do not write a generator from scratch.
-- `assets/make_gradient.py` — generates the template's gradient top-bar PNG (`/tmp/gradbar.png`) from approved LF brand colors, required by the generator.
+- `assets/make_gradient.py` — generates the template's two gradient PNGs, required by the generator: the top bar (`/tmp/gradbar.png`, Azure → Cyan → Royal Navy) and the dark-slide background (`/tmp/darkbg.png`, the LF 2025 Template's diagonal `3D3E5B` → `100F18` gradient).
 - `assets/lf-stacked-color.svg` / `assets/lf-stacked-white.svg` — the OFFICIAL Linux Foundation primary (stacked) logo assets from the brand guidelines. Never edit, recolor, or redraw them.
 - `assets/make_logos.py` — renders the official logo SVGs to `/tmp/lf-stacked-color.png` and `/tmp/lf-stacked-white.png` for pptxgenjs, required by the generator.
 
@@ -61,7 +61,7 @@ Never fabricate numbers. Every member-specific figure must come from LFX, the me
 
 Read `references/deck-outline.md` and `references/template-style-guide.md`. Then:
 
-1. Run `assets/make_gradient.py` (→ `/tmp/gradbar.png`) and `assets/make_logos.py` (→ `/tmp/lf-stacked-color.png`, `/tmp/lf-stacked-white.png`).
+1. Run `assets/make_gradient.py` (→ `/tmp/gradbar.png`, `/tmp/darkbg.png`) and `assets/make_logos.py` (→ `/tmp/lf-stacked-color.png`, `/tmp/lf-stacked-white.png`).
 2. Copy `assets/example-build-deck.js` and rewrite the member-specific slides (title, the entire "Overview of [Company] in the LF" section, the member spotlights inside AAIF/challenge sections) with the data from Steps 2–3.
 3. Update standing-narrative stats only if fresher figures are known; otherwise keep them and keep their source lines.
 4. Run with `NODE_PATH` pointing at an environment with `pptxgenjs` installed; output `"[Company] and the Linux Foundation - Executive Briefing.pptx"`.
@@ -69,11 +69,12 @@ Read `references/deck-outline.md` and `references/template-style-guide.md`. Then
 ### Step 5 — QA and deliver
 
 1. Validate the .pptx with the pptx skill's `validate.py`; fix generator errors and rebuild.
-2. Render slides to images (LibreOffice → pdftoppm) and visually inspect a sample of every layout type for overflow, collisions, and template fidelity.
+2. Render slides to images (LibreOffice → pdftoppm) and visually inspect a sample of every layout type for overflow, collisions, and template fidelity: gradient top bar on every slide, dark slides on the template's gradient background (never flat navy), correct logo variant, blue-header zebra tables, Open Sans type.
 3. Deliver the file and summarize: the member's headline numbers (memberships, dues, contribution/maintainer ranks, event footprint) and any data gaps.
 
 ## Notes
 
 - The standing narrative in the example generator is dated (August 2026). Flag clearly to the user which narrative stats were reused versus refreshed.
+- All output decks are formatted to the canonical LF 2025 Template (https://docs.google.com/presentation/d/1gOJakd6SdB7MLGflP-B0TVqsVU5lq-HGjI1TH4boCe8/); if a needed pattern is missing from `references/template-style-guide.md`, match it to that deck rather than inventing styling.
 - The template uses the official LF logo assets and only approved LF brand colors (https://www.linuxfoundation.org/brand-guidelines). Never redraw or recolor the logo, keep its clear space, and keep the trademark attribution line ("The Linux Foundation and The Linux Foundation logo design are registered trademarks of The Linux Foundation. Linux is a registered trademark of Linus Torvalds.") with the deck's fine print.
 - Companion agents: run `member-360` for the engagement-scoring spreadsheet that pairs with this deck at QBRs; `pitch-deck-agent` covers prospective (non-member) first meetings instead.
