@@ -4,6 +4,8 @@ Every Message Foundation document must contain the sections below, in this order
 
 The structure follows the Linux Foundation's own communications framework (see `references/lf-message-framework.md`): a **brand message hierarchy** at the top (Vision → Mission → Positioning Platform → Tagline), a **message matrix** in the middle (Value Proposition → Key Message → Supporting Points → Sound Bites, one column per pillar), and the **evidence and activation layers** downstream agents consume (stat bank, audience angles, objections, CTAs). Word-count-locked derivatives sit near the top so a copywriter can grab them without reading the whole document.
 
+Format: the document is written as Markdown and rendered by `scripts/build_lf_doc.py` onto the LF Agent DOCS Template (see `references/lf-docs-template.md`). The builder generates the cover (project logo, project name, "Message Foundation", accent rule in the Brand Kit primary color, subtitle, details table) and the LF header and footer; do not write those into the Markdown. Start the Markdown at §0 with a `#` heading, use `##` for subsections, pipe tables wherever a table is called for, fenced code blocks for `llms.txt` and the slide text, and `<<<PAGEBREAK>>>` before each appendix.
+
 Sourcing rule for the whole document: every fact traces to the interview answers, the Brand Kit, the GitHub README, or a named source in the Stat Bank. Anything else is written as **TBD — needs input**.
 
 ---
