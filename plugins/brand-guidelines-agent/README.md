@@ -2,7 +2,8 @@
 
 Part of Linux Foundation's LFX Marketing OS agent suite. Guides a project
 leader through a short intake, then generates a "[Project Name] Brand Kit"
-Word document — the foundational identity, voice, positioning, and visual
+document on the LF Agent DOCS Template (a Google Docs-ready .docx with the
+project's name and logo on the cover and its brand colors applied) — the foundational identity, voice, positioning, and visual
 direction document that other Marketing OS agents (Message Foundation, ICP,
 Pitch Deck, and more) depend on.
 
@@ -25,8 +26,12 @@ questions, review the draft.
 ## Setup
 
 No environment variables or external accounts required for this version. The
-skill uses Claude's built-in `docx` skill to produce the Word document — no
-separate installation needed.
+document is rendered by the bundled `scripts/build_lf_doc.py` onto the bundled
+LF Agent DOCS Template (`assets/lf-agent-docs-template.docx`); it needs
+`python-docx`, which the Cowork sandbox already has, and ImageMagick only when
+the project logo is an SVG. A Google Drive folder or a connected browser is
+optional, for placing the finished document in the project's Drive as a
+Google Doc.
 
 ## Usage
 
@@ -46,7 +51,27 @@ After the last answer, it generates the Brand Kit document, walks you through
 it, and — after you give feedback or confirm there's none — recommends moving
 it to a shared repository so downstream agents can read it.
 
+## Output format (v0.3.0)
+
+Every Brand Kit is built on the Linux Foundation's **LF Agent DOCS Template**
+(Google Docs master: `docs.google.com/document/d/1RinjSuKojc9bqLLeviJfGE6yzSIfj8kSrTwIiWlH-HM`):
+Open Sans body, Roboto Slab headings, the LF logo header with
+`Project · Document · Status`, a centered footer with the agent name, date and
+page number. The cover carries the project's logo and name, and the project's
+Component 2 palette colors the headings, the cover accent and the table
+headers ("colors only" brand styling — fonts and layout stay on the template
+so every LF project's documents look like one family). The skill writes the
+document as Markdown and renders it with `scripts/build_lf_doc.py`; see
+`skills/develop-lf-project-brand-kit/references/lf-docs-template.md` for the
+template spec, the logo/color sourcing order and the Google Docs delivery.
+
 ## Notes for maintainers
+
+- The output format lives in three files that are identical across the three
+  foundation plugins (brand-guidelines-agent, message-foundation-agent,
+  icp-target-markets-agent): `scripts/build_lf_doc.py`,
+  `assets/lf-agent-docs-template.docx` and `references/lf-docs-template.md`.
+  Change them in all three at once.
 
 - The full document template (every section, the voice-attribute format, the
   five visual-identity components, and the WCAG contrast-check method) lives in
