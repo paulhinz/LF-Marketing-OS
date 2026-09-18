@@ -1,6 +1,7 @@
 /*
  * WORKED EXAMPLE — Google Executive Briefing (August 2026)
- * "[Company] and the Linux Foundation", styled to the LF executive briefing template.
+ * "[Company] and the Linux Foundation", styled to the canonical LF 2025 Template
+ * (Google Slides: docs.google.com/presentation/d/1gOJakd6SdB7MLGflP-B0TVqsVU5lq-HGjI1TH4boCe8).
  *
  * How to use: COPY this file and rewrite the member-specific slides (title; the
  * "Overview of [Company] in the LF" section, slides 12-19; the member spotlight
@@ -8,7 +9,7 @@
  * verify freshness before reuse. See ../references/ for the style guide,
  * deck outline, and LFX query recipes.
  *
- * Prereqs: pptxgenjs on NODE_PATH; /tmp/gradbar.png (make_gradient.py) and /tmp/lf-stacked-*.png (make_logos.py).
+ * Prereqs: pptxgenjs on NODE_PATH; /tmp/gradbar.png + /tmp/darkbg.png (make_gradient.py) and /tmp/lf-stacked-*.png (make_logos.py).
  * Run: node example-build-deck.js "Company and the Linux Foundation.pptx"
  */
 const pptxgen = require("pptxgenjs");
@@ -18,7 +19,7 @@ p.layout = "LAYOUT_WIDE"; // 13.33 x 7.5
 /* Approved Linux Foundation brand palette — https://www.linuxfoundation.org/brand-guidelines */
 const C = {
   navy: "002857",      // Deep Navy (LF primary shade) — dark cards, quote boxes, table headers
-  navyD: "00183C",     // Darkest Navy (LF primary shade) — title & section-divider background
+  navyD: "00183C",     // Darkest Navy (LF primary shade) — accents only; dark slides use the DARKBG gradient image
   title: "003778",     // Royal Navy (LF primary) — slide titles, stat numbers
   ink: "222222",       // LF gray — body text on light
   gray: "6E6E6E",      // LF gray — captions, caps kickers on light
@@ -26,11 +27,14 @@ const C = {
   skyDark: "0094FF",   // Azure (LF primary) — caps kickers on dark
   sky: "12E2E2",       // Cyan (LF accent) — italic/emphasis text on navy
   card: "F6F7FA", cardLine: "D6D6D6",   // LF grays — light cards
+  tableBlue: "4285F4", // LF 2025 Template — table header rows, rounded-outline box strokes
+  tableAlt: "EEEEEE",  // LF 2025 Template — alternating table body rows
   white: "FFFFFF"
 };
-const F = "Arial";
+const F = "Open Sans"; // LF 2025 Template typeface (fallback: Arial)
 const W = 13.33, MX = 0.6, CW = W - 2 * MX;
 const GRAD = "/tmp/gradbar.png";
+const DARKBG = "/tmp/darkbg.png"; // LF 2025 Template dark-slide gradient (3D3E5B -> 100F18)
 let pageNo = 0;
 
 /* ---- Official LF logo (approved asset from linuxfoundation.org/brand-guidelines).
@@ -147,7 +151,7 @@ function gridCards(t, items, foot, src, rows) {
 }
 
 function sectionSlide(kicker, t, sub) {
-  const s = p.addSlide(); s.background = { color: C.navyD };
+  const s = p.addSlide(); s.background = { path: DARKBG };
   darkChrome(s);
   s.addText(kicker, { x: MX, y: 2.0, w: CW, h: 0.45, fontSize: 14, bold: true, color: C.skyDark, charSpacing: 2, fontFace: F, margin: 0 });
   s.addText(t, { x: MX, y: 2.5, w: CW, h: 1.5, fontSize: 40, bold: true, color: C.white, fontFace: F, margin: 0, valign: "top" });
@@ -157,7 +161,7 @@ function sectionSlide(kicker, t, sub) {
 
 /* ---------------- 1. TITLE [MEMBER] ---------------- */
 {
-  const s = p.addSlide(); s.background = { color: C.navyD };
+  const s = p.addSlide(); s.background = { path: DARKBG };
   gradBar(s); pageNo++;
   lfLogo(s, 0.62, 0.75, 2.2, true);
   s.addText("GOOGLE EXECUTIVE BRIEFING   ·   AUGUST 2026", { x: 0.62, y: 2.6, w: CW, h: 0.4, fontSize: 13, bold: true, color: C.skyDark, charSpacing: 1.5, fontFace: F, margin: 0 });
@@ -663,9 +667,9 @@ twoCards(
   slideTitle(s, "What PyTorch gains: the missing layers of its own mission");
   s.addText("THE BEST OPEN ANSWER AT NEARLY EVERY LAYER — GOVERNED BY THE BOARD GOOGLE SITS ON", { x: MX, y: 1.08, w: CW, h: 0.32, fontSize: 10.5, bold: true, color: C.gray, charSpacing: 1.5, fontFace: F, margin: 0 });
   const header = [
-    { text: "PRODUCTION NEED", options: { bold: true, color: C.white, fill: { color: C.navy }, fontSize: 11 } },
-    { text: "LF AI & DATA PROJECT(S)", options: { bold: true, color: C.white, fill: { color: C.navy }, fontSize: 11 } },
-    { text: "WHY IT ADVANCES THE PYTORCH MISSION", options: { bold: true, color: C.white, fill: { color: C.navy }, fontSize: 11 } }
+    { text: "PRODUCTION NEED", options: { bold: true, color: C.white, fill: { color: C.tableBlue }, fontSize: 11 } },
+    { text: "LF AI & DATA PROJECT(S)", options: { bold: true, color: C.white, fill: { color: C.tableBlue }, fontSize: 11 } },
+    { text: "WHY IT ADVANCES THE PYTORCH MISSION", options: { bold: true, color: C.white, fill: { color: C.tableBlue }, fontSize: 11 } }
   ];
   const rows = [
     ["Retrieval for LLM apps", "Milvus", "vLLM + Milvus: the complete open RAG stack"],
@@ -673,10 +677,9 @@ twoCards(
     ["Model interchange", "ONNX", "The export path from PyTorch to every runtime"],
     ["Feature & data infra", "Feast · Unity Catalog · LakeSoul", "The data layer PyTorch has no answer for today"],
     ["Trust, safety & lineage", "AI Fairness 360 · ART · OpenFL · OpenLineage", "What enterprise and government adoption needs"]
-  ].map(r => r.map(c => ({ text: c, options: { fontSize: 11.5, color: C.ink } })));
+  ].map((r, ri) => r.map(c => ({ text: c, options: { fontSize: 11.5, color: C.ink, fill: { color: ri % 2 ? C.tableAlt : C.white } } })));
   s.addTable([header].concat(rows), {
-    x: MX, y: 1.55, w: CW, colW: [3.2, 4.2, 4.73], border: { type: "solid", color: C.cardLine, pt: 0.75 },
-    fill: { color: C.white }, rowH: 0.6, valign: "middle", fontFace: F, margin: 0.08, autoPage: false
+    x: MX, y: 1.55, w: CW, colW: [3.2, 4.2, 4.73], border: { type: "solid", color: C.white, pt: 1 }, rowH: 0.6, valign: "middle", fontFace: F, margin: 0.08, autoPage: false
   });
   quoteBlock(s, "A united effort raises all boats — developers get one governance model, one contributor ladder, one conference circuit. LF AI projects gain the PyTorch brand and developer reach; PyTorch gains the enterprise data and trust story that closes deals.", null, 5.6, 1.15);
   chrome(s, {});
@@ -863,16 +866,16 @@ statSlide(
   slideTitle(s, "Value accrues to the application layer — we will have MORE developers and OSS, not less", 21);
   s.addText("WHERE VALUE LASTED", { x: MX, y: 1.1, w: CW, h: 0.32, fontSize: 10.5, bold: true, color: C.gray, charSpacing: 1.5, fontFace: F, margin: 0 });
   const header = [
-    { text: "ERA", options: { bold: true, color: C.white, fill: { color: C.navy }, fontSize: 11 } },
-    { text: "INFRASTRUCTURE (won early, commoditized)", options: { bold: true, color: C.white, fill: { color: C.navy }, fontSize: 11 } },
-    { text: "APPLICATION LAYER (where the durable value landed)", options: { bold: true, color: C.white, fill: { color: C.navy }, fontSize: 11 } }
+    { text: "ERA", options: { bold: true, color: C.white, fill: { color: C.tableBlue }, fontSize: 11 } },
+    { text: "INFRASTRUCTURE (won early, commoditized)", options: { bold: true, color: C.white, fill: { color: C.tableBlue }, fontSize: 11 } },
+    { text: "APPLICATION LAYER (where the durable value landed)", options: { bold: true, color: C.white, fill: { color: C.tableBlue }, fontSize: 11 } }
   ];
   const rows = [
     ["INTERNET ERA", "Cisco · UUNET · Sun · Oracle", "Google · Amazon · Uber · Airbnb · Netflix"],
     ["MOBILE ERA", "Qualcomm · Apple silicon · ARM", "Instagram · WhatsApp · TikTok · Stripe"],
     ["AI ERA (2026 → ?)", "NVIDIA · frontier model labs", "the next decade — built on OSS + AI orchestration"]
-  ].map(r => r.map(c => ({ text: c, options: { fontSize: 12, color: C.ink } })));
-  s.addTable([header].concat(rows), { x: MX, y: 1.55, w: CW, colW: [2.7, 4.7, 4.73], border: { type: "solid", color: C.cardLine, pt: 0.75 }, rowH: 0.66, valign: "middle", fontFace: F, margin: 0.08, autoPage: false });
+  ].map((r, ri) => r.map(c => ({ text: c, options: { fontSize: 12, color: C.ink, fill: { color: ri % 2 ? C.tableAlt : C.white } } })));
+  s.addTable([header].concat(rows), { x: MX, y: 1.55, w: CW, colW: [2.7, 4.7, 4.73], border: { type: "solid", color: C.white, pt: 1 }, rowH: 0.66, valign: "middle", fontFace: F, margin: 0.08, autoPage: false });
   quoteBlock(s, "Frontier models = economies of scale with shrinking margins. Cost per token down 280× in 2 years; open models hit parity in 3–6 months. Lasting value sits at the application layer — open-source primitives, orchestrated by AI, owned by operators closest to the workflow.", "caveat: we are not in a bubble — the hardware layer will boom for years as agents break the demand curve", 4.85, 1.7);
   chrome(s, {});
 }
@@ -1083,7 +1086,7 @@ gridCards(
 
 /* ---------------- 62. Thank you ---------------- */
 {
-  const s = p.addSlide(); s.background = { color: C.navyD };
+  const s = p.addSlide(); s.background = { path: DARKBG };
   gradBar(s);
   lfLogo(s, 0.62, 0.75, 2.2, true);
   s.addText("Thank you", { x: 0.62, y: 3.2, w: CW, h: 1.1, fontSize: 48, bold: true, color: C.white, fontFace: F, margin: 0 });
