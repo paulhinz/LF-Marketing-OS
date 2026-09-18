@@ -1,7 +1,7 @@
 {
   "name": "brand-guidelines-agent",
-  "version": "0.2.0",
-  "description": "Pulls the project's LFX record and runs a research sweep, then guides an LF project leader through a short intake (or pre-fills it in batch mode for ED review) and generates a project Brand Kit document — positioning, voice, audience messaging, competitive guardrails, LFX-derived governance and trademark wording, and a five-component visual identity direction — following the LFX Marketing OS Brand Kit standard.",
+  "version": "0.3.0",
+  "description": "Pulls the project's LFX record and runs a research sweep, then guides an LF project leader through a short intake (or pre-fills it in batch mode for ED review) and generates a project Brand Kit document — positioning, voice, audience messaging, competitive guardrails, LFX-derived governance and trademark wording, and a five-component visual identity direction — following the LFX Marketing OS Brand Kit standard — delivered as a Google Docs-ready document on the LF Agent DOCS Template, with the project's name and logo on the cover and its brand colors applied.",
   "author": {
     "name": "Paul Hinz, Linux Foundation"
   },

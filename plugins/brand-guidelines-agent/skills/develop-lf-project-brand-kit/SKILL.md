@@ -8,16 +8,18 @@ description: >
   positioning, or visual direction for an LF-hosted project as part of LFX
   Marketing OS. Produces the Brand Kit — one of three LFX Marketing OS
   foundational documents (alongside the Message Foundation Doc and the ICP
-  Document) — as a Word document.
+  Document) — as a Google Docs-ready document on the LF Agent DOCS Template,
+  with the project's name and logo on the cover and the project's brand colors
+  applied.
 metadata:
-  version: "0.2.0"
+  version: "0.3.0"
   author: "Paul Hinz, Linux Foundation"
 ---
 
 # Develop LF Project Brand Kit
 
 Guide the user through a short intake, then generate a "[Project Name] Brand Kit"
-Word document. This is a Level-1, single-prompt LFX Marketing OS agent: launch
+document on the LF Agent DOCS Template (Google Docs-ready `.docx`). This is a Level-1, single-prompt LFX Marketing OS agent: launch
 from the command, ask a fixed set of questions, then do the work — the human
 reviews, the agent assembles.
 
@@ -160,13 +162,31 @@ Key rules carried from prior review of this skill:
 - **Claims**: no "only", "first", "largest", "most" or "the major" without the
   proof in the same sentence; no date without its primary source (an RFC, a
   release, a filing). Sound bites and tagline rationale get this check twice.
-- Use the `docx` skill to build the document (US Letter, the section structure
-  from the template, tables for the color palette / voice attributes / audience
-  messaging / channel reference). Render to PDF and visually check every page
-  before sharing, per the docx skill's verification step.
-- Save the file as `[Project Name] Brand Kit.docx`. Do not leave generation
-  notes in the document ("This Word document uses Georgia and Calibri as
-  stand-ins"); production font names belong in Component 3, nothing else.
+- **Build on the LF Agent DOCS Template, never by hand.** Write the whole
+  document as `[Project Name] Brand Kit.md` following the section structure
+  in `references/brand-kit-template.md`, then render it with
+  `scripts/build_lf_doc.py` as `references/lf-docs-template.md` describes.
+  The script puts the LF header and footer on every page, generates the cover
+  (project logo, project name, "Brand Kit", accent rule, subtitle, details
+  table) and applies the project's colors to headings and table headers;
+  fonts and layout stay on the template. Pass:
+  `--project`, `--doc-type "Brand Kit"`, `--status`, `--agent "Brand Kit Agent"`,
+  `--subtitle "Foundational identity, voice, positioning and visual direction — one of three LFX Marketing OS foundational documents"`,
+  `--logo <the project's current mark>` (LFX record → project site → GitHub
+  org avatar; see the reference for the order, and never a generated logo),
+  `--primary` / `--secondary` from the palette you chose in Component 2 (so
+  build the palette before you build the file — the document is the first
+  thing rendered in the project's colors, and a requester's color constraints
+  are already honored there), and `--detail` rows for Repository, Prepared
+  for and Governance (the derived sentence).
+- Render to PDF and look at every page before sharing (logo on the cover,
+  header text right, tables inside the margins, headings readable, no
+  `{Placeholder}` left). Fix the Markdown and rebuild; do not edit the `.docx`.
+- Save `[Project Name] Brand Kit.docx` (fonts embedded) and a
+  `--strip-fonts` build named `[Project Name] Brand Kit (Drive upload).docx`
+  for Google Drive, plus the `.md`. Do not leave generation notes in the
+  document ("This Word document uses Georgia and Calibri as stand-ins");
+  production font names belong in Component 3, nothing else.
 
 ## Step 2b: Gate and digest
 
@@ -185,10 +205,14 @@ After sharing the file:
 1. Ask the user for feedback on the document.
 2. If they give feedback, offer to regenerate the document incorporating it,
    and repeat this step after the regeneration.
-3. If they have no feedback, recommend they download the document and place it
-   in a shared repository (e.g. a Content Hub, shared Drive, or wherever the
-   Message Foundation Agent and ICP Agent read their inputs from) — this Brand
-   Kit is a dependency other Marketing OS agents load, not a one-off file.
+3. If they have no feedback, get the document into the project's shared Drive
+   folder as a Google Doc (the "Deliver as a Google Doc" section of
+   `references/lf-docs-template.md`: upload the Drive-upload build through the
+   browser with the requester's go-ahead, or hand them the file to drag in) —
+   this Brand Kit is a dependency the Message Foundation Agent and ICP Agent
+   load, not a one-off file. Its Component 2 palette and Component 1 logo are
+   also what those agents use to render their own documents in the project's
+   brand, so name the palette hexes and the logo file plainly.
 4. Keep Appendix A (document architecture) accurate: if a sibling document is
    later produced at a different scope than this appendix describes, update the
    Brand Kit rather than leaving the sibling to flag the conflict.
@@ -201,3 +225,10 @@ After sharing the file:
   wording from the LFX project record and the technical charter.
 - `references/research-sweep.md` — the beyond-the-brief checklist and the
   "Found beyond the brief" table the sibling agents inherit.
+- `references/lf-docs-template.md` — the LF Agent DOCS Template: what it
+  fixes, how the project's logo and colors are applied, the cover spec, the
+  Markdown the builder understands, the build command, the visual check and
+  the Google Docs delivery.
+- `scripts/build_lf_doc.py` — renders the Markdown draft onto
+  `assets/lf-agent-docs-template.docx` (the template with fonts and the LF
+  logo embedded). `python3 scripts/build_lf_doc.py --help` lists every option.

@@ -7,16 +7,19 @@ description: >
   [project]", or otherwise asks to define ideal customer profiles, personas, target markets, or fit/warmth
   scoring for an LF-hosted project as part of LFX Marketing OS. Produces the
   ICP Document — one of three LFX Marketing OS foundational documents
-  (alongside the Brand Kit and Message Foundation Doc) — as a Word document.
+  (alongside the Brand Kit and Message Foundation Doc) — as a Google Docs-ready
+  document on the LF Agent DOCS Template, with the project's name and logo on
+  the cover and the project's brand colors applied.
 metadata:
-  version: "0.2.0"
+  version: "0.3.0"
   author: "Paul Hinz, Linux Foundation"
 ---
 
 # Develop Target Markets and ICP
 
 Guide the user through a short intake, then generate a "[Project Name] Target
-Markets and ICP" Word document. This is the third of three LFX Marketing OS
+Markets and ICP" document on the LF Agent DOCS Template (Google Docs-ready
+`.docx`). This is the third of three LFX Marketing OS
 foundational documents, and a Level-1, single-prompt agent: launch from the
 command, ask a fixed set of questions, then do the work — the human reviews,
 the agent assembles.
@@ -199,10 +202,33 @@ Key rules:
   fill a "Case — TBD" slot as "public source, not requester-confirmed"; a
   named organization still needs confirmation before it is presented as an
   adopter story.
-- Use the `docx` skill to build the document (US Letter, tables for anything
-  tabular, a heading/color system consistent with the companion Brand Kit if
-  one exists). Render to PDF and visually check every page before sharing.
-- Save the file as `[Project Name] Target Markets and ICP.docx`.
+- **Build on the LF Agent DOCS Template, never by hand.** Write the whole
+  document as `[Project Name] Target Markets and ICP.md` following
+  `references/icp-document-template.md` (pipe tables for the competitive
+  table, the ICP dimensions, the persona fields, the fit/warmth scoring and
+  the handoff map; `<<<PAGEBREAK>>>` before each appendix), then render it
+  with `scripts/build_lf_doc.py` as `references/lf-docs-template.md`
+  describes. Pass `--project`, `--doc-type "Target Markets and ICP"`,
+  `--status`, `--agent "ICP & Target Markets Agent"`,
+  `--subtitle "Market segments, ideal customer profiles, personas and fit/warmth scoring — one of three LFX Marketing OS foundational documents"`,
+  `--other` with the copy label (`Internal` or `Agency-safe`), and `--detail`
+  rows for Repository, Source Brand Kit, Source Message Foundation, Optimized
+  for (the business outcome from question 1) and Prepared for.
+- **Logo and colors come from the Brand Kit.** `--primary` and `--secondary`
+  are the Brand Kit §7 Component 2 primary and secondary hexes, verbatim;
+  `--logo` is the mark the Brand Kit's Component 1 names or the project's
+  current logo (LFX record, project site, GitHub org avatar — in that order).
+  With no Brand Kit, read the project site's computed styles for the dominant
+  brand color and say in the delivery message that the colors came from the
+  site. Never generate a logo.
+- Render to PDF and look at every page before sharing (logo on the cover,
+  header reading `[Project] Target Markets and ICP · <status> · <copy label>`,
+  tables inside the margins, headings readable, no `{Placeholder}` left). Fix
+  the Markdown and rebuild; do not edit the `.docx`.
+- Save `[Project Name] Target Markets and ICP.docx` (fonts embedded), a
+  `--strip-fonts` build named `[Project Name] Target Markets and ICP (Drive
+  upload).docx`, and the `.md`. Build the internal and agency-safe copies as
+  two Markdown files rendered with the matching `--other` label.
 
 ## Step 2b — gate and digest
 
@@ -220,9 +246,12 @@ After sharing the file:
 1. Ask the user for feedback on the document.
 2. If they give feedback, offer to regenerate incorporating it, and repeat
    this step after regeneration.
-3. If they have no feedback, recommend they place it in the same shared
-   location as the companion Brand Kit and Message Foundation Doc — this ICP
-   Document is a dependency other Marketing OS agents (Segmentation Agent,
+3. If they have no feedback, get the document into the same shared Drive
+   folder as the companion Brand Kit and Message Foundation Doc, as a Google
+   Doc (the "Deliver as a Google Doc" section of
+   `references/lf-docs-template.md`: browser upload of the Drive-upload build
+   with the requester's go-ahead, or hand them the file to drag in) — this
+   ICP Document is a dependency other Marketing OS agents (Segmentation Agent,
    campaign/content agents) load, not a one-off file.
 4. Say which copy you delivered — internal (with the LFX roster and any list
    prices) or agency-safe — and where the other one is.
@@ -242,6 +271,13 @@ LFX membership data flow above.
   what "complete" looks like per section.
 - `references/velocity-engine-field-reference.md` — the companion Velocity
   Engine data schema (ICP fields, persona fields) this template aligns to.
+- `references/lf-docs-template.md` — the LF Agent DOCS Template: what it
+  fixes, how the project's logo and Brand Kit colors are applied, the cover
+  spec, the Markdown the builder understands, the build command, the visual
+  check and the Google Docs delivery.
+- `scripts/build_lf_doc.py` — renders the Markdown document onto
+  `assets/lf-agent-docs-template.docx` (the template with fonts and the LF
+  logo embedded). `python3 scripts/build_lf_doc.py --help` lists every option.
 - `examples/opensearch-target-markets-and-icp-sample.md` — a worked example,
   generated during this skill's first test run, for an OpenSearch ICP document
   grounded in a real Brand Kit, Message Foundation Doc, and live LFX
