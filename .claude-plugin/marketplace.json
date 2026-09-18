@@ -33,7 +33,7 @@
     {
       "name": "brand-guidelines-agent",
       "source": "./plugins/brand-guidelines-agent",
-      "description": "Pulls the project's LFX record and runs a research sweep, then guides an LF project leader through a short intake (or pre-fills it in batch mode for ED review) and generates a project Brand Kit document — positioning, voice, audience messaging, competitive guardrails, LFX-derived governance and trademark wording, and a five-component visual identity direction — following the LFX Marketing OS Brand Kit standard.",
+      "description": "Pulls the project's LFX record and runs a research sweep, then guides an LF project leader through a short intake (or pre-fills it in batch mode for ED review) and generates a project Brand Kit document — positioning, voice, audience messaging, competitive guardrails, LFX-derived governance and trademark wording, and a five-component visual identity direction — following the LFX Marketing OS Brand Kit standard Delivered Google Docs-ready on the LF Agent DOCS Template, with the project's name and logo on the cover and its brand colors applied.",
       "category": "Foundation Agents",
       "tags": [
         "brand",
@@ -44,7 +44,7 @@
     {
       "name": "message-foundation-agent",
       "source": "./plugins/message-foundation-agent",
-      "description": "Interviews a Linux Foundation project lead (or pre-fills the interview in batch mode for ED review) and produces a '[Project Name] Message Foundation' document built on the LF communications framework: Vision → Mission → Positioning Platform → Tagline, a one-page Message Matrix, word-count-locked summaries, boilerplate, llms.txt and elevator pitch, plus voice, audiences with persona ROI angles, tagged messaging pillars, a verified and audience-marked Stat Bank, origin story and cases, objections and stance, and a tiered CTA library — with LFX-derived governance wording, a claims lint, a QA gate and a one-page digest.",
+      "description": "Interviews a Linux Foundation project lead (or pre-fills the interview in batch mode for ED review) and produces a '[Project Name] Message Foundation' document built on the LF communications framework: Vision → Mission → Positioning Platform → Tagline, a one-page Message Matrix, word-count-locked summaries, boilerplate, llms.txt and elevator pitch, plus voice, audiences with persona ROI angles, tagged messaging pillars, a verified and audience-marked Stat Bank, origin story and cases, objections and stance, and a tiered CTA library — with LFX-derived governance wording, a claims lint, a QA gate and a one-page digest Delivered Google Docs-ready on the LF Agent DOCS Template, with the project's name and logo on the cover and its Brand Kit colors applied.",
       "category": "Foundation Agents",
       "tags": [
         "messaging",
@@ -55,7 +55,7 @@
     {
       "name": "icp-target-markets-agent",
       "source": "./plugins/icp-target-markets-agent",
-      "description": "Interviews a Linux Foundation project leader (or pre-fills the interview in batch mode for ED review), reads the project's Brand Kit, Message Foundation Doc, and GitHub README, pulls live LFX membership data, runs a competitor scan that includes members' like-for-like products, and produces a '[Project Name] Target Markets and ICP' document (market segments, organization-level ICPs, personas, fit/warmth scoring, a run-rate SOM proposal) with a claims lint, a QA gate and a one-page digest.",
+      "description": "Interviews a Linux Foundation project leader (or pre-fills the interview in batch mode for ED review), reads the project's Brand Kit, Message Foundation Doc, and GitHub README, pulls live LFX membership data, runs a competitor scan that includes members' like-for-like products, and produces a '[Project Name] Target Markets and ICP' document (market segments, organization-level ICPs, personas, fit/warmth scoring, a run-rate SOM proposal) with a claims lint, a QA gate and a one-page digest Delivered Google Docs-ready on the LF Agent DOCS Template, with the project's name and logo on the cover and its Brand Kit colors applied.",
       "category": "Foundation Agents",
       "tags": [
         "icp",
