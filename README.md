@@ -13,10 +13,11 @@ The agents are organized by where they sit in a marketing workflow:
 - **Creating Agents** — produce outbound content (decks, posts) grounded in the foundation docs.
 - **Monitoring Agents** — check how content and campaigns are performing after they ship.
 - **Community Engagement Agents** — track how members and the community are engaging with a project, and turn that into next actions.
+- **Shared Skills** — cross-cutting skills every agent uses, such as the output formatter that puts each deliverable on the approved LF templates.
 
 This repo is the distribution point for that agent set: a git-based marketplace that Cowork (or Claude Code) reads directly, so plugins can be installed and updated without emailing files around.
 
-## 2. The 23 plugins in this marketplace
+## 2. The 24 plugins in this marketplace
 
 **Foundation**
 - `brand-guidelines-agent` — Pulls the project's LFX record and runs a research sweep, then a short intake with an LF project leader (or pre-fill mode for ED review), and generates a Brand Kit: positioning, voice, audience messaging, competitive guardrails, LFX-derived governance and trademark wording, and a five-part visual identity direction. (v0.3.0 — **new:** output is a Google Docs-ready document on the LF Agent DOCS Template, with the project's name and logo on the cover and its palette applied to headings and tables)
@@ -54,6 +55,9 @@ This repo is the distribution point for that agent set: a git-based marketplace 
 - `committee-health-agent` — Monitors committee participation, flags inactive or outdated representatives, identifies member companies without an active contact, and drafts follow-up or replacement outreach for review — a committee-health workbook plus an approval-ready outreach queue.
 - `community-monitor-agent` — Watches chosen Slack channels and GitHub repos on a user-set schedule, ranks new community questions by sentiment and asker value (community activity, member-company standing), and delivers a live report with drafted replies that can be sent to Slack with one click.
 
+**Shared Skills (used by every agent)**
+- `lf-output-formatter` — **New in v0.1.0.** The shared formatting layer for all Marketing OS deliverables. Builds slide decks on the LF 2025 Google Slides template, documents (Brand Kit, Message Foundation, ICP, campaign briefs, reports) on the LF Agent DOCS template with a generated cover page, and letters on the LF Letterhead — from a JSON slide spec or Markdown with front matter. When a document belongs to a specific foundation, it reads the foundation's Brand Kit into a `brand.json` and re-skins the template with that foundation's logo, palette, typography and iconography notes (WCAG-checked). Bundles the three templates, the official LF logo assets, the build scripts, a Brand Kit extractor and a render-and-check step. Install it alongside any agent; the agents call it when they build their output. (v0.1.0)
+
 **Additional (not part of the core Marketing OS)**
 - `marketing-agent-class` — Delivers The Linux Foundation's Claude Agent Workshop training as personalized slide decks, with live student Q&A captured in a companion deck.
 
@@ -61,7 +65,7 @@ This repo is the distribution point for that agent set: a git-based marketplace 
 
 1. Open **Customize** in the sidebar, then **Plugins**.
 2. Click **Add marketplace** and enter this repo: `paulhinz/LF-Marketing-OS` (or the full URL, `https://github.com/paulhinz/LF-Marketing-OS`).
-3. Click **Browse plugins** — the 23 plugins above will be listed.
+3. Click **Browse plugins** — the 24 plugins above will be listed.
 4. Select and **Install** whichever ones you need.
 
 This repo is public, so anyone can browse the code or add it as a marketplace without needing collaborator access or GitHub sign-in. To get updates later, come back to Customize → Plugins, find this marketplace, and click **Update**.
