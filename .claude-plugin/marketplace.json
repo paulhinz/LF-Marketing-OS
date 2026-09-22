@@ -279,6 +279,21 @@
         "course",
         "pptx"
       ]
+    },
+    {
+      "name": "lf-output-formatter",
+      "source": "./plugins/lf-output-formatter",
+      "description": "Shared output formatter for every LFX Marketing OS agent: builds decks, documents and letters on the three approved Linux Foundation templates (LF 2025 Google Slides template, LF Agent DOCS template, LF Letterhead) and, for foundation-specific documents, re-skins the template with the foundation's Brand Kit (logo, palette, typography, iconography). Bundles the templates, build scripts, a Brand Kit extractor and a render-and-check step.",
+      "category": "Shared Skills",
+      "tags": [
+        "templates",
+        "brand",
+        "formatting",
+        "pptx",
+        "docx",
+        "letterhead",
+        "brand-kit"
+      ]
     }
   ]
 }
