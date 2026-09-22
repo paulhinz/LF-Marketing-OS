@@ -232,6 +232,11 @@
       ]
     },
     {
+      "name": "member-marketing-benefits-audit",
+      "source": "./plugins/member-marketing-benefits-audit",
+      "description": "LFX Marketing OS Member Marketing Benefits Audit Agent — researches a foundation's website (CNCF by default) for a full calendar year of member-published content, verifies each organisation's membership tier, and reports how much of each tier's measurable marketing benefits (blog submissions, online programs, announcements) was used and remains, as a three-tab reconciling .xlsx audit. Complements member-360 with benefit-level depth."
+    },
+    {
       "name": "ambassador-content-assignment",
       "source": "./plugins/ambassador-content-assignment",
       "description": "Matches a project's ambassadors against the KubeCon (or any LF event) schedule and generates personalized content assignments — video prompts, social copy, hashtags, tags, and posting recommendations — as a tracker spreadsheet, per-ambassador briefs, and outreach drafts. Then tracks who actually posts via LFX Lens social listening and drafts nudges.",
