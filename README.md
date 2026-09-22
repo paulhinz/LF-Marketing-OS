@@ -17,7 +17,7 @@ The agents are organized by where they sit in a marketing workflow:
 
 This repo is the distribution point for that agent set: a git-based marketplace that Cowork (or Claude Code) reads directly, so plugins can be installed and updated without emailing files around.
 
-## 2. The 24 plugins in this marketplace
+## 2. The 25 plugins in this marketplace
 
 **Foundation**
 - `brand-guidelines-agent` — Pulls the project's LFX record and runs a research sweep, then a short intake with an LF project leader (or pre-fill mode for ED review), and generates a Brand Kit: positioning, voice, audience messaging, competitive guardrails, LFX-derived governance and trademark wording, and a five-part visual identity direction. (v0.3.0 — **new:** output is a Google Docs-ready document on the LF Agent DOCS Template, with the project's name and logo on the cover and its palette applied to headings and tables)
@@ -51,6 +51,7 @@ This repo is the distribution point for that agent set: a git-based marketplace 
 
 **Community Engagement**
 - `member-360` — Scores each project member's engagement across events, speaking, ambassadors, committees, content, and marketing activity; flags gaps; and recommends a next best action for Marketing, Member Success, or Sales in a ranked spreadsheet built for QBRs.
+- `member-marketing-benefits-audit` — **New in v0.1.0.** Researches a foundation's website (CNCF by default) for a full calendar year of member-published content (blogs, online programs, announcements, case studies, whitepapers, reports), verifies each organisation's membership tier, and reports how much of each tier's measurable marketing benefits was used and remains — a three-tab reconciling .xlsx audit (Summary, Benefit Utilisation, complete Content Audit). Complements `member-360`: 360 scores overall engagement, this audits benefit consumption. Requested by the CNCF team. Command: "Run the member marketing benefits audit for CNCF for [year]". (v0.1.0)
 - `ambassador-content-assignment` — Matches ambassadors against the KubeCon (or any LF event) schedule, generates personalized content assignments (video prompts, social copy, hashtags, tags, posting times) as a tracker spreadsheet, per-ambassador briefs, and outreach drafts, then tracks who actually posts via LFX Lens and drafts nudges.
 - `committee-health-agent` — Monitors committee participation, flags inactive or outdated representatives, identifies member companies without an active contact, and drafts follow-up or replacement outreach for review — a committee-health workbook plus an approval-ready outreach queue.
 - `community-monitor-agent` — Watches chosen Slack channels and GitHub repos on a user-set schedule, ranks new community questions by sentiment and asker value (community activity, member-company standing), and delivers a live report with drafted replies that can be sent to Slack with one click.
@@ -65,7 +66,7 @@ This repo is the distribution point for that agent set: a git-based marketplace 
 
 1. Open **Customize** in the sidebar, then **Plugins**.
 2. Click **Add marketplace** and enter this repo: `paulhinz/LF-Marketing-OS` (or the full URL, `https://github.com/paulhinz/LF-Marketing-OS`).
-3. Click **Browse plugins** — the 24 plugins above will be listed.
+3. Click **Browse plugins** — the 25 plugins above will be listed.
 4. Select and **Install** whichever ones you need.
 
 This repo is public, so anyone can browse the code or add it as a marketplace without needing collaborator access or GitHub sign-in. To get updates later, come back to Customize → Plugins, find this marketplace, and click **Update**.
