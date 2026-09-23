@@ -15,7 +15,7 @@ description: >
   data has no connector kept in place with a "Data not available, requires [x]
   connector" notice.
 metadata:
-  version: "0.1.0"
+  version: "0.1.1"
   author: "Paul Hinz, Linux Foundation"
   department: "LFX Marketing OS · Monitoring"
   prototype: "https://paulhinz.github.io/LF-Marketing-OS-Dashboards-Prototypes/"
