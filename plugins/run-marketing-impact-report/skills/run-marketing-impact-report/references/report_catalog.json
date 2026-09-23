@@ -1,5 +1,5 @@
 {
- "version": "0.1.0",
+ "version": "0.2.0",
  "prototype": "https://paulhinz.github.io/LF-Marketing-OS-Dashboards-Prototypes/",
  "connectors": {
   "required": [
@@ -24,11 +24,11 @@
  },
  "pages": [
   {
-   "id": "all-outcomes",
+   "id": "all-summary",
    "level": 1,
-   "title": "All › Outcomes",
-   "question": "Are we on track to the goals set in the quarterly marketing plan?",
-   "subtitle": "Five business outcomes · each goal defined by the project and marketing leads at the quarterly review",
+   "title": "All › Summary",
+   "question": "Outcomes from all marketing outbound channels",
+   "subtitle": "Overall Business Outcome Metrics · five business outcomes with associated key metrics · goals based on numbers included in the Quarterly Marketing Plan",
    "sections": [
     {
      "title": "Outcome scorecard",
@@ -168,7 +168,7 @@
    "id": "all-paid",
    "level": 2,
    "title": "All › Paid",
-   "question": "Is every paid dollar buying an outcome at an acceptable cost?",
+   "question": "Paid placement across standard sources.",
    "subtitle": "Medium: Paid · standard metrics per source: spend, impressions, clicks, CTR, CPC, conversions, cost / conversion, ROAS",
    "sections": [
     {
@@ -359,153 +359,10 @@
    ]
   },
   {
-   "id": "all-paid-budget",
-   "level": 2,
-   "title": "All › Paid › Budget",
-   "question": "Is spend following results?",
-   "subtitle": "Budget set per goal in the quarterly plan · reallocations are human-gated",
-   "sections": [
-    {
-     "title": "Budget · key metrics",
-     "subtitle": "",
-     "items": [
-      {
-       "id": "budget_total",
-       "kind": "kpi",
-       "label": "Total marketing budget for the period",
-       "tag": "",
-       "source": "Quarterly Marketing Plan document",
-       "how": "From the Quarterly Marketing Plan."
-      },
-      {
-       "id": "budget_spent",
-       "kind": "kpi",
-       "label": "Spent to date",
-       "tag": "",
-       "source": "Quarterly Marketing Plan document",
-       "how": "From the plan's budget tracker or finance export."
-      },
-      {
-       "id": "budget_pacing",
-       "kind": "kpi",
-       "label": "Pacing vs. plan",
-       "tag": "SIGNAL",
-       "source": "Quarterly Marketing Plan document",
-       "how": ""
-      },
-      {
-       "id": "budget_paid_share",
-       "kind": "kpi",
-       "label": "Paid media share of spend",
-       "tag": "",
-       "source": "Google Ads / LinkedIn Ads",
-       "how": ""
-      },
-      {
-       "id": "budget_roas",
-       "kind": "kpi",
-       "label": "Blended ROAS",
-       "tag": "SIGNAL",
-       "source": "Google Ads / LinkedIn Ads",
-       "how": ""
-      },
-      {
-       "id": "budget_hot_reserve",
-       "kind": "kpi",
-       "label": "Opportunistic (HOT) reserve remaining",
-       "tag": "DECISION",
-       "source": "Quarterly Marketing Plan document",
-       "how": ""
-      }
-     ]
-    },
-    {
-     "title": "Budget by business outcome",
-     "subtitle": "Where the money goes vs. where results come from",
-     "items": [
-      {
-       "id": "budget_by_outcome",
-       "kind": "table",
-       "label": "Budget vs. spend vs. goal progress",
-       "tag": "DECISION",
-       "source": "Quarterly Marketing Plan document",
-       "how": "Goal budgets from the plan; goal progress from the outcome pages.",
-       "columns": [
-        "Outcome",
-        "Goal budget",
-        "Spent",
-        "% spent",
-        "of which Paid",
-        "ROAS",
-        "Goal progress",
-        "Status"
-       ]
-      }
-     ]
-    },
-    {
-     "title": "Planned vs. opportunistic (HOT)",
-     "subtitle": "Discretionary reserve for in-quarter opportunities",
-     "items": [
-      {
-       "id": "budget_planned_vs_hot",
-       "kind": "table",
-       "label": "Planned campaigns · HOT used · HOT remaining",
-       "tag": "",
-       "source": "Quarterly Marketing Plan document",
-       "how": "",
-       "columns": [
-        "Bucket",
-        "Amount",
-        "Share",
-        "Note"
-       ]
-      }
-     ]
-    },
-    {
-     "title": "Paid spend by source",
-     "subtitle": "Planned vs. actual",
-     "items": [
-      {
-       "id": "budget_paid_by_source",
-       "kind": "table",
-       "label": "Planned vs. actual by paid source",
-       "tag": "",
-       "source": "Google Ads / LinkedIn Ads",
-       "how": "",
-       "columns": [
-        "Source",
-        "Planned",
-        "Spent",
-        "% spent",
-        "ROAS",
-        "Status"
-       ]
-      }
-     ]
-    },
-    {
-     "title": "Agent recommendation",
-     "subtitle": "Reallocation proposal, if the figures support one",
-     "items": [
-      {
-       "id": "budget_recommendation",
-       "kind": "note",
-       "label": "One proposal with the evidence",
-       "tag": "",
-       "source": "agent",
-       "how": "Only when both budget and ROAS data exist; otherwise write 'No recommendation — requires budget and paid-media data.'"
-      }
-     ]
-    }
-   ]
-  },
-  {
    "id": "all-social",
    "level": 2,
    "title": "All › Social",
-   "question": "Is social growing our reach and moving people to owned properties?",
+   "question": "Social outbound across standard sources.",
    "subtitle": "Medium: Social (organic) · standard metrics per source: followers, net new / wk, posts, impressions, engagements, engagement rate, link clicks, site sessions",
    "sections": [
     {
@@ -743,7 +600,7 @@
    "id": "all-web",
    "level": 2,
    "title": "All › Web",
-   "question": "Is the website finding the right people and converting them?",
+   "question": "Owned web placements and standard sources.",
    "subtitle": "Medium: Web · standard metrics per source: sessions, unique visitors, page views, pages / session, time on page, scroll depth, conversions, conversion rate",
    "sections": [
     {
@@ -914,7 +771,7 @@
    "id": "all-direct",
    "level": 2,
    "title": "All › Direct",
-   "question": "Is every direct message reaching its segment and doing its one job?",
+   "question": "Direct messaging to enriched and known contacts.",
    "subtitle": "Medium: Direct · standard metrics per source: audience, sends, delivered, open rate, CTR, conversions, conversion rate, unsubscribe rate, active vs. dormant",
    "sections": [
     {
@@ -1087,105 +944,236 @@
    ]
   },
   {
-   "id": "all-attribution",
+   "id": "all-campaigns",
    "level": 2,
-   "title": "All › Attribution",
-   "question": "Which mediums deserve credit for this period's outcomes?",
-   "subtitle": "Compare models before trusting any single number · sourced vs. influenced are both shown",
+   "title": "All › Defined Campaigns",
+   "question": "Goals, campaigns and tactics — with the KPI at every level",
+   "subtitle": "Goals (KPI, budget, timeline) from the Quarterly Marketing Plan · campaigns and tactics (activities per Medium : Source) from the Quarterly Campaign Plan",
    "sections": [
     {
-     "title": "Attribution · key metrics",
-     "subtitle": "Closed-won membership deals in the period",
+     "title": "Defined campaigns · goals → campaigns → tactics",
+     "subtitle": "Grouped by goal, then campaign, then tactic; each level carries its own KPI, result, budget, timeline, owner and status",
      "items": [
       {
-       "id": "attr_mktg_sourced",
-       "kind": "kpi",
-       "label": "Marketing-sourced revenue / deals",
+       "id": "defined_campaigns",
+       "kind": "table",
+       "label": "Goal › Campaign › Tactic",
        "tag": "DECISION",
-       "source": "HubSpot",
-       "how": "get_campaign_attribution_reports metrics=[REVENUE,DEAL_COUNT] attributionModel=FIRST_INTERACTION (any campaign touch as first interaction)."
-      },
-      {
-       "id": "attr_mktg_influenced",
-       "kind": "kpi",
-       "label": "Marketing-influenced revenue / deals",
-       "tag": "DECISION",
-       "source": "HubSpot",
-       "how": "same, attributionModel=LINEAR; influenced = deals with ≥1 campaign touch."
-      },
-      {
-       "id": "attr_sales_only",
-       "kind": "kpi",
-       "label": "Sales-only (no marketing touch)",
-       "tag": "",
-       "source": "HubSpot",
-       "how": "closed-won deals in period (query_crm_data DEAL) minus influenced deals."
-      },
-      {
-       "id": "attr_avg_touches",
-       "kind": "kpi",
-       "label": "Avg touches to close",
-       "tag": "SIGNAL",
-       "source": "HubSpot",
-       "how": "ATTRIBUTION_COUNT / DEAL_COUNT."
-      },
-      {
-       "id": "attr_top_first",
-       "kind": "kpi",
-       "label": "Top first-touch medium",
-       "tag": "SIGNAL",
-       "source": "HubSpot",
-       "how": "dimensions=[UTM_MEDIUM] attributionModel=FIRST_INTERACTION."
-      },
-      {
-       "id": "attr_top_last",
-       "kind": "kpi",
-       "label": "Top last-touch medium",
-       "tag": "SIGNAL",
-       "source": "HubSpot",
-       "how": "dimensions=[UTM_MEDIUM] attributionModel=LAST_INTERACTION."
+       "source": "Quarterly Marketing Plan document",
+       "how": "Goal rows: every business goal in the Quarterly Marketing Plan with KPI target, budget, timeline, owner (e.g. '12,500 KubeCon NA attendees registered'). Campaign rows under each goal: from the Quarterly Campaign Brief — leader, mediums, KPI (e.g. 'Grow KubeCon NA audience by 500K new contacts'), budget. Tactic rows under each campaign: one per Medium : Source activity with its KPI (e.g. 'Publish 2 LinkedIn posts per week and average 1,000 impressions per week'). Results: goal progress from the outcome pages; campaign results from HubSpot read_campaign_data GET_ANALYTICS (sessions, new contacts, influenced contacts) when connected; tactic results from the medium pages. Mark the Level column GOAL / CAMPAIGN / TACTIC so the builder can shade rows.",
+       "columns": [
+        "Level",
+        "Goal › Campaign › Tactic",
+        "Medium : Source",
+        "KPI",
+        "Result",
+        "Budget / spent",
+        "Timeline",
+        "Owner",
+        "Status"
+       ],
+       "alt_source": "HubSpot"
       }
      ]
     },
     {
-     "title": "Credit by medium under each model",
-     "subtitle": "Linear · First touch · Last touch · Time decay",
+     "title": "Campaign results (HubSpot)",
+     "subtitle": "Engagement metrics per active campaign, joined to the table above by campaign name",
      "items": [
       {
-       "id": "attr_by_medium_models",
+       "id": "campaign_results",
        "kind": "table",
-       "label": "Credited revenue by medium × model",
-       "tag": "DECISION",
+       "label": "Active campaigns · sessions, new contacts, influenced contacts",
+       "tag": "",
        "source": "HubSpot",
-       "how": "Four calls, dimensions=[UTM_MEDIUM], one per attributionModel.",
+       "how": "search_crm_objects objectType=CAMPAIGN (active in period) → read_campaign_data GET_ANALYTICS per campaign.",
        "columns": [
-        "Medium",
-        "Linear",
-        "First touch",
-        "Last touch",
-        "Time decay"
+        "Campaign",
+        "Goal",
+        "Sessions",
+        "New contacts",
+        "Influenced contacts",
+        "Attributed revenue (linear)"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "all-budget",
+   "level": 2,
+   "title": "All › Budget",
+   "question": "All current marketing spend",
+   "subtitle": "Paid ads by medium type with results, plus the other marketing spend tracked by the Executive Director and Marketing Lead · budget set per goal in the quarterly plan",
+   "sections": [
+    {
+     "title": "Budget · key metrics",
+     "subtitle": "",
+     "items": [
+      {
+       "id": "budget_total",
+       "kind": "kpi",
+       "label": "Total marketing budget for the period",
+       "tag": "",
+       "source": "Quarterly Marketing Plan document",
+       "how": "From the Quarterly Marketing Plan."
+      },
+      {
+       "id": "budget_spent",
+       "kind": "kpi",
+       "label": "Spent to date",
+       "tag": "",
+       "source": "Quarterly Marketing Plan document",
+       "how": "From the plan's budget tracker or finance export."
+      },
+      {
+       "id": "budget_pacing",
+       "kind": "kpi",
+       "label": "Pacing vs. plan",
+       "tag": "SIGNAL",
+       "source": "Quarterly Marketing Plan document",
+       "how": ""
+      },
+      {
+       "id": "budget_paid_share",
+       "kind": "kpi",
+       "label": "Paid media share of spend",
+       "tag": "",
+       "source": "Google Ads / LinkedIn Ads",
+       "how": ""
+      },
+      {
+       "id": "budget_roas",
+       "kind": "kpi",
+       "label": "Blended ROAS",
+       "tag": "SIGNAL",
+       "source": "Google Ads / LinkedIn Ads",
+       "how": ""
+      },
+      {
+       "id": "budget_hot_reserve",
+       "kind": "kpi",
+       "label": "Opportunistic (HOT) reserve remaining",
+       "tag": "DECISION",
+       "source": "Quarterly Marketing Plan document",
+       "how": ""
+      }
+     ]
+    },
+    {
+     "title": "Budget by business outcome",
+     "subtitle": "Where the money goes vs. where results come from",
+     "items": [
+      {
+       "id": "budget_by_outcome",
+       "kind": "table",
+       "label": "Budget vs. spend vs. goal progress",
+       "tag": "DECISION",
+       "source": "Quarterly Marketing Plan document",
+       "how": "Goal budgets from the plan; goal progress from the outcome pages.",
+       "columns": [
+        "Outcome",
+        "Goal budget",
+        "Spent",
+        "% spent",
+        "of which Paid",
+        "ROAS",
+        "Goal progress",
+        "Status"
        ]
       }
      ]
     },
     {
-     "title": "Model agreement",
-     "subtitle": "Where the models agree, act with confidence",
+     "title": "Planned vs. opportunistic (HOT)",
+     "subtitle": "Discretionary reserve for in-quarter opportunities",
      "items": [
       {
-       "id": "attr_model_agreement",
+       "id": "budget_planned_vs_hot",
        "kind": "table",
-       "label": "Rank of each medium under each model",
+       "label": "Planned campaigns · HOT used · HOT remaining",
        "tag": "",
-       "source": "HubSpot",
-       "how": "Derived from the table above.",
+       "source": "Quarterly Marketing Plan document",
+       "how": "",
        "columns": [
-        "Medium",
-        "Linear",
-        "First",
-        "Last",
-        "Decay"
+        "Bucket",
+        "Amount",
+        "Share",
+        "Note"
        ]
+      }
+     ]
+    },
+    {
+     "title": "Paid ads · spend and results by medium type",
+     "subtitle": "Planned vs. actual per paid source, with what the spend bought",
+     "items": [
+      {
+       "id": "budget_paid_by_source",
+       "kind": "table",
+       "label": "Paid ads by medium type",
+       "tag": "DECISION",
+       "source": "Google Ads / LinkedIn Ads",
+       "how": "Paid social · Search ads · Retargeting · 3rd-party ads · 3rd-party newsletters · Affiliate; results from the ads platforms.",
+       "columns": [
+        "Paid medium type",
+        "Planned",
+        "Spent",
+        "% spent",
+        "Impressions",
+        "Clicks",
+        "Conversions",
+        "Cost / conv.",
+        "ROAS",
+        "Status"
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Other marketing spend",
+     "subtitle": "Tracked by the Executive Director and Marketing Lead · non-ads spend against the same goals",
+     "items": [
+      {
+       "id": "budget_other_spend",
+       "kind": "table",
+       "label": "Other marketing spend by category",
+       "tag": "SIGNAL",
+       "source": "Quarterly Marketing Plan document",
+       "how": "Event production & promotion · Content & creative · Agency, PR & AR · Community programs (KCD support, ambassador incentives) · Membership & sponsorship sales enablement · Education promotion · Martech & tools. From the plan's budget tracker or finance export; no connector today.",
+       "columns": [
+        "Spend category",
+        "Planned",
+        "Spent",
+        "% spent",
+        "Supports (outcomes)",
+        "What it bought",
+        "Owner",
+        "Status"
+       ]
+      },
+      {
+       "id": "budget_all_total",
+       "kind": "kpi",
+       "label": "All marketing spend (paid ads + other) · planned vs. spent",
+       "tag": "DECISION",
+       "source": "Quarterly Marketing Plan document",
+       "how": "Sum of the two tables above."
+      }
+     ]
+    },
+    {
+     "title": "Agent recommendation",
+     "subtitle": "Reallocation proposal, if the figures support one",
+     "items": [
+      {
+       "id": "budget_recommendation",
+       "kind": "note",
+       "label": "One proposal with the evidence",
+       "tag": "",
+       "source": "agent",
+       "how": "Only when both budget and ROAS data exist; otherwise write 'No recommendation — requires budget and paid-media data.'"
       }
      ]
     }
@@ -1195,8 +1183,8 @@
    "id": "memberships",
    "level": 1,
    "title": "Memberships",
-   "question": "Is marketing generating and protecting member commitment?",
-   "subtitle": "Business outcome: Memberships · Platinum, Gold, Silver (or the foundation's equivalents)",
+   "question": "Identifying, nurturing, and protecting member commitment",
+   "subtitle": "Business outcome: Targeted Accounts, Enriched Contacts, Cross Sale, Renewal",
    "sections": [
     {
      "title": "Goals · quarterly plan",
@@ -1462,8 +1450,8 @@
    "id": "events",
    "level": 1,
    "title": "Events",
-   "question": "Are we filling the seats and selling the sponsorships?",
-   "subtitle": "Business outcome: Events · goals: attendance and sponsorships · owned events, third-party events, community days",
+   "question": "Fill the seats and sell the sponsorships",
+   "subtitle": "Business outcome: event attendance growth, sponsorship growth across owned and supported community events",
    "sections": [
     {
      "title": "Goals · quarterly plan",
@@ -1677,8 +1665,8 @@
    "id": "education",
    "level": 1,
    "title": "Education",
-   "question": "Is marketing filling courses and converting learners to certifications?",
-   "subtitle": "Business outcome: Education · B2C (individual learners) and B2B (team training)",
+   "question": "Fill the courses and grow certifications",
+   "subtitle": "Business outcome: Course attendance and growing certifications across channels.",
    "sections": [
     {
      "title": "Goals · quarterly plan",
@@ -1851,8 +1839,8 @@
    "id": "audience",
    "level": 1,
    "title": "Audience",
-   "question": "Is the audience growing and carrying our narrative?",
-   "subtitle": "Business outcome: Audience · net new contacts, engaged contacts, reach, share of voice",
+   "question": "Grow the audience and ensure industry is carrying key messaging",
+   "subtitle": "Business Outcome: Audience · net new contacts · engaged contacts · reach · share of voice.",
    "sections": [
     {
      "title": "Goals · quarterly plan",
@@ -2014,8 +2002,8 @@
    "id": "adoption",
    "level": 1,
    "title": "Adoption",
-   "question": "Are more people using, contributing to and championing the projects?",
-   "subtitle": "Business outcome: Adoption · users / downloads / stars · ambassadors · contributors · maintainers · community groups",
+   "question": "Grow use, contributions, champions.",
+   "subtitle": "Business outcome: Adoption · users / downloads / stars · ambassadors · contributors · maintainers · community groups.",
    "sections": [
     {
      "title": "Goals · quarterly plan",
@@ -2288,40 +2276,6 @@
         "Count",
         "Share"
        ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "id": "campaigns",
-   "level": 3,
-   "title": "Goals › Campaigns",
-   "question": "Which campaigns are delivering their goals?",
-   "subtitle": "Every campaign supports one goal and carries one primary KPI",
-   "sections": [
-    {
-     "title": "Active campaigns",
-     "subtitle": "",
-     "items": [
-      {
-       "id": "campaigns_table",
-       "kind": "table",
-       "label": "Campaigns",
-       "tag": "DECISION",
-       "source": "HubSpot",
-       "how": "search_crm_objects objectType=CAMPAIGN (active in period) → read_campaign_data GET_ANALYTICS (sessions, new contacts, influenced contacts) per campaign; goal, KPI and budget from the Campaign Brief / plan.",
-       "columns": [
-        "Campaign",
-        "Outcome › goal",
-        "Stage",
-        "Mediums",
-        "Primary KPI",
-        "Result",
-        "Budget / spent",
-        "Status"
-       ],
-       "alt_source": "Quarterly Marketing Plan document"
       }
      ]
     }
