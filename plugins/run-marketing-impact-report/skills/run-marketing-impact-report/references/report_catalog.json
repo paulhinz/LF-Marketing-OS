@@ -1,0 +1,2797 @@
+{
+ "version": "0.1.0",
+ "prototype": "https://paulhinz.github.io/LF-Marketing-OS-Dashboards-Prototypes/",
+ "connectors": {
+  "required": [
+   "LFX"
+  ],
+  "optional": [
+   "HubSpot"
+  ],
+  "other": [
+   "Google Ads / LinkedIn Ads",
+   "Sprout Social",
+   "Google Analytics (GA4)",
+   "Google Search Console",
+   "Bevy (community groups)",
+   "Cvent",
+   "LinkedIn Sales Navigator",
+   "Ambassador activity tracker",
+   "Thought Industries (training platform)",
+   "CMS narrative tags",
+   "Quarterly Marketing Plan document"
+  ]
+ },
+ "pages": [
+  {
+   "id": "all-outcomes",
+   "level": 1,
+   "title": "All › Outcomes",
+   "question": "Are we on track to the goals set in the quarterly marketing plan?",
+   "subtitle": "Five business outcomes · each goal defined by the project and marketing leads at the quarterly review",
+   "sections": [
+    {
+     "title": "Outcome scorecard",
+     "subtitle": "Headline result per business outcome for the period",
+     "items": [
+      {
+       "id": "memberships_headline",
+       "kind": "kpi",
+       "label": "Memberships · new memberships sold and active member organizations",
+       "tag": "DECISION",
+       "source": "LFX",
+       "how": "query_lfx_standard_metrics metric=new_members project=<slug> start_date=<period start> (count) + member_organizations project=<slug> (state today)."
+      },
+      {
+       "id": "events_headline",
+       "kind": "kpi",
+       "label": "Events · registrations and sponsorship revenue for events in the period",
+       "tag": "DECISION",
+       "source": "LFX",
+       "how": "event_registrations by=total project=<slug> start/end = period; event_sponsorships by=total same window."
+      },
+      {
+       "id": "education_headline",
+       "kind": "kpi",
+       "label": "Education · training enrollments and certifications in the period",
+       "tag": "DECISION",
+       "source": "LFX",
+       "how": "training_enrollments by=total project=<slug>; certifications by=total; same window."
+      },
+      {
+       "id": "audience_headline",
+       "kind": "kpi",
+       "label": "Audience · participants (any activity) and social reach in the period",
+       "tag": "DECISION",
+       "source": "LFX",
+       "how": "participants by=total project=<slug>; social_reach by=total project=<slug>; same window."
+      },
+      {
+       "id": "adoption_headline",
+       "kind": "kpi",
+       "label": "Adoption · distinct code contributors and active maintainers",
+       "tag": "DECISION",
+       "source": "LFX",
+       "how": "contributors by=total project=<slug> window; maintainers by=total project=<slug> (today)."
+      }
+     ]
+    },
+    {
+     "title": "Goal progress · quarterly plan",
+     "subtitle": "Every goal carries a KPI, budget, timeline and owner",
+     "items": [
+      {
+       "id": "goal_progress",
+       "kind": "table",
+       "label": "Goals vs. progress",
+       "tag": "DECISION",
+       "source": "Quarterly Marketing Plan document",
+       "how": "Read the goals (KPI, target, budget, owner, timeline) from the Quarterly Marketing Plan deck or Campaign Brief if the user supplies one; fill progress from the LFX/HubSpot figures gathered for the outcome pages.",
+       "columns": [
+        "Goal",
+        "Outcome",
+        "KPI",
+        "Target",
+        "Progress",
+        "Budget",
+        "Status"
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Needs attention",
+     "subtitle": "AI summary · the decisions where marketing can move a goal before period close",
+     "items": [
+      {
+       "id": "needs_attention",
+       "kind": "note",
+       "label": "Three items, each tied to a figure on a later page",
+       "tag": "",
+       "source": "agent",
+       "how": "Write 2–3 short alerts from the live figures only (largest gap to goal, steepest negative trend, one opportunity). Never invent a number; cite the page each figure comes from."
+      }
+     ]
+    },
+    {
+     "title": "Marketing contribution to outcomes",
+     "subtitle": "Share of each outcome's result that marketing sourced or influenced",
+     "items": [
+      {
+       "id": "contribution_by_outcome",
+       "kind": "table",
+       "label": "Marketing-sourced vs. marketing-influenced by outcome",
+       "tag": "DECISION",
+       "source": "HubSpot",
+       "how": "get_campaign_attribution_reports (read tool_guidance first): metrics CONTACT_COUNT, DEAL_COUNT; dimensions CAMPAIGN or UTM_MEDIUM; attributionModel LINEAR vs FIRST_INTERACTION. Map campaigns to outcomes by campaign name/type.",
+       "columns": [
+        "Outcome",
+        "Result",
+        "Mktg-sourced",
+        "Mktg-influenced",
+        "Basis"
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Inbound by medium",
+     "subtitle": "Where the period's engaged and sales-ready contacts came from",
+     "items": [
+      {
+       "id": "inbound_by_medium",
+       "kind": "table",
+       "label": "Reach → engaged → sales-ready by medium",
+       "tag": "SIGNAL",
+       "source": "mixed",
+       "how": "Direct and Web (HubSpot-hosted) from HubSpot; Paid requires ads connector; Social requires Sprout Social. Fill what is available; the builder writes a per-row notice for the rest.",
+       "columns": [
+        "Medium",
+        "Reach",
+        "Engaged",
+        "Sales-ready",
+        "Cost / SRC",
+        "Trend"
+       ],
+       "row_sources": {
+        "Paid": "Google Ads / LinkedIn Ads",
+        "Social": "Sprout Social",
+        "Web": "Google Analytics (GA4)",
+        "Direct": "HubSpot"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "all-paid",
+   "level": 2,
+   "title": "All › Paid",
+   "question": "Is every paid dollar buying an outcome at an acceptable cost?",
+   "subtitle": "Medium: Paid · standard metrics per source: spend, impressions, clicks, CTR, CPC, conversions, cost / conversion, ROAS",
+   "sections": [
+    {
+     "title": "Paid · key metrics",
+     "subtitle": "Period totals across all paid sources",
+     "items": [
+      {
+       "id": "paid_spend",
+       "kind": "kpi",
+       "label": "Spend",
+       "tag": "",
+       "source": "Google Ads / LinkedIn Ads",
+       "how": "Sum of spend across ad accounts for the period."
+      },
+      {
+       "id": "paid_impressions",
+       "kind": "kpi",
+       "label": "Impressions",
+       "tag": "",
+       "source": "Google Ads / LinkedIn Ads",
+       "how": ""
+      },
+      {
+       "id": "paid_ctr",
+       "kind": "kpi",
+       "label": "Blended CTR",
+       "tag": "SIGNAL",
+       "source": "Google Ads / LinkedIn Ads",
+       "how": ""
+      },
+      {
+       "id": "paid_cpc",
+       "kind": "kpi",
+       "label": "Blended CPC",
+       "tag": "",
+       "source": "Google Ads / LinkedIn Ads",
+       "how": ""
+      },
+      {
+       "id": "paid_cost_per_conv",
+       "kind": "kpi",
+       "label": "Cost / conversion",
+       "tag": "DECISION",
+       "source": "Google Ads / LinkedIn Ads",
+       "how": ""
+      },
+      {
+       "id": "paid_roas",
+       "kind": "kpi",
+       "label": "ROAS (floor 2.0×)",
+       "tag": "DECISION",
+       "source": "Google Ads / LinkedIn Ads",
+       "how": ""
+      }
+     ]
+    },
+    {
+     "title": "Sources · standard metrics",
+     "subtitle": "Paid social · Search ads · Retargeting · 3rd-party ads · 3rd-party newsletters · Affiliate",
+     "items": [
+      {
+       "id": "paid_sources",
+       "kind": "table",
+       "label": "Paid sources",
+       "tag": "DECISION",
+       "source": "Google Ads / LinkedIn Ads",
+       "how": "One row per paid source (UTM source registry).",
+       "columns": [
+        "Source",
+        "Spend",
+        "Impressions",
+        "Clicks",
+        "CTR",
+        "CPC",
+        "Conv.",
+        "Cost / conv.",
+        "ROAS"
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Cost per conversion by business outcome",
+     "subtitle": "Each outcome has its own benchmark — never compare event promo against membership awareness",
+     "items": [
+      {
+       "id": "paid_cost_by_outcome",
+       "kind": "table",
+       "label": "Cost per conversion by outcome",
+       "tag": "DECISION",
+       "source": "Google Ads / LinkedIn Ads",
+       "how": "Group ads campaigns by business outcome (campaign naming or UTM campaign).",
+       "columns": [
+        "Outcome",
+        "Spend",
+        "Clicks",
+        "CPC",
+        "Conversions",
+        "Conversion =",
+        "Cost / conv.",
+        "Benchmark"
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Ad variant test · CTR by message",
+     "subtitle": "Variants tagged with their primary message",
+     "items": [
+      {
+       "id": "paid_ad_variants",
+       "kind": "table",
+       "label": "CTR by ad variant / message tag",
+       "tag": "DECISION",
+       "source": "Google Ads / LinkedIn Ads",
+       "how": "Requires a message-tag attribute on every ad.",
+       "columns": [
+        "Variant · message tag",
+        "Impressions",
+        "CTR",
+        "Conv. rate"
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Top converting keywords & terms",
+     "subtitle": "Search ads",
+     "items": [
+      {
+       "id": "paid_keywords",
+       "kind": "table",
+       "label": "Top converting keywords",
+       "tag": "DECISION",
+       "source": "Google Ads / LinkedIn Ads",
+       "how": "",
+       "columns": [
+        "Keyword / term",
+        "Clicks",
+        "Conv.",
+        "Conv. rate",
+        "CPC"
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Impressions & reach by audience segment",
+     "subtitle": "Are we reaching new profiles or re-hitting the existing community?",
+     "items": [
+      {
+       "id": "paid_segments",
+       "kind": "table",
+       "label": "Reach by audience segment",
+       "tag": "SIGNAL",
+       "source": "Google Ads / LinkedIn Ads",
+       "how": "Ad-platform audience definitions mapped to ICP personas.",
+       "columns": [
+        "Audience segment",
+        "Impressions",
+        "Reach",
+        "Share",
+        "CTR"
+       ]
+      }
+     ]
+    },
+    {
+     "title": "12-week trend",
+     "subtitle": "Blended CTR and cost per conversion by week",
+     "items": [
+      {
+       "id": "paid_trend",
+       "kind": "table",
+       "label": "Weekly trend",
+       "tag": "SIGNAL",
+       "source": "Google Ads / LinkedIn Ads",
+       "how": "",
+       "columns": [
+        "Week",
+        "CTR",
+        "Cost / conv.",
+        "Spend"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "all-paid-budget",
+   "level": 2,
+   "title": "All › Paid › Budget",
+   "question": "Is spend following results?",
+   "subtitle": "Budget set per goal in the quarterly plan · reallocations are human-gated",
+   "sections": [
+    {
+     "title": "Budget · key metrics",
+     "subtitle": "",
+     "items": [
+      {
+       "id": "budget_total",
+       "kind": "kpi",
+       "label": "Total marketing budget for the period",
+       "tag": "",
+       "source": "Quarterly Marketing Plan document",
+       "how": "From the Quarterly Marketing Plan."
+      },
+      {
+       "id": "budget_spent",
+       "kind": "kpi",
+       "label": "Spent to date",
+       "tag": "",
+       "source": "Quarterly Marketing Plan document",
+       "how": "From the plan's budget tracker or finance export."
+      },
+      {
+       "id": "budget_pacing",
+       "kind": "kpi",
+       "label": "Pacing vs. plan",
+       "tag": "SIGNAL",
+       "source": "Quarterly Marketing Plan document",
+       "how": ""
+      },
+      {
+       "id": "budget_paid_share",
+       "kind": "kpi",
+       "label": "Paid media share of spend",
+       "tag": "",
+       "source": "Google Ads / LinkedIn Ads",
+       "how": ""
+      },
+      {
+       "id": "budget_roas",
+       "kind": "kpi",
+       "label": "Blended ROAS",
+       "tag": "SIGNAL",
+       "source": "Google Ads / LinkedIn Ads",
+       "how": ""
+      },
+      {
+       "id": "budget_hot_reserve",
+       "kind": "kpi",
+       "label": "Opportunistic (HOT) reserve remaining",
+       "tag": "DECISION",
+       "source": "Quarterly Marketing Plan document",
+       "how": ""
+      }
+     ]
+    },
+    {
+     "title": "Budget by business outcome",
+     "subtitle": "Where the money goes vs. where results come from",
+     "items": [
+      {
+       "id": "budget_by_outcome",
+       "kind": "table",
+       "label": "Budget vs. spend vs. goal progress",
+       "tag": "DECISION",
+       "source": "Quarterly Marketing Plan document",
+       "how": "Goal budgets from the plan; goal progress from the outcome pages.",
+       "columns": [
+        "Outcome",
+        "Goal budget",
+        "Spent",
+        "% spent",
+        "of which Paid",
+        "ROAS",
+        "Goal progress",
+        "Status"
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Planned vs. opportunistic (HOT)",
+     "subtitle": "Discretionary reserve for in-quarter opportunities",
+     "items": [
+      {
+       "id": "budget_planned_vs_hot",
+       "kind": "table",
+       "label": "Planned campaigns · HOT used · HOT remaining",
+       "tag": "",
+       "source": "Quarterly Marketing Plan document",
+       "how": "",
+       "columns": [
+        "Bucket",
+        "Amount",
+        "Share",
+        "Note"
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Paid spend by source",
+     "subtitle": "Planned vs. actual",
+     "items": [
+      {
+       "id": "budget_paid_by_source",
+       "kind": "table",
+       "label": "Planned vs. actual by paid source",
+       "tag": "",
+       "source": "Google Ads / LinkedIn Ads",
+       "how": "",
+       "columns": [
+        "Source",
+        "Planned",
+        "Spent",
+        "% spent",
+        "ROAS",
+        "Status"
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Agent recommendation",
+     "subtitle": "Reallocation proposal, if the figures support one",
+     "items": [
+      {
+       "id": "budget_recommendation",
+       "kind": "note",
+       "label": "One proposal with the evidence",
+       "tag": "",
+       "source": "agent",
+       "how": "Only when both budget and ROAS data exist; otherwise write 'No recommendation — requires budget and paid-media data.'"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "all-social",
+   "level": 2,
+   "title": "All › Social",
+   "question": "Is social growing our reach and moving people to owned properties?",
+   "subtitle": "Medium: Social (organic) · standard metrics per source: followers, net new / wk, posts, impressions, engagements, engagement rate, link clicks, site sessions",
+   "sections": [
+    {
+     "title": "Social accounts · key metrics",
+     "subtitle": "Owned accounts (publishing analytics)",
+     "items": [
+      {
+       "id": "social_followers",
+       "kind": "kpi",
+       "label": "Followers · all accounts",
+       "tag": "",
+       "source": "Sprout Social",
+       "how": ""
+      },
+      {
+       "id": "social_follower_growth",
+       "kind": "kpi",
+       "label": "Follower growth rate (net new / week)",
+       "tag": "WATCH",
+       "source": "Sprout Social",
+       "how": ""
+      },
+      {
+       "id": "social_impressions",
+       "kind": "kpi",
+       "label": "Impressions",
+       "tag": "",
+       "source": "Sprout Social",
+       "how": ""
+      },
+      {
+       "id": "social_engagement_rate",
+       "kind": "kpi",
+       "label": "Engagement rate",
+       "tag": "DECISION",
+       "source": "Sprout Social",
+       "how": ""
+      },
+      {
+       "id": "social_link_clicks",
+       "kind": "kpi",
+       "label": "Link clicks",
+       "tag": "SIGNAL",
+       "source": "Sprout Social",
+       "how": ""
+      },
+      {
+       "id": "social_sessions",
+       "kind": "kpi",
+       "label": "Sessions driven to site",
+       "tag": "SIGNAL",
+       "source": "Google Analytics (GA4)",
+       "how": "GA4 sessions with medium=social."
+      }
+     ]
+    },
+    {
+     "title": "Sources · standard metrics",
+     "subtitle": "LinkedIn · X · Bluesky/Mastodon · Meta/WeChat · Reddit · YouTube/Medium/Stack Overflow · Slack/Discord",
+     "items": [
+      {
+       "id": "social_sources",
+       "kind": "table",
+       "label": "Social sources",
+       "tag": "",
+       "source": "Sprout Social",
+       "how": "",
+       "columns": [
+        "Source",
+        "Followers",
+        "Net new / wk",
+        "Posts",
+        "Impressions",
+        "Engagements",
+        "Eng. rate",
+        "Link clicks",
+        "Sessions"
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Social listening · key metrics",
+     "subtitle": "Mentions of the project across social and web platforms (LFX Lens)",
+     "items": [
+      {
+       "id": "sl_mentions",
+       "kind": "kpi",
+       "label": "Mentions in period",
+       "tag": "SIGNAL",
+       "source": "LFX",
+       "how": "social_mentions by=total project=<slug> start/end=period."
+      },
+      {
+       "id": "sl_unique_authors",
+       "kind": "kpi",
+       "label": "Unique authors",
+       "tag": "",
+       "source": "LFX",
+       "how": "same call · social_listening_unique_authors."
+      },
+      {
+       "id": "sl_positive",
+       "kind": "kpi",
+       "label": "Positive mentions",
+       "tag": "SIGNAL",
+       "source": "LFX",
+       "how": "same call."
+      },
+      {
+       "id": "sl_negative",
+       "kind": "kpi",
+       "label": "Negative mentions",
+       "tag": "WATCH",
+       "source": "LFX",
+       "how": "same call."
+      },
+      {
+       "id": "sl_reach",
+       "kind": "kpi",
+       "label": "Potential reach (sum of author followers)",
+       "tag": "SIGNAL",
+       "source": "LFX",
+       "how": "social_reach by=total project=<slug>."
+      },
+      {
+       "id": "sl_avg_followers",
+       "kind": "kpi",
+       "label": "Avg author followers per mention",
+       "tag": "",
+       "source": "LFX",
+       "how": "social_reach · social_listening_avg_author_followers."
+      }
+     ]
+    },
+    {
+     "title": "Social listening by network",
+     "subtitle": "Where the conversation happens",
+     "items": [
+      {
+       "id": "sl_by_network",
+       "kind": "table",
+       "label": "Mentions by network",
+       "tag": "SIGNAL",
+       "source": "LFX",
+       "how": "social_mentions by=network project=<slug>.",
+       "columns": [
+        "Network",
+        "Mentions",
+        "Unique authors",
+        "Positive",
+        "Negative"
+       ]
+      },
+      {
+       "id": "sl_trend_weekly",
+       "kind": "table",
+       "label": "Mentions by week",
+       "tag": "SIGNAL",
+       "source": "LFX",
+       "how": "social_mentions by=total period=week.",
+       "columns": [
+        "Week",
+        "Mentions",
+        "Positive",
+        "Negative"
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Engagement rate by content type",
+     "subtitle": "Video vs. carousel vs. text vs. link — like-for-like by message tag",
+     "items": [
+      {
+       "id": "social_content_type",
+       "kind": "table",
+       "label": "Engagement by content type",
+       "tag": "DECISION",
+       "source": "Sprout Social",
+       "how": "",
+       "columns": [
+        "Content type",
+        "Posts",
+        "Eng. rate",
+        "Link CTR"
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Top posts by message tag",
+     "subtitle": "Which narrative threads resonate",
+     "items": [
+      {
+       "id": "social_message_tags",
+       "kind": "table",
+       "label": "Top posts by message tag",
+       "tag": "DECISION",
+       "source": "Sprout Social",
+       "how": "Requires a message tag on every post.",
+       "columns": [
+        "Message tag",
+        "Posts",
+        "Avg eng. rate",
+        "Top post"
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Event social lift · pre / during / post",
+     "subtitle": "Event weeks vs. the non-event baseline",
+     "items": [
+      {
+       "id": "social_event_lift",
+       "kind": "table",
+       "label": "Event lift",
+       "tag": "SIGNAL",
+       "source": "LFX",
+       "how": "social_mentions by=total period=week; compare the event week(s) with the trailing 8-week baseline for each event in the events table. Add Sprout engagement lift when that connector exists.",
+       "columns": [
+        "Event",
+        "Pre (2 wks)",
+        "During",
+        "Post (2 wks)",
+        "Lift vs. baseline"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "all-web",
+   "level": 2,
+   "title": "All › Web",
+   "question": "Is the website finding the right people and converting them?",
+   "subtitle": "Medium: Web · standard metrics per source: sessions, unique visitors, page views, pages / session, time on page, scroll depth, conversions, conversion rate",
+   "sections": [
+    {
+     "title": "Web · key metrics",
+     "subtitle": "",
+     "items": [
+      {
+       "id": "web_sessions",
+       "kind": "kpi",
+       "label": "Sessions",
+       "tag": "",
+       "source": "Google Analytics (GA4)",
+       "how": ""
+      },
+      {
+       "id": "web_uniques",
+       "kind": "kpi",
+       "label": "Unique visitors",
+       "tag": "",
+       "source": "Google Analytics (GA4)",
+       "how": ""
+      },
+      {
+       "id": "web_organic_share",
+       "kind": "kpi",
+       "label": "Organic search share",
+       "tag": "SIGNAL",
+       "source": "Google Analytics (GA4)",
+       "how": ""
+      },
+      {
+       "id": "web_time_on_page",
+       "kind": "kpi",
+       "label": "Avg time on page",
+       "tag": "SIGNAL",
+       "source": "Google Analytics (GA4)",
+       "how": "HubSpot content analytics TIME_PER_PAGEVIEW for HubSpot-hosted pages."
+      },
+      {
+       "id": "web_scroll_depth",
+       "kind": "kpi",
+       "label": "Scroll depth (median)",
+       "tag": "",
+       "source": "Google Analytics (GA4)",
+       "how": "Requires GA4 enhanced-measurement scroll event."
+      },
+      {
+       "id": "web_cta_conv_rate",
+       "kind": "kpi",
+       "label": "CTA conversion rate",
+       "tag": "DECISION",
+       "source": "HubSpot",
+       "how": "get_content_analytics_report mode=TOTALS sortMetric=CTA_RATE / SUBMISSIONS for HubSpot-hosted pages."
+      }
+     ]
+    },
+    {
+     "title": "Sources · standard metrics",
+     "subtitle": "Pages · Blogs · Landing pages · CTAs · Banners",
+     "items": [
+      {
+       "id": "web_sources",
+       "kind": "table",
+       "label": "Web sources",
+       "tag": "",
+       "source": "Google Analytics (GA4)",
+       "how": "HubSpot-hosted landing pages, website pages and blog posts: get_content_analytics_report mode=TOTALS (RAW_VIEWS, VISITS, SUBMISSIONS, CTA_VIEWS, CTA_CLICKS, ENTRANCES, EXITS, PAGE_BOUNCE_RATE, TIME_PER_PAGEVIEW). Non-HubSpot properties require GA4.",
+       "columns": [
+        "Source",
+        "Sessions",
+        "Uniques",
+        "Page views",
+        "Pages / sess.",
+        "Time on page",
+        "Scroll",
+        "Conv.",
+        "Conv. rate"
+       ],
+       "alt_source": "HubSpot"
+      }
+     ]
+    },
+    {
+     "title": "Traffic by narrative tag",
+     "subtitle": "Content tagged by narrative — which topics drive organic discovery",
+     "items": [
+      {
+       "id": "web_narrative_tags",
+       "kind": "table",
+       "label": "Traffic by narrative tag",
+       "tag": "DECISION",
+       "source": "CMS narrative tags",
+       "how": "Requires a narrative taxonomy in the CMS plus GA4.",
+       "columns": [
+        "Narrative tag",
+        "Sessions",
+        "Organic share",
+        "Time on page",
+        "Conv. rate"
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Organic search traffic by keyword",
+     "subtitle": "Is the narrative cutting through beyond owned channels?",
+     "items": [
+      {
+       "id": "web_organic_keywords",
+       "kind": "table",
+       "label": "Organic search by keyword",
+       "tag": "SIGNAL",
+       "source": "Google Search Console",
+       "how": "",
+       "columns": [
+        "Keyword",
+        "Clicks",
+        "Impressions",
+        "Avg position",
+        "QoQ"
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Top landing pages",
+     "subtitle": "Where people enter",
+     "items": [
+      {
+       "id": "web_top_landing",
+       "kind": "table",
+       "label": "Top landing pages",
+       "tag": "SIGNAL",
+       "source": "HubSpot",
+       "how": "get_content_analytics_report mode=TOTALS sortMetric=ENTRANCES limit=10 (HubSpot-hosted); GA4 for others.",
+       "columns": [
+        "Page",
+        "Entrances",
+        "Bounce",
+        "Conv. rate"
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Top exit pages",
+     "subtitle": "Where journeys break — exits before the CTA",
+     "items": [
+      {
+       "id": "web_top_exit",
+       "kind": "table",
+       "label": "Top exit pages",
+       "tag": "SIGNAL",
+       "source": "HubSpot",
+       "how": "get_content_analytics_report mode=TOTALS sortMetric=EXITS limit=10.",
+       "columns": [
+        "Page",
+        "Exits",
+        "Exit rate",
+        "Journey"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "all-direct",
+   "level": 2,
+   "title": "All › Direct",
+   "question": "Is every direct message reaching its segment and doing its one job?",
+   "subtitle": "Medium: Direct · standard metrics per source: audience, sends, delivered, open rate, CTR, conversions, conversion rate, unsubscribe rate, active vs. dormant",
+   "sections": [
+    {
+     "title": "Direct · key metrics",
+     "subtitle": "All marketing email in the period",
+     "items": [
+      {
+       "id": "direct_sends",
+       "kind": "kpi",
+       "label": "Sends",
+       "tag": "",
+       "source": "HubSpot",
+       "how": "get_marketing_email_analytics analysisRequest={_type:OVERVIEW, statisticsSection:{startDate,endDate,frequency:TOTAL}}."
+      },
+      {
+       "id": "direct_open_rate",
+       "kind": "kpi",
+       "label": "Open rate (directional — Apple MPP inflates it)",
+       "tag": "DECISION",
+       "source": "HubSpot",
+       "how": "same call: opens / delivered."
+      },
+      {
+       "id": "direct_ctr",
+       "kind": "kpi",
+       "label": "Click-through rate",
+       "tag": "",
+       "source": "HubSpot",
+       "how": "same call: clicks / delivered."
+      },
+      {
+       "id": "direct_conv_rate",
+       "kind": "kpi",
+       "label": "Campaign conversion rate",
+       "tag": "DECISION",
+       "source": "HubSpot",
+       "how": "Form submissions or goal completions attributed to email: get_campaign_attribution_reports ASSET_TYPE=EMAIL, or read_campaign_data GET_ASSET_METRICS assetType=MARKETING_EMAIL."
+      },
+      {
+       "id": "direct_unsub_rate",
+       "kind": "kpi",
+       "label": "Unsubscribe rate",
+       "tag": "WATCH",
+       "source": "HubSpot",
+       "how": "same OVERVIEW call: unsubscribes / delivered."
+      },
+      {
+       "id": "direct_list_health",
+       "kind": "kpi",
+       "label": "List health · active share",
+       "tag": "WATCH",
+       "source": "HubSpot",
+       "how": "query_crm_data: COUNT(*) FROM CONTACT WHERE hs_email_last_open_date >= <90 days ago> vs. total marketing contacts; confirm the dormant definition with Marketing Ops."
+      }
+     ]
+    },
+    {
+     "title": "Sources · standard metrics",
+     "subtitle": "Newsletter · Invites & reminders · Nurture sequences · Surveys · Social DM · Slack/Discord · SMS",
+     "items": [
+      {
+       "id": "direct_sources",
+       "kind": "table",
+       "label": "Direct sources",
+       "tag": "",
+       "source": "HubSpot",
+       "how": "OVERVIEW with dimensions=[MARKETING_EMAIL_OBJECT_ID]; classify emails by type/name (newsletter, invite, nurture, survey) via search_crm_objects MARKETING_EMAIL. Social DM requires Sales Navigator; Slack/Discord and SMS have no connector.",
+       "columns": [
+        "Source",
+        "Audience",
+        "Sends",
+        "Open rate",
+        "CTR",
+        "Conv.",
+        "Conv. rate",
+        "Unsub.",
+        "Active"
+       ],
+       "row_sources": {
+        "Social DM": "LinkedIn Sales Navigator",
+        "Slack · Discord": "Slack/Discord analytics",
+        "SMS": "SMS platform"
+       }
+      }
+     ]
+    },
+    {
+     "title": "Open rate & CTR by audience segment",
+     "subtitle": "Members, community and prospects tracked separately",
+     "items": [
+      {
+       "id": "direct_by_segment",
+       "kind": "table",
+       "label": "By audience segment",
+       "tag": "DECISION",
+       "source": "HubSpot",
+       "how": "Requires the segment (list) attached at send time; otherwise approximate with HubSpot lists (member key contacts, community, prospects) and per-email stats.",
+       "columns": [
+        "Segment",
+        "Contacts",
+        "Open rate",
+        "CTR",
+        "Conv. rate"
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Conversion & unsubscribe by campaign type",
+     "subtitle": "Every email has one goal — did it accomplish it?",
+     "items": [
+      {
+       "id": "direct_by_campaign_type",
+       "kind": "table",
+       "label": "By campaign type",
+       "tag": "WATCH",
+       "source": "HubSpot",
+       "how": "",
+       "columns": [
+        "Campaign type",
+        "Goal",
+        "Sends",
+        "Conv. rate",
+        "Unsub. rate"
+       ]
+      }
+     ]
+    },
+    {
+     "title": "List health · active vs. dormant",
+     "subtitle": "Month over month · deliverability risk",
+     "items": [
+      {
+       "id": "direct_list_health_table",
+       "kind": "table",
+       "label": "List health by list",
+       "tag": "WATCH",
+       "source": "HubSpot",
+       "how": "query_crm_data with hs_crm_search.ilsListIds per list; active = open or click in 90 days.",
+       "columns": [
+        "List",
+        "Size",
+        "Active %",
+        "MoM"
+       ]
+      }
+     ]
+    },
+    {
+     "title": "12-week trend",
+     "subtitle": "CTR and conversion rate by week",
+     "items": [
+      {
+       "id": "direct_trend",
+       "kind": "table",
+       "label": "Weekly trend",
+       "tag": "",
+       "source": "HubSpot",
+       "how": "OVERVIEW frequency=WEEKLY.",
+       "columns": [
+        "Week",
+        "Sends",
+        "Open rate",
+        "CTR",
+        "Unsub."
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "all-attribution",
+   "level": 2,
+   "title": "All › Attribution",
+   "question": "Which mediums deserve credit for this period's outcomes?",
+   "subtitle": "Compare models before trusting any single number · sourced vs. influenced are both shown",
+   "sections": [
+    {
+     "title": "Attribution · key metrics",
+     "subtitle": "Closed-won membership deals in the period",
+     "items": [
+      {
+       "id": "attr_mktg_sourced",
+       "kind": "kpi",
+       "label": "Marketing-sourced revenue / deals",
+       "tag": "DECISION",
+       "source": "HubSpot",
+       "how": "get_campaign_attribution_reports metrics=[REVENUE,DEAL_COUNT] attributionModel=FIRST_INTERACTION (any campaign touch as first interaction)."
+      },
+      {
+       "id": "attr_mktg_influenced",
+       "kind": "kpi",
+       "label": "Marketing-influenced revenue / deals",
+       "tag": "DECISION",
+       "source": "HubSpot",
+       "how": "same, attributionModel=LINEAR; influenced = deals with ≥1 campaign touch."
+      },
+      {
+       "id": "attr_sales_only",
+       "kind": "kpi",
+       "label": "Sales-only (no marketing touch)",
+       "tag": "",
+       "source": "HubSpot",
+       "how": "closed-won deals in period (query_crm_data DEAL) minus influenced deals."
+      },
+      {
+       "id": "attr_avg_touches",
+       "kind": "kpi",
+       "label": "Avg touches to close",
+       "tag": "SIGNAL",
+       "source": "HubSpot",
+       "how": "ATTRIBUTION_COUNT / DEAL_COUNT."
+      },
+      {
+       "id": "attr_top_first",
+       "kind": "kpi",
+       "label": "Top first-touch medium",
+       "tag": "SIGNAL",
+       "source": "HubSpot",
+       "how": "dimensions=[UTM_MEDIUM] attributionModel=FIRST_INTERACTION."
+      },
+      {
+       "id": "attr_top_last",
+       "kind": "kpi",
+       "label": "Top last-touch medium",
+       "tag": "SIGNAL",
+       "source": "HubSpot",
+       "how": "dimensions=[UTM_MEDIUM] attributionModel=LAST_INTERACTION."
+      }
+     ]
+    },
+    {
+     "title": "Credit by medium under each model",
+     "subtitle": "Linear · First touch · Last touch · Time decay",
+     "items": [
+      {
+       "id": "attr_by_medium_models",
+       "kind": "table",
+       "label": "Credited revenue by medium × model",
+       "tag": "DECISION",
+       "source": "HubSpot",
+       "how": "Four calls, dimensions=[UTM_MEDIUM], one per attributionModel.",
+       "columns": [
+        "Medium",
+        "Linear",
+        "First touch",
+        "Last touch",
+        "Time decay"
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Model agreement",
+     "subtitle": "Where the models agree, act with confidence",
+     "items": [
+      {
+       "id": "attr_model_agreement",
+       "kind": "table",
+       "label": "Rank of each medium under each model",
+       "tag": "",
+       "source": "HubSpot",
+       "how": "Derived from the table above.",
+       "columns": [
+        "Medium",
+        "Linear",
+        "First",
+        "Last",
+        "Decay"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "memberships",
+   "level": 1,
+   "title": "Memberships",
+   "question": "Is marketing generating and protecting member commitment?",
+   "subtitle": "Business outcome: Memberships · Platinum, Gold, Silver (or the foundation's equivalents)",
+   "sections": [
+    {
+     "title": "Goals · quarterly plan",
+     "subtitle": "Goals for this outcome",
+     "items": [
+      {
+       "id": "mem_goals",
+       "kind": "table",
+       "label": "Membership goals",
+       "tag": "DECISION",
+       "source": "Quarterly Marketing Plan document",
+       "how": "From the Quarterly Marketing Plan; progress from the figures below.",
+       "columns": [
+        "Goal",
+        "KPI",
+        "Target",
+        "Progress",
+        "Budget",
+        "Status"
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Membership state (LFX)",
+     "subtitle": "Foundation-level memberships attach at the foundation; state today unless noted",
+     "items": [
+      {
+       "id": "mem_current_count",
+       "kind": "kpi",
+       "label": "Active memberships (project-account pairs)",
+       "tag": "",
+       "source": "LFX",
+       "how": "memberships by=total project=<slug>."
+      },
+      {
+       "id": "mem_member_orgs",
+       "kind": "kpi",
+       "label": "Distinct member organizations",
+       "tag": "DECISION",
+       "source": "LFX",
+       "how": "member_organizations project=<slug>."
+      },
+      {
+       "id": "mem_list_revenue",
+       "kind": "kpi",
+       "label": "Active membership list-price revenue (not dues billed)",
+       "tag": "",
+       "source": "LFX",
+       "how": "memberships by=total · current_membership_revenue."
+      },
+      {
+       "id": "mem_new",
+       "kind": "kpi",
+       "label": "New memberships sold in period (new business)",
+       "tag": "DECISION",
+       "source": "LFX",
+       "how": "new_members by=total project=<slug> start_date=<period start>."
+      },
+      {
+       "id": "mem_churn",
+       "kind": "kpi",
+       "label": "Memberships churned in period",
+       "tag": "WATCH",
+       "source": "LFX",
+       "how": "membership_churn by=total project=<slug> start_date=<period start>."
+      },
+      {
+       "id": "mem_lost_orgs",
+       "kind": "kpi",
+       "label": "Organizations lost in period",
+       "tag": "WATCH",
+       "source": "LFX",
+       "how": "lost_member_organizations project=<slug> start_date=<period start>."
+      }
+     ]
+    },
+    {
+     "title": "Membership pipeline",
+     "subtitle": "HubSpot leads joined to closed members — the funnel is the join",
+     "items": [
+      {
+       "id": "mem_leads_pipeline",
+       "kind": "kpi",
+       "label": "Member leads in pipeline",
+       "tag": "DECISION",
+       "source": "HubSpot",
+       "how": "query_crm_data: SELECT COUNT(*) FROM DEAL WHERE pipeline = <membership pipeline> AND dealstage NOT IN (closed) — confirm names with search_properties."
+      },
+      {
+       "id": "mem_mktg_sourced",
+       "kind": "kpi",
+       "label": "Marketing-sourced share of pipeline",
+       "tag": "DECISION",
+       "source": "HubSpot",
+       "how": "get_campaign_attribution_reports FIRST_INTERACTION vs. total deals."
+      },
+      {
+       "id": "mem_mktg_influenced",
+       "kind": "kpi",
+       "label": "Marketing-influenced share (multi-touch)",
+       "tag": "DECISION",
+       "source": "HubSpot",
+       "how": "LINEAR / DEAL_COUNT vs. total."
+      },
+      {
+       "id": "mem_velocity",
+       "kind": "kpi",
+       "label": "Pipeline velocity · first touch → close",
+       "tag": "SIGNAL",
+       "source": "HubSpot",
+       "how": "Avg (closedate − createdate) on closed-won membership deals in period: query_crm_data."
+      },
+      {
+       "id": "mem_outreach_response",
+       "kind": "kpi",
+       "label": "Outreach response rate by target profile",
+       "tag": "SIGNAL",
+       "source": "LinkedIn Sales Navigator",
+       "how": ""
+      },
+      {
+       "id": "mem_hand_raisers",
+       "kind": "kpi",
+       "label": "Hand-raisers in period (membership inquiry forms)",
+       "tag": "DECISION",
+       "source": "HubSpot",
+       "how": "Form submissions on membership inquiry forms: search_crm_objects / query_crm_data on form submission properties."
+      }
+     ]
+    },
+    {
+     "title": "Members by tier · new, renewing, at risk",
+     "subtitle": "An at-risk Platinum is a bigger problem than an at-risk Silver",
+     "items": [
+      {
+       "id": "mem_by_tier",
+       "kind": "table",
+       "label": "Members by tier",
+       "tag": "DECISION",
+       "source": "LFX",
+       "how": "memberships by=tier project=<slug> (count, list revenue). New by tier: new_members has no tier grouping — use query_lfx_semantic_layer new_membership_count group_by asset_id tier dimension (get_dimensions first; tier literals differ per foundation). Renewing/at-risk require HubSpot renewal fields.",
+       "columns": [
+        "Tier",
+        "Members",
+        "List revenue",
+        "New in period",
+        "Renewing next qtr",
+        "At risk",
+        "Benefit use",
+        "Engaged 90d"
+       ]
+      },
+      {
+       "id": "mem_new_by_quarter",
+       "kind": "table",
+       "label": "New memberships by quarter",
+       "tag": "",
+       "source": "LFX",
+       "how": "new_members by=total project=<slug> period=quarter (trailing 5).",
+       "columns": [
+        "Quarter",
+        "New memberships",
+        "New organizations"
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Inbound marketing · member journey funnel",
+     "subtitle": "Contacts by stage · Fit × Warmth",
+     "items": [
+      {
+       "id": "mem_funnel",
+       "kind": "table",
+       "label": "Journey funnel",
+       "tag": "",
+       "source": "HubSpot",
+       "how": "query_crm_data: COUNT(*) FROM CONTACT GROUP BY lifecyclestage (or the foundation's Fit/Warmth score properties).",
+       "columns": [
+        "Stage",
+        "Contacts",
+        "Conversion from prior"
+       ]
+      },
+      {
+       "id": "mem_inbound_by_medium",
+       "kind": "table",
+       "label": "Inbound by medium and source · Memberships",
+       "tag": "",
+       "source": "mixed",
+       "how": "One row per source that served this outcome in the period. Reach/engaged/conversions come from the medium's own system: Paid = ads platforms; Social = Sprout Social; Web = GA4 (HubSpot content analytics for HubSpot-hosted pages); Direct = HubSpot email analytics. Fill the rows whose connector is present; leave the others and the builder writes the connector notice per row.",
+       "columns": [
+        "Medium",
+        "Source",
+        "Reach",
+        "Engaged",
+        "Conversions",
+        "Conv. rate",
+        "Cost / conv.",
+        "Campaign"
+       ],
+       "row_sources": {
+        "Paid": "Google Ads / LinkedIn Ads",
+        "Social": "Sprout Social",
+        "Web": "Google Analytics (GA4)",
+        "Direct": "HubSpot"
+       }
+      }
+     ]
+    },
+    {
+     "title": "Outreach response by target profile",
+     "subtitle": "Direct › Social DM (Sales Navigator)",
+     "items": [
+      {
+       "id": "mem_outreach_by_profile",
+       "kind": "table",
+       "label": "Outreach by target profile",
+       "tag": "SIGNAL",
+       "source": "LinkedIn Sales Navigator",
+       "how": "",
+       "columns": [
+        "Target profile",
+        "Sent",
+        "Replies",
+        "Rate",
+        "Meetings"
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Member health · touchpoints & amplification",
+     "subtitle": "Zero touchpoints in 90 days is a churn risk regardless of contract",
+     "items": [
+      {
+       "id": "mem_health",
+       "kind": "table",
+       "label": "Member health signals",
+       "tag": "DECISION",
+       "source": "mixed",
+       "how": "Zero-touchpoint members: HubSpot last-engagement properties on member companies (query_crm_data COMPANY) joined with LFX committee meeting attendance (query_lfx_semantic_layer attendees_count group_by primary_key__account_name, project__foundation_slug=<slug>, trailing 90 days). Amplification-kit uptake requires UTM member tagging. Message pull-through: social_mentions filtered by keyword (query_lfx_semantic_layer mention_key__keyword) — LFX.",
+       "columns": [
+        "Signal",
+        "Value",
+        "Trend",
+        "Source"
+       ],
+       "row_sources": {
+        "Zero-touchpoint members (90d)": "HubSpot",
+        "Committee meeting attendance by member (90d)": "LFX",
+        "Amplification kit uptake via UTM": "UTM member tagging",
+        "Message pull-through": "LFX",
+        "Benefit utilization by tier": "Member benefits tracker"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "events",
+   "level": 1,
+   "title": "Events",
+   "question": "Are we filling the seats and selling the sponsorships?",
+   "subtitle": "Business outcome: Events · goals: attendance and sponsorships · owned events, third-party events, community days",
+   "sections": [
+    {
+     "title": "Goals · quarterly plan",
+     "subtitle": "",
+     "items": [
+      {
+       "id": "ev_goals",
+       "kind": "table",
+       "label": "Event goals",
+       "tag": "DECISION",
+       "source": "Quarterly Marketing Plan document",
+       "how": "",
+       "columns": [
+        "Goal",
+        "KPI",
+        "Target",
+        "Progress",
+        "Budget",
+        "Status"
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Event ROI · key metrics",
+     "subtitle": "Registrations, cost and what events pay back",
+     "items": [
+      {
+       "id": "ev_regs",
+       "kind": "kpi",
+       "label": "Registrations (events starting in period)",
+       "tag": "DECISION",
+       "source": "LFX",
+       "how": "event_registrations by=total project=<slug> start/end=period → total_registrations, total_unique_registrants."
+      },
+      {
+       "id": "ev_attendance_rate",
+       "kind": "kpi",
+       "label": "Attendance rate (checked-in / registered)",
+       "tag": "SIGNAL",
+       "source": "LFX",
+       "how": "same call · total_checked_in_attendees / total_registrations; check-in exists only for some sources — say so."
+      },
+      {
+       "id": "ev_sponsorship_rev",
+       "kind": "kpi",
+       "label": "Sponsorship revenue",
+       "tag": "DECISION",
+       "source": "LFX",
+       "how": "event_sponsorships by=total project=<slug>."
+      },
+      {
+       "id": "ev_speakers",
+       "kind": "kpi",
+       "label": "Accepted speakers",
+       "tag": "",
+       "source": "LFX",
+       "how": "speakers by=total project=<slug>."
+      },
+      {
+       "id": "ev_cost_per_reg",
+       "kind": "kpi",
+       "label": "Cost / registration",
+       "tag": "SIGNAL",
+       "source": "Google Ads / LinkedIn Ads",
+       "how": "Paid spend on event campaigns / registrations — requires ads connector and plan budget."
+      },
+      {
+       "id": "ev_post_event_pipeline",
+       "kind": "kpi",
+       "label": "Post-event pipeline (90-day window)",
+       "tag": "DECISION",
+       "source": "HubSpot",
+       "how": "Attendees → HubSpot contacts → deals within 90 days: requires Cvent → HubSpot contact match (query_crm_data on event-attendance properties)."
+      },
+      {
+       "id": "ev_third_party_contacts",
+       "kind": "kpi",
+       "label": "Net new contacts · third-party events",
+       "tag": "SIGNAL",
+       "source": "HubSpot",
+       "how": "query_crm_data CONTACT WHERE hs_analytics_source / original source = event list of third-party events."
+      }
+     ]
+    },
+    {
+     "title": "Inbound by medium and source · Events",
+     "subtitle": "Registration volume and cost per registration by medium",
+     "items": [
+      {
+       "id": "ev_inbound_by_medium",
+       "kind": "table",
+       "label": "Registrations by medium and source",
+       "tag": "SIGNAL",
+       "source": "mixed",
+       "how": "One row per source that served this outcome in the period. Reach/engaged/conversions come from the medium's own system: Paid = ads platforms; Social = Sprout Social; Web = GA4 (HubSpot content analytics for HubSpot-hosted pages); Direct = HubSpot email analytics. Fill the rows whose connector is present; leave the others and the builder writes the connector notice per row.",
+       "columns": [
+        "Medium",
+        "Source",
+        "Reach",
+        "Engaged",
+        "Conversions",
+        "Conv. rate",
+        "Cost / conv.",
+        "Campaign"
+       ],
+       "row_sources": {
+        "Paid": "Google Ads / LinkedIn Ads",
+        "Social": "Sprout Social",
+        "Web": "Google Analytics (GA4)",
+        "Direct": "HubSpot"
+       }
+      }
+     ]
+    },
+    {
+     "title": "Events in period · attendance and sponsorship",
+     "subtitle": "Owned and third-party · one row per event",
+     "items": [
+      {
+       "id": "ev_events_table",
+       "kind": "table",
+       "label": "Events",
+       "tag": "DECISION",
+       "source": "LFX",
+       "how": "event_registrations by=event project=<slug> (registrations, unique registrants, checked-in); event_sponsorships by=event (revenue, count); speakers by=event. Goals per event from the plan.",
+       "columns": [
+        "Event",
+        "Type",
+        "Start date",
+        "Registered",
+        "Unique",
+        "Checked in",
+        "Sponsorship $",
+        "Sponsorships",
+        "Speakers"
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Community Days (KCD) · by region and format",
+     "subtitle": "The leading indicator for flagship-city viability",
+     "items": [
+      {
+       "id": "ev_kcd_table",
+       "kind": "table",
+       "label": "Community Days",
+       "tag": "DECISION",
+       "source": "LFX",
+       "how": "Filter the event rows above whose name contains 'Community Day' / 'KCD'; registrations and growth from event_registrations by=event over the prior year too. Region and format are not LFX fields — infer region from the event name/city where possible and mark 'requires Bevy/Cvent event metadata' otherwise.",
+       "columns": [
+        "Region",
+        "Events",
+        "In-person / hybrid",
+        "Total regs",
+        "Avg regs / event",
+        "Growth YoY"
+       ],
+       "alt_source": "Cvent"
+      }
+     ]
+    },
+    {
+     "title": "Post-event payback · 90-day window",
+     "subtitle": "Did attendees become leads or members within 90 days?",
+     "items": [
+      {
+       "id": "ev_post_event_payback",
+       "kind": "table",
+       "label": "Post-event payback",
+       "tag": "DECISION",
+       "source": "HubSpot",
+       "how": "Requires Cvent attendee → HubSpot contact join.",
+       "columns": [
+        "Event",
+        "Attendees",
+        "→ HubSpot leads",
+        "→ Sales-ready",
+        "→ Members",
+        "Pipeline"
+       ],
+       "alt_source": "Cvent"
+      }
+     ]
+    },
+    {
+     "title": "Event social lift",
+     "subtitle": "Pre / during / post vs. baseline",
+     "items": [
+      {
+       "id": "ev_social_lift",
+       "kind": "table",
+       "label": "Event social lift (mentions)",
+       "tag": "SIGNAL",
+       "source": "LFX",
+       "how": "social_mentions period=week around each event start date vs. trailing 8-week baseline.",
+       "columns": [
+        "Event",
+        "Pre (2 wks)",
+        "During",
+        "Post (2 wks)",
+        "Lift vs. baseline"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "education",
+   "level": 1,
+   "title": "Education",
+   "question": "Is marketing filling courses and converting learners to certifications?",
+   "subtitle": "Business outcome: Education · B2C (individual learners) and B2B (team training)",
+   "sections": [
+    {
+     "title": "Goals · quarterly plan",
+     "subtitle": "",
+     "items": [
+      {
+       "id": "ed_goals",
+       "kind": "table",
+       "label": "Education goals",
+       "tag": "DECISION",
+       "source": "Quarterly Marketing Plan document",
+       "how": "",
+       "columns": [
+        "Goal",
+        "KPI",
+        "Target",
+        "Progress",
+        "Budget",
+        "Status"
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Education · key metrics",
+     "subtitle": "",
+     "items": [
+      {
+       "id": "ed_enrollments",
+       "kind": "kpi",
+       "label": "Enrollments in period",
+       "tag": "DECISION",
+       "source": "LFX",
+       "how": "training_enrollments by=total project=<slug> start/end=period (platform data: TI + edX)."
+      },
+      {
+       "id": "ed_enrolled_users",
+       "kind": "kpi",
+       "label": "Enrolled users (distinct)",
+       "tag": "",
+       "source": "LFX",
+       "how": "same call · total_enrolled_users."
+      },
+      {
+       "id": "ed_certifications",
+       "kind": "kpi",
+       "label": "Certifications completed (by enrollment date)",
+       "tag": "DECISION",
+       "source": "LFX",
+       "how": "certifications by=total project=<slug>."
+      },
+      {
+       "id": "ed_free_to_paid",
+       "kind": "kpi",
+       "label": "Free → paid conversion",
+       "tag": "DECISION",
+       "source": "Thought Industries (training platform)",
+       "how": ""
+      },
+      {
+       "id": "ed_cost_per_enroll",
+       "kind": "kpi",
+       "label": "Cost / enrollment",
+       "tag": "SIGNAL",
+       "source": "Google Ads / LinkedIn Ads",
+       "how": ""
+      },
+      {
+       "id": "ed_b2b_deals",
+       "kind": "kpi",
+       "label": "B2B training deals",
+       "tag": "",
+       "source": "HubSpot",
+       "how": "query_crm_data DEAL in the training pipeline, closed-won in period."
+      }
+     ]
+    },
+    {
+     "title": "Inbound by medium and source · Education",
+     "subtitle": "Conversion = enrollment or training inquiry",
+     "items": [
+      {
+       "id": "ed_inbound_by_medium",
+       "kind": "table",
+       "label": "Enrollments by medium and source",
+       "tag": "",
+       "source": "mixed",
+       "how": "One row per source that served this outcome in the period. Reach/engaged/conversions come from the medium's own system: Paid = ads platforms; Social = Sprout Social; Web = GA4 (HubSpot content analytics for HubSpot-hosted pages); Direct = HubSpot email analytics. Fill the rows whose connector is present; leave the others and the builder writes the connector notice per row.",
+       "columns": [
+        "Medium",
+        "Source",
+        "Reach",
+        "Engaged",
+        "Conversions",
+        "Conv. rate",
+        "Cost / conv.",
+        "Campaign"
+       ],
+       "row_sources": {
+        "Paid": "Google Ads / LinkedIn Ads",
+        "Social": "Sprout Social",
+        "Web": "Google Analytics (GA4)",
+        "Direct": "HubSpot"
+       }
+      }
+     ]
+    },
+    {
+     "title": "Courses · enrollments",
+     "subtitle": "Top courses in period",
+     "items": [
+      {
+       "id": "ed_courses",
+       "kind": "table",
+       "label": "Courses",
+       "tag": "",
+       "source": "LFX",
+       "how": "training_enrollments by=course project=<slug> order_by=-total_enrollments limit=10.",
+       "columns": [
+        "Course",
+        "Enrollments",
+        "Enrolled users",
+        "YoY"
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Enrollments by month",
+     "subtitle": "Trailing 12 months",
+     "items": [
+      {
+       "id": "ed_enroll_by_month",
+       "kind": "table",
+       "label": "Enrollments by month",
+       "tag": "",
+       "source": "LFX",
+       "how": "training_enrollments by=total period=month (default trailing year).",
+       "columns": [
+        "Month",
+        "Enrollments",
+        "Enrolled users",
+        "Certifications"
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Enrollments by organization",
+     "subtitle": "Attributed enrollments (a floor — edX rows carry no account)",
+     "items": [
+      {
+       "id": "ed_enrolled_orgs",
+       "kind": "table",
+       "label": "Top organizations by enrollments",
+       "tag": "",
+       "source": "LFX",
+       "how": "training_enrollments by=org project=<slug> limit=10.",
+       "columns": [
+        "Organization",
+        "Enrollments",
+        "Enrolled users"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "audience",
+   "level": 1,
+   "title": "Audience",
+   "question": "Is the audience growing and carrying our narrative?",
+   "subtitle": "Business outcome: Audience · net new contacts, engaged contacts, reach, share of voice",
+   "sections": [
+    {
+     "title": "Goals · quarterly plan",
+     "subtitle": "",
+     "items": [
+      {
+       "id": "au_goals",
+       "kind": "table",
+       "label": "Audience goals",
+       "tag": "DECISION",
+       "source": "Quarterly Marketing Plan document",
+       "how": "",
+       "columns": [
+        "Goal",
+        "KPI",
+        "Target",
+        "Progress",
+        "Budget",
+        "Status"
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Audience · key metrics",
+     "subtitle": "",
+     "items": [
+      {
+       "id": "au_net_new_contacts",
+       "kind": "kpi",
+       "label": "Net new contacts in period",
+       "tag": "DECISION",
+       "source": "HubSpot",
+       "how": "query_crm_data: SELECT COUNT(*) FROM CONTACT WHERE createdate BETWEEN <start> AND <end> (scope to the foundation's lists/properties where they exist)."
+      },
+      {
+       "id": "au_engaged_contacts",
+       "kind": "kpi",
+       "label": "Engaged contacts (activity in 90 days)",
+       "tag": "DECISION",
+       "source": "HubSpot",
+       "how": "CONTACT WHERE hs_last_sales_activity_timestamp / hs_email_last_click_date within 90 days."
+      },
+      {
+       "id": "au_participants",
+       "kind": "kpi",
+       "label": "Community participants (any activity)",
+       "tag": "SIGNAL",
+       "source": "LFX",
+       "how": "participants by=total project=<slug> start/end=period."
+      },
+      {
+       "id": "au_social_reach",
+       "kind": "kpi",
+       "label": "Social listening reach",
+       "tag": "SIGNAL",
+       "source": "LFX",
+       "how": "social_reach by=total project=<slug>."
+      },
+      {
+       "id": "au_share_of_voice",
+       "kind": "kpi",
+       "label": "Share of voice vs. adjacent foundations",
+       "tag": "DECISION",
+       "source": "LFX",
+       "how": "query_lfx_semantic_layer social_listening_mentions group_by project__foundation_slug over the period; share = project mentions / sum of the compared foundations (state which)."
+      },
+      {
+       "id": "au_sentiment",
+       "kind": "kpi",
+       "label": "Sentiment (positive / negative share)",
+       "tag": "SIGNAL",
+       "source": "LFX",
+       "how": "social_mentions by=sentiment project=<slug>."
+      }
+     ]
+    },
+    {
+     "title": "Inbound by medium and source · Audience",
+     "subtitle": "Conversion = net new contact (subscribe, RSVP, follow, first-visit enrichment)",
+     "items": [
+      {
+       "id": "au_inbound_by_medium",
+       "kind": "table",
+       "label": "Net new contacts by medium and source",
+       "tag": "",
+       "source": "mixed",
+       "how": "One row per source that served this outcome in the period. Reach/engaged/conversions come from the medium's own system: Paid = ads platforms; Social = Sprout Social; Web = GA4 (HubSpot content analytics for HubSpot-hosted pages); Direct = HubSpot email analytics. Fill the rows whose connector is present; leave the others and the builder writes the connector notice per row.",
+       "columns": [
+        "Medium",
+        "Source",
+        "Reach",
+        "Engaged",
+        "Conversions",
+        "Conv. rate",
+        "Cost / conv.",
+        "Campaign"
+       ],
+       "row_sources": {
+        "Paid": "Google Ads / LinkedIn Ads",
+        "Social": "Sprout Social",
+        "Web": "Google Analytics (GA4)",
+        "Direct": "HubSpot"
+       }
+      }
+     ]
+    },
+    {
+     "title": "Audience mix",
+     "subtitle": "Where the audience lives · month over month",
+     "items": [
+      {
+       "id": "au_mix",
+       "kind": "table",
+       "label": "Audience mix",
+       "tag": "",
+       "source": "mixed",
+       "how": "Social followers: Sprout. Newsletter subscribers: HubSpot list size. Community members: LFX participants / Slack. Web visitors: GA4. Learners: LFX training_enrollments.",
+       "columns": [
+        "Channel",
+        "Audience",
+        "MoM"
+       ],
+       "row_sources": {
+        "Social followers": "Sprout Social",
+        "Newsletter subscribers": "HubSpot",
+        "Community participants": "LFX",
+        "Monthly web visitors": "Google Analytics (GA4)",
+        "Learners": "LFX"
+       }
+      }
+     ]
+    },
+    {
+     "title": "Narrative & message pull-through",
+     "subtitle": "Is the narrative spreading beyond our channels?",
+     "items": [
+      {
+       "id": "au_pull_through",
+       "kind": "table",
+       "label": "Mentions by message / keyword",
+       "tag": "WATCH",
+       "source": "LFX",
+       "how": "query_lfx_semantic_layer social_listening_mentions, social_listening_unique_authors group_by mention_key__keyword where project scope + period. Ask the user for the 3–5 message tags to track if not in the Message Foundation.",
+       "columns": [
+        "Message / keyword",
+        "Mentions",
+        "Unique authors",
+        "Positive",
+        "Negative",
+        "Trend"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "adoption",
+   "level": 1,
+   "title": "Adoption",
+   "question": "Are more people using, contributing to and championing the projects?",
+   "subtitle": "Business outcome: Adoption · users / downloads / stars · ambassadors · contributors · maintainers · community groups",
+   "sections": [
+    {
+     "title": "Goals · quarterly plan",
+     "subtitle": "",
+     "items": [
+      {
+       "id": "ad_goals",
+       "kind": "table",
+       "label": "Adoption goals",
+       "tag": "DECISION",
+       "source": "Quarterly Marketing Plan document",
+       "how": "",
+       "columns": [
+        "Goal",
+        "KPI",
+        "Target",
+        "Progress",
+        "Budget",
+        "Status"
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Adoption · key metrics",
+     "subtitle": "",
+     "items": [
+      {
+       "id": "ad_contributors",
+       "kind": "kpi",
+       "label": "Distinct code contributors in period",
+       "tag": "DECISION",
+       "source": "LFX",
+       "how": "contributors by=total project=<slug> start/end=period."
+      },
+      {
+       "id": "ad_contributions",
+       "kind": "kpi",
+       "label": "Code contributions in period",
+       "tag": "",
+       "source": "LFX",
+       "how": "contributions by=total project=<slug>."
+      },
+      {
+       "id": "ad_contributing_orgs",
+       "kind": "kpi",
+       "label": "Contributing organizations",
+       "tag": "",
+       "source": "LFX",
+       "how": "contributing_organizations by=total project=<slug>."
+      },
+      {
+       "id": "ad_maintainers",
+       "kind": "kpi",
+       "label": "Active maintainers (today)",
+       "tag": "DECISION",
+       "source": "LFX",
+       "how": "maintainers by=total project=<slug> (report active_maintainers and the excl_reviewers split)."
+      },
+      {
+       "id": "ad_participants",
+       "kind": "kpi",
+       "label": "Participants (any activity)",
+       "tag": "",
+       "source": "LFX",
+       "how": "participants by=total project=<slug>."
+      },
+      {
+       "id": "ad_project_health",
+       "kind": "kpi",
+       "label": "Projects with a health score · average score",
+       "tag": "SIGNAL",
+       "source": "LFX",
+       "how": "project_health by=total project=<slug> (state snapshot date)."
+      },
+      {
+       "id": "ad_downloads",
+       "kind": "kpi",
+       "label": "Monthly downloads / users",
+       "tag": "DECISION",
+       "source": "Package registries / download telemetry",
+       "how": ""
+      },
+      {
+       "id": "ad_stars",
+       "kind": "kpi",
+       "label": "Repository stars (period change)",
+       "tag": "SIGNAL",
+       "source": "LFX",
+       "how": "Ad hoc: query_lfx_semantic_layer total_activities filtered to star activity type on the project spine (explore first); mark ad hoc."
+      },
+      {
+       "id": "ad_active_ambassadors",
+       "kind": "kpi",
+       "label": "Active ambassadors / enrolled",
+       "tag": "DECISION",
+       "source": "Ambassador activity tracker",
+       "how": "Enrolled: search_committees name contains 'Ambassador' → search_committee_members count (LFX). Active (submitted activity) requires the ambassador tracker."
+      },
+      {
+       "id": "ad_rsvps",
+       "kind": "kpi",
+       "label": "Community group RSVPs / month",
+       "tag": "SIGNAL",
+       "source": "Bevy (community groups)",
+       "how": ""
+      }
+     ]
+    },
+    {
+     "title": "Inbound by medium and source · Adoption",
+     "subtitle": "Conversion = nomination, first contribution, RSVP or download from a marketing touch",
+     "items": [
+      {
+       "id": "ad_inbound_by_medium",
+       "kind": "table",
+       "label": "Conversions by medium and source",
+       "tag": "",
+       "source": "mixed",
+       "how": "One row per source that served this outcome in the period. Reach/engaged/conversions come from the medium's own system: Paid = ads platforms; Social = Sprout Social; Web = GA4 (HubSpot content analytics for HubSpot-hosted pages); Direct = HubSpot email analytics. Fill the rows whose connector is present; leave the others and the builder writes the connector notice per row.",
+       "columns": [
+        "Medium",
+        "Source",
+        "Reach",
+        "Engaged",
+        "Conversions",
+        "Conv. rate",
+        "Cost / conv.",
+        "Campaign"
+       ],
+       "row_sources": {
+        "Paid": "Google Ads / LinkedIn Ads",
+        "Social": "Sprout Social",
+        "Web": "Google Analytics (GA4)",
+        "Direct": "HubSpot"
+       }
+      }
+     ]
+    },
+    {
+     "title": "Contributors and maintainers (LFX)",
+     "subtitle": "",
+     "items": [
+      {
+       "id": "ad_contributors_by_org",
+       "kind": "table",
+       "label": "Top contributing organizations",
+       "tag": "",
+       "source": "LFX",
+       "how": "contributions by=org project=<slug> order_by=-code_contribution_activities limit=10 (report the unattributed NULL row).",
+       "columns": [
+        "Organization",
+        "Contributions",
+        "Contributors"
+       ]
+      },
+      {
+       "id": "ad_contributors_trend",
+       "kind": "table",
+       "label": "Contributors by month",
+       "tag": "",
+       "source": "LFX",
+       "how": "contributors by=total project=<slug> period=month.",
+       "columns": [
+        "Month",
+        "Contributors",
+        "Contributions"
+       ]
+      },
+      {
+       "id": "ad_maintainers_by_role",
+       "kind": "table",
+       "label": "Maintainers by role and source",
+       "tag": "",
+       "source": "LFX",
+       "how": "maintainers by=role and by=source project=<slug>.",
+       "columns": [
+        "Role / source",
+        "Active maintainers"
+       ]
+      },
+      {
+       "id": "ad_project_health_table",
+       "kind": "table",
+       "label": "Project health by category",
+       "tag": "SIGNAL",
+       "source": "LFX",
+       "how": "project_health by=category project=<slug>.",
+       "columns": [
+        "Category",
+        "Projects",
+        "Avg score"
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Community groups · active vs. stagnant by region",
+     "subtitle": "Active groups are the business signal; total groups is a vanity number",
+     "items": [
+      {
+       "id": "ad_groups_by_region",
+       "kind": "table",
+       "label": "Community groups by region",
+       "tag": "DECISION",
+       "source": "Bevy (community groups)",
+       "how": "",
+       "columns": [
+        "Region",
+        "Active",
+        "Stagnant",
+        "RSVPs / mo",
+        "MoM",
+        "Technical / general"
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Community events tied to a campaign",
+     "subtitle": "Proves community is a marketing channel",
+     "items": [
+      {
+       "id": "ad_campaign_tied_events",
+       "kind": "table",
+       "label": "Campaign-tied community events",
+       "tag": "DECISION",
+       "source": "Bevy (community groups)",
+       "how": "",
+       "columns": [
+        "Campaign",
+        "Groups participating",
+        "Events",
+        "RSVPs",
+        "Attended"
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Ambassador program",
+     "subtitle": "Active per quarter · project-specific vs. general activity",
+     "items": [
+      {
+       "id": "ad_ambassador_program",
+       "kind": "table",
+       "label": "Ambassador program by quarter",
+       "tag": "DECISION",
+       "source": "Ambassador activity tracker",
+       "how": "Enrolled from LFX committee roster; submitted activity, project-specific vs. general from the tracker.",
+       "columns": [
+        "Quarter",
+        "Enrolled",
+        "Submitted activity",
+        "Active %",
+        "Project-specific",
+        "General"
+       ],
+       "alt_source": "LFX"
+      },
+      {
+       "id": "ad_ambassador_activity_type",
+       "kind": "table",
+       "label": "Ambassador activity by contribution type",
+       "tag": "WATCH",
+       "source": "Ambassador activity tracker",
+       "how": "",
+       "columns": [
+        "Contribution type",
+        "Count",
+        "Share"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "campaigns",
+   "level": 3,
+   "title": "Goals › Campaigns",
+   "question": "Which campaigns are delivering their goals?",
+   "subtitle": "Every campaign supports one goal and carries one primary KPI",
+   "sections": [
+    {
+     "title": "Active campaigns",
+     "subtitle": "",
+     "items": [
+      {
+       "id": "campaigns_table",
+       "kind": "table",
+       "label": "Campaigns",
+       "tag": "DECISION",
+       "source": "HubSpot",
+       "how": "search_crm_objects objectType=CAMPAIGN (active in period) → read_campaign_data GET_ANALYTICS (sessions, new contacts, influenced contacts) per campaign; goal, KPI and budget from the Campaign Brief / plan.",
+       "columns": [
+        "Campaign",
+        "Outcome › goal",
+        "Stage",
+        "Mediums",
+        "Primary KPI",
+        "Result",
+        "Budget / spent",
+        "Status"
+       ],
+       "alt_source": "Quarterly Marketing Plan document"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "campaign-detail",
+   "level": 3,
+   "title": "Campaign detail",
+   "question": "One campaign, one primary KPI, every medium and source that serves it",
+   "subtitle": "Repeat this page for each active campaign (or the top 3 by budget)",
+   "sections": [
+    {
+     "title": "Campaign · key metrics",
+     "subtitle": "",
+     "items": [
+      {
+       "id": "cd_primary_kpi",
+       "kind": "kpi",
+       "label": "Primary KPI result vs. goal",
+       "tag": "DECISION",
+       "source": "HubSpot",
+       "how": "read_campaign_data GET_ANALYTICS METRICS; goal from the brief."
+      },
+      {
+       "id": "cd_budget",
+       "kind": "kpi",
+       "label": "Budget / spent",
+       "tag": "",
+       "source": "Quarterly Marketing Plan document",
+       "how": "hs_budget_items / spend on the CAMPAIGN object if maintained; otherwise the brief."
+      },
+      {
+       "id": "cd_new_contacts",
+       "kind": "kpi",
+       "label": "New contacts (first touch)",
+       "tag": "",
+       "source": "HubSpot",
+       "how": "GET_ANALYTICS · new contacts."
+      },
+      {
+       "id": "cd_influenced",
+       "kind": "kpi",
+       "label": "Influenced contacts",
+       "tag": "",
+       "source": "HubSpot",
+       "how": "GET_ANALYTICS · influenced contacts."
+      },
+      {
+       "id": "cd_sessions",
+       "kind": "kpi",
+       "label": "Sessions",
+       "tag": "",
+       "source": "HubSpot",
+       "how": "GET_ANALYTICS · sessions."
+      },
+      {
+       "id": "cd_revenue",
+       "kind": "kpi",
+       "label": "Attributed revenue (linear)",
+       "tag": "",
+       "source": "HubSpot",
+       "how": "get_campaign_attribution_reports campaignCrmObjectIds=[id] metrics=[REVENUE]."
+      }
+     ]
+    },
+    {
+     "title": "Mediums and sources in this campaign",
+     "subtitle": "",
+     "items": [
+      {
+       "id": "cd_sources",
+       "kind": "table",
+       "label": "Assets and sources",
+       "tag": "",
+       "source": "HubSpot",
+       "how": "read_campaign_data GET_ASSET_METRICS per asset type (emails, landing pages, blog posts, social posts, ads if HubSpot Ads).",
+       "columns": [
+        "Medium",
+        "Source / asset",
+        "Reach",
+        "Engaged",
+        "Contacts",
+        "Conversions",
+        "Cost"
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Campaign definition",
+     "subtitle": "From the Quarterly Campaign Brief",
+     "items": [
+      {
+       "id": "cd_definition",
+       "kind": "note",
+       "label": "RACI · lists · lead sources · content · workflow · previous result",
+       "tag": "",
+       "source": "agent",
+       "how": "Copy from the Campaign Brief if supplied; otherwise write 'Campaign Brief not supplied.'"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "source-paid-social",
+   "level": 3,
+   "title": "Paid › Paid social (source detail)",
+   "question": "One source, every business outcome it serves",
+   "subtitle": "LinkedIn, X, Reddit, Meta ads",
+   "sections": [
+    {
+     "title": "Key metrics",
+     "subtitle": "",
+     "items": [
+      {
+       "id": "sps_spend",
+       "kind": "kpi",
+       "label": "Spend",
+       "tag": "",
+       "source": "Google Ads / LinkedIn Ads",
+       "how": ""
+      },
+      {
+       "id": "sps_impr",
+       "kind": "kpi",
+       "label": "Impressions",
+       "tag": "",
+       "source": "Google Ads / LinkedIn Ads",
+       "how": ""
+      },
+      {
+       "id": "sps_ctr",
+       "kind": "kpi",
+       "label": "CTR",
+       "tag": "",
+       "source": "Google Ads / LinkedIn Ads",
+       "how": ""
+      },
+      {
+       "id": "sps_cpc",
+       "kind": "kpi",
+       "label": "CPC",
+       "tag": "",
+       "source": "Google Ads / LinkedIn Ads",
+       "how": ""
+      },
+      {
+       "id": "sps_cost_conv",
+       "kind": "kpi",
+       "label": "Cost / conversion",
+       "tag": "",
+       "source": "Google Ads / LinkedIn Ads",
+       "how": ""
+      },
+      {
+       "id": "sps_roas",
+       "kind": "kpi",
+       "label": "ROAS",
+       "tag": "",
+       "source": "Google Ads / LinkedIn Ads",
+       "how": ""
+      }
+     ]
+    },
+    {
+     "title": "By platform and business outcome",
+     "subtitle": "",
+     "items": [
+      {
+       "id": "sps_by_outcome",
+       "kind": "table",
+       "label": "Platform × outcome",
+       "tag": "DECISION",
+       "source": "Google Ads / LinkedIn Ads",
+       "how": "",
+       "columns": [
+        "Platform",
+        "Outcome",
+        "Spend",
+        "Impressions",
+        "CTR",
+        "CPC",
+        "Conv.",
+        "Cost / conv.",
+        "Campaign"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "source-social-linkedin",
+   "level": 3,
+   "title": "Social › LinkedIn organic (source detail)",
+   "question": "One source, every business outcome it serves",
+   "subtitle": "Organic LinkedIn account",
+   "sections": [
+    {
+     "title": "Key metrics",
+     "subtitle": "",
+     "items": [
+      {
+       "id": "sli_followers",
+       "kind": "kpi",
+       "label": "Followers",
+       "tag": "",
+       "source": "Sprout Social",
+       "how": ""
+      },
+      {
+       "id": "sli_posts",
+       "kind": "kpi",
+       "label": "Posts",
+       "tag": "",
+       "source": "Sprout Social",
+       "how": ""
+      },
+      {
+       "id": "sli_impr",
+       "kind": "kpi",
+       "label": "Impressions",
+       "tag": "",
+       "source": "Sprout Social",
+       "how": ""
+      },
+      {
+       "id": "sli_eng",
+       "kind": "kpi",
+       "label": "Engagement rate",
+       "tag": "",
+       "source": "Sprout Social",
+       "how": ""
+      },
+      {
+       "id": "sli_clicks",
+       "kind": "kpi",
+       "label": "Link clicks",
+       "tag": "",
+       "source": "Sprout Social",
+       "how": ""
+      },
+      {
+       "id": "sli_sessions",
+       "kind": "kpi",
+       "label": "Sessions driven",
+       "tag": "",
+       "source": "Google Analytics (GA4)",
+       "how": ""
+      }
+     ]
+    },
+    {
+     "title": "By business outcome",
+     "subtitle": "",
+     "items": [
+      {
+       "id": "sli_by_outcome",
+       "kind": "table",
+       "label": "LinkedIn by outcome",
+       "tag": "",
+       "source": "Sprout Social",
+       "how": "",
+       "columns": [
+        "Outcome",
+        "Posts",
+        "Impressions",
+        "Eng. rate",
+        "Link clicks",
+        "Conversion",
+        "Top post"
+       ]
+      }
+     ]
+    },
+    {
+     "title": "LinkedIn mentions (social listening)",
+     "subtitle": "",
+     "items": [
+      {
+       "id": "sli_mentions",
+       "kind": "table",
+       "label": "LinkedIn mentions of the project",
+       "tag": "SIGNAL",
+       "source": "LFX",
+       "how": "social_mentions by=network project=<slug> → the LinkedIn row; weekly via period=week with query_lfx_semantic_layer filter mention_key__social_network='LinkedIn'.",
+       "columns": [
+        "Week",
+        "Mentions",
+        "Unique authors",
+        "Positive",
+        "Negative"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "source-web-blogs",
+   "level": 3,
+   "title": "Web › Blogs (source detail)",
+   "question": "One source, every business outcome it serves",
+   "subtitle": "Blog posts",
+   "sections": [
+    {
+     "title": "Key metrics",
+     "subtitle": "",
+     "items": [
+      {
+       "id": "swb_sessions",
+       "kind": "kpi",
+       "label": "Sessions / visits",
+       "tag": "",
+       "source": "HubSpot",
+       "how": "get_content_analytics_report TOTALS filtered to blog posts (HubSpot-hosted); GA4 otherwise."
+      },
+      {
+       "id": "swb_uniques",
+       "kind": "kpi",
+       "label": "Unique visitors",
+       "tag": "",
+       "source": "Google Analytics (GA4)",
+       "how": ""
+      },
+      {
+       "id": "swb_time",
+       "kind": "kpi",
+       "label": "Time on page",
+       "tag": "",
+       "source": "HubSpot",
+       "how": "TIME_PER_PAGEVIEW."
+      },
+      {
+       "id": "swb_scroll",
+       "kind": "kpi",
+       "label": "Scroll depth",
+       "tag": "",
+       "source": "Google Analytics (GA4)",
+       "how": ""
+      },
+      {
+       "id": "swb_posts",
+       "kind": "kpi",
+       "label": "Posts published in period",
+       "tag": "",
+       "source": "HubSpot",
+       "how": "search_crm_objects BLOG_POST publish date in period."
+      },
+      {
+       "id": "swb_conv",
+       "kind": "kpi",
+       "label": "CTA conversions",
+       "tag": "",
+       "source": "HubSpot",
+       "how": "CTA_CLICKS / SUBMISSIONS."
+      }
+     ]
+    },
+    {
+     "title": "Top posts by narrative tag and outcome",
+     "subtitle": "",
+     "items": [
+      {
+       "id": "swb_top_posts",
+       "kind": "table",
+       "label": "Top posts",
+       "tag": "DECISION",
+       "source": "HubSpot",
+       "how": "TOTALS sortMetric=RAW_VIEWS limit=10, includeMetadata=true; narrative tag from CMS if present.",
+       "columns": [
+        "Post",
+        "Tag",
+        "Outcome",
+        "Views",
+        "Time",
+        "Scroll",
+        "Conv."
+       ],
+       "alt_source": "Google Analytics (GA4)"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "source-direct-newsletter",
+   "level": 3,
+   "title": "Direct › Newsletter (source detail)",
+   "question": "One source, every business outcome it serves",
+   "subtitle": "Weekly newsletter",
+   "sections": [
+    {
+     "title": "Key metrics",
+     "subtitle": "",
+     "items": [
+      {
+       "id": "sdn_subs",
+       "kind": "kpi",
+       "label": "Subscribers (list size)",
+       "tag": "",
+       "source": "HubSpot",
+       "how": "HubSpot list size via query_crm_data hs_crm_search.ilsListIds."
+      },
+      {
+       "id": "sdn_sends",
+       "kind": "kpi",
+       "label": "Sends in period",
+       "tag": "",
+       "source": "HubSpot",
+       "how": "OVERVIEW filtered to newsletter email ids."
+      },
+      {
+       "id": "sdn_open",
+       "kind": "kpi",
+       "label": "Open rate",
+       "tag": "",
+       "source": "HubSpot",
+       "how": ""
+      },
+      {
+       "id": "sdn_ctr",
+       "kind": "kpi",
+       "label": "CTR",
+       "tag": "",
+       "source": "HubSpot",
+       "how": ""
+      },
+      {
+       "id": "sdn_conv",
+       "kind": "kpi",
+       "label": "Conversions",
+       "tag": "",
+       "source": "HubSpot",
+       "how": ""
+      },
+      {
+       "id": "sdn_unsub",
+       "kind": "kpi",
+       "label": "Unsubscribe rate",
+       "tag": "",
+       "source": "HubSpot",
+       "how": ""
+      }
+     ]
+    },
+    {
+     "title": "By section and business outcome",
+     "subtitle": "",
+     "items": [
+      {
+       "id": "sdn_by_section",
+       "kind": "table",
+       "label": "Newsletter sections",
+       "tag": "",
+       "source": "HubSpot",
+       "how": "Per-link click data is not exposed by the connector: use per-issue stats and note the limitation.",
+       "columns": [
+        "Issue / section",
+        "Outcome",
+        "Clicks",
+        "CTR (of opens)",
+        "Conversion"
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
