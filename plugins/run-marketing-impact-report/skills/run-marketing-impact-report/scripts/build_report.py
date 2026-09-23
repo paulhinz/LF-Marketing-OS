@@ -95,9 +95,13 @@ def add_table(doc, it, data, connected):
         cell = t.rows[0].cells[j]; shade(cell, "EAF2FE"); run(cell.paragraphs[0], str(c), 8, bold=True, color=BLUE)
     for row in rows:
         cells = t.add_row().cells
+        lvl = str(row[0]).strip().upper() if (it["id"] == "defined_campaigns" and row) else ""
         for j in range(len(cols)):
             v = row[j] if j < len(row) else ""
-            run(cells[j].paragraphs[0], "" if v is None else str(v), 8.5, color=INK)
+            if lvl == "GOAL": shade(cells[j], "0B1220")
+            elif lvl == "CAMPAIGN": shade(cells[j], "EAF2FE")
+            run(cells[j].paragraphs[0], "" if v is None else str(v), 8.5, bold=(lvl in ("GOAL", "CAMPAIGN") and j <= 1),
+                color=RGBColor(0xFF, 0xFF, 0xFF) if lvl == "GOAL" else INK)
     # rows the run could not fill, by connector (e.g. Paid / Social rows of an inbound table)
     for label, conn in (it.get("row_sources") or {}).items():
         if any(str(r[0]).strip().lower() == label.lower() for r in rows if r): continue
@@ -126,11 +130,12 @@ def build(catalog, data, out):
         s.left_margin = s.right_margin = Cm(1.8); s.top_margin = s.bottom_margin = Cm(1.6)
     # footer
     fp = doc.sections[0].footer.paragraphs[0]
-    run(fp, f"LFX Marketing Impact Report · {proj.get('name','')} · {per.get('label','')} · generated {data.get('generated', datetime.date.today().isoformat())} · run-marketing-impact-report v{catalog.get('version','')}", 7.5, color=INK3)
+    run(fp, f"LFX Marketing Dashboard report · {proj.get('name','')} · {per.get('label','')} · generated {data.get('generated', datetime.date.today().isoformat())} · run-marketing-impact-report v{catalog.get('version','')}", 7.5, color=INK3)
 
     # ---- cover
     p = doc.add_paragraph(); run(p, "LFX Marketing OS", 10, bold=True, color=BLUE)
-    p = doc.add_paragraph(); run(p, "Marketing Impact Report", 26, bold=True, color=INK)
+    p = doc.add_paragraph(); run(p, "Marketing Dashboard", 26, bold=True, color=INK)
+    p = doc.add_paragraph(); run(p, "Business Outcomes and Marketing Mediums and Source Metrics", 12, color=INK2)
     p = doc.add_paragraph(); run(p, f"{proj.get('name','(project)')}  ·  {per.get('label','(period)')}", 14, color=INK2)
     p = doc.add_paragraph(); run(p, f"Data window {per.get('start','?')} → {per.get('end','?')} · generated {data.get('generated', datetime.date.today().isoformat())}", 10, color=INK3)
     doc.add_paragraph()
@@ -141,7 +146,7 @@ def build(catalog, data, out):
     p = doc.add_paragraph(); run(p, "Not connected in Claude (sections that need them carry a notice): " + ", ".join(others), 8.5, italic=True, color=INK3)
     doc.add_paragraph()
     p = doc.add_paragraph(); run(p, "How to read this report", 11, bold=True, color=INK)
-    p = doc.add_paragraph(); run(p, "One page per view of the Marketing Impact dashboard prototype, in the same hierarchy: business outcomes first (All › Outcomes, then Memberships, Events, Education, Audience, Adoption), then the mediums under All (Paid, Paid › Budget, Social, Web, Direct, Attribution), then goals, campaigns and source detail. Every metric is tagged DECISION (act on it), SIGNAL (context), or WATCH (monitor). Every figure carries its source and as-of date. Where a connector is missing the section stays and says so — nothing is estimated.", 9.5, color=INK2)
+    p = doc.add_paragraph(); run(p, "One page per view of the Marketing Dashboard prototype, in the same hierarchy: All › Summary first, then the tabs under All (Paid, Social, Web, Direct, Defined Campaigns, Budget), then each business outcome (Memberships, Events, Education, Audience, Adoption), then campaign and source detail. Every metric is tagged DECISION (act on it), SIGNAL (context), or WATCH (monitor). Every figure carries its source and as-of date. Where a connector is missing the section stays and says so — nothing is estimated.", 9.5, color=INK2)
     if data.get("summary"):
         doc.add_paragraph(); p = doc.add_paragraph(); run(p, "Executive summary", 11, bold=True, color=INK)
         p = doc.add_paragraph(); run(p, data["summary"], 9.5, color=INK)
@@ -154,7 +159,7 @@ def build(catalog, data, out):
     # ---- pages
     for i, pg in enumerate(order, 1):
         doc.add_paragraph().add_run().add_break(WD_BREAK.PAGE)
-        p = doc.add_paragraph(); run(p, {1: "BUSINESS OUTCOME", 2: "MEDIUM · UNDER ALL OUTCOMES", 3: "GOALS · CAMPAIGNS · SOURCES"}[pg["level"]], 8, bold=True, color=INK3)
+        p = doc.add_paragraph(); run(p, {1: "BUSINESS OUTCOME", 2: "UNDER ALL OUTCOMES", 3: "CAMPAIGN · SOURCE DETAIL"}[pg["level"]], 8, bold=True, color=INK3)
         p = doc.add_paragraph(); run(p, f"{i}. {pg['title']}", 18, bold=True, color=INK)
         p = doc.add_paragraph(); run(p, pg["question"], 12, bold=True, color=BLUE)
         p = doc.add_paragraph(); run(p, pg["subtitle"], 9, color=INK3)

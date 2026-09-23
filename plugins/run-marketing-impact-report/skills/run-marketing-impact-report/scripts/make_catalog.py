@@ -40,9 +40,9 @@ INBOUND_HOW = ("One row per source that served this outcome in the period. Reach
 pages = []
 
 # ---------------------------------------------------------------- P01
-pages.append(page("all-outcomes", 1, "All › Outcomes",
-  "Are we on track to the goals set in the quarterly marketing plan?",
-  "Five business outcomes · each goal defined by the project and marketing leads at the quarterly review",
+pages.append(page("all-summary", 1, "All › Summary",
+  "Outcomes from all marketing outbound channels",
+  "Overall Business Outcome Metrics · five business outcomes with associated key metrics · goals based on numbers included in the Quarterly Marketing Plan",
   [
    section("Outcome scorecard", "Headline result per business outcome for the period", [
      kpi("memberships_headline","Memberships · new memberships sold and active member organizations","DECISION",LFX,
@@ -79,7 +79,7 @@ pages.append(page("all-outcomes", 1, "All › Outcomes",
 
 # ---------------------------------------------------------------- P02 Paid
 pages.append(page("all-paid", 2, "All › Paid",
-  "Is every paid dollar buying an outcome at an acceptable cost?",
+  "Paid placement across standard sources.",
   "Medium: Paid · standard metrics per source: spend, impressions, clicks, CTR, CPC, conversions, cost / conversion, ROAS",
   [
    section("Paid · key metrics", "Period totals across all paid sources", [
@@ -115,9 +115,9 @@ pages.append(page("all-paid", 2, "All › Paid",
   ]))
 
 # ---------------------------------------------------------------- P03 Paid › Budget
-pages.append(page("all-paid-budget", 2, "All › Paid › Budget",
-  "Is spend following results?",
-  "Budget set per goal in the quarterly plan · reallocations are human-gated",
+pages.append(page("all-budget", 2, "All › Budget",
+  "All current marketing spend",
+  "Paid ads by medium type with results, plus the other marketing spend tracked by the Executive Director and Marketing Lead · budget set per goal in the quarterly plan",
   [
    section("Budget · key metrics", "", [
      kpi("budget_total","Total marketing budget for the period","",PLAN,"From the Quarterly Marketing Plan."),
@@ -134,8 +134,14 @@ pages.append(page("all-paid-budget", 2, "All › Paid › Budget",
    section("Planned vs. opportunistic (HOT)", "Discretionary reserve for in-quarter opportunities", [
      table("budget_planned_vs_hot","Planned campaigns · HOT used · HOT remaining","",PLAN,"",["Bucket","Amount","Share","Note"]),
    ]),
-   section("Paid spend by source", "Planned vs. actual", [
-     table("budget_paid_by_source","Planned vs. actual by paid source","",ADS,"",["Source","Planned","Spent","% spent","ROAS","Status"]),
+   section("Paid ads · spend and results by medium type", "Planned vs. actual per paid source, with what the spend bought", [
+     table("budget_paid_by_source","Paid ads by medium type","DECISION",ADS,"Paid social · Search ads · Retargeting · 3rd-party ads · 3rd-party newsletters · Affiliate; results from the ads platforms.",
+           ["Paid medium type","Planned","Spent","% spent","Impressions","Clicks","Conversions","Cost / conv.","ROAS","Status"]),
+   ]),
+   section("Other marketing spend", "Tracked by the Executive Director and Marketing Lead · non-ads spend against the same goals", [
+     table("budget_other_spend","Other marketing spend by category","SIGNAL",PLAN,"Event production & promotion · Content & creative · Agency, PR & AR · Community programs (KCD support, ambassador incentives) · Membership & sponsorship sales enablement · Education promotion · Martech & tools. From the plan's budget tracker or finance export; no connector today.",
+           ["Spend category","Planned","Spent","% spent","Supports (outcomes)","What it bought","Owner","Status"]),
+     kpi("budget_all_total","All marketing spend (paid ads + other) · planned vs. spent","DECISION",PLAN,"Sum of the two tables above."),
    ]),
    section("Agent recommendation", "Reallocation proposal, if the figures support one", [
      note("budget_recommendation","One proposal with the evidence","Only when both budget and ROAS data exist; otherwise write 'No recommendation — requires budget and paid-media data.'"),
@@ -144,7 +150,7 @@ pages.append(page("all-paid-budget", 2, "All › Paid › Budget",
 
 # ---------------------------------------------------------------- P04 Social
 pages.append(page("all-social", 2, "All › Social",
-  "Is social growing our reach and moving people to owned properties?",
+  "Social outbound across standard sources.",
   "Medium: Social (organic) · standard metrics per source: followers, net new / wk, posts, impressions, engagements, engagement rate, link clicks, site sessions",
   [
    section("Social accounts · key metrics", "Owned accounts (publishing analytics)", [
@@ -184,7 +190,7 @@ pages.append(page("all-social", 2, "All › Social",
 
 # ---------------------------------------------------------------- P05 Web
 pages.append(page("all-web", 2, "All › Web",
-  "Is the website finding the right people and converting them?",
+  "Owned web placements and standard sources.",
   "Medium: Web · standard metrics per source: sessions, unique visitors, page views, pages / session, time on page, scroll depth, conversions, conversion rate",
   [
    section("Web · key metrics", "", [
@@ -215,7 +221,7 @@ pages.append(page("all-web", 2, "All › Web",
 
 # ---------------------------------------------------------------- P06 Direct
 pages.append(page("all-direct", 2, "All › Direct",
-  "Is every direct message reaching its segment and doing its one job?",
+  "Direct messaging to enriched and known contacts.",
   "Medium: Direct · standard metrics per source: audience, sends, delivered, open rate, CTR, conversions, conversion rate, unsubscribe rate, active vs. dormant",
   [
    section("Direct · key metrics", "All marketing email in the period", [
@@ -245,31 +251,26 @@ pages.append(page("all-direct", 2, "All › Direct",
    ]),
   ]))
 
-# ---------------------------------------------------------------- P07 Attribution
-pages.append(page("all-attribution", 2, "All › Attribution",
-  "Which mediums deserve credit for this period's outcomes?",
-  "Compare models before trusting any single number · sourced vs. influenced are both shown",
+# ---------------------------------------------------------------- P07 Defined Campaigns
+pages.append(page("all-campaigns", 2, "All › Defined Campaigns",
+  "Goals, campaigns and tactics — with the KPI at every level",
+  "Goals (KPI, budget, timeline) from the Quarterly Marketing Plan · campaigns and tactics (activities per Medium : Source) from the Quarterly Campaign Plan",
   [
-   section("Attribution · key metrics", "Closed-won membership deals in the period", [
-     kpi("attr_mktg_sourced","Marketing-sourced revenue / deals","DECISION",HS,"get_campaign_attribution_reports metrics=[REVENUE,DEAL_COUNT] attributionModel=FIRST_INTERACTION (any campaign touch as first interaction)."),
-     kpi("attr_mktg_influenced","Marketing-influenced revenue / deals","DECISION",HS,"same, attributionModel=LINEAR; influenced = deals with ≥1 campaign touch."),
-     kpi("attr_sales_only","Sales-only (no marketing touch)","",HS,"closed-won deals in period (query_crm_data DEAL) minus influenced deals."),
-     kpi("attr_avg_touches","Avg touches to close","SIGNAL",HS,"ATTRIBUTION_COUNT / DEAL_COUNT."),
-     kpi("attr_top_first","Top first-touch medium","SIGNAL",HS,"dimensions=[UTM_MEDIUM] attributionModel=FIRST_INTERACTION."),
-     kpi("attr_top_last","Top last-touch medium","SIGNAL",HS,"dimensions=[UTM_MEDIUM] attributionModel=LAST_INTERACTION."),
+   section("Defined campaigns · goals → campaigns → tactics", "Grouped by goal, then campaign, then tactic; each level carries its own KPI, result, budget, timeline, owner and status", [
+     table("defined_campaigns","Goal › Campaign › Tactic","DECISION",PLAN,
+           "Goal rows: every business goal in the Quarterly Marketing Plan with KPI target, budget, timeline, owner (e.g. '12,500 KubeCon NA attendees registered'). Campaign rows under each goal: from the Quarterly Campaign Brief — leader, mediums, KPI (e.g. 'Grow KubeCon NA audience by 500K new contacts'), budget. Tactic rows under each campaign: one per Medium : Source activity with its KPI (e.g. 'Publish 2 LinkedIn posts per week and average 1,000 impressions per week'). Results: goal progress from the outcome pages; campaign results from HubSpot read_campaign_data GET_ANALYTICS (sessions, new contacts, influenced contacts) when connected; tactic results from the medium pages. Mark the Level column GOAL / CAMPAIGN / TACTIC so the builder can shade rows.",
+           ["Level","Goal › Campaign › Tactic","Medium : Source","KPI","Result","Budget / spent","Timeline","Owner","Status"], alt_source=HS),
    ]),
-   section("Credit by medium under each model", "Linear · First touch · Last touch · Time decay", [
-     table("attr_by_medium_models","Credited revenue by medium × model","DECISION",HS,"Four calls, dimensions=[UTM_MEDIUM], one per attributionModel.",["Medium","Linear","First touch","Last touch","Time decay"]),
-   ]),
-   section("Model agreement", "Where the models agree, act with confidence", [
-     table("attr_model_agreement","Rank of each medium under each model","",HS,"Derived from the table above.",["Medium","Linear","First","Last","Decay"]),
+   section("Campaign results (HubSpot)", "Engagement metrics per active campaign, joined to the table above by campaign name", [
+     table("campaign_results","Active campaigns · sessions, new contacts, influenced contacts","",HS,"search_crm_objects objectType=CAMPAIGN (active in period) → read_campaign_data GET_ANALYTICS per campaign.",
+           ["Campaign","Goal","Sessions","New contacts","Influenced contacts","Attributed revenue (linear)"]),
    ]),
   ]))
 
 # ---------------------------------------------------------------- P08 Memberships
 pages.append(page("memberships", 1, "Memberships",
-  "Is marketing generating and protecting member commitment?",
-  "Business outcome: Memberships · Platinum, Gold, Silver (or the foundation's equivalents)",
+  "Identifying, nurturing, and protecting member commitment",
+  "Business outcome: Targeted Accounts, Enriched Contacts, Cross Sale, Renewal",
   [
    section("Goals · quarterly plan", "Goals for this outcome", [
      table("mem_goals","Membership goals","DECISION",PLAN,"From the Quarterly Marketing Plan; progress from the figures below.",["Goal","KPI","Target","Progress","Budget","Status"]),
@@ -311,8 +312,8 @@ pages.append(page("memberships", 1, "Memberships",
 
 # ---------------------------------------------------------------- P09 Events
 pages.append(page("events", 1, "Events",
-  "Are we filling the seats and selling the sponsorships?",
-  "Business outcome: Events · goals: attendance and sponsorships · owned events, third-party events, community days",
+  "Fill the seats and sell the sponsorships",
+  "Business outcome: event attendance growth, sponsorship growth across owned and supported community events",
   [
    section("Goals · quarterly plan", "", [
      table("ev_goals","Event goals","DECISION",PLAN,"",["Goal","KPI","Target","Progress","Budget","Status"]),
@@ -347,8 +348,8 @@ pages.append(page("events", 1, "Events",
 
 # ---------------------------------------------------------------- P10 Education
 pages.append(page("education", 1, "Education",
-  "Is marketing filling courses and converting learners to certifications?",
-  "Business outcome: Education · B2C (individual learners) and B2B (team training)",
+  "Fill the courses and grow certifications",
+  "Business outcome: Course attendance and growing certifications across channels.",
   [
    section("Goals · quarterly plan", "", [
      table("ed_goals","Education goals","DECISION",PLAN,"",["Goal","KPI","Target","Progress","Budget","Status"]),
@@ -377,8 +378,8 @@ pages.append(page("education", 1, "Education",
 
 # ---------------------------------------------------------------- P11 Audience
 pages.append(page("audience", 1, "Audience",
-  "Is the audience growing and carrying our narrative?",
-  "Business outcome: Audience · net new contacts, engaged contacts, reach, share of voice",
+  "Grow the audience and ensure industry is carrying key messaging",
+  "Business Outcome: Audience · net new contacts · engaged contacts · reach · share of voice.",
   [
    section("Goals · quarterly plan", "", [
      table("au_goals","Audience goals","DECISION",PLAN,"",["Goal","KPI","Target","Progress","Budget","Status"]),
@@ -406,8 +407,8 @@ pages.append(page("audience", 1, "Audience",
 
 # ---------------------------------------------------------------- P12 Adoption
 pages.append(page("adoption", 1, "Adoption",
-  "Are more people using, contributing to and championing the projects?",
-  "Business outcome: Adoption · users / downloads / stars · ambassadors · contributors · maintainers · community groups",
+  "Grow use, contributions, champions.",
+  "Business outcome: Adoption · users / downloads / stars · ambassadors · contributors · maintainers · community groups.",
   [
    section("Goals · quarterly plan", "", [
      table("ad_goals","Adoption goals","DECISION",PLAN,"",["Goal","KPI","Target","Progress","Budget","Status"]),
@@ -442,17 +443,6 @@ pages.append(page("adoption", 1, "Adoption",
    section("Ambassador program", "Active per quarter · project-specific vs. general activity", [
      table("ad_ambassador_program","Ambassador program by quarter","DECISION",AMB,"Enrolled from LFX committee roster; submitted activity, project-specific vs. general from the tracker.",["Quarter","Enrolled","Submitted activity","Active %","Project-specific","General"], alt_source=LFX),
      table("ad_ambassador_activity_type","Ambassador activity by contribution type","WATCH",AMB,"",["Contribution type","Count","Share"]),
-   ]),
-  ]))
-
-# ---------------------------------------------------------------- P13 Goals & campaigns
-pages.append(page("campaigns", 3, "Goals › Campaigns",
-  "Which campaigns are delivering their goals?",
-  "Every campaign supports one goal and carries one primary KPI",
-  [
-   section("Active campaigns", "", [
-     table("campaigns_table","Campaigns","DECISION",HS,"search_crm_objects objectType=CAMPAIGN (active in period) → read_campaign_data GET_ANALYTICS (sessions, new contacts, influenced contacts) per campaign; goal, KPI and budget from the Campaign Brief / plan.",
-           ["Campaign","Outcome › goal","Stage","Mediums","Primary KPI","Result","Budget / spent","Status"], alt_source=PLAN),
    ]),
   ]))
 
@@ -497,8 +487,13 @@ pages.append(page("source-direct-newsletter", 3, "Direct › Newsletter (source 
   [section("Key metrics", "", [kpi("sdn_subs","Subscribers (list size)","",HS,"HubSpot list size via query_crm_data hs_crm_search.ilsListIds."),kpi("sdn_sends","Sends in period","",HS,"OVERVIEW filtered to newsletter email ids."),kpi("sdn_open","Open rate","",HS,""),kpi("sdn_ctr","CTR","",HS,""),kpi("sdn_conv","Conversions","",HS,""),kpi("sdn_unsub","Unsubscribe rate","",HS,"")]),
    section("By section and business outcome", "", [table("sdn_by_section","Newsletter sections","",HS,"Per-link click data is not exposed by the connector: use per-issue stats and note the limitation.",["Issue / section","Outcome","Clicks","CTR (of opens)","Conversion"])])]))
 
+ORDER=["all-summary","all-paid","all-social","all-web","all-direct","all-campaigns","all-budget",
+       "memberships","events","education","audience","adoption",
+       "campaign-detail","source-paid-social","source-social-linkedin","source-web-blogs","source-direct-newsletter"]
+pages.sort(key=lambda p: ORDER.index(p["id"]))
+
 catalog = dict(
-  version="0.1.0",
+  version="0.2.0",
   prototype="https://paulhinz.github.io/LF-Marketing-OS-Dashboards-Prototypes/",
   connectors=dict(required=["LFX"], optional=["HubSpot"],
                   other=[ADS,SPROUT,GA4,GSC,BEVY,CVENT,SN,AMB,TI,CMS,PLAN]),
