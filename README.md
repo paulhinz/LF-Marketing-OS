@@ -17,14 +17,14 @@ The agents are organized by where they sit in a marketing workflow:
 
 This repo is the distribution point for that agent set: a git-based marketplace that Cowork (or Claude Code) reads directly, so plugins can be installed and updated without emailing files around.
 
-## 2. The 25 plugins in this marketplace
+## 2. The 26 plugins in this marketplace
 
 **Foundation**
 - `brand-guidelines-agent` — Pulls the project's LFX record and runs a research sweep, then a short intake with an LF project leader (or pre-fill mode for ED review), and generates a Brand Kit: positioning, voice, audience messaging, competitive guardrails, LFX-derived governance and trademark wording, and a five-part visual identity direction. (v0.3.0 — **new:** output is a Google Docs-ready document on the LF Agent DOCS Template, with the project's name and logo on the cover and its palette applied to headings and tables)
 - `message-foundation-agent` — Interviews a project lead (reading the Brand Kit section by section) and produces a Message Foundation doc built on the LF communications framework: Vision → Mission → Positioning Platform → Tagline, a one-page Message Matrix, word-count-locked summaries, boilerplate, `llms.txt`, elevator pitch, voice, audiences with persona ROI angles, tagged messaging pillars, a verified and audience-marked Stat Bank, origin story and cases, objections and stance, and a tiered CTA library — with LFX-derived governance wording, a claims lint, pre-fill mode, a QA gate and a one-page digest. (v0.4.0 — **new:** delivered on the LF Agent DOCS Template with the project's logo and name on the cover and its Brand Kit colors applied)
 - `icp-target-markets-agent` — Reads the Brand Kit, Message Foundation, and GitHub README, pulls live LFX membership data, runs a competitor scan that includes members' like-for-like products, and produces a Target Markets & ICP document with personas, fit/warmth scoring and a run-rate SOM proposal (pre-fill mode for ED review). (v0.3.0 — **new:** delivered on the LF Agent DOCS Template with the project's logo and name on the cover and its Brand Kit colors applied)
 
-  The three foundation documents share one output standard as of this release: the Linux Foundation's **LF Agent DOCS Template** (Google Docs master: `docs.google.com/document/d/1RinjSuKojc9bqLLeviJfGE6yzSIfj8kSrTwIiWlH-HM`) — Open Sans body, Roboto Slab headings, LF logo header, agent/date/page footer — with a cover page carrying the project's logo and name and the project's brand colors on headings, cover accent and table headers. Each of the three plugins bundles the template (`assets/lf-agent-docs-template.docx`), the renderer (`scripts/build_lf_doc.py`, Markdown → .docx) and the spec (`references/lf-docs-template.md`); the three copies are identical and are changed together.
+The three foundation documents share one output standard as of this release: the Linux Foundation's **LF Agent DOCS Template** (Google Docs master: `docs.google.com/document/d/1RinjSuKojc9bqLLeviJfGE6yzSIfj8kSrTwIiWlH-HM`) — Open Sans body, Roboto Slab headings, LF logo header, agent/date/page footer — with a cover page carrying the project's logo and name and the project's brand colors on headings, cover accent and table headers. Each of the three plugins bundles the template (`assets/lf-agent-docs-template.docx`), the renderer (`scripts/build_lf_doc.py`, Markdown → .docx) and the spec (`references/lf-docs-template.md`); the three copies are identical and are changed together.
 
 - `lfx-marketing-os-qa` — The QA gate for the three foundation documents and their derivatives: LFX-derived entity and trademark lint, Stat Bank re-verification through the LFX MCP, a beyond-the-brief research sweep, a claims/dates/superlatives check, a brand review against the project's own Brand Kit, and cross-document consistency — returning PASS / PASS WITH FIXES / FAIL, a ranked fix list and a two-page digest. (v0.1.0)
 - `plain-writing` — Writes and revises prose in a plain style (simple words, complete sentences, no jargon or filler). Applies automatically whenever Claude drafts or edits prose.
@@ -48,6 +48,7 @@ This repo is the distribution point for that agent set: a git-based marketplace 
 **Monitoring**
 - `aeo-geo-analyzer` — Scores a website's AEO/GEO performance (AI crawler access, `llms.txt`, answerability, structured data, citation authority) and returns prioritized recommendations.
 - `social-listening-report` — Builds Voices That Matter, Campaign Echo, and Ask-Anything reports from LFX Lens/Octolens social listening data.
+- `run-marketing-impact-report` — **New in v0.1.0.** The Marketing Impact dashboard as a Word document with live data. Asks which LF project or foundation to run against (e.g. CNCF) and for which period, checks the LFX connector (required) and the HubSpot connector (optional — the run continues without it), pulls the live figures, and writes one document that mirrors the Marketing Impact dashboard prototype ([clickable prototype](https://paulhinz.github.io/LF-Marketing-OS-Dashboards-Prototypes/)) one page per view: business outcomes first (All › Outcomes, Memberships, Events, Education, Audience, Adoption), then the mediums under All (Paid, Paid › Budget, Social, Web, Direct, Attribution), then goals, campaigns and source detail. Every metric is tagged DECISION / SIGNAL / WATCH and carries its source and as-of date; every section whose data has no connector stays in the report with a "Data not available, requires [x] connector" notice, and a coverage appendix lists what was filled. Built for Jen Royle-Jones' and Federica's CNCF dashboard requirements. Command: "run the marketing impact report for CNCF". (v0.1.0)
 
 **Community Engagement**
 - `member-360` — Scores each project member's engagement across events, speaking, ambassadors, committees, content, and marketing activity; flags gaps; and recommends a next best action for Marketing, Member Success, or Sales in a ranked spreadsheet built for QBRs.
@@ -66,7 +67,7 @@ This repo is the distribution point for that agent set: a git-based marketplace 
 
 1. Open **Customize** in the sidebar, then **Plugins**.
 2. Click **Add marketplace** and enter this repo: `paulhinz/LF-Marketing-OS` (or the full URL, `https://github.com/paulhinz/LF-Marketing-OS`).
-3. Click **Browse plugins** — the 25 plugins above will be listed.
+3. Click **Browse plugins** — the 26 plugins above will be listed.
 4. Select and **Install** whichever ones you need.
 
 This repo is public, so anyone can browse the code or add it as a marketplace without needing collaborator access or GitHub sign-in. To get updates later, come back to Customize → Plugins, find this marketplace, and click **Update**.
