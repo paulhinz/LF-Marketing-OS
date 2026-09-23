@@ -15,7 +15,7 @@ description: >
   data has no connector kept in place with a "Data not available, requires [x]
   connector" notice.
 metadata:
-  version: "0.2.0"
+  version: "0.3.0"
   author: "Paul Hinz, Linux Foundation"
   department: "LFX Marketing OS · Monitoring"
   prototype: "https://paulhinz.github.io/LF-Marketing-OS-Dashboards-Prototypes/"
@@ -92,11 +92,12 @@ Item ids are the `id` fields in `report_catalog.json`. Fill only items with real
 
 ## Phase 5 — Build, check, deliver
 
-1. Run `python3 ${CLAUDE_SKILL_DIR}/scripts/build_report.py --catalog ${CLAUDE_SKILL_DIR}/references/report_catalog.json --data report_data.json --out "<Project> Marketing Impact Report <YYYY-MM-DD>.docx"`. Install `python-docx` first if the import fails (`pip install python-docx --break-system-packages`).
-2. Read the builder's coverage line (`N/185 items filled`) and open the appendix table; confirm every LFX-sourced item that the connector could serve is filled, and that no notice appears for an item you have data for.
-3. If the `lf-output-formatter` skill is installed, offer to re-skin the document on the LF Agent DOCS template; otherwise deliver the plain build.
-4. Present the file. In the reply give: project and period, connectors used, the coverage figure, the three "Needs attention" items, and one line listing the connectors that would raise coverage (Google Ads / LinkedIn Ads, Sprout Social, GA4, Bevy, Cvent, Sales Navigator, ambassador tracker).
-5. Offer to schedule the run weekly (mediums) and monthly (outcomes) with the host's scheduled-tasks feature.
+1. Run `python3 ${CLAUDE_SKILL_DIR}/scripts/build_report.py --catalog ${CLAUDE_SKILL_DIR}/references/report_catalog.json --data report_data.json --out "<Project> Marketing Impact Report <YYYY-MM-DD>.docx"`. The builder writes `report.md` (LF front matter + Markdown) and renders it on the **LF Agent DOCS Template** with the bundled `lf-output-formatter` engine (`scripts/lf/build_doc.py`, template in `scripts/assets/`). Install `python-docx` and `Pillow` first if the import fails (`pip install python-docx Pillow --break-system-packages`).
+2. **Foundation brand.** If the project's Brand Kit (`[Project] Brand Kit.docx` from `brand-guidelines-agent`) and logo files are in the working folder or Drive, run the formatter's `extract_brand_kit.py` (from the installed `lf-output-formatter` plugin) to draft `brand.json`, confirm the primary color, fonts and logos with the user in one message, and rebuild with `--brand brand.json`. Otherwise build LF-default and say so. Never invent a color, font or logo.
+3. Run `python3 ${CLAUDE_SKILL_DIR}/scripts/lf/render_check.py "<the .docx>"` and look at the contact sheet: LF (or brand) logo and running header on every page, footer with page number, no leftover tokens, tables in the template style. Fix and rebuild before delivering.
+4. Read the builder's coverage line (`N/185 items filled`) and the appendix table; confirm every LFX-sourced item the connector could serve is filled and that no notice appears for an item you have data for.
+5. Present the file. In the reply give: project and period, connectors used, template used (LF default or `[Foundation]` brand), the coverage figure, the three "Needs attention" items, and one line listing the connectors that would raise coverage (Google Ads / LinkedIn Ads, Sprout Social, GA4, Bevy, Cvent, Sales Navigator, ambassador tracker). Final visual sign-off for anything external belongs to LF Creative Services.
+6. Offer to schedule the run weekly (mediums) and monthly (outcomes) with the host's scheduled-tasks feature.
 
 ## What not to do
 
