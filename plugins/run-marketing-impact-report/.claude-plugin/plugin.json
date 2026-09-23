@@ -1,7 +1,7 @@
 {
   "name": "run-marketing-impact-report",
-  "version": "0.1.1",
-  "description": "LFX Marketing OS Marketing Impact Report: asks which LF project to run against, pulls live figures via the LFX connector (required) and HubSpot (optional), and writes one Word document mirroring the Marketing Impact dashboard page by page — business outcomes, mediums (Paid, Social, Web, Direct, Attribution), goals, campaigns, sources. Metrics tagged DECISION / SIGNAL / WATCH; sections without a connector say 'Data not available, requires [x] connector'.",
+  "version": "0.2.0",
+  "description": "LFX Marketing OS Marketing Impact Report: asks which LF project to run against, pulls live figures via the LFX connector (required) and HubSpot (optional), and writes one Word document mirroring the Marketing Dashboard page by page — business outcomes, mediums (Paid, Social, Web, Direct), Defined Campaigns (goals → campaigns → tactics with KPIs), Budget, sources. Metrics tagged DECISION / SIGNAL / WATCH; sections without a connector say 'Data not available, requires [x] connector'.",
   "author": {
     "name": "Paul Hinz, Linux Foundation — LFX Marketing OS"
   },
