@@ -11,140 +11,240 @@
       "source": "./plugins/marketing-plan-workbook-agent",
       "description": "Generates a pre-filled, question-driven marketing plan workbook (.pptx, Google Slides-ready) for an LF project/foundation, modeled on the Linux Foundation template for an integrated plan — pulling the LF master tracker, past marketing plans, LFX metrics, and, when available, the foundation's completed Quarterly Marketing Review workbook (from qtrly-marketing-review-agent), whose Executive Summary is surfaced at the top of the plan workbook for the ED presentation. DRAFT badges and YOUR INPUT question slides for the foundation leader to complete before a planning interview; the completed workbook feeds the final marketing plan generation step.",
       "category": "Planning Agents",
-      "tags": ["marketing-plan", "workbook", "planning", "discovery"]
+      "tags": [
+        "marketing-plan",
+        "workbook",
+        "planning",
+        "discovery"
+      ]
     },
     {
       "name": "qtrly-marketing-review-agent",
       "source": "./plugins/qtrly-marketing-review-agent",
       "description": "Generates a pre-filled Quarterly Marketing Review workbook (.pptx) for a foundation's marketing team at quarter end — goals-vs-actuals scorecard, business outcomes, engine-health conversions, channel indicators, vehicle scorecards, market signals, and a structured insights retrospective, pre-filled from LFX and marketing platform data with DRAFT badges and YOUR INPUT questions. The completed review is an input to marketing-plan-workbook-agent, and its Executive Summary is presented to the ED at the quarterly plan review.",
       "category": "Planning Agents",
-      "tags": ["quarterly-review", "retrospective", "marketing-metrics", "planning"]
+      "tags": [
+        "quarterly-review",
+        "retrospective",
+        "marketing-metrics",
+        "planning"
+      ]
     },
     {
       "name": "brand-guidelines-agent",
       "source": "./plugins/brand-guidelines-agent",
       "description": "Pulls the project's LFX record and runs a research sweep, then guides an LF project leader through a short intake (or pre-fills it in batch mode for ED review) and generates a project Brand Kit document — positioning, voice, audience messaging, competitive guardrails, LFX-derived governance and trademark wording, and a five-component visual identity direction — following the LFX Marketing OS Brand Kit standard Delivered Google Docs-ready on the LF Agent DOCS Template, with the project's name and logo on the cover and its brand colors applied.",
       "category": "Foundation Agents",
-      "tags": ["brand", "brand-kit", "foundation-setup"]
+      "tags": [
+        "brand",
+        "brand-kit",
+        "foundation-setup"
+      ]
     },
     {
       "name": "message-foundation-agent",
       "source": "./plugins/message-foundation-agent",
       "description": "Interviews a Linux Foundation project lead (or pre-fills the interview in batch mode for ED review) and produces a '[Project Name] Message Foundation' document built on the LF communications framework: Vision → Mission → Positioning Platform → Tagline, a one-page Message Matrix, word-count-locked summaries, boilerplate, llms.txt and elevator pitch, plus voice, audiences with persona ROI angles, tagged messaging pillars, a verified and audience-marked Stat Bank, origin story and cases, objections and stance, and a tiered CTA library — with LFX-derived governance wording, a claims lint, a QA gate and a one-page digest Delivered Google Docs-ready on the LF Agent DOCS Template, with the project's name and logo on the cover and its Brand Kit colors applied.",
       "category": "Foundation Agents",
-      "tags": ["messaging", "positioning", "foundation-setup"]
+      "tags": [
+        "messaging",
+        "positioning",
+        "foundation-setup"
+      ]
     },
     {
       "name": "icp-target-markets-agent",
       "source": "./plugins/icp-target-markets-agent",
       "description": "Interviews a Linux Foundation project leader (or pre-fills the interview in batch mode for ED review), reads the project's Brand Kit, Message Foundation Doc, and GitHub README, pulls live LFX membership data, runs a competitor scan that includes members' like-for-like products, and produces a '[Project Name] Target Markets and ICP' document (market segments, organization-level ICPs, personas, fit/warmth scoring, a run-rate SOM proposal) with a claims lint, a QA gate and a one-page digest Delivered Google Docs-ready on the LF Agent DOCS Template, with the project's name and logo on the cover and its Brand Kit colors applied.",
       "category": "Foundation Agents",
-      "tags": ["icp", "target-markets", "personas", "foundation-setup"]
+      "tags": [
+        "icp",
+        "target-markets",
+        "personas",
+        "foundation-setup"
+      ]
     },
     {
       "name": "lfx-marketing-os-qa",
       "source": "./plugins/lfx-marketing-os-qa",
       "description": "QA gate for the foundation documents and their derivatives: derives legal-entity and trademark wording from the LFX project record, re-runs every Live-LFX figure through the LFX MCP, refreshes published counters, sweeps the project site / GitHub org / LF press archive for material the intake missed, scans for competitors the brief left out, checks superlatives and dates, and applies a brand-review rubric with severity-ranked before/after fixes. Returns PASS / PASS WITH FIXES / FAIL, a ranked fix list with drop-in replacement text, and a two-page digest. Run before a Brand Kit, Message Foundation or ICP document is marked 'for review'.",
       "category": "Foundation Agents",
-      "tags": ["qa", "fact-check", "brand-review", "foundation-setup"]
+      "tags": [
+        "qa",
+        "fact-check",
+        "brand-review",
+        "foundation-setup"
+      ]
     },
     {
       "name": "plain-writing",
       "source": "./plugins/plain-writing",
       "description": "Writes and revises prose in a plain style: simple words, complete sentences, no dashes, no jargon, no filler. Includes an optional HTML revision view that shows what changed and why.",
       "category": "Foundation Agents",
-      "tags": ["writing", "editing", "style"]
+      "tags": [
+        "writing",
+        "editing",
+        "style"
+      ]
     },
     {
       "name": "website-designer-agent",
       "source": "./plugins/website-designer-agent",
       "description": "Turns an LF project's three foundation docs into an approved sitemap, a complete Hugo website, and a GitHub-deployed, DNS-ready launch package — with four human approval gates.",
       "category": "Foundation Agents",
-      "tags": ["website", "hugo", "github", "foundation-setup"]
+      "tags": [
+        "website",
+        "hugo",
+        "github",
+        "foundation-setup"
+      ]
     },
     {
       "name": "qtrly-plan-agent",
       "source": "./plugins/qtrly-plan-agent",
       "description": "Guides a Linux Foundation ED/Project Leader through the quarterly review cycle (review outcomes vs. goals, set business-outcome direction, define ranked goals with KPIs, budgets, timelines, and risks) and produces a Google Slides-ready quarterly marketing plan deck.",
       "category": "Planning Agents",
-      "tags": ["quarterly-plan", "qbr", "goals"]
+      "tags": [
+        "quarterly-plan",
+        "qbr",
+        "goals"
+      ]
     },
     {
       "name": "qtrly-campaign-plan-agent",
       "source": "./plugins/qtrly-campaign-plan-agent",
       "description": "Takes the quarterly marketing plan produced by qtrly-plan-agent (plus the Brand Kit, Message Foundation, ICP & Target Markets, and Pitch Deck) and produces a single Quarterly Campaign Brief (.docx): the set of campaigns supporting each goal, each with a leader, mediums and sources, and per source the target markets, ICP/personas, key messages, assets to be created, CTAs, and message sequences — plus the ordered list of content creation and source execution agents to run. CFT strategy layer only; does not create content or execute channels.",
       "category": "Planning Agents",
-      "tags": ["campaign-plan", "campaign-brief", "channels", "planning", "cft"]
+      "tags": [
+        "campaign-plan",
+        "campaign-brief",
+        "channels",
+        "planning",
+        "cft"
+      ]
     },
     {
       "name": "board-status-infographic",
       "source": "./plugins/board-status-infographic",
       "description": "Produces the one-page State of the Foundation board infographic (print-ready PDF plus HTML) for an LF project or foundation ahead of each board meeting: inception-to-today scorecard, goals vs outcomes from the quarterly marketing plan, member survey figures, risks that need board action, investment areas, and the decisions the board must take tagged DISCUSS / REVIEW / VOTE. Reads the Quarterly Marketing Plan deck and the ED's board pre-read first, then interviews the ED for gaps; adaptive block layout, always exactly one page.",
       "category": "Planning Agents",
-      "tags": ["board-update", "state-of-the-foundation", "infographic", "governing-board", "reporting"]
+      "tags": [
+        "board-update",
+        "state-of-the-foundation",
+        "infographic",
+        "governing-board",
+        "reporting"
+      ]
     },
     {
       "name": "lf-zoom-hubspot-notes-logger",
       "source": "./plugins/lf-zoom-hubspot-notes-logger",
       "description": "Pulls a team member's Zoom meeting notes for today and yesterday, writes them into the matching HubSpot meeting records, opens follow-up tasks on opportunities, and flags ambiguous matches over Slack for manual review. Built for any Linux Foundation Marketing or Sales team.",
       "category": "Planning Agents",
-      "tags": ["hubspot", "zoom", "crm", "meeting-notes", "sales"]
+      "tags": [
+        "hubspot",
+        "zoom",
+        "crm",
+        "meeting-notes",
+        "sales"
+      ]
     },
     {
       "name": "linkedin-post-agent",
       "source": "./plugins/linkedin-post-agent",
       "description": "Drafts LinkedIn posts about Linux Foundation and open source ecosystem work in the user's authentic voice. Learns the user's profile and tone once, then turns any piece of content into ready-to-post options.",
       "category": "Creating Agents",
-      "tags": ["linkedin", "social-media", "content"]
+      "tags": [
+        "linkedin",
+        "social-media",
+        "content"
+      ]
     },
     {
       "name": "member-pitch-deck",
       "source": "./plugins/member-pitch-deck",
       "description": "Member Pitch Deck (v1.0.0, replaces pitch-deck-agent): generates the standard first-meeting membership pitch deck (max 20 slides) for any Linux Foundation project or foundation, always formatted on the LF 2025 Google Slides template and grounded in the project's Brand Kit, Message Foundation, and ICP documents. Command: lf-member-pitch-deck.",
       "category": "Creating Agents",
-      "tags": ["pitch-deck", "membership", "member-growth", "lf-template"]
+      "tags": [
+        "pitch-deck",
+        "membership",
+        "member-growth",
+        "lf-template"
+      ]
     },
     {
       "name": "case-study-agent",
       "source": "./plugins/case-study-agent",
       "description": "Converts any source content — a YouTube video, interview transcript, meeting notes, recording, or raw text — into an on-brand Word document for an LF project or foundation. Loads the project's Brand Kit and Message Foundation (web-research fallback) and produces a first-draft case study by default, or a blog post, article, summary, or Q&A on request.",
       "category": "Creating Agents",
-      "tags": ["case-study", "content", "video", "transcript", "docx"]
+      "tags": [
+        "case-study",
+        "content",
+        "video",
+        "transcript",
+        "docx"
+      ]
     },
     {
       "name": "member-benefits-briefing",
       "source": "./plugins/member-benefits-briefing",
       "description": "Builds the LF CEO-style member executive briefing deck — “[Company] and the Linux Foundation” — for any LF member: pulls the member's live LFX footprint (memberships, dues, code contributions, maintainers, event participation, training), merges it with the standing LF and open-source-AI narrative, and produces a PowerPoint styled to the LF executive briefing template.",
       "category": "Creating Agents",
-      "tags": ["executive-briefing", "membership", "member-engagement", "pptx"]
+      "tags": [
+        "executive-briefing",
+        "membership",
+        "member-engagement",
+        "pptx"
+      ]
     },
     {
       "name": "aeo-geo-analyzer",
       "source": "./plugins/aeo-geo-analyzer",
       "description": "Analyzes any website's AEO (Answer Engine Optimization) and GEO (Generative Engine Optimization) performance — AI crawler access, llms.txt, on-page answerability, structured data, and third-party citation authority — and produces a scored report with prioritized recommendations.",
       "category": "Monitoring Agents",
-      "tags": ["aeo", "geo", "seo", "ai-search"]
+      "tags": [
+        "aeo",
+        "geo",
+        "seo",
+        "ai-search"
+      ]
     },
     {
       "name": "social-listening-report",
       "source": "./plugins/social-listening-report",
       "description": "On-demand social listening reports from LFX Lens data: Voices That Matter (high-reach creators), Campaign Echo (launch/announcement pickup), and Ask-Anything briefings — with Google Doc output for historical tracking.",
       "category": "Monitoring Agents",
-      "tags": ["social-listening", "lfx-lens"]
+      "tags": [
+        "social-listening",
+        "lfx-lens"
+      ]
     },
     {
       "name": "run-marketing-impact-report",
       "source": "./plugins/run-marketing-impact-report",
-      "description": "Marketing Impact Report: asks which LF project to run against (e.g. CNCF), pulls live figures via the LFX connector (required) and HubSpot (optional), and writes one Word document mirroring the Marketing Impact dashboard page by page — business outcomes, mediums (Paid, Social, Web, Direct, Attribution), goals, campaigns, sources. Metrics tagged DECISION / SIGNAL / WATCH; sections without a connector say 'Data not available, requires [x] connector'.",
+      "description": "Marketing Dashboard as a Word document with live data: asks which LF project to run against (e.g. CNCF), pulls figures via the LFX connector (required) and HubSpot (optional), and mirrors the dashboard page by page — Summary, Paid, Social, Web, Direct, Defined Campaigns (goals → campaigns → tactics with KPIs), Budget, the five business outcomes, sources. Sections without a connector say 'Data not available, requires [x] connector'.",
       "category": "Monitoring Agents",
-      "tags": ["marketing-impact", "dashboard", "report", "business-outcomes", "lfx", "hubspot", "docx"]
+      "tags": [
+        "marketing-impact",
+        "dashboard",
+        "report",
+        "business-outcomes",
+        "lfx",
+        "hubspot",
+        "docx"
+      ]
     },
     {
       "name": "member-360",
       "source": "./plugins/member-360",
       "description": "Scores each LF project member's engagement across events, speaking, ambassadors, committees, content, and marketing activity; identifies gaps; and recommends the next best action for Marketing, Member Success, or Sales. Outputs a ranked spreadsheet built for quarterly business reviews.",
       "category": "Community Engagement Agents",
-      "tags": ["member-engagement", "member-360", "qbr", "reporting"]
+      "tags": [
+        "member-engagement",
+        "member-360",
+        "qbr",
+        "reporting"
+      ]
     },
     {
       "name": "member-marketing-benefits-audit",
@@ -156,35 +256,64 @@
       "source": "./plugins/ambassador-content-assignment",
       "description": "Matches a project's ambassadors against the KubeCon (or any LF event) schedule and generates personalized content assignments — video prompts, social copy, hashtags, tags, and posting recommendations — as a tracker spreadsheet, per-ambassador briefs, and outreach drafts. Then tracks who actually posts via LFX Lens social listening and drafts nudges.",
       "category": "Community Engagement Agents",
-      "tags": ["kubecon", "ambassadors", "events", "social-media", "content"]
+      "tags": [
+        "kubecon",
+        "ambassadors",
+        "events",
+        "social-media",
+        "content"
+      ]
     },
     {
       "name": "committee-health-agent",
       "source": "./plugins/committee-health-agent",
       "description": "Monitors committee participation across an LF project, flags inactive or outdated representatives, identifies member companies without an active contact, and drafts follow-up or replacement outreach for review — a committee-health workbook plus a ready-to-approve outreach queue.",
       "category": "Community Engagement Agents",
-      "tags": ["committees", "committee-health", "member-contacts", "outreach"]
+      "tags": [
+        "committees",
+        "committee-health",
+        "member-contacts",
+        "outreach"
+      ]
     },
     {
       "name": "community-monitor-agent",
       "source": "./plugins/community-monitor-agent",
       "description": "Monitors a project's Slack channels and GitHub repositories on a user-defined schedule, surfaces community questions ranked by sentiment and asker value (community activity and member-company standing), and delivers a live report with drafted replies that can be sent to Slack with one click.",
       "category": "Community Engagement Agents",
-      "tags": ["community", "slack", "github", "monitoring", "response"]
+      "tags": [
+        "community",
+        "slack",
+        "github",
+        "monitoring",
+        "response"
+      ]
     },
     {
       "name": "marketing-agent-class",
       "source": "./plugins/marketing-agent-class",
       "description": "Delivers The Linux Foundation's Claude Agent Workshop marketing training as personalized PowerPoint decks, one section at a time, with live student Q&A captured in a companion deck.",
       "category": "Additional",
-      "tags": ["training", "course", "pptx"]
+      "tags": [
+        "training",
+        "course",
+        "pptx"
+      ]
     },
     {
       "name": "lf-output-formatter",
       "source": "./plugins/lf-output-formatter",
       "description": "Shared output formatter for every LFX Marketing OS agent: builds decks, documents and letters on the three approved Linux Foundation templates (LF 2025 Google Slides template, LF Agent DOCS template, LF Letterhead) and, for foundation-specific documents, re-skins the template with the foundation's Brand Kit (logo, palette, typography, iconography). Bundles the templates, build scripts, a Brand Kit extractor and a render-and-check step.",
       "category": "Shared Skills",
-      "tags": ["templates", "brand", "formatting", "pptx", "docx", "letterhead", "brand-kit"]
+      "tags": [
+        "templates",
+        "brand",
+        "formatting",
+        "pptx",
+        "docx",
+        "letterhead",
+        "brand-kit"
+      ]
     }
   ]
 }
