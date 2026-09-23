@@ -31,7 +31,7 @@ In Cowork (or Claude Code) with this plugin installed, say:
 
 Optional inputs raise coverage: the Quarterly Marketing Plan deck (goals, budgets), the Quarterly Campaign Brief (campaign definitions), and the 3–5 message tags to track for narrative pull-through.
 
-Output: `<Project> Marketing Impact Report <date>.docx` in your working folder, plus `report_data.json` (the raw figures, for audit). If `lf-output-formatter` is installed, the agent offers to re-skin the document on the LF Agent DOCS template.
+Output: `<Project> Marketing Impact Report <date>.docx` in your working folder — **built on the LF Agent DOCS Template** (Roboto Slab headings, Open Sans body, LF running header and footer, template tables) with the bundled `lf-output-formatter` engine — plus `report.md` (the Markdown it was rendered from) and `report_data.json` (the raw figures, for audit). With the project's Brand Kit present, the agent drafts `brand.json` and re-skins the document in the foundation's brand.
 
 ## Components
 
@@ -39,7 +39,8 @@ Output: `<Project> Marketing Impact Report <date>.docx` in your working folder, 
 - `references/report_catalog.json` — the fixed structure: 17 pages, 185 items, each with its connector and the call that fills it
 - `references/data-sources.md` — item-by-item call shapes for LFX standard metrics, the LFX semantic layer, LFX committee tools and HubSpot, with the caveats to carry into the report
 - `references/data-file.md` — schema of `report_data.json`
-- `scripts/build_report.py` — renders the .docx from catalog + data (python-docx); writes the connector notice for every unfilled item and the coverage appendix
+- `scripts/build_report.py` — catalog + data → Markdown with LF front matter → .docx on the LF Agent DOCS Template; writes the connector notice for every unfilled item and the coverage appendix
+- `scripts/lf/` — the `lf-output-formatter` document engine (`build_doc.py`, `build_lf_doc.py`, `lfbrand.py`, `render_check.py`), copied from the shared skill so the plugin is self-contained; `scripts/assets/` holds the LF Agent DOCS Template and the LF logo
 
 ## Design source
 
@@ -47,4 +48,4 @@ Requirements: Jen Royle-Jones' CNCF Marketing Dashboard brief (Dashboard 1 weekl
 
 ## Version
 
-0.2.0 — matches prototype v3.1: "Marketing Dashboard" title, statement headings, Summary tab, Attribution replaced by Defined Campaigns (goals → campaigns → tactics with KPIs), Budget tab with paid-ads-by-medium results and other marketing spend. 0.1.x — first release. Change the catalog only by regenerating it; a new connector is added by extending `data-sources.md` and the SKILL, not the catalog.
+0.3.0 — output moves onto the LF Agent DOCS Template via the bundled lf-output-formatter engine (LF default, or foundation brand with brand.json); page order follows the prototype. 0.2.0 — matches prototype v3.1: "Marketing Dashboard" title, statement headings, Summary tab, Attribution replaced by Defined Campaigns (goals → campaigns → tactics with KPIs), Budget tab with paid-ads-by-medium results and other marketing spend. 0.1.x — first release. Change the catalog only by regenerating it; a new connector is added by extending `data-sources.md` and the SKILL, not the catalog.
