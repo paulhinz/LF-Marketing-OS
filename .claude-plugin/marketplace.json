@@ -249,7 +249,15 @@
     {
       "name": "member-marketing-benefits-audit",
       "source": "./plugins/member-marketing-benefits-audit",
-      "description": "LFX Marketing OS Member Marketing Benefits Audit Agent — researches a foundation's website (CNCF by default) for a full calendar year of member-published content, verifies each organisation's membership tier, and reports how much of each tier's measurable marketing benefits (blog submissions, online programs, announcements) was used and remains, as a three-tab reconciling .xlsx audit. Complements member-360 with benefit-level depth."
+      "description": "LFX Marketing OS Member Marketing Benefits Audit Agent — researches a foundation's website (CNCF by default) for a full calendar year of member-published content, verifies each organisation's membership tier, and reports how much of each tier's measurable marketing benefits (blog submissions, online programs, announcements) was used and remains, as a three-tab reconciling .xlsx audit. Complements member-360 with benefit-level depth.",
+      "category": "Monitoring Agents",
+      "tags": [
+        "member-benefits",
+        "marketing-benefits",
+        "benefits-audit",
+        "cncf",
+        "reporting"
+      ]
     },
     {
       "name": "ambassador-content-assignment",
