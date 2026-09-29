@@ -1,0 +1,17 @@
+{
+  "name": "hot-campaign-workbook-agent",
+  "version": "0.1.0",
+  "description": "LFX Marketing OS Hot Campaign Workbook Agent — the IDENTIFY stage of the Hot Campaigns workflow. When an ED or marketing leader flags a trigger (a quarterly goal off track, industry news, a release, a viral post, a competitor move) or asks the agent to scan for one, it reads the project's Brand Kit, Message Foundation, ICP & Target Markets, current quarterly plan and campaign brief, Marketing Impact Report, Content Plan (Asana or spreadsheet), Social Listening Report, and the newsfeed of Alex Salkever's newsletters, runs a short intake interview, and produces a pre-filled Hot Campaign Workbook (.pptx, Google Slides-ready): a one-page Hot Campaign Card plus trigger, plan fit, target, message and stance, assets, sources, KPI/budget/clock, risks, and decision sections with DRAFT badges and ED INPUT / CFT INPUT questions. The completed workbook is the input to hot-campaign-plan-agent (Segmentation List + Hot Campaign Plan).",
+  "author": {
+    "name": "Paul Hinz, The Linux Foundation"
+  },
+  "keywords": [
+    "lfx-marketing-os",
+    "hot-campaign",
+    "workbook",
+    "planning",
+    "opportunistic",
+    "newsjack",
+    "linux-foundation"
+  ]
+}
