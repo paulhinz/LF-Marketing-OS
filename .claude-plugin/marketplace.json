@@ -124,6 +124,19 @@
       ]
     },
     {
+      "name": "hot-campaign-workbook-agent",
+      "source": "./plugins/hot-campaign-workbook-agent",
+      "description": "IDENTIFY stage of the Hot Campaigns workflow. When an ED or marketing leader flags a trigger (a quarterly goal off track, industry news, a release, a viral post, a competitor move) or asks the agent to scan for one, it reads the project's core documents, current quarterly plan and campaign brief, Marketing Impact Report, Content Plan, Social Listening Report, and the newsfeed of Alex Salkever's newsletters, interviews the runner, and produces a pre-filled Hot Campaign Workbook (.pptx): a one-page Hot Campaign Card plus trigger, plan fit, target, message and stance, assets, sources, KPI/budget/clock, risks, and decision sections with DRAFT badges and ED INPUT / CFT INPUT questions. The completed workbook is the input to hot-campaign-plan-agent.",
+      "category": "Planning Agents",
+      "tags": [
+        "hot-campaign",
+        "workbook",
+        "planning",
+        "opportunistic",
+        "newsjack"
+      ]
+    },
+    {
       "name": "board-status-infographic",
       "source": "./plugins/board-status-infographic",
       "description": "Produces the one-page State of the Foundation board infographic (print-ready PDF plus HTML) for an LF project or foundation ahead of each board meeting: inception-to-today scorecard, goals vs outcomes from the quarterly marketing plan, member survey figures, risks that need board action, investment areas, and the decisions the board must take tagged DISCUSS / REVIEW / VOTE. Reads the Quarterly Marketing Plan deck and the ED's board pre-read first, then interviews the ED for gaps; adaptive block layout, always exactly one page.",
