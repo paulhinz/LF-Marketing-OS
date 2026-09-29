@@ -126,7 +126,7 @@
     {
       "name": "hot-campaign-workbook-agent",
       "source": "./plugins/hot-campaign-workbook-agent",
-      "description": "IDENTIFY stage of the Hot Campaigns workflow. When an ED or marketing leader flags a trigger (a quarterly goal off track, industry news, a release, a viral post, a competitor move) or asks the agent to scan for one, it reads the project's core documents, current quarterly plan and campaign brief, Marketing Impact Report, Content Plan, Social Listening Report, and the newsfeed of Alex Salkever's newsletters, interviews the runner, and produces a pre-filled Hot Campaign Workbook (.pptx): a one-page Hot Campaign Card plus trigger, plan fit, target, message and stance, assets, sources, KPI/budget/clock, risks, and decision sections with DRAFT badges and ED INPUT / CFT INPUT questions. The completed workbook is the input to hot-campaign-plan-agent.",
+      "description": "IDENTIFY stage of the Hot Campaigns workflow. When an ED or marketing leader flags a trigger (goal off track, industry news, a release, a viral post, a competitor move) or asks the agent to scan for one, it reads the core documents, quarterly plan and campaign brief, results report, Content Plan, social listening and newsfeed, interviews the runner, and produces a pre-filled Hot Campaign Workbook (.pptx): a Hot Campaign Card plus ED INPUT / CFT INPUT questions. Feeds hot-campaign-plan-agent.",
       "category": "Planning Agents",
       "tags": [
         "hot-campaign",
