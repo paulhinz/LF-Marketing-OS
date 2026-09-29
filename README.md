@@ -17,7 +17,7 @@ The agents are organized by where they sit in a marketing workflow:
 
 This repo is the distribution point for that agent set: a git-based marketplace that Cowork (or Claude Code) reads directly, so plugins can be installed and updated without emailing files around.
 
-## 2. The 27 plugins in this marketplace
+## 2. The 28 plugins in this marketplace
 
 **Foundation**
 - `brand-guidelines-agent` — Builds a project's Brand Kit.
@@ -26,6 +26,7 @@ This repo is the distribution point for that agent set: a git-based marketplace 
 - `website-designer-agent` — Builds and deploys a project website from the foundation documents.
 - `lfx-marketing-os-qa` — Fact-checks and reviews foundation documents before they go out.
 - `plain-writing` — Keeps all written output in a plain, simple style.
+- `marketing-committee-chair-recommendation` — Ranks a project's committee members by company weight, seniority and marketing background, and recommends who to personally invite as chair when no one volunteers.
 
 **Planning**
 - `qtrly-marketing-review-agent` — Builds a workbook reviewing last quarter's marketing results.
@@ -64,7 +65,7 @@ This repo is the distribution point for that agent set: a git-based marketplace 
 
 1. Open **Customize** in the sidebar, then **Plugins**.
 2. Click **Add marketplace** and enter this repo: `paulhinz/LF-Marketing-OS` (or the full URL, `https://github.com/paulhinz/LF-Marketing-OS`).
-3. Click **Browse plugins** — the 27 plugins above will be listed.
+3. Click **Browse plugins** — the 28 plugins above will be listed.
 4. Select and **Install** whichever ones you need.
 
 This repo is public, so anyone can browse the code or add it as a marketplace without needing collaborator access or GitHub sign-in. To get updates later, come back to Customize → Plugins, find this marketplace, and click **Update**.
