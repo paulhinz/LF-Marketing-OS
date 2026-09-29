@@ -26,7 +26,7 @@ This repo is the distribution point for that agent set: a git-based marketplace 
 - `website-designer-agent` — Builds and deploys a project website from the foundation documents.
 - `lfx-marketing-os-qa` — Fact-checks and reviews foundation documents before they go out.
 - `plain-writing` — Keeps all written output in a plain, simple style.
-- `marketing-committee-chair-recommendation` — Ranks a project's committee members by company weight, seniority and marketing background, and recommends who to personally invite as chair when no one volunteers.
+- `marketing-committee-chair-recommendation` — Reviews project's committee members and recommends marketing members.
 
 **Planning**
 - `qtrly-marketing-review-agent` — Builds a workbook reviewing last quarter's marketing results.
