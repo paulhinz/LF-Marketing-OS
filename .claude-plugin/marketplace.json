@@ -88,6 +88,19 @@
       ]
     },
     {
+      "name": "marketing-committee-chair-recommendation",
+      "source": "./plugins/marketing-committee-chair-recommendation",
+      "description": "When no one volunteers to chair an LF project's marketing committee, pulls the committee roster and member tiers from LFX, checks each representative's title and seniority on LinkedIn through the user's Chrome browser, scans social listening for members already talking about the project, and delivers a ranked shortlist (first ask, second ask, vice-chair) with reasons, committee coverage gaps, and a suggested approach — as a Google Doc or Artifact page. Nothing is sent to candidates.",
+      "category": "Foundation Agents",
+      "tags": [
+        "committee",
+        "chair",
+        "member-engagement",
+        "linkedin",
+        "social-listening"
+      ]
+    },
+    {
       "name": "website-designer-agent",
       "source": "./plugins/website-designer-agent",
       "description": "Turns an LF project's three foundation docs into an approved sitemap, a complete Hugo website, and a GitHub-deployed, DNS-ready launch package — with four human approval gates.",
