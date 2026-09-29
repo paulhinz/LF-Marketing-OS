@@ -1,7 +1,7 @@
 {
   "name": "marketing-committee-chair-recommendation",
   "version": "0.1.0",
-  "description": "LFX Marketing OS Marketing Committee Chair Recommendation Agent — when no one volunteers to chair an LF project's marketing committee, pulls the committee roster and member tiers from LFX, checks each representative's seniority and function on LinkedIn through the user's Chrome browser, scans social listening for members already talking about the project, and ranks who to personally invite as chair (and vice-chair). Outputs a ranked shortlist document with reasons, committee coverage gaps, and a suggested approach.",
+  "description": "LFX Marketing OS Marketing Committee Chair Recommendation Agent — when no one volunteers to chair an LF project's marketing committee, pulls the roster and member tiers from LFX, checks each representative's seniority and function on LinkedIn via the user's Chrome browser, scans social listening, and ranks who to personally invite as chair and vice-chair. Outputs a shortlist document with reasons, committee coverage gaps, and a suggested approach.",
   "author": {
     "name": "Linux Foundation — LFX Marketing OS"
   },
