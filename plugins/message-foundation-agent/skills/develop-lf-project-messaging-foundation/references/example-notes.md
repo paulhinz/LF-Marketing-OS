@@ -40,3 +40,31 @@ Declarative full-sentence headlines; stat first, gloss second, em-dash kicker th
 
 ## Net structural change
 v0.2 = the LF framework's hierarchy and matrix on top, the v0.1 body (voice, positioning, UVP, audiences, pillars, value→support→proof, talking points, terminology) in the middle, and the evidence-and-activation layers the decks consume (Stat Bank, audience angles, origin story and cases, objections, CTA library) underneath — with a Brand Kit field mapping and a source trace so the three foundation documents stay consistent.
+
+## What v0.3 of the template changed, and why (September 2026)
+
+The section numbers above refer to the v0.2 template. In September 2026 an
+Executive Director reviewing a 43-page Message Foundation for his foundation
+said he would not read it, that "less is more with AI-generated content", and
+that a document downstream agents depend on "needs to be reviewed and owned by
+a human, otherwise you end up with a cycle of AI slop". His own team's
+messaging framework, persona file and competitive note (about 9,500 words in
+total) were built from repeated micro-templates, tables for anything
+comparative, explicit "what we don't claim / what NOT to say" blocks, a
+routing "How to use this document" header for downstream prompts, and a
+one-row proof table that said plainly the evidence bench was thin.
+
+v0.3 keeps every field the LF framework and the executive decks consume and
+moves the rest out of storage:
+
+- **Kept and locked:** hierarchy (§1), copy primitives (§3), pillars on a
+  three-part scaffold (§5), the message matrix derived from them (§6), sourced
+  proof points (§7 / Appendix B), objections with admissions and "what we don't
+  claim" (§8), origin story and four CTA anchors (§9).
+- **Retired from the stored document** (generated on demand by downstream
+  agents): §6 target audiences and §6a audience angles (now the ICP document's
+  personas), §5 UVP alternates, §13 talking points and sound bites, §14 tiered
+  CTA library, hero-number sets.
+- **Added:** the two-page Review Sheet, the existing-document intake (Step
+  0a), the length budget (8–10 pages, 12 hard cap), verbatim quoting of the
+  requester's own wording with a Source label, and the structured sidecar.

@@ -1,215 +1,159 @@
-# [Project Name] Message Foundation — required structure (v0.2)
+# [Project Name] Message Foundation — required structure (v0.3)
 
-Every Message Foundation document must contain the sections below, in this order. Notes under each define what "complete" looks like — use them to self-check before finalizing, not just to fill space.
+Every Message Foundation document contains the sections below, in this order. Notes under each define what "complete" looks like — use them to self-check before finalizing, not to fill space.
 
-The structure follows the Linux Foundation's own communications framework (see `references/lf-message-framework.md`): a **brand message hierarchy** at the top (Vision → Mission → Positioning Platform → Tagline), a **message matrix** in the middle (Value Proposition → Key Message → Supporting Points → Sound Bites, one column per pillar), and the **evidence and activation layers** downstream agents consume (stat bank, audience angles, objections, CTAs). Word-count-locked derivatives sit near the top so a copywriter can grab them without reading the whole document.
+The structure follows the Linux Foundation's own communications framework (see `references/lf-message-framework.md`): a **brand message hierarchy** at the top (Vision → Mission → Positioning Platform → Tagline), the **word-count-locked copy** a writer grabs without reading further, the **messaging pillars** on a fixed scaffold with the **message matrix** derived from them, and the **evidence layer** (sourced proof points, objections with honest admissions, what we don't claim). Talking points, sound-bite banks, the tiered CTA library and per-persona ROI tables were removed in v0.3: downstream agents generate them on demand from the fields locked here. Audiences and personas live in the ICP document; the Brand Kit owns voice.
 
-Format: the document is written as Markdown and rendered by `scripts/build_lf_doc.py` onto the LF Agent DOCS Template (see `references/lf-docs-template.md`). The builder generates the cover (project logo, project name, "Message Foundation", accent rule in the Brand Kit primary color, subtitle, details table) and the LF header and footer; do not write those into the Markdown. Start the Markdown at §0 with a `#` heading, use `##` for subsections, pipe tables wherever a table is called for, fenced code blocks for `llms.txt` and the slide text, and `<<<PAGEBREAK>>>` before each appendix.
+**Length budget: 8–10 pages target, 12 hard cap, no section over 300 words (Appendix B Stat Bank exempt)** — `references/input-doc-mapping.md` §6. One-sentence bullets. Tables for anything comparative. Fields a supplied foundation document provided are quoted verbatim with their source.
 
-Sourcing rule for the whole document: every fact traces to the interview answers, the Brand Kit, the GitHub README, or a named source in the Stat Bank. Anything else is written as **TBD — needs input**.
+Format: the document is written as Markdown and rendered by `scripts/build_lf_doc.py` onto the LF Agent DOCS Template (see `references/lf-docs-template.md`). The builder generates the cover (project logo, project name, "Message Foundation", accent rule in the Brand Kit primary color, subtitle, details table with the status `Draft — pre-filled` / `Draft — from your documents` / `ED-reviewed — [name], [date]`) and the LF header and footer; do not write those into the Markdown. Start the Markdown at the Review Sheet with a `#` heading, use `##` for subsections, pipe tables wherever a table is called for, a fenced code block for `llms.txt`, and `<<<PAGEBREAK>>>` before each appendix.
+
+Sourcing rule for the whole document: every fact traces to a supplied document, the interview answers, the Brand Kit, the GitHub README, or a named source in the Stat Bank. Anything else is written as **TBD — needs input** or `[PROOF POINT TBD]`.
 
 ---
 
-## 0. Overview
+## Review Sheet (two pages, first after the cover)
 
-One paragraph: what the project is, what this document is for, and who should use it (anyone writing web copy, social, campaigns, decks, or talking to press/members about the project). Note the source date and, if a Brand Kit exists, that this document is derived from it (see Appendix C for the section-level trace).
+The only part the ED or SME is asked to read (`references/input-doc-mapping.md` §5). Three lines above the table: status; what the agent did with any supplied documents ("12 of 17 fields from your documents; 3 from the Brand Kit and README; 2 asked"); the one decision the requester still owes (usually the tagline lock or a Mission wording).
+
+Then one pipe table, `| # | Field | Current wording | Source | Approve / Edit | Notes |`, with these rows in this order (field ids from `input-doc-mapping.md` §3):
+
+1. Vision (`mf.vision`)
+2. Mission (`mf.mission`)
+3. Positioning platform (`mf.positioning_platform`)
+4. Locked tagline (`mf.tagline_locked`)
+5. 25-word summary (`mf.summary_25`)
+6. 50-word summary (`mf.summary_50`)
+7. Boilerplate (`mf.boilerplate`)
+8. Elevator pitch (`mf.elevator_pitch`)
+9. Messaging pillars — one row per pillar: tag and the "How [Project] helps" line (`mf.pillars`)
+10. Proof points — one row: how many are sourced, the top three by id (`mf.proof_points`)
+11. Objections — one row per objection: the challenge in the skeptic's words (`mf.objections`)
+12. What we don't claim — one row per line (`mf.what_we_dont_claim`)
+13. CTA anchors — one row: the four anchors (`mf.cta_anchors`)
+
+Source is the provenance label (`From your doc §…` / `From Brand Kit` / `From README / LFX` / `Inferred` / `Partial` / `Needs input`). Approve / Edit is left blank for the reviewer. Notes carries the agent's flags: a positioning statement over 40 words in the requester's own wording, a superlative without proof, a figure awaiting an LFX pull, a pillar with no evidence.
+
+## How to Use This Document
+
+A routing block written for downstream agents and writers, one line per section: what to pull and for what ("For a press footer, copy §3 boilerplate verbatim"; "For a hero headline, use §1 tagline; alternates are in Brand Kit §8"; "For any claim, use only Appendix B rows with a source; otherwise write `[PROOF POINT TBD]`"; "Read Brand Kit §3 Prefer / Avoid before generating customer-facing copy"). Then the standing rules in three lines: quote fields verbatim, never invent evidence, and the three-document architecture (Brand Kit / Message Foundation / ICP Document). Name the structured sidecar `[project-slug].message-foundation.fields.yaml` as the machine-readable copy. Note the source date and, if a Brand Kit or supplied documents exist, that this document is derived from them (Appendix C has the trace).
 
 ## 1. Brand Message Hierarchy
 
-The four locked statements everything else derives from. Present them as a table with three columns — **Statement**, **Shelf-life**, **Primary audience** — using the LF framework's definitions:
+The four locked statements everything else derives from, as one table:
 
-| Element | What it is | Shelf-life | Primary audience |
-|---|---|---|---|
-| **Vision** | The long-term reason for being; aspirational, one sentence. | Longest | Internal, board, community |
-| **Mission** | Purpose, scope of business and unique competencies; more concrete than the vision. | Long | Internal, members, partners |
-| **Positioning Platform** | The role the project wants to occupy in its industry and its relevance to its most important audiences — the "conceptual space" it claims. Usually one or two sentences. | Medium | Industry, analysts, press |
-| **Tagline** | A creative articulation of the unique value proposition; short enough for signage. | Shortest | Customers, users, event attendees |
+| Element | Statement | Shelf-life | Primary audience | Source |
+|---|---|---|---|---|
+| **Vision** | one sentence | Longest | Internal, board, community | |
+| **Mission** | one or two sentences | Long | Internal, members, partners | |
+| **Positioning Platform** | ≤40 words | Medium | Industry, analysts, press | |
+| **Tagline** | the locked choice, or "TBD — none locked (alternates in Brand Kit §8)" | Shortest | Users, event attendees | |
 
 Rules:
-- Pull the Positioning Statement and Tagline options from the Brand Kit if one exists (Brand Kit §2 and §8); the Tagline here is the **locked choice** among those options, or TBD if the user has not chosen. Mark the others as "alternates held in Brand Kit §8."
-- Vision and Mission are not in the Brand Kit's scope; they come from the interview, the project charter, or the README. If neither exists, write TBD — do not invent one.
-- Include one line under the table on how the elements relate ("Positioning platforms bridge the gap between long-term strategy and day-to-day execution and between internal and external audiences.").
+- The Positioning Platform must agree with the Brand Kit's Positioning Statement (Brand Kit §2) and, where the requester supplied their own positioning statement, with that wording; if they diverge, say so and pick one with the user. A positioning statement written on the "For [audience] who [need], [Project] is the [category] that [benefit] — unlike [alternative], [differentiator]" formula is welcome but not required; fill "unlike" honestly or mark it TBD.
+- Vision and Mission are not in the Brand Kit's scope; they come from a supplied document, the interview, the project charter, or the README. If none has them, write TBD — do not invent one. Many foundation messaging documents state a narrative arc or a brand principle instead of a labeled Mission; record that in Notes rather than relabeling it.
+- One line under the table on how the elements relate ("Positioning platforms bridge the gap between long-term strategy and day-to-day execution and between internal and external audiences.").
+- Under 300 words including the table.
 
 ## 2. Project Definition
 
-- **What it is** — 1–2 sentences, jargon-minimal, grounded in the README/Brand Kit, not marketing fluff.
-- **Elevator pitch (long, ~60–90 words)** — usable standalone, a reader gets it with no other context.
+- **What it is** — 1–2 sentences, jargon-minimal, grounded in the README / Brand Kit / supplied document, with the governance sentence from the Brand Kit's Appendix C verbatim.
+- **Two offers, if the project has them** — one line each on what the project portfolio offers adopters and what membership offers member organizations, since messaging for LF foundations usually splits this way. Skip if the project has no membership program.
 
-## 2a. Word-Count Derivatives
+## 3. Copy Primitives (word-count-locked)
 
-Per the LFX Marketing OS document architecture (Brand Kit → Message Foundation → ICP Document), when a project has a Brand Kit these are derived *from* it; otherwise they are built directly from the interview and README. Same five deliverables either way:
+The exact copy any channel drops in as-is. Same five deliverables whether derived from a Brand Kit, a supplied document, or the interview:
 
 - **25-word summary** — hard cap, standalone.
-- **50-word summary** — hard cap, standalone, slightly more context than the 25-word version.
-- **Boilerplate** (~100–150 words) — press-release-footer style: what it is, who governs it, license, where to learn more.
-- **llms.txt** — following the llms.txt convention (H1 project name, one-line blockquote summary, then linked sections for docs/downloads/community/repo) so AI crawlers and agents get an accurate, structured summary.
-- **Elevator pitch slide** — a single slide's worth of content: headline (≤10 words), 3–4 supporting bullets, one proof point from the Stat Bank (§10) with its source, one CTA from the CTA Library (§14).
+- **50-word summary** — hard cap, standalone, slightly more context.
+- **Boilerplate** (100–150 words) — press-release-footer style: what it is, who governs it (the LFX-derived governance sentence), license, where to learn more.
+- **Elevator pitch** (≤90 words) — usable standalone, a reader gets it with no other context.
+- **llms.txt** — in a fenced code block, following the llms.txt convention (H1 project name, one-line blockquote summary, then linked sections for docs / downloads / community / repo).
 
-## 3. Voice & Tone
+When the requester's document already carries graded boilerplates (a one-sentence version, a ~50-word version, a 150-word version, a press boilerplate), quote them verbatim in the slots they fit and label them `From your doc`; build only the missing lengths and label those `Inferred`.
 
-- Three (or the user's) voice adjectives, each with one line on what it means in practice. If a Brand Kit exists, reproduce its **Voice & Tone Summary (Component 5)** table verbatim and reference its fuller Voice Attribute tables rather than rewriting them.
-- A short "Do / Don't" list (5–8 items) translating those adjectives into writing behavior, with a "sounds like / doesn't sound like" example pair per adjective.
-- Reading-level guidance (default 8th-grade for external audiences; deeper technical density only for engineer personas).
-- **Writing rules for decks and stat-led content** — the register LF executive decks actually use. Include these unless the Brand Kit overrides them:
-  - Headlines are full declarative sentences that make a claim ("The neutral room is the product"), not topic labels ("Membership overview").
-  - Stat-first: lead with the number, follow with the one-line gloss, then a short em-dash "kicker" line that says what the number means.
-  - Exact figures in body text (126,864); rounded in headlines (126,000). Never round in a way that changes the claim.
-  - No superlative ("largest," "fastest-growing," "most-used") without a Stat Bank entry behind it and its qualifier stated ("largest end user network of any open source software foundation").
-  - Every stat carries a source line; every undercount carries its caveat ("every figure here is a floor").
-  - Register shifts are allowed and should be named: celebratory for community milestones, institutional for analyst/press, plainly declarative for vision and asks.
+## 4. Voice
 
-## 4. Positioning Statement
+Do not rewrite the voice. Three lines: the Brand Kit §3 voice attributes by name, one sentence pointing to the Brand Kit's Prefer / Avoid table and What we don't claim, and the reading-level default (8th grade for external audiences; technical density for engineer personas). Then the **writing rules for decks and stat-led content**, as one short table with six rows — headlines are full declarative claims, stat-first with a one-line gloss and kicker, exact figures in body and rounded in headlines, no superlative without a Stat Bank row and its qualifier, every stat carries a source line and its caveat, register shifts are named. Under 200 words.
 
-Single-sentence formula: **For [primary audience] who [need/problem], [Project] is the [category] that [key benefit] — unlike [alternative/status quo], [key differentiator].**
-Fill "unlike" honestly; if the user didn't name a real alternative, mark that clause TBD rather than inventing a strawman. This statement must be consistent with the Positioning Platform in §1 and the Brand Kit's Positioning Statement (§2) — if they diverge, say so and pick one with the user.
+## 5. Messaging Pillars
 
-## 5. Unique Value Proposition
+3–6 pillars, each on the fixed scaffold from `references/input-doc-mapping.md` §4, ≤120 words per pillar:
 
-- One paragraph UVP.
-- 2–3 short/tagline-style alternates suitable for event signage or a hero headline, clearly labeled as options, not a final decision (the locked tagline lives in §1).
+- **Tag:** `short-stable-name` (the content tag downstream work is bucketed under)
+- **What's happening:** the industry or user condition, with a cited figure (Stat Bank id) if one exists.
+- **Why it matters:** the consequence for the audience, in their words.
+- **How [Project] helps:** the mechanism, not the slogan; one proof-point id or `[PROOF POINT TBD]`.
 
-## 6. Target Audiences
+Rules: a supplied document's narratives are quoted verbatim under their own headings, with the three parts identified in the sidecar; a pillar with no proof point says so in one line rather than borrowing a figure from another pillar; flagship projects or programs that are "living proof" of a pillar are named in "How [Project] helps" only after the requester confirmed them.
 
-One entry per audience segment named by the user (or clearly inferable from the README/Brand Kit; the Brand Kit §4 table is the starting point). For each: **Titles/roles**, **Problem** (in their words, not ours), **Concerns/objections**, **Core message**, **Sample CTA** (reference the CTA Library, §14). If the interview surfaced multiple outreach objectives (awareness, membership sales, event attendance/sponsorship, education sales), add an **Outreach Objective → Primary Audience → Angle** mapping table.
+Close with the **Goals vocabulary**: a fixed list of 4–6 marketing goals every downstream piece of content is tagged against (default LF set, edit to fit: `Brand Visibility · Member + Event Growth · Community Content · Project Adoption · Education Growth`). One line, no explanation.
 
-## 6a. Audience Angles & ROI Framing
+## 6. Message Matrix
 
-Extends §6 from *description* to *what lands*. One row per persona:
+The one-page "message house" the LF Communications Framework uses, **derived from §5, never authored separately**. One column per pillar. Rows: **Value Proposition** (from "Why it matters"), **Key Message** (one sentence, from "How [Project] helps"), **Supporting Points** (2–3, each a Stat Bank id or a fact from §2). Above the matrix, repeat the Mission and Positioning Platform from §1 as the two spanning header rows, exactly as the LF framework does. Every cell must match §5 word for word or by id; the matrix carries no claim that is not already in a pillar. The Sound Bites row of the older matrix is retired; spokesperson lines are generated on demand.
 
-| Persona | The framing line that lands | 2–3 proof points (Stat Bank IDs) | The executive question to plant | Preferred CTA (§14) |
-|---|---|---|---|---|
+## 7. Proof Points
 
-Guidance:
-- Typical LF personas: economic buyer / CFO ("<X% of your annual R&D budget"; "2× productivity for firms that contribute vs. only consume"), CTO / engineering leader (maintainer counts, governance seats, "governance follows code"), legal / policy (license terms, IP framework, regulatory alignment), developer / maintainer (contributor ladder, mentorship, "nobody answers to us"), end-user organization (reference architectures, peer adopters), regional (local governance entity, local-currency funding).
-- "Executive question to plant" is the question you want a decision-maker to ask their own team or vendors ("Is your platform [Project]-conformant?"; "Are we building on the standard API or something custom?"). Leave TBD if none is defensible yet.
-- Every proof point must be a Stat Bank ID; do not restate numbers here.
+One paragraph stating the size of the evidence bench honestly ("three sourced proof points; the strongest is S2; the bench is thin on end-user outcomes") and the acceptance criteria for a new proof point: a quantified outcome, a named organization the requester confirmed, a verifiable reference with a date, and the pillar tag it serves. Then the **top proof points table**, up to eight rows: `| ID | Claim (as displayed) | Pillar tag | Source | As of |`. The full ledger with types, caveats, verification and audience marking is Appendix B; this section is the reader's view of it. Named adopters appear only after confirmation in Appendix A.
 
-## 7. Messaging Pillars
+## 8. Objections & What We Don't Claim
 
-3–5 pillars max. For each: a **short name usable as a content tag** (e.g. `AI Narrative`, `Project + Community Momentum`, `Brand & Community`), 2–4 sentences of supporting narrative, 1–3 **flagship proof projects or programs** that are "living proof" of the pillar, and at least one **proof point** referenced by Stat Bank ID. If a pillar has no real proof point yet, say so explicitly.
+**Objections** — 3–6 entries covering the hardest questions press, prospects, members or regulators actually ask, each on the four-line micro-template: **The challenge** (in the skeptic's words) · **Our thesis** (one sentence) · **Evidence** (Stat Bank ids or named facts) · **What we admit** (the part that is true and what the project is doing about it). Confident and fair; never disparaging a named competitor; an admission states facts about the project, not about a named member; no motive is attributed to a named organization without its published words.
 
-Close the section with the **Goals vocabulary**: a fixed list of 4–6 marketing goals every downstream piece of content will be tagged against with a "Supports:" label. Default LF set (edit to fit the project): `Brand Visibility · Member + Event Growth · Community Content · Project Adoption · Education Growth`. Downstream agents (campaign briefs, content, board updates) use pillar tags and goal tags to bucket and count output, so the names must be short and stable.
+**What we don't claim** — the Brand Kit's list, inherited verbatim, extended with messaging-specific limits (3–6 lines in all): not *the* standard; not the only solution; never that open source is universally cheaper, faster or safer; never a "first" or "largest" without its Stat Bank row; membership is never required for access. A supplied document's "what we don't do" or "what we don't claim" lines are quoted here verbatim.
 
-## 8. Message Matrix
+## 9. Origin, CTAs, Terminology & Next Steps
 
-The one-page "message house" — the LF Communications Framework's core artifact. One column per pillar (or per business line if the project has distinct offerings, e.g. Projects / Events / Training / Community). Rows, top to bottom:
+- **Origin story** — ≤150 words on the three-step template: what arrived (the donation, the contested market, the founding members) → what neutral governance changed → what emerged, with the number that proves it, or the intended outcome stated as a goal if the project is too new. Dates come from the Brand Kit's Appendix C timeline. One before → after case, ≤60 words, only with a confirmed organization; otherwise none.
+- **CTA anchors** — exactly four lines, one per tier, exact wording and destination: Learn · Engage · Contribute · Commit. Where a membership tier, working group or event is confirmed, name it; otherwise keep the anchor generic and say so. Downstream agents build campaign-specific CTAs from these four; no library here.
+- **Terminology & constraints** — naming conventions (correct project name usage, casing, "the [X] project" vs. bare name, sub-brand hierarchy and non-additive counts), the governance and trademark sentences from the Brand Kit's Appendix C verbatim, and one line pointing to Brand Kit §3 Prefer / Avoid and §6 hard constraints rather than repeating them.
+- **Next steps** — two sentences naming what this document is the input for (web copy, social bios, press boilerplate, campaign briefs, pitch decks, member briefings, board updates) and the LFX Marketing OS agents that consume it (ICP & Target Markets, Pitch Deck, Website Designer, Quarterly Campaign Plan, Case Study, Member Benefits Briefing). Those are separate, follow-on requests.
 
-| | Pillar 1 | Pillar 2 | Pillar 3 | Pillar 4 |
-|---|---|---|---|---|
-| **Value Proposition** | the ultimate benefit "promised" to the audience — rational and emotional | | | |
-| **Key Message** | one concise sentence expressing leadership or differentiation | | | |
-| **Supporting Points** | 2–3 reasons the key message is true | | | |
-| **Sound Bites** | 1–2 quotable lines a spokesperson or audience would "play back" | | | |
+<<<PAGEBREAK>>>
 
-Above the matrix, repeat the Mission and Positioning Platform from §1 as the two spanning header rows, exactly as the LF framework does. Every cell must be consistent with §7 and §9 — this is a *view* of the same content, not new content. Supporting points that are numbers must appear in the Stat Bank.
+## Appendix A: Inputs & Interview Record
 
-## 9. Value Messages, Support Points & Proof Points
+Table of the supplied documents (title, link, date read, which `mf.*` fields they covered), then the raw answers to the interview questions actually asked, verbatim, with dates and the provenance label per `input-doc-mapping.md` §2. Record which named adopters and figures the requester explicitly confirmed, and every conflict between a supplied document and the LFX record, the Brand Kit or the README with how it was resolved. Mirrors the Brand Kit's Appendix B so the document family stays consistent.
 
-A structured list: **Value message** (a single claim, e.g. "We reduce operational risk") → **Support points** (2–3 reasons that back the claim) → **Proof points** (Stat Bank IDs, named adopters the user confirmed, benchmarks, third-party validation, or the generic-but-verifiable substitute — community/repo metrics, license terms, governance facts). This is the rigor layer under §8.
-
-## 10. Stat Bank / Proof-Point Ledger
+## Appendix B: Stat Bank / Proof-Point Ledger
 
 Every number used anywhere in this document, and every number a downstream deck may need, in one table:
 
 | ID | Claim (as displayed) | Figure | Unit / grain | Period or as-of date | Source | Caveat | Type | Verified at / with | Audience |
 |---|---|---|---|---|---|---|---|---|---|
-| S1 | "1,500+ open source efforts" | 1,500+ | projects, umbrella-wide | as of Sept 2026 | LF 2025 Annual Report | non-additive with sub-project counts | Published | 2026-09-16, fetched report p.4 | External |
 
 Rules:
-- **Type** is one of `Live-LFX` (regenerable from LFX Insights/Meetings/membership via the LFX MCP tools; record the exact query or metric name), `Published` (annual report, press release, transparency report), `Third-party` (analyst, academic, press, a standard or RFC — record author, title, year, and fetch the primary document: a date taken from a summary or another marketing document is not verified), or `Interview` (user-stated, not yet independently verified — flag it).
-- **Verified at / with** records the date and the tool call or fetch that confirmed the figure (`query_lfx_standard_metrics memberships by=tier`, `search_members`, a URL). A row without it is unverified and says so.
-- **Audience** is `External` or `Internal`. Membership list-price and revenue figures, and anything derived from an LFX export rather than a public page, are `Internal`: they stay in an internal appendix and are stripped from any copy an outside agency consumes. External roster references cite the project's public members page or the press release, never the LFX export.
-- **Caveat** is mandatory when the figure is an undercount, a floor, non-additive across sub-brands, or uses a different unit from a published count. Reproduce the standard LF caveat phrasing: "every figure here is a floor," "matched on corporate email domains only," "a company joining three foundations counts three times."
-- Record the **canonical data window** for Live-LFX figures once at the top of the section (e.g. "trailing 12 months, Sept 1 2025 – Aug 31 2026; snapshots as of Sept 1 2026") so every downstream deck reuses the same window and stays mutually consistent.
-- **Hero-number sets**: below the table, list 2–4 pre-packaged "big four" groups (four Stat Bank IDs + a one-sentence thesis + a kicker line) by theme — e.g. Scale, Momentum, Community, Return. These are the standard four-tile slide grammar in LF executive decks.
-- If the LFX MCP tools are connected, the skill offers to pull Live-LFX figures during generation; otherwise the row is `TBD — pull from LFX` with the metric named. The standard-metric families worth offering for a foundation: `member_organizations` (today and at the launch date), `memberships by=tier`, `new_members period=month`, `contributors` and `contributing_organizations` (a zero usually means the GitHub org is not onboarded to LFX Insights — say that, not "no contributors"), `event_registrations`, `speakers`, `training_enrollments`, `certifications`, `maintainers`, plus committee and past-meeting counts. Read `read_lfx_standard_metrics_guidance` once before the first call.
-- Named adopters and customers appear here only after the user confirmed them (interview record must show it).
-- Counts of governance bodies name the bodies: "4 committees onboarded" that includes an LF staff group is "three governance committees (Governing Board, TSC, Marketing)".
+- **Only sourced rows.** A row without a Source and a date is not written; the claim that needed it reads `[PROOF POINT TBD]` in the body. Never pad the table to look complete.
+- **Type** is one of `Live-LFX` (regenerable from LFX Insights / Meetings / membership via the LFX MCP tools; record the exact metric name and data window), `Published` (annual report, press release, transparency report), `Third-party` (analyst, academic, press, a standard or RFC — fetch the primary document; a date taken from a summary or another marketing document is not verified), `Interview` (requester-stated, not independently verified — flag it), or `Your doc` (a figure carried in the requester's own document, with its cited source copied across).
+- **Verified at / with** records the date and the tool call or fetch that confirmed the figure. A row without it says so.
+- **Audience** is `External` or `Internal`. Membership list-price and revenue figures, and anything derived from an LFX export rather than a public page, are `Internal` and are stripped from the agency-safe copy.
+- **Caveat** is mandatory when the figure is an undercount, a floor, non-additive across sub-brands, or uses a different unit from a published count ("every figure here is a floor").
+- Record the **canonical data window** for Live-LFX figures once at the top ("trailing 12 months, Sept 1 2025 – Aug 31 2026; snapshots as of Sept 1 2026").
+- If the LFX MCP tools are connected, offer to pull `member_organizations`, `memberships by=tier`, `new_members period=month`, `contributors`, `contributing_organizations`, `event_registrations`, `speakers`, `training_enrollments`, `certifications`, `maintainers` and committee counts; read `read_lfx_standard_metrics_guidance` once first. Otherwise the row is `TBD — pull from LFX` with the metric named. A zero for contributors usually means the GitHub org is not onboarded to LFX Insights — say that.
+- Hero-number sets (four ids, a thesis, a kicker) are no longer stored here; the deck-building agents compose them from this table.
 
-## 11. Origin Story & Before → After Case Library
+## Appendix C: Source Trace
 
-- **Origin story** (one paragraph, then a three-step template): *What arrived* (the donation, the contested or closed market, the founding members) → *What neutral governance changed* (competitors adopt what none of them owns; IP held neutrally; business separated from technical decisions) → *What emerged* (the industry default, in N years, with the number that proves it). If the project is too new for step three, say so and state the intended outcome as a goal, not a fact.
-- **Before → After cases** (2–4): for each — industry or user segment, the "before" problem in one line, 2–3 before facts, 2–4 after facts with numbers (Stat Bank IDs), a one-line moral, and sources. Named organizations only with user confirmation.
-- **What winning looks like**: four short victory conditions (2–5 words each, one line of explanation) and one closing sentence defining success — the standard closer in LF strategy decks.
-
-## 12. Objections, Threats & Our Stance
-
-3–6 entries covering the hardest questions press, prospects, members, or regulators actually ask. For each:
-
-- **The challenge** — one plain sentence, in the skeptic's words.
-- **Our thesis** — one sentence stating the position.
-- **Evidence** — Stat Bank IDs or named facts.
-- **Rebuttal / reframe** — 2–3 sentences, confident and fair, never disparaging a named competitor (per the Brand Kit's competitive-tone rule).
-- **What we admit** — the part of the criticism that is true and what the project is doing about it. LF's own decks publish declining metrics and at-risk lists plainly ("we publish our own bad news — and act on it"); this document should permit and model that. Two limits: an admission states facts about the project, not about a named member (no "Coinbase remains the largest contributor" without a Stat Bank row, and no role assigned to a member — "operates the public facilitator" — without a verified source); and a rebuttal never assigns motives to named organizations ("regulated participants join because…") — quote their published words instead, which the press releases supply.
-
-## 13. Talking Points & Soundbites
-
-- **Executive soundbite** — one quotable sentence for a keynote or exec quote.
-- **Short/social message** — one paragraph sized for a social post or newsletter blurb.
-- **Audience-specific angles** — one line each for the audiences in §6, consistent with §6a.
-- **Sound bite bank** — 6–10 additional quotable lines, each tagged with the pillar it serves and where it is appropriate (keynote, press, member meeting, social). Sound bites are the most quoted and least checked text in the package: every date or number inside one is checked against its primary source before the line is written (a past run shipped a keynote-tagged sound bite whose year was wrong by two years), and a roster that includes nonprofits and foundations is "organizations", never "companies".
-
-## 14. CTA Library
-
-Calls to action tiered by commitment and mapped to audience:
-
-| Tier | CTA (exact wording) | Audience (§6) | Rationale / what they get | Destination or contact | Pillar tag |
-|---|---|---|---|---|---|
-| Learn | | | | | |
-| Engage (join a WG, user group, mailing list; attend an event) | | | | | |
-| Contribute (submit code, a project, a case study, a talk) | | | | | |
-| Commit (join or upgrade membership; sponsor; fund a program) | | | | | |
-
-Include at least one CTA per tier or mark the tier TBD. Where a specific membership tier, sponsorship package, or event is confirmed, use it; otherwise keep the CTA generic and note that. Every Sample CTA in §6 and every CTA on the elevator pitch slide (§2a) must be drawn from this table.
-
-## 15. Terminology, Constraints & Differentiation
-
-- Naming conventions (correct project name usage, capitalization, "the [X] project" vs. bare name, sub-brand hierarchy and which counts are non-additive).
-- Anything to avoid (colors/marks, trademark concerns, LF-family consistency notes, named-competitor restrictions) — pull directly from the Brand Kit §6 Hard Constraints or the user's constraint answer.
-- Reference brands/projects named as admired or to differentiate from, and one line on what's being borrowed vs. avoided from each (Brand Kit §6 "How to Differentiate Without Naming Names" is the source when it exists).
-
-## 16. Next Steps
-
-One short paragraph naming what this document is the input for (web copy, social bios, press boilerplate, campaign briefs, pitch decks, member briefings, board marketing updates, sales one-pagers) and a reminder that those are separate, follow-on requests — this document is the foundation, not the finished asset. Name the LFX Marketing OS agents that consume it (ICP & Target Markets, Pitch Deck, Website Designer, Quarterly Campaign Plan, Case Study, Member Benefits Briefing).
-
-## Appendix A: Interview Record
-
-Raw decisions/answers collected during the session, for traceability — mirrors the Brand Kit's Appendix B source-intake table so the document family stays consistent. Record which named adopters and figures the user explicitly confirmed.
-
-## Appendix B: Definitions Glossary
-
-Reproduce the LF Communications Framework definitions so contributors use the terms the same way (source: `references/lf-message-framework.md`):
-
-- **Vision** — the organization's long-term reason for being.
-- **Mission** — declares the organization's purpose, or why it exists; scope of business and unique competencies. More concrete than the vision and often informs it.
-- **Positioning** — the conceptual "space" a company occupies in the mind of the customer. Rooted in competitive advantage and how that advantage is expressed. Must resonate with broad audiences yet motivate individuals on their own terms.
-- **Positioning Platform** — the desired role in an industry and relevance to the most important customers; bridges long-term strategy and day-to-day execution, and internal and external audiences.
-- **Tagline** — a creative articulation of the unique value proposition.
-- **Value Proposition** — derived from the positioning; defines the ultimate benefits "promised" to the customer, based on both rational and emotional variables.
-- **Key Message** — the concise expression of a company's desired and/or real positioning to a target audience. Typically three or four; should express leadership and points of differentiation.
-- **Supporting Point** — a reason the key message is true.
-- **Proof Point** — the tangible, essential elements that reinforce and validate messages and position; concrete examples of how the position has been, or will be, established.
-- **Sound Bite** — how key audiences might "play back" the position and key messages; creative expressions that increase a spokesperson's quotability.
-- **Messaging Pillar** — a named theme grouping a value proposition, key message, supporting points and sound bites; also the content tag downstream work is bucketed under.
-
-## Appendix C: Source Trace (Brand Kit → Message Foundation)
-
-When a Brand Kit exists, a short table listing each Message Foundation section and the Brand Kit section it was derived from, per `references/brand-kit-field-mapping.md`, plus any conflicts found and how they were resolved. When no Brand Kit exists, state that and list the interview questions used instead.
+A short table listing each Message Foundation section and where it came from — the requester's supplied document (title and section), the Brand Kit section per `references/brand-kit-field-mapping.md`, the README, LFX, or the interview — plus conflicts found and how they were resolved. When no Brand Kit and no supplied document existed, state that and list the interview questions used instead. Definitions of Vision, Mission, Positioning Platform, Tagline, Value Proposition, Key Message, Supporting Point and Proof Point are in `references/lf-message-framework.md`; cite it in one line instead of reproducing the glossary.
 
 ---
 
 ### Section-completeness self-check (apply before finalizing)
 
-1. Every fact in §1, §2, §2a, §4, §7, §8, §9, §10, §11 and §12 traces to the interview answers, the Brand Kit, the GitHub README, or a Stat Bank row with a named source. Anything else is **TBD — needs input**.
-2. Every number that appears anywhere in the document has a Stat Bank row; every Stat Bank row has a Type, a date, and a Source.
-3. §1 Positioning Platform, §4 Positioning Statement, and the Brand Kit's Positioning Statement do not contradict each other.
-4. §8 Message Matrix cells are consistent with §7 and §9 — same claims, same numbers.
-5. Every CTA used in §2a, §6 and §6a exists in §14.
-6. No named organization appears as an adopter or customer without an explicit confirmation in Appendix A.
-7. No superlative appears without its Stat Bank ID and qualifier — including "only", "first", "the major" (implies all) and "no other", and including inside §5, §12 admissions and §13 sound bites.
-8. The governance and trademark sentences in §0, §2a, §7, §9, §12 and §15 are the ones in the Brand Kit's Appendix C (LFX-derived), verbatim. The foundation and the Series LLC are never merged into one entity.
-9. Every date in the document traces to a primary source fetched during this run (an RFC, a release, a filing), not to another marketing document.
-10. No cost or performance comparison ("for less than…", "clears in seconds…") appears without a cited basis; no motive or role is attributed to a named organization without its published words or a verified record.
-11. No sentence in §1 or §4 exceeds about 40 words; a 90-word positioning sentence fails the voice's own "Direct" rule even when every clause is true.
-12. Every Stat Bank row marked `Internal` is absent from the agency-safe copy, and the document says which copy it is.
-13. The delivery message carries the one-page digest and, if the `lfx-marketing-os-qa` skill is installed, its fix list.
+1. The Review Sheet is present, fits in two pages, and every row carries a Source label; every `Needs input` row is also TBD in the body.
+2. Every fact in §1–§8 traces to a supplied document, the interview answers, the Brand Kit, the GitHub README, or a Stat Bank row with a named source. Anything else is **TBD — needs input** or `[PROOF POINT TBD]`.
+3. Every number in the document has a Stat Bank row; every Stat Bank row has a Type, a date and a Source; no row was added without them.
+4. §1 Positioning Platform, the Brand Kit's Positioning Statement and any positioning statement in a supplied document do not contradict each other.
+5. §6 Message Matrix cells match §5 word for word or by id; no claim appears in the matrix that is not in a pillar.
+6. Every pillar is ≤120 words on the three-part scaffold with a tag; every objection is on the four-line template.
+7. No named organization appears as an adopter or customer without an explicit confirmation in Appendix A.
+8. No superlative appears without its Stat Bank id and qualifier — including "only", "first", "the major" and "no other" — unless it is the requester's own wording, in which case it is flagged in the Review Sheet Notes.
+9. The governance and trademark sentences in §2, §3 and §9 are the ones in the Brand Kit's Appendix C (LFX-derived), verbatim. The foundation and the Series LLC are never merged into one entity.
+10. Every date traces to a primary source fetched during this run, not to another marketing document.
+11. No sentence in §1 exceeds about 40 words unless it is the requester's own wording (flagged).
+12. Every field taken from a supplied document is verbatim, in the requester's spelling and punctuation, and labeled `From your doc`.
+13. The document is within 12 pages and no section other than Appendix B exceeds 300 words.
+14. Every Stat Bank row marked `Internal` is absent from the agency-safe copy, and the document says which copy it is.
+15. `[project-slug].message-foundation.fields.yaml` exists with every `mf.*` field, and `[project-slug].inputs.yaml` was created or appended.
+16. The delivery message carries the ten-line digest and, if the `lfx-marketing-os-qa` skill is installed, its fix list.
