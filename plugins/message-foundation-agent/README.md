@@ -4,44 +4,40 @@ An LFX Marketing OS plugin for Cowork/Claude Code. Interviews a Linux Foundation
 
 This is the "Message Foundation Agent" from the LFX Marketing OS 42-agent list (LF Media department, 9-Agent category 1: Foundation Setup).
 
-**Current version: 0.4.0** — the document is now delivered Google Docs-ready on the Linux Foundation's LF Agent DOCS Template, with the project's name and logo on the cover and its Brand Kit colors applied. See "What changed in 0.4.0" below; 0.2.0 restructured the content around the Linux Foundation's own communications framework.
+**Current version: 0.5.0** — the agent now asks first whether the foundation already has its own messaging documents, maps them into the standard fields and interviews only for the gaps; the document opens with a two-page Review Sheet for the ED and is held to an 8–10 page budget (it was 43 pages). Talking points, sound-bite banks and the CTA library are no longer stored. See "What changed in 0.5.0" below; 0.4.0 moved output to the LF Agent DOCS Template; 0.2.0 restructured the content around the Linux Foundation's own communications framework.
 
 ## What it does
 
 Run the command **"Develop LF Project Messaging Foundation"** and the agent will:
 
-1. Check for an existing `[Project Name] Brand Kit` and, if found, read it section by section using an explicit Brand Kit → Message Foundation field mapping.
-2. Ask a short set of questions, one at a time — project name, GitHub URL, and either the Brand Kit location or five brand-discovery questions if none exists.
-3. Ask up to 8 more targeted questions to close remaining gaps: vision and mission, the locked tagline, proof points to confirm (with source and date), audience scope and outreach objectives, positioning contrast, origin story, objections and honest concessions, CTAs and timeliness.
-4. Build the Stat Bank first — every number with its source, as-of date, caveat and type (live LFX / published / third-party / interview) — optionally pulling live figures through the LFX MCP tools when connected.
-5. Generate `[Project Name] Message Foundation.md` following the v0.2 template, then render it with the bundled `scripts/build_lf_doc.py` onto the LF Agent DOCS Template as `[Project Name] Message Foundation.docx` (plus a lighter Drive-upload build), and place it in the project's Drive folder as a Google Doc.
+1. Ask whether the foundation already has a messaging, positioning, value or narrative document to use as input. If it does, read it, tell you how many of the 17 standard fields it covers, quote its wording verbatim, and ask only about the gaps.
+2. Check for an existing `[Project Name] Brand Kit` and, if found, read it section by section using an explicit Brand Kit → Message Foundation field mapping.
+3. Otherwise ask a short set of questions, one at a time — project name, GitHub URL, and either the Brand Kit location or five brand-discovery questions if none exists — then up to 8 targeted questions to close remaining gaps: vision and mission, the locked tagline, proof points to confirm (with source and date), positioning contrast, origin story, objections and honest concessions, CTA anchors.
+4. Build the Stat Bank first — only rows with a source, as-of date, caveat and type (live LFX / published / third-party / interview / your doc) — optionally pulling live figures through the LFX MCP tools when connected. Claims with no evidence read `[PROOF POINT TBD]`.
+5. Generate `[Project Name] Message Foundation.md` following the v0.3 template (Review Sheet first, 8–10 pages), write the `.fields.yaml` sidecar downstream agents read, render the document with the bundled `scripts/build_lf_doc.py` onto the LF Agent DOCS Template as `[Project Name] Message Foundation.docx` (plus a lighter Drive-upload build), and place it in the project's Drive folder as a Google Doc.
 
-## Document structure (v0.2)
+## Document structure (v0.3)
 
 | # | Section | What it holds |
 |---|---|---|
-| 0 | Overview | Purpose, audience, source date, Brand Kit derivation note |
-| 1 | **Brand Message Hierarchy** | Vision → Mission → Positioning Platform → Tagline, each with shelf-life and primary audience (LF framework) |
-| 2 / 2a | Project Definition & Word-Count Derivatives | What it is, long elevator pitch; 25-word, 50-word, boilerplate, `llms.txt`, elevator pitch slide |
-| 3 | Voice & Tone | Adjectives, Do/Don't, reading level, plus deck writing rules (stat-first headlines, kickers, sourced superlatives) |
-| 4 / 5 | Positioning Statement & UVP | For/who/unlike formula; UVP with signage-length alternates |
-| 6 / 6a | Target Audiences & **Audience Angles / ROI Framing** | Per persona: the line that lands, proof points by Stat Bank ID, the executive question to plant, preferred CTA |
-| 7 | Messaging Pillars | 3–5 pillars with **content-tag names**, flagship proof projects, and a fixed **goals vocabulary** ("Supports: …") |
-| 8 | **Message Matrix** | One-page message house: Value Proposition → Key Message → Supporting Points → Sound Bites per pillar, under Mission and Positioning header rows |
-| 9 | Value → Support → Proof | The rigor chain under the matrix |
-| 10 | **Stat Bank / Proof-Point Ledger** | Every number: claim, figure, unit, period, source, caveat, type; canonical data window; "big four" hero-number sets |
-| 11 | **Origin Story & Before → After Cases** | Donation → neutral governance → default pattern; 2–4 cases; "what winning looks like" |
-| 12 | **Objections, Threats & Our Stance** | Challenge, thesis, evidence, rebuttal, and "what we admit" |
-| 13 | Talking Points & Soundbites | Executive soundbite, social message, audience angles, sound bite bank tagged by pillar |
-| 14 | **CTA Library** | Tiered Learn / Engage / Contribute / Commit, mapped to audience and pillar |
-| 15 / 16 | Terminology & Constraints; Next Steps | Naming, guardrails, reference brands; what the document unlocks and which agents consume it |
-| A / B / C | Appendices | Interview record; **definitions glossary** (LF framework); **Brand Kit source trace** |
+| — | **Review Sheet** (2 pages) | Every field the ED or SME must approve: current wording, source (your doc / Brand Kit / README–LFX / inferred / needs input), blank Approve / Edit column, agent flags |
+| — | How to Use This Document | Routing block for downstream agents and writers; standing rules; three-document architecture; sidecar name |
+| 1 | Brand Message Hierarchy | Vision → Mission → Positioning Platform (≤40 words) → locked Tagline, each with shelf-life, audience and source |
+| 2 | Project Definition | What it is (with the LFX-derived governance sentence); the two offers (project portfolio, membership) |
+| 3 | Copy Primitives | 25-word, 50-word, boilerplate (100–150), elevator pitch (≤90), `llms.txt` — quoted verbatim when the foundation already has them |
+| 4 | Voice | Pointer to the Brand Kit's voice, Prefer / Avoid and What we don't claim; the six deck writing rules |
+| 5 | **Messaging Pillars** | 3–6 pillars on a fixed scaffold — What's happening / Why it matters / How [Project] helps — ≤120 words each with a proof-point id; goals vocabulary |
+| 6 | Message Matrix | Derived from §5: value proposition, key message, supporting points per pillar under Mission and Positioning header rows |
+| 7 | Proof Points | Honest statement of the evidence bench, acceptance criteria, top eight sourced rows |
+| 8 | **Objections & What We Don't Claim** | Challenge / thesis / evidence / what we admit; the inherited and extended list of claims never made |
+| 9 | Origin, CTAs, Terminology, Next Steps | ≤150-word origin story; four CTA anchors; naming and constraints by reference; downstream agents |
+| A / B / C | Appendices | Inputs and interview record with provenance; Stat Bank (sourced rows only); source trace |
 
-Bold rows are new in 0.2.0.
+Bold rows changed most in 0.5.0. Retired: target audiences and audience angles (now the ICP document's personas), UVP alternates, talking points and sound bites, the tiered CTA library, hero-number sets, the definitions glossary (cited from the LF framework reference instead).
 
 ## Document family
 
-This plugin assumes (but doesn't require) a companion **Brand Kit** — the LFX Marketing OS document that owns identity, voice, positioning statement, audiences, strengths, guardrails, tagline options and visual direction. `references/brand-kit-field-mapping.md` states which Brand Kit section populates which Message Foundation section and which fields the Brand Kit never contains (vision, mission, origin story, objections, stat provenance). A third document, the **ICP & Target Markets Document**, is a separate skill.
+This plugin assumes (but doesn't require) a companion **Brand Kit** — the LFX Marketing OS document that owns identity, voice, prefer/avoid language, what we don't claim, positioning statement, strengths, guardrails, tagline options and visual direction. It also accepts the foundation's own messaging documents as a direct input. `references/brand-kit-field-mapping.md` states which Brand Kit section populates which Message Foundation section and which fields the Brand Kit never contains (vision, mission, origin story, objections, stat provenance). A third document, the **ICP & Target Markets Document**, is a separate skill.
 
 Downstream consumers of the Message Foundation in LFX Marketing OS: ICP & Target Markets, Pitch Deck, Website Designer, Quarterly Campaign Plan, Case Study, and Member Benefits Briefing agents.
 
@@ -51,7 +47,17 @@ Every factual claim in the generated document — proof points, adopter names, p
 
 ## Output format (v0.4.0)
 
-Every Message Foundation is built on the Linux Foundation's **LF Agent DOCS Template** (Google Docs master: `docs.google.com/document/d/1RinjSuKojc9bqLLeviJfGE6yzSIfj8kSrTwIiWlH-HM`): Open Sans body, Roboto Slab headings, the LF logo header with `Project · Document · Status · copy label`, a centered footer with the agent name, date and page number. The cover carries the project's logo and name; the Brand Kit's Component 2 primary and secondary colors color the headings, the cover accent and the table headers ("colors only" brand styling — fonts and layout stay on the template so every LF project's documents look like one family). The spec, the logo/color sourcing order, the Markdown conventions and the Google Docs delivery are in `skills/develop-lf-project-messaging-foundation/references/lf-docs-template.md`. The three files that implement it — `scripts/build_lf_doc.py`, `assets/lf-agent-docs-template.docx`, `references/lf-docs-template.md` — are identical across the three foundation plugins; change them together.
+Every Message Foundation is built on the Linux Foundation's **LF Agent DOCS Template** (Google Docs master: `docs.google.com/document/d/1RinjSuKojc9bqLLeviJfGE6yzSIfj8kSrTwIiWlH-HM`): Open Sans body, Roboto Slab headings, the LF logo header with `Project · Document · Status · copy label`, a centered footer with the agent name, date and page number. The cover carries the project's logo and name; the Brand Kit's Component 2 primary and secondary colors color the headings, the cover accent and the table headers ("colors only" brand styling — fonts and layout stay on the template so every LF project's documents look like one family). The spec, the logo/color sourcing order, the Markdown conventions and the Google Docs delivery are in `skills/develop-lf-project-messaging-foundation/references/lf-docs-template.md`. The four files that implement it and the shared intake spec — `scripts/build_lf_doc.py`, `assets/lf-agent-docs-template.docx`, `references/lf-docs-template.md`, `references/input-doc-mapping.md` — are identical across the three foundation plugins; change them together.
+
+## What changed in 0.5.0
+
+- **Existing documents first.** New Step 0a asks for the foundation's own messaging documents before anything else; fields they cover are quoted verbatim with a `From your doc` source label, and the interview shrinks to the gaps. The shared `[project-slug].inputs.yaml` record means the Brand Kit and ICP agents do not ask for the same files again.
+- **Review Sheet.** Two pages after the cover: the 13 field groups an ED or SME must approve, with Source and Approve / Edit columns. Replaces the YOUR INPUT closing section; status moves to `Draft — pre-filled` / `Draft — from your documents` / `ED-reviewed`.
+- **Length budget.** 8–10 pages target, 12 hard cap, no section over 300 words (Stat Bank exempt). Pillars move to a fixed three-part scaffold; the message matrix is derived from them, not authored.
+- **Retired from storage:** target audiences and audience angles, UVP alternates, talking points and sound bites, the tiered CTA library (four anchors remain), hero-number sets, the glossary appendix. Downstream agents generate these on demand.
+- **Honest evidence.** The Stat Bank holds only sourced rows; `[PROOF POINT TBD]` replaces padding, and §7 states the size of the bench.
+- **Structured sidecar.** `[project-slug].message-foundation.fields.yaml` and `[project-slug].inputs.yaml` are written next to the document.
+- **Shared spec.** `references/input-doc-mapping.md` (identical in all three foundation plugins) holds the field registry, micro-templates, Review Sheet, length budget and sidecar schema.
 
 ## What changed in 0.4.0
 
