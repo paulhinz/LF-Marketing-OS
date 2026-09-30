@@ -1,9 +1,18 @@
 {
   "name": "message-foundation-agent",
-  "version": "0.4.0",
-  "description": "LFX Marketing OS Message Foundation Agent — interviews a Linux Foundation project lead (or pre-fills the interview in batch mode for ED review) and produces a '[Project Name] Message Foundation' document built on the LF communications framework: Vision → Mission → Positioning Platform → Tagline hierarchy, a one-page Message Matrix, word-count-locked summaries, boilerplate, llms.txt and elevator pitch, plus voice, audiences with persona ROI angles, tagged messaging pillars, a verified and audience-marked Stat Bank, origin story and cases, objections and stance, talking points, and a tiered CTA library — with LFX-derived governance wording, a claims lint, a QA gate and a one-page digest — for use across web, content, social, campaigns, pitch decks and member briefings. Delivered Google Docs-ready on the LF Agent DOCS Template, with the project's name and logo on the cover and its Brand Kit colors applied.",
+  "version": "0.5.0",
+  "description": "LFX Marketing OS Message Foundation Agent — asks first for the foundation's own messaging documents and maps them into the standard fields, interviews only for the gaps (or pre-fills in batch mode), and produces a short '[Project Name] Message Foundation' built on the LF communications framework: a two-page Review Sheet for the ED, then Vision → Mission → Positioning Platform → Tagline, word-count-locked summaries, boilerplate, llms.txt and elevator pitch, 3–6 messaging pillars on a fixed scaffold with the Message Matrix derived from them, sourced proof points only, objections with honest admissions, what we don't claim, and four CTA anchors — held to an 8–10 page budget, with LFX-derived governance wording, a claims lint and a QA gate. Delivered Google Docs-ready on the LF Agent DOCS Template with a structured .fields.yaml sidecar for downstream agents.",
   "author": {
     "name": "Paul Hinz, Linux Foundation"
   },
-  "keywords": ["marketing", "messaging", "linux-foundation", "lfx-marketing-os", "positioning", "brand", "message-house", "stat-bank"]
+  "keywords": [
+    "marketing",
+    "messaging",
+    "linux-foundation",
+    "lfx-marketing-os",
+    "positioning",
+    "brand",
+    "message-house",
+    "stat-bank"
+  ]
 }
