@@ -11,42 +11,84 @@ description: >
   document on the LF Agent DOCS Template, with the project's name and logo on
   the cover and the project's brand colors applied.
 metadata:
-  version: "0.3.0"
+  version: "0.4.0"
   author: "Paul Hinz, Linux Foundation"
 ---
 
 # Develop Target Markets and ICP
 
-Guide the user through a short intake, then generate a "[Project Name] Target
-Markets and ICP" document on the LF Agent DOCS Template (Google Docs-ready
-`.docx`). This is the third of three LFX Marketing OS
-foundational documents, and a Level-1, single-prompt agent: launch from the
-command, ask a fixed set of questions, then do the work — the human reviews,
-the agent assembles.
+Ask whether the foundation already has its own audience, persona or
+competitive documents, map them if it does, interview only for the gaps, then
+generate a "[Project Name] Target Markets and ICP" document on the LF Agent
+DOCS Template (Google Docs-ready `.docx`). This is the third of three LFX
+Marketing OS foundational documents, and a Level-1, single-prompt agent: launch
+from the command, ask a fixed set of questions, then do the work — the human
+reviews, the agent assembles.
+
+The document is short by design: a two-page **Review Sheet** the ED or SME
+approves, then a reference body of 8–10 pages (hard cap 12) in which every
+persona uses the same eleven-field template. `references/input-doc-mapping.md`
+defines the field registry, the persona template, the Review Sheet, the length
+budget and the structured sidecar; read it before Step 0a. Version 0.4.0 exists
+because an ED told us our foundation documents were too long to be read or
+owned by a human, and that his foundation already had a persona file — nine
+personas on one repeated template — that this agent now accepts as input.
 
 ## Scope boundary — read this first
 
 LFX Marketing OS defines three separate foundational documents per project.
 This skill produces only the third:
 
-1. **Brand Kit** (a different agent) — identity, voice, positioning statement,
-   audience messaging, competitive guardrails, five-component visual identity.
-2. **Message Foundation Doc** (a different agent) — word-count-locked
-   summaries, boilerplate, `llms.txt`, elevator pitch, full audience and
-   messaging-pillar framework, derived from the Brand Kit.
+1. **Brand Kit** (a different agent) — identity, positioning statement, brand
+   principle, voice and prefer/avoid language, what we don't claim, competitive
+   guardrails, five-component visual identity.
+2. **Message Foundation Doc** (a different agent) — vision, mission,
+   word-count-locked summaries, boilerplate, `llms.txt`, elevator pitch,
+   messaging pillars, sourced proof points and objections, derived from the
+   Brand Kit.
 3. **ICP Document** (this skill) — market segment overview, organization-level
-   ICP definitions (5 dimensions each), persona definitions (2-3 per ICP), and
-   fit/warmth scoring inputs.
+   ICP definitions (5 dimensions each), personas (4–9 on the fixed
+   eleven-field template, including per-persona messaging and "what NOT to
+   say"), persona selection cues and map, and fit/warmth scoring rules.
 
 Do not re-derive positioning, voice, or messaging pillars here — pull them
 from the Brand Kit and Message Foundation Doc as direct inputs. If either
 document doesn't exist yet, say so plainly and offer to proceed on interview
 answers and the GitHub README alone, flagging every resulting section as
-lower-confidence.
+lower-confidence. The field-level ownership list is
+`references/input-doc-mapping.md` §3 (the `icp.*` rows); this document is the
+only place audiences and personas are authored.
 
-## Step 0 — gather existing inputs first
+## Step 0a — ask for existing documents
 
-Before asking anything, check whether a `[Project Name] Brand Kit` and a
+Before the sibling-document check, the LFX pull, or any interview question,
+ask the one question in `references/input-doc-mapping.md` §1: does the
+foundation already have an audience, persona, segment, ICP or competitive
+document to use as input? Accept several files; read them in full. If the
+Project Inputs record (`[project-slug].inputs.yaml`) already lists documents
+the Brand Kit or Message Foundation agent received, name them and ask whether
+to use those or whether there is anything new.
+
+- **If no:** continue with Step 0b and the normal interview or pre-fill mode.
+- **If yes:** map every ICP field in the registry (`input-doc-mapping.md` §3,
+  the `icp.*` rows) from the supplied documents, labeling each `From your doc
+  §…`, `From README / LFX`, `Inferred`, `Partial` or `Needs input`. A supplied
+  persona file is mapped persona by persona onto the eleven-field template;
+  fields the source does not have are `Needs input` for that persona, and the
+  source wording is quoted verbatim everywhere it exists. Show the coverage
+  table ("Your documents fill N of 11 ICP fields and 7 of 9 personas
+  completely; I need to ask about G") **before** asking anything, then run
+  Step 1 only for the gaps.
+- Common gaps when a foundation supplies its own persona document:
+  organization-level firmographics as one table, the business outcome and its
+  weighting, Fit × Warmth thresholds and hand-raiser signals, and a SOM
+  proposal. Ask for the first two; derive the last two from LFX data and mark
+  them `Inferred` for the ED to confirm.
+- Append the documents, links and date read to `[project-slug].inputs.yaml`.
+
+## Step 0b — gather the sibling documents and live data
+
+Before asking anything else, check whether a `[Project Name] Brand Kit` and a
 `[Project Name] Message Foundation` document already exist (in the working
 folder, a connected Drive, or wherever the user points). If companion "Develop
 LF Project Brand Kit" / "Develop LF Project Messaging Foundation" skills or
@@ -95,18 +137,24 @@ yourself from sources in this order: the Brand Kit and Message Foundation
 (including Appendix C), live LFX membership data and standard metrics, the
 project site, the GitHub organization, the competitor scan, existing marketing
 materials the user points to, then labeled inference. Record every answer in
-Appendix B with its source and one of `Sourced` / `Inferred` / `Needs input`,
-set the status to "DRAFT — pre-filled, awaiting ED review", and end the
-document with a **YOUR INPUT** section listing what the project leader must
-confirm (the business outcome and its weighting, disqualifiers, trigger events,
-the SOM target). Then continue with Steps 2 and 3.
+Appendix B with its source and one of the labels from
+`input-doc-mapping.md` §2 (`From your doc` / `From README / LFX` / `Inferred`
+/ `Partial` / `Needs input`), and set the status to "Draft — pre-filled". The
+Review Sheet's Source column and its `Needs input` rows replace the older
+**YOUR INPUT** section: the reviewer sees in one table what the agent took from
+where and what it still needs (the business outcome and its weighting,
+disqualifiers, trigger events, the SOM target). Then continue with Steps 2
+and 3.
 
 ## Step 1 — run the interview one question at a time, in this exact order
 
 This is a conversational interview, not a form dump. Ask each question as a
 short, plain message and **wait for the user's answer before asking the next
 one.** Do not batch these into a single multi-part message, and do not
-generate anything until the final question is answered.
+generate anything until the final question is answered. **If Step 0a produced
+documents, ask only the questions the coverage table listed as gaps**, and say
+why you are asking each one ("Your persona file has no organization-level
+disqualifiers; who is clearly not a fit?").
 
 1a. **Project name.** "What's the name of the LF project?"
 
@@ -117,7 +165,7 @@ signals.
 
 1c. **Brand Kit and Message Foundation Doc.** "Do you already have a
 `[Project Name] Brand Kit` and/or Message Foundation document, and if so,
-where are they?" If given, read both fully per Step 0.
+where are they?" If given, read both fully per Step 0b.
 
 1d. **Up to 5 gap-filling questions**, one at a time, in this priority order —
 skip any the user already answered or that's clearly inferable from the README
@@ -130,7 +178,7 @@ skip any the user already answered or that's clearly inferable from the README
 2. **Competitive/peer landscape.** "Who do ICP-fit organizations typically
    evaluate against or migrate from?" Real product names, not generic
    categories — this feeds the market-segment competitive table and
-   whitespace framing. Merge the answer with the Step 0 competitor scan; if
+   whitespace framing. Merge the answer with the Step 0b competitor scan; if
    the scan found an alternative the user did not name, say so and include it.
 3. **Disqualifiers.** "Who is clearly NOT a good fit — any org profile, use
    case, or situation you'd want this ICP to explicitly screen out?" If the
@@ -142,7 +190,7 @@ skip any the user already answered or that's clearly inferable from the README
    a compliance need, a failed migration, scaling/cost pain, a security
    incident, a new product build, etc.)
 5. **Known member/adopter organizations** — only ask this if live LFX data
-   (Step 0) wasn't available: "Any known member organizations or contributor
+   (Step 0b) wasn't available: "Any known member organizations or contributor
    companies already in the ecosystem, to seed firmographics?"
 
 State plainly when you're done: "That's everything I need — generating the
@@ -151,8 +199,11 @@ ICP document now."
 ## Step 2 — generate the document
 
 Build following the full structure in `references/icp-document-template.md`.
-Read that file before drafting — it specifies every section, the dual-audience
-ICP pattern, the persona field set, and the fit/warmth scoring format.
+Read that file before drafting — it specifies the Review Sheet, every section,
+the dual-audience ICP pattern, the eleven-field persona template, the
+selection-cues and persona-map tables, and the Fit × Warmth grid. Hold the
+length budget: 8–10 pages target, 12 hard cap, ≤350 words per persona and ≤300
+words for any other section (`input-doc-mapping.md` §6).
 `references/velocity-engine-field-reference.md` documents the companion
 "Velocity Engine" data schema this template is aligned to, for when a future
 version of this skill connects to it directly (see Roadmap below) — use it to
@@ -173,30 +224,52 @@ Key rules:
 - **5 dimensions per ICP**: ICP description, Trigger Events / Compelling
   Moments, Who is not an ideal customer, Customer Use Cases, Customer Pain
   Points — per `references/velocity-engine-field-reference.md`.
-- **2-3 personas per ICP**, using the full persona field set (Title, Name/
-  Nickname, Role, Goals, Challenges, Works for, Other Roles Performed, Trusted
-  Sources, Key Responsibilities, Statements to share with the boss, Features
-  and Persona Benefits, Example Use Cases) — reuse any personas/audiences
-  already defined in the Brand Kit or Message Foundation Doc rather than
-  inventing new ones, and extend them to the fuller field set.
-- **Fit/Warmth scoring inputs**: 4-6 attributes an actual contact or org can be
-  scored against (Viable/Warm/Hot), weighted toward the business outcome named
-  in the interview.
-- **Messaging & Content Handoff**: map each persona to a messaging pillar and
-  proof point from the Message Foundation Doc, plus a preferred channel — this
-  is what makes the document directly usable for web, content, social, and
-  campaign briefs.
-- **Claims lint on persona statements.** "Statements to share with the boss"
-  are the lines most likely to be repeated verbatim in a member's own
+- **4–9 personas in total**, every one on the fixed eleven-field template
+  from `input-doc-mapping.md` §4 (Role · Organization · What they are
+  responsible for · How they encounter [Project] · What they need to believe ·
+  What NOT to say · Which offer matters first · Content that moves them · The
+  ask · Key pillars · Geographic note), ~350 words each, one-sentence
+  bullets. Start from the Brand Kit's audience names and any personas the
+  requester's own documents define; never invent personas beyond what the
+  interview, the member roster or the supplied documents support. Two tables
+  frame the personas: **selection cues** (keyword or organization type →
+  persona) and the **persona map** (persona · primary offer · primary pillar ·
+  geography). The older twelve-field Velocity Engine persona set is retired
+  from the document; `references/velocity-engine-field-reference.md` carries
+  the mapping so the connector can still be fed.
+- **Fit × Warmth rules**: one 3×3 grid with the thresholds for Viable / Warm /
+  Hot ([3,3] Hot; [2,3] and [3,2] Warm; [1,3], [2,2], [3,1] Viable), the 4–6
+  attributes that feed each axis, weighted toward the business outcome named
+  in the interview, and the hand-raiser signals that override the grid
+  (membership application, "Talk to Sales", second prospectus download,
+  sponsorship inquiry, bulk-enrollment request, paid-tier registration).
+- **Messaging lives in the persona**, not in a separate handoff table: fields
+  5, 6, 8, 9 and 10 (what they need to believe, what NOT to say, content that
+  moves them, the ask, key pillars) reference Message Foundation pillar tags
+  and proof-point ids by name. Never invent a pillar that does not exist there.
+- **Claims lint on persona statements.** "What they need to believe" lines
+  are the ones most likely to be repeated verbatim in a member's own
   building. No cost or performance comparison without a cited basis, no
   transactional framing of governance ("buys a vote"), no superlative without
   its Stat Bank ID, and governance wording only as the Brand Kit Appendix C
-  states it.
-- **Label the schema for readers.** The five dimensions and the persona field
-  set follow the Velocity Engine schema so field names stay consistent across
-  systems; in the document call them "ICP dimensions" and "persona fields",
-  and define "Velocity Engine" once in Appendix B or not at all — an ED or a
-  member reading the document does not know the name.
+  states it. Where the wording is the requester's own, keep it and flag the
+  issue in the Review Sheet Notes column.
+- **Label the schema for readers.** The five ICP dimensions follow the
+  Velocity Engine schema so field names stay consistent across systems; in the
+  document call them "ICP dimensions", and define "Velocity Engine" once in
+  Appendix A or not at all — an ED or a member reading the document does not
+  know the name.
+- **Review Sheet first, then the routing block.** The first section after the
+  cover is the two-page Review Sheet defined in `input-doc-mapping.md` §5 (one
+  row per `icp.*` field marked "Review Sheet? Yes", personas one row each with
+  their "lead with" line); the body opens with a "How to use this document"
+  routing block for downstream agents (which persona to pick for which
+  audience, read "What NOT to say" before writing).
+- **Structured sidecar.** Alongside the `.docx` and `.md`, write
+  `[project-slug].icp.fields.yaml` with every `icp.*` field (personas as a
+  list of eleven-key objects) per `input-doc-mapping.md` §7, and create or
+  append `[project-slug].inputs.yaml`. The Segmentation and campaign agents
+  read the sidecar, not the document.
 - **Fill case slots from public sources when adopters are unconfirmed.** A
   public directory, marketplace or integration listing found by the sweep can
   fill a "Case — TBD" slot as "public source, not requester-confirmed"; a
@@ -204,9 +277,10 @@ Key rules:
   adopter story.
 - **Build on the LF Agent DOCS Template, never by hand.** Write the whole
   document as `[Project Name] Target Markets and ICP.md` following
-  `references/icp-document-template.md` (pipe tables for the competitive
-  table, the ICP dimensions, the persona fields, the fit/warmth scoring and
-  the handoff map; `<<<PAGEBREAK>>>` before each appendix), then render it
+  `references/icp-document-template.md` (pipe tables for the Review Sheet, the
+  competitive table, the firmographics, the ICP dimensions, the selection
+  cues, the persona map and the Fit × Warmth grid; `<<<PAGEBREAK>>>` before
+  each appendix), then render it
   with `scripts/build_lf_doc.py` as `references/lf-docs-template.md`
   describes. Pass `--project`, `--doc-type "Target Markets and ICP"`,
   `--status`, `--agent "ICP & Target Markets Agent"`,
@@ -234,18 +308,22 @@ Key rules:
 
 Before presenting, run the `lfx-marketing-os-qa` skill on the draft if it is
 installed (it is in this marketplace): apply its High fixes and attach its fix
-list to the delivery message. Open the delivery message with a one-page digest
-for the marketing lead: the verdict, the SOM proposal and the persona hooks
-you recommend leading with, what the sweep found beyond the brief, and the
-decisions the requester still owes.
+list to the delivery message. Open the delivery message with a short digest —
+no more than ten lines: the status, how many fields and personas came from
+the requester's own documents versus the agent, the SOM proposal and the
+persona hooks you recommend leading with, what the sweep found beyond the
+brief, and the decisions the requester still owes. The Review Sheet inside the
+document carries the detail; say the requester does not need to read the body.
 
 ## Step 3 — present and close the loop
 
 After sharing the file:
 
-1. Ask the user for feedback on the document.
-2. If they give feedback, offer to regenerate incorporating it, and repeat
-   this step after regeneration.
+1. Point the user at the Review Sheet (two pages) and ask them to approve or
+   edit there.
+2. If they give feedback or edit the sheet, regenerate incorporating it, set
+   the status to "ED-reviewed — [name], [date]", update the sidecar statuses
+   to `approved`, and repeat this step.
 3. If they have no feedback, get the document into the same shared Drive
    folder as the companion Brand Kit and Message Foundation Doc, as a Google
    Doc (the "Deliver as a Google Doc" section of
@@ -267,6 +345,11 @@ LFX membership data flow above.
 
 ## Reference files
 
+- `references/input-doc-mapping.md` — Step 0a (existing-document intake and
+  gap-only interviewing), the standard field registry and ownership, the fixed
+  eleven-field persona template, the Review Sheet, the length budget and the
+  structured sidecar. Shared verbatim with the Brand Kit and Message
+  Foundation plugins.
 - `references/icp-document-template.md` — the exact section structure and
   what "complete" looks like per section.
 - `references/velocity-engine-field-reference.md` — the companion Velocity
