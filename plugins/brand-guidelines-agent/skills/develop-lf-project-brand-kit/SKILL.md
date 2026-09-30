@@ -12,39 +12,76 @@ description: >
   with the project's name and logo on the cover and the project's brand colors
   applied.
 metadata:
-  version: "0.3.0"
+  version: "0.4.0"
   author: "Paul Hinz, Linux Foundation"
 ---
 
 # Develop LF Project Brand Kit
 
-Guide the user through a short intake, then generate a "[Project Name] Brand Kit"
-document on the LF Agent DOCS Template (Google Docs-ready `.docx`). This is a Level-1, single-prompt LFX Marketing OS agent: launch
-from the command, ask a fixed set of questions, then do the work — the human
-reviews, the agent assembles.
+Ask whether the foundation already has its own brand documents, map them if it
+does, interview only for the gaps, then generate a "[Project Name] Brand Kit"
+document on the LF Agent DOCS Template (Google Docs-ready `.docx`). This is a
+Level-1, single-prompt LFX Marketing OS agent: launch from the command, ask a
+fixed set of questions, then do the work — the human reviews, the agent
+assembles.
+
+The document is short by design: a two-page **Review Sheet** the ED or SME
+approves, then a reference body of 6–8 pages built from fixed micro-templates
+and tables. `references/input-doc-mapping.md` defines the Review Sheet, the
+standard field registry, the length budget and the structured sidecar; read it
+before Step 0a. Version 0.4.0 exists because an ED told us a 43-page foundation
+document would not be read or owned by a human, and that his foundation already
+had its own material.
 
 ## Scope boundary — read this first
 
 LFX Marketing OS defines three separate foundational documents per project.
 This skill produces only the first:
 
-1. **Brand Kit** (this skill) — identity, voice, positioning statement, audience
-   messaging, competitive guardrails, and the five-component visual identity
-   direction.
-2. **Message Foundation Doc** (a different agent) — the 25-word summary, 50-word
-   summary, boilerplate, `llms.txt`, and elevator pitch slide, derived *from*
-   this Brand Kit.
-3. **ICP Document** (a different agent) — market segment overview, ICP
-   definition, persona definitions, fit/warmth scoring inputs.
+1. **Brand Kit** (this skill) — identity, voice, positioning statement, brand
+   principle, prefer/avoid language, what we don't claim, competitive
+   guardrails, and the five-component visual identity direction.
+2. **Message Foundation Doc** (a different agent) — vision, mission, the
+   25-word summary, 50-word summary, boilerplate, `llms.txt`, elevator pitch,
+   messaging pillars, proof points and objections, derived *from* this Brand Kit.
+3. **ICP Document** (a different agent) — market segments, ICP definitions,
+   personas (including per-audience messaging), fit/warmth scoring inputs.
 
-Do not generate 25-word/50-word summaries, boilerplate, `llms.txt`, personas, or
-ICP content inside the Brand Kit. Include only the single positioning statement,
-and note in the document that the other derivatives live in the Message
-Foundation Doc / ICP Document. This boundary was a deliberate correction from an
-earlier draft that duplicated Message Foundation content — do not reintroduce
-that duplication.
+Do not generate 25-word/50-word summaries, boilerplate, `llms.txt`, personas,
+audience messaging tables, or ICP content inside the Brand Kit. Include only the
+single positioning statement and the *names* of the primary audiences, and note
+in the document that the other derivatives live in the Message Foundation Doc /
+ICP Document. This boundary was a deliberate correction from an earlier draft
+that duplicated Message Foundation content — do not reintroduce that
+duplication. The field-level ownership list is `references/input-doc-mapping.md`
+§3; every field has exactly one owning document.
 
-## Step 0: Pull the LFX project record and run the research sweep
+## Step 0a: Ask for existing documents
+
+Before the LFX record pull, the research sweep, or any interview question, ask
+the one question in `references/input-doc-mapping.md` §1: does the foundation
+already have a brand, messaging, positioning, audience or competitive document
+to use as input? Accept several files; read them in full.
+
+- **If no:** continue with Step 0b and the normal interview or pre-fill mode.
+- **If yes:** map every Brand Kit field in the registry (`input-doc-mapping.md`
+  §3, the `bk.*` rows) from the supplied documents, labeling each `From your
+  doc §…`, `From README / LFX`, `Inferred`, `Partial` or `Needs input`. Show
+  the coverage table ("Your documents fill N of 15 Brand Kit fields; I need to
+  ask about G") **before** asking anything, then run Step 1 only for the gaps.
+  Quote the ED's wording verbatim; flag standard-rule conflicts in the Review
+  Sheet Notes column instead of rewriting. Fields the supplied documents cover
+  that belong to a sibling (audiences, pillars, personas) go into the Project
+  Inputs record for that agent, not into this document.
+- Create or append `[project-slug].inputs.yaml` (the Project Inputs record,
+  `input-doc-mapping.md` §7) with the documents, links and date read, so the
+  Message Foundation and ICP agents do not ask for them again.
+
+Common gaps when a foundation supplies its own messaging document: visual
+identity (colors, type, logo rules), trademark hygiene, and a brand principle
+stated as such. Ask for those; do not invent them.
+
+## Step 0b: Pull the LFX project record and run the research sweep
 
 Do this before the first intake question, because two of the seven answers
 (governance context, reference brands) are better taken from the system of
@@ -71,26 +108,29 @@ and `TBD — sweep not run` in the affected fields and say so when you deliver.
 When the user says "pre-fill for [project]" or "run in batch for [project]",
 or an orchestrator passes `mode: prefill`, there is no project leader on the
 call. Do not run the one-question-at-a-time interview. Instead, answer each of
-the seven intake questions yourself from sources in this order: the LFX
-project record, the project site, the GitHub organization, the LF press
-archive, existing marketing materials the user points to (past plans, decks,
-messaging frameworks in a shared Drive), then labeled inference. Record every
-answer in Appendix B with its source and one of three labels — `Sourced`,
-`Inferred`, `Needs input` — and set the document status to "DRAFT — pre-filled,
-awaiting ED review". End the document with a **YOUR INPUT** section listing
-every question the project leader must confirm or answer (voice adjectives,
-constraints, reference brands, the tagline lock), in the same shape the
-marketing-plan-workbook-agent uses. Then continue with Step 2 and Step 3. This
-mode exists so the Marketing OS team can produce a first draft for every
-foundation and have the ED review, edit and approve, instead of waiting for
-each ED to run the interview.
+the seven intake questions yourself from sources in this order: documents the
+orchestrator or user supplied (Step 0a), the LFX project record, the project
+site, the GitHub organization, the LF press archive, other existing marketing
+materials the user points to (past plans, decks, messaging frameworks in a
+shared Drive), then labeled inference. Record every answer in Appendix B with
+its source and one of the labels from `input-doc-mapping.md` §2 — `From your
+doc`, `From README / LFX`, `Inferred`, `Partial`, `Needs input` — and set the
+document status to "Draft — pre-filled". The Review Sheet's Source column and
+its `Needs input` rows replace the older **YOUR INPUT** section: the reviewer
+sees in one table what the agent took from where and what it still needs. Then
+continue with Step 2 and Step 3. This mode exists so the Marketing OS team can
+produce a first draft for every foundation and have the ED review, edit and
+approve, instead of waiting for each ED to run the interview.
 
 ## Step 1: Intake
 
 Ask the following seven questions **one at a time**, in order, waiting for the
 user's answer before asking the next one. Do not batch them, and do not use a
 multiple-choice form for these — they're open-ended and the user should answer
-in their own words:
+in their own words. **If Step 0a produced documents, ask only the questions the
+coverage table listed as gaps**, and say why you are asking each one ("Your
+messaging doc has no colors or type; what constraints should the palette
+respect?"):
 
 1. What's the name of the LF project?
 2. What's the URL of the project's GitHub repo or README?
@@ -120,12 +160,30 @@ user named.
 
 Key rules carried from prior review of this skill:
 
-- **Positioning**: one statement only, no elevator-pitch length variants.
-- **Voice**: don't just restate the user's three inputs — turn each into a full
-  voice attribute (we are / we are not / sounds like / doesn't sound like), and
-  also produce a compact "4 adjectives + 2 example sentences" summary for
-  downstream content agents. If the user only gave 3 inputs, add one adjective
-  of your own that complements them, and say so.
+- **Review Sheet first.** The first section after the cover is the two-page
+  Review Sheet defined in `references/input-doc-mapping.md` §5: one row per
+  `bk.*` field marked "Review Sheet? Yes", with Current wording, Source,
+  Approve / Edit (blank) and Notes. Everything else is the reference body and
+  opens with a "How to use this document" routing block for downstream agents.
+- **Length budget: 6–8 pages, hard cap 10, no section over 300 words**
+  (`input-doc-mapping.md` §6). One-sentence bullets; tables for anything
+  comparative; no starter sets or banks of copy beyond the tagline options.
+  If a draft runs long, cut restatement and examples, not fields.
+- **Positioning**: one statement only, ≤40 words, no elevator-pitch length
+  variants. Add a **brand principle** (≤12 words plus a one-line gloss) when the
+  user's inputs or documents support one; otherwise `Needs input`.
+- **Voice**: don't just restate the user's three inputs — translate each into a
+  voice attribute and present all of them in one three-column table
+  (Attribute | What it means | What it is not), 4–6 rows, followed by one
+  "sounds like / doesn't sound like" sentence pair for the voice as a whole.
+  Then the **Prefer / Avoid language** table (terms, casing, phrases) and a
+  **What we don't claim** block of 3–6 lines. If the user only gave 3 inputs,
+  add one attribute of your own that complements them, and say so. These
+  three tables are the compact reference downstream content agents load.
+- **Audiences**: name the primary audiences in the §1 At a Glance row and, in
+  §4, one line per audience with its single "lead with" cue — and stop. Pain
+  points, core messages and CTAs per audience belong to the ICP document's
+  personas; do not build an audience messaging table here.
 - **Competitive guardrails**: treat the user's reference brands as a
   differentiation target list, not a style inspiration list, unless the user
   says otherwise. Never disparage them by name — differentiate by category
@@ -146,8 +204,8 @@ Key rules carried from prior review of this skill:
   H2, links, buttons, the most-used neutrals) rather than eyeballing screenshots,
   and if the site's dominant neutral differs from the one you pick, say so and
   pick deliberately.
-- **Governance, license and trademark**: copy the sentences derived in Step 0
-  into §1 At a Glance, §5 and §6. Never write "[Project] Foundation, a Series
+- **Governance, license and trademark**: copy the sentences derived in Step 0b
+  into §1 At a Glance, §6 and Appendix C. Never write "[Project] Foundation, a Series
   of LF Projects, LLC" — the foundation and the Series LLC are different
   entities (see `references/lfx-project-record.md`). Close the license open
   item yourself by reading the repository's LICENSE file and the charter; do
@@ -156,12 +214,19 @@ Key rules carried from prior review of this skill:
   per surface (hero, developer channels, events) and mark the recommendation
   as awaiting the requester's lock. The Message Foundation inherits "TBD — none
   locked" only when this document declines to decide.
-- **Metrics in examples (§9)**: any live metric quoted inside a channel example
-  carries its window and date ("75M transactions in the 30 days to <date>"). The
-  dating rule applies to examples of copy, not only to copy.
+- **Metrics in examples**: any live metric quoted anywhere carries its window
+  and date ("75M transactions in the 30 days to <date>"). The dating rule
+  applies to examples of copy, not only to copy.
 - **Claims**: no "only", "first", "largest", "most" or "the major" without the
   proof in the same sentence; no date without its primary source (an RFC, a
-  release, a filing). Sound bites and tagline rationale get this check twice.
+  release, a filing). Tagline rationale gets this check twice. Where the ED's
+  own wording carries such a claim, keep the wording and flag it in the Review
+  Sheet Notes column rather than rewriting it.
+- **Structured sidecar.** Alongside the `.docx` and `.md`, write
+  `[project-slug].brand-kit.fields.yaml` with every `bk.*` field (value, source,
+  status) per `input-doc-mapping.md` §7, and create or append
+  `[project-slug].inputs.yaml`. Downstream agents read the sidecar, not the
+  document.
 - **Build on the LF Agent DOCS Template, never by hand.** Write the whole
   document as `[Project Name] Brand Kit.md` following the section structure
   in `references/brand-kit-template.md`, then render it with
@@ -193,18 +258,21 @@ Key rules carried from prior review of this skill:
 Before presenting, run the `lfx-marketing-os-qa` skill on the draft if it is
 installed (it is in this marketplace). Apply its High fixes; attach its fix list
 and Stat Bank stamp table to your delivery message. A draft with an open High
-finding is "blocked on <finding>", not "for review". Then write a one-page
-digest at the top of the delivery message: the verdict, the recommendations you
-made (tagline per surface), what the sweep found beyond the brief, and the
-decisions the requester still owes.
+finding is "blocked on <finding>", not "for review". Then open the delivery
+message with a short digest — no more than ten lines: the status, how many
+fields came from the requester's own documents versus the agent, the
+recommendations you made (tagline per surface), what the sweep found beyond
+the brief, and the decisions the requester still owes. The Review Sheet inside
+the document already carries the detail; do not repeat it.
 
 ## Step 3: Present and close the loop
 
 After sharing the file:
 
-1. Ask the user for feedback on the document.
-2. If they give feedback, offer to regenerate the document incorporating it,
-   and repeat this step after the regeneration.
+1. Point the user at the Review Sheet (two pages) and ask them to approve or
+   edit there; they do not need to read the reference body.
+2. If they give feedback or edit the sheet, regenerate incorporating it, set
+   the status to "ED-reviewed — [name], [date]", and repeat this step.
 3. If they have no feedback, get the document into the project's shared Drive
    folder as a Google Doc (the "Deliver as a Google Doc" section of
    `references/lf-docs-template.md`: upload the Drive-upload build through the
@@ -219,6 +287,10 @@ After sharing the file:
 
 ## Reference files
 
+- `references/input-doc-mapping.md` — Step 0a (existing-document intake and
+  gap-only interviewing), the standard field registry and ownership, the fixed
+  micro-templates, the Review Sheet, the length budget and the structured
+  sidecar. Shared verbatim with the Message Foundation and ICP plugins.
 - `references/brand-kit-template.md` — the section structure, voice-attribute
   format, the five visual identity components and the WCAG method.
 - `references/lfx-project-record.md` — how to derive governance and trademark
