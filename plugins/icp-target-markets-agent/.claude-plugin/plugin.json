@@ -1,9 +1,16 @@
 {
   "name": "icp-target-markets-agent",
-  "version": "0.3.0",
-  "description": "LFX Marketing OS: Develop Target Markets and ICP. Interviews a Linux Foundation project leader (or pre-fills the interview in batch mode for ED review), reads the project's Brand Kit, Message Foundation Doc, and GitHub README, pulls live LFX membership data, runs a competitor scan that includes members' like-for-like products, and produces a '[Project Name] Target Markets and ICP' document (market segments, organization-level ICPs, personas, fit/warmth scoring, a run-rate SOM proposal) with a claims lint, a QA gate and a one-page digest — delivered Google Docs-ready on the LF Agent DOCS Template, with the project's name and logo on the cover and its Brand Kit colors applied.",
+  "version": "0.4.0",
+  "description": "LFX Marketing OS: Develop Target Markets and ICP. Asks first for the foundation's own audience, persona or competitive documents and maps them into the standard fields, reads the project's Brand Kit, Message Foundation Doc and GitHub README, pulls live LFX membership data, runs a competitor scan that includes members' like-for-like products, interviews only for the gaps (or pre-fills in batch mode), and produces a short '[Project Name] Target Markets and ICP' document — a two-page Review Sheet for the ED, market segments, firmographics, organization-level ICPs, 4–9 personas on one fixed eleven-field template with 'what NOT to say', persona selection cues and map, Fit × Warmth rules with hand-raiser signals, a run-rate SOM proposal — held to an 8–10 page budget, with a claims lint and a QA gate. Delivered Google Docs-ready on the LF Agent DOCS Template with a structured .fields.yaml sidecar for downstream agents.",
   "author": {
     "name": "Paul Hinz, Linux Foundation"
   },
-  "keywords": ["lfx", "marketing-os", "icp", "target-markets", "persona", "linux-foundation"]
+  "keywords": [
+    "lfx",
+    "marketing-os",
+    "icp",
+    "target-markets",
+    "persona",
+    "linux-foundation"
+  ]
 }
