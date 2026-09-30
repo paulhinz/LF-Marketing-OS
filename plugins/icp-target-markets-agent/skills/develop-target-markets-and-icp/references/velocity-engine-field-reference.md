@@ -18,7 +18,7 @@ output document.
 5. **Customer Pain Points** — what's driving the need in the first place.
 
 ## Persona fields (per persona, up to ~8 personas in Velocity Engine's own
-architecture; this skill uses 2-3 per ICP)
+architecture; this skill prints 4–9 personas in all on the eleven-field template; see the mapping at the end of this file)
 
 - Title
 - Name
@@ -57,3 +57,29 @@ Cell-level formatting (e.g., which fields are marked as the Velocity Engine
 extraction from the source spreadsheet. Treat the field list above as the
 full target schema; if a future Velocity Engine connector distinguishes
 required vs. optional fields, prefer its live signal over this file.
+
+
+## Mapping to the v0.4 eleven-field persona template (September 2026)
+
+From template v0.4 the document no longer prints the Velocity Engine persona
+fields; personas use the fixed eleven-field template in
+`references/input-doc-mapping.md` §4. When the Velocity Engine connector is
+fed, translate as follows:
+
+| Velocity Engine persona field | Eleven-field template source |
+|---|---|
+| Title | 1. Role |
+| Nickname | (not stored; generate on demand if the connector requires it) |
+| Role | 1. Role + 3. What they are responsible for |
+| Goals | 5. What they need to believe (the positive statements) |
+| Challenges | 3. What they are responsible for + 4. How they encounter [Project] (the pain named there) |
+| Works for | 2. Organization |
+| Other Roles Performed | 3. What they are responsible for |
+| Trusted Sources | 8. Content that moves them |
+| Key Responsibilities | 3. What they are responsible for |
+| Statements to share with the boss | 5. What they need to believe, filtered through 6. What NOT to say |
+| Features and Persona Benefits | 10. Key pillars (the "How [Project] helps" line of each pillar) |
+| Example Use Cases | §2 Customer Use Cases for the persona's ICP |
+
+The five ICP dimensions are unchanged and still printed in the document as
+"ICP dimensions".

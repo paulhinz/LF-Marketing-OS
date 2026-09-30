@@ -1,10 +1,17 @@
-# [Project Name] Target Markets and ICP — required structure
+# [Project Name] Target Markets and ICP — required structure (v0.4)
 
 Full section-by-section spec. Write it as Markdown and render it with
 `scripts/build_lf_doc.py` onto the LF Agent DOCS Template (see
 `references/lf-docs-template.md`): US Letter, Open Sans body, Roboto Slab
 headings, LF header and footer, pipe tables for anything tabular below,
 headings and table headers in the companion Brand Kit's primary color.
+
+**Length budget: 8–10 pages target, 12 hard cap, ≤350 words per persona, ≤300
+words for any other section** (`references/input-doc-mapping.md` §6).
+One-sentence bullets. Every persona uses the same eleven fields in the same
+order so a downstream prompt can slot into any of them without re-reading the
+document. Fields a supplied foundation document provided are quoted verbatim
+with their source.
 
 ## Cover
 
@@ -13,48 +20,79 @@ the project name as title, "Target Markets and ICP" as the document type, the
 accent rule in the Brand Kit primary color, the one-line subtitle ("Market
 segments, ideal customer profiles, personas and fit/warmth scoring — one of
 three LFX Marketing OS foundational documents"), and a details table:
-Project, Document, Status ("Draft v1 — for review" or the pre-fill status),
-Repository, Source Brand Kit, Source Message Foundation, Optimized for,
-Prepared for, Date, Prepared by ("LFX Marketing OS — ICP & Target Markets
-Agent").
+Project, Document, Status (`Draft — pre-filled` / `Draft — from your
+documents` / `ED-reviewed — [name], [date]`), Repository, Source Brand Kit,
+Source Message Foundation, Optimized for, Prepared for, Date, Prepared by
+("LFX Marketing OS — ICP & Target Markets Agent").
+
+## Review Sheet (two pages, first after the cover)
+
+The only part the ED or SME is asked to read (`references/input-doc-mapping.md`
+§5). Three lines above the table: status; what the agent did with any supplied
+documents ("7 of 9 personas and 6 of 11 fields from your documents; 3 from
+LFX; 2 asked"); the one decision the requester still owes (usually the SOM
+target or the business-outcome weighting).
+
+Then one pipe table, `| # | Field | Current wording | Source | Approve / Edit | Notes |`,
+with these rows in this order (field ids from `input-doc-mapping.md` §3):
+
+1. Business outcome and weighting (`icp.business_outcome`)
+2. ICP description — one row per organization-level ICP (`icp.org_icp`)
+3. Firmographics — one row, the table's key values (`icp.firmographics`)
+4. Disqualifiers — one row per ICP (`icp.disqualifiers`)
+5. Personas — one row per persona: name and its "lead with" line
+   (`icp.personas`)
+6. Fit × Warmth thresholds and hand-raiser signals (`icp.fit_warmth_rules`)
+7. SOM proposal (`icp.som_proposal`)
+
+Source is the provenance label (`From your doc §…` / `From Brand Kit` / `From
+Message Foundation` / `From README / LFX` / `Inferred` / `Partial` / `Needs
+input`). Approve / Edit is left blank. Notes carries the agent's flags (a
+disqualifier drafted by inference, a persona missing fields the source did not
+have, a "need to believe" line with an uncited comparison).
 
 ## How to Use This Document
 
-Explain the three-document architecture (Brand Kit / Message Foundation Doc /
-ICP Document — see Scope boundary in SKILL.md). List what this document
-consumed (Brand Kit, Message Foundation Doc, GitHub README, live LFX data if
-pulled, interview answers) and state the business outcome this ICP is
-optimized toward, since it drives the fit/warmth weighting in Section 4.
+A routing block written for downstream agents and writers, one line per
+section: "To pick a persona, use the selection cues in §3.1 — organization-
+facing content uses the organization personas, engineer-facing content uses
+the practitioner persona"; "Before writing for a persona, read its What NOT to
+say"; "For scoring or list-building, use §4 and the sidecar, never the prose".
+Then the standing rules in three lines (quote fields verbatim; `[PROOF POINT
+TBD]` rather than invented evidence; the three-document architecture — Brand
+Kit / Message Foundation Doc / ICP Document). List what this document consumed
+(supplied documents, Brand Kit, Message Foundation Doc, GitHub README, live LFX
+data, interview answers), state the business outcome it is optimized toward,
+and name the sidecar `[project-slug].icp.fields.yaml`.
 
 ## 1. Market Segment Overview
 
 ### 1.1 Category & Why Now
 
-One paragraph: what category the project competes in, and 2-3 sentences on
-why this category is timely (market shifts, licensing dynamics, cost
-pressure, a technology inflection like AI). Ground this in the Brand Kit's
-positioning and the user's own answers — don't invent market dynamics that
-weren't discussed or aren't reasonably inferable from the README.
+One paragraph, ≤120 words: the category the project competes in and 2–3
+sentences on why it is timely. Ground this in the Brand Kit's positioning, the
+Message Foundation's pillars and the user's answers — don't invent market
+dynamics that weren't discussed or aren't reasonably inferable from the README.
 
 ### 1.2 Competitive & Peer Landscape
 
 Table: Alternative | Category Position | Where [Project] Differentiates — one
 row per real competitor/peer the user named **plus every like-for-like
-alternative the competitor scan found** (SKILL.md Step 0; the Brand Kit's
+alternative the competitor scan found** (SKILL.md Step 0b; the Brand Kit's
 Appendix C "Found beyond the brief" table). The user's list is a starting
 point, not the landscape: a past run's interview named four alternatives and
 missed the most direct one, a Premier member's own like-for-like protocol
 launched six months earlier. Check each Premier member for a product in the
-same category. Never invent a competitor's positioning
-from nothing; if only the product name is known, describe its category
-position from general knowledge and flag anything uncertain. Where a public
-integration between the project and an alternative exists (an official
-extension, a joint announcement), state it as a fact with its source rather
-than as a framing to confirm. Member organizations' products are peers: the
-row says so, and no claim elsewhere ("the only…") may be false because of the
-row. Close with a one-line "Whitespace" note: the specific combination this
-project's ICP wants that competitors force customers to piece together
-themselves — and make sure the note still holds once every row is present.
+same category. Never invent a competitor's positioning from nothing; where a
+public integration between the project and an alternative exists, state it as
+a fact with its source. Member organizations' products are peers: the row says
+so, and no claim elsewhere ("the only…") may be false because of the row.
+
+Close with two one-line notes: **Whitespace** (the combination this project's
+ICP wants that alternatives force customers to piece together) and **Who we
+actually lose to** (often not a peer foundation but self-hosting, a research
+consortium, or doing nothing). When the requester's own competitive document
+exists, quote its lines here verbatim and cite it.
 
 ### 1.3 Addressable Landscape (TAM / SAM / SOM)
 
@@ -72,122 +110,179 @@ write **TBD — needs input** only when no data exists to derive from.
 If live LFX membership data (or equivalent real adopter data) was pulled: a
 table of Tier | Organizations | What This Tier Represents, built from the real
 records — never a hypothetical roster. Mark the subsection **Internal — LFX
-export**: external roster references (web copy, decks, press) cite the
-project's public members page or the LF press release, never this table, and
-membership list prices or revenue never leave this document. If no live data
-was available, replace this subsection with **TBD — needs input: no
-member/adopter data source was connected for this run** rather than inventing
-example companies.
+export**: external roster references cite the project's public members page
+or the LF press release, never this table, and membership list prices or
+revenue never leave this document. If no live data was available, one line:
+**TBD — needs input: no member/adopter data source was connected for this
+run.**
 
 ## 2. ICP Definitions (Organization-Level)
 
 One short paragraph explaining the ICP pattern used (default: two linked
 ICPs — Community & Technical Adopter Organization, and Enterprise Member
 Organization — reflecting that open-source adoption is bottoms-up while
-membership/sponsorship decisions are top-down; collapse to a single ICP if the
-project has no membership program or the interview doesn't support a split).
+membership decisions are top-down; collapse to a single ICP if the project has
+no membership program or the interview doesn't support a split).
 
-For each ICP, a labeled table with exactly these 5 fields (per the Velocity
-Engine field reference):
+**Firmographics table** (one for the document, columns per ICP):
+Industry / segment · Organization size band · Geography · Technographics
+(stack, standards, platforms) · Existing relationship (member, contributor,
+event attendee, none) · Budget owner. Built from the live roster where it was
+pulled; otherwise from the supplied documents or the interview, labeled.
 
-- **ICP** — one paragraph describing the organization type, who's inside it,
-  and how it enters the picture (bottoms-up vs. top-down).
-- **Trigger Events / Compelling Moments** — the interview's trigger-event
-  answer, specific to this ICP.
+Then, for each ICP, a labeled table with exactly these 5 ICP dimensions:
+
+- **ICP** — one paragraph, ≤80 words, describing the organization type, who's
+  inside it, and how it enters the picture (bottoms-up vs. top-down).
+- **Trigger Events / Compelling Moments** — 2–5 one-line bullets specific to
+  this ICP.
 - **Who is not an ideal customer** — real disqualifiers if the user gave them;
   otherwise an explicitly labeled **inferred draft — confirm with PL**, never
   stated as settled fact.
-- **Customer Use Cases** — pulled from the Brand Kit/README's stated use cases,
-  split by which ICP each applies to.
-- **Customer Pain Points** — pulled from the Brand Kit/Message Foundation's
-  existing audience pain points, not re-invented from scratch.
+- **Customer Use Cases** — 2–5 one-line bullets pulled from the Brand Kit /
+  README's stated use cases, split by which ICP each applies to.
+- **Customer Pain Points** — 2–5 one-line bullets, in the customer's words.
 
-## 3. Persona Definitions
+## 3. Personas
 
-One short paragraph noting how many personas sit under each ICP (2-3 per ICP)
-and that they extend, not duplicate, any audience/persona work already done in
-the Brand Kit or Message Foundation Doc.
+### 3.1 Persona selection cues
 
-For each persona, a labeled table with exactly these fields: Title, Nickname,
-Role, Goals, Challenges, Works for, Other Roles Performed, Trusted Sources,
-Key Responsibilities, Statements to share with the boss, Features and Persona
-Benefits, Example Use Cases. Reuse the audience definitions (pain points, core
-messages) already present in the Brand Kit/Message Foundation Doc as the
-source for Goals/Challenges/Features fields — do not contradict them.
+Table: Keyword or organization type → Persona — one row per persona, listing
+the words a brief or a contact record would carry ("TSO, DSO, ISO/RTO, IOU →
+1. Large Grid Operator Executive"; "Schneider, ABB, Siemens → 3. Large
+Incumbent Vendor"). One disambiguation line under the table
+(organization-facing content → organization personas; engineer-facing content
+→ the practitioner persona).
 
-## 4. Fit & Warmth Scoring Inputs
+### 3.2 Persona definitions
 
-One short paragraph referencing the Fit Score concept (how closely a contact
-matches the ICP) and noting these attributes are weighted toward the business
-outcome named in the interview (Step 1d, question 1).
+4–9 personas in all, ~350 words each, every one on the fixed eleven-field
+template from `references/input-doc-mapping.md` §4, in this order, with the
+field names bold:
 
-Table: Attribute | High/Hot signal | Low signal. 4-6 attributes, covering at
-minimum: a community/engagement signal, an organization-size or existing
-relationship signal, a competitive-displacement signal (using the real
-competitor names from Section 1.2), and a trigger-event-presence signal (using
-the real trigger events from Section 2). Add a buying-committee-completeness
-attribute if the project has a dual-audience ICP split.
+1. **Role**
+2. **Organization**
+3. **What they are responsible for**
+4. **How they encounter [Project]**
+5. **What they need to believe** (2–5 one-line bullets)
+6. **What NOT to say** (2–5 one-line bullets)
+7. **Which offer matters first** — project adoption / membership / event /
+   training / influence only
+8. **Content that moves them**
+9. **The ask** (one line)
+10. **Key pillars** — tags from the Message Foundation §5
+11. **Geographic note**
 
-## 5. Messaging & Content Handoff
+Rules: personas start from the Brand Kit's §4 audience names and any personas
+the requester's own documents define, quoted verbatim field by field; a
+persona the source describes with fewer fields keeps its wording and marks the
+missing fields `Needs input`; never invent personas beyond what the interview,
+the roster or the supplied documents support; "What they need to believe"
+lines carry a proof-point id or `[PROOF POINT TBD]` where they make a claim;
+"Key pillars" names only pillar tags that exist in the Message Foundation.
 
-Table: Persona | Lead Messaging Pillar | Proof Point to Use | Preferred
-Channel — one row per persona from Section 3, mapped to a real messaging
-pillar and proof point from the Message Foundation Doc (never invent a pillar
-that doesn't exist there). This is the section that makes the document
-directly usable for briefing web, content, social, and campaign work.
+### 3.3 Persona map
+
+Table: # | Persona | Primary offer | Primary pillar(s) | Geography — one row
+per persona. This is the view the Segmentation and campaign agents read.
+
+## 4. Fit × Warmth Scoring Rules
+
+One paragraph, ≤80 words, on the Fit Score (how closely a contact or
+organization matches the ICP) and the Warmth Score (recent engagement), both
+Low / Medium / High, weighted toward the business outcome named in the
+interview.
+
+**Attribute table**: Axis (Fit / Warmth) | Attribute | High signal | Low
+signal — 4–6 rows covering at minimum a community/engagement signal, an
+organization-size or existing-relationship signal, a competitive-displacement
+signal (real names from §1.2), and a trigger-event-presence signal (real
+events from §2); add buying-committee completeness if the ICP is dual.
+
+**The 3×3 grid** as a table, Warmth across and Fit down: Hot = [High, High];
+Warm = [High, Medium] and [Medium, High]; Viable = [Low, High], [Medium,
+Medium], [High, Low]; everything else = not in program. Under the grid, the
+**hand-raiser signals** that override it and mark a contact Sales-ready at
+once: membership application submitted, "Talk to Sales" selected, second
+download of the benefits guide or prospectus, case-study nomination,
+sponsorship inquiry, bulk-enrollment request, paid-tier event registration,
+group discount request. Edit the list to the project's offers; do not add
+signals the project cannot observe.
+
+## 5. Regional Emphasis
+
+Two short bullet lists (or one line saying the project has no regional
+difference in emphasis): for each region that matters, the narrative to lead
+with, the state of open source adoption, the policy or standards context, and
+the two or three events where the personas gather. Quote the requester's own
+regional notes verbatim when they exist.
 
 ## 6. Validation & Review
 
 Table: Sources used | Confirmed vs. inferred | Owner | Revisit cadence.
-Explicitly call out which sections contain inferred/unconfirmed content (most
-often Section 2's disqualifiers) so a reviewer knows exactly what to check
-first. Recommend a quarterly revisit cadence, or immediately after a
-significant market shift, matching the Marketing OS Agent List's documented
-trigger phases for this agent.
+Call out which sections contain inferred content (most often §2 disqualifiers
+and §4 thresholds) so a reviewer knows what to check first. Recommend a
+quarterly revisit, or immediately after a significant market shift.
+
+<<<PAGEBREAK>>>
 
 ## Appendix A: Document Architecture
 
 Table: Brand Kit | Message Foundation Doc | ICP Document (this document) —
-what each contains and which agent owns it. Mirror the companion Brand Kit's
-own Appendix A wording for consistency across the document family.
+what each contains and which agent owns it, in three rows. Mirror the
+companion Brand Kit's own Appendix A wording; the field-level ownership is
+`references/input-doc-mapping.md` §3. Define "Velocity Engine" here in one
+line if the term appears anywhere in the document.
 
-## Appendix B: Source Intake
+## Appendix B: Inputs & Interview Record
 
-Table recording the raw answers to all intake questions verbatim, plus a note
-on any live data pull performed (source system, query parameters, record
-count, and date) — for traceability, mirroring the sibling documents' own
-Appendix B/Interview Record.
+Table of the supplied documents (title, link, date read, which `icp.*` fields
+and personas they covered), then the raw answers to the intake questions
+actually asked, verbatim, with dates and the provenance label per
+`input-doc-mapping.md` §2, plus a note on any live data pull performed (source
+system, query parameters, record count, date). Conflicts between a supplied
+document and the LFX roster or the sibling documents are listed with how they
+were resolved. The older **YOUR INPUT** closing section is replaced by the
+Review Sheet's `Needs input` rows.
 
 ---
 
 ### Section-completeness self-check (apply before finalizing)
 
-Every fact in Sections 1, 2, 3, and 5 must trace to: the Brand Kit, the
-Message Foundation Doc, the GitHub README, a live data pull, the research
+Every fact in Sections 1–5 must trace to: a supplied document, the Brand Kit,
+the Message Foundation Doc, the GitHub README, a live data pull, the research
 sweep (with URL and date), or an interview answer. Anything else gets written
-as **TBD — needs input** or an explicitly labeled **inferred draft**, never
-smoothed over with generic language.
+as **TBD — needs input**, `[PROOF POINT TBD]`, or an explicitly labeled
+**inferred draft**, never smoothed over with generic language.
 
 Also confirm before finalizing:
 
-1. §1.2 contains every like-for-like alternative the competitor scan found,
+1. The Review Sheet is present, fits in two pages, and every row carries a
+   Source label; every `Needs input` row is also TBD in the body.
+2. Every persona has exactly the eleven fields in the template order, is ≤350
+   words, and fields taken from a supplied document are verbatim.
+3. §3.1 selection cues and §3.3 persona map each have one row per persona,
+   and every "Key pillars" tag exists in the Message Foundation §5.
+4. §1.2 contains every like-for-like alternative the competitor scan found,
    including any from member organizations, and the Whitespace note still
    holds with all rows present.
-2. Persona "Statements to share with the boss" pass the claims lint: no cost
-   or performance comparison without a cited basis ("for less than most
-   integrations cost" is out), no transactional framing of governance
-   ("General buys a vote" becomes "General members elect a representative to
-   the Governing Board"), no superlative without its Stat Bank ID.
-3. The governance sentence in any persona statement is the Brand Kit
+5. Persona "What they need to believe" lines pass the claims lint: no cost or
+   performance comparison without a cited basis, no transactional framing of
+   governance ("General buys a vote" becomes "General members elect a
+   representative to the Governing Board"), no superlative without its Stat
+   Bank id — or, where the wording is the requester's own, a flag in the
+   Review Sheet Notes.
+6. The governance sentence in any persona statement is the Brand Kit
    Appendix C sentence verbatim; the technical charter is not cited as the
-   source of board seats or membership rights (those come from the
-   participation agreement and the published member benefits).
-4. The five ICP dimensions are labeled as ICP dimensions in the document;
-   "Velocity Engine" is an internal schema name and is defined once in
-   Appendix B or not mentioned.
-5. §1.4 carries the Internal marking, and the delivery message names which
+   source of board seats or membership rights.
+7. §4 has the attribute table, the 3×3 grid and the hand-raiser list, and the
+   grid thresholds match the LF definitions (Hot [3,3]; Warm [2,3] / [3,2];
+   Viable [1,3] / [2,2] / [3,1]).
+8. §1.4 carries the Internal marking, and the delivery message names which
    copy (internal or agency-safe) is being delivered.
-6. Working groups, directories and public integrations found by the sweep
-   appear where they belong: working groups as persona hooks and Engage CTAs,
-   directories as ICP-C use cases and case-study inputs, integrations as
-   facts in §1.2.
+9. The document is within 12 pages; no section other than a persona exceeds
+   300 words.
+10. `[project-slug].icp.fields.yaml` exists with every `icp.*` field (personas
+    as eleven-key objects), and `[project-slug].inputs.yaml` was created or
+    appended.
+11. "Velocity Engine" appears at most once, in Appendix A.
