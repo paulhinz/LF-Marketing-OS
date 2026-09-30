@@ -7,12 +7,15 @@ project's name and logo on the cover and its brand colors applied) — the found
 direction document that other Marketing OS agents (Message Foundation, ICP,
 Pitch Deck, and more) depend on.
 
+**Current version: 0.4.0** — the agent now asks first whether the foundation already has its own brand or messaging documents, maps them into the standard fields, and interviews only for the gaps; the document opens with a two-page Review Sheet for the ED or SME and is held to a 6–8 page length budget. See "What changed in 0.4.0" below.
+
 ## Overview
 
 LFX Marketing OS defines three foundational documents per project: the Brand
 Kit, the Message Foundation Doc, and the ICP Document. This plugin produces
-the first. It's a Level-1, single-prompt agent: launch it, answer seven
-questions, review the draft.
+the first. It's a Level-1, single-prompt agent: launch it, say whether you
+already have brand documents, answer the remaining questions, approve the
+two-page Review Sheet.
 
 ## Components
 
@@ -36,7 +39,10 @@ Google Doc.
 ## Usage
 
 Say **"Develop LF Project Brand Kit"** (or "build a brand kit for [project]")
-to start. Claude will ask seven questions one at a time:
+to start. Claude first asks whether you already have a brand, messaging,
+positioning or competitive document to use as input. If you do, it reads it,
+tells you how many of the 15 standard Brand Kit fields it covers, and asks
+only about the gaps. If you don't, it asks seven questions one at a time:
 
 1. Project name
 2. GitHub repo/README URL
@@ -47,11 +53,38 @@ to start. Claude will ask seven questions one at a time:
    concerns)
 7. Reference brands (admired or to differentiate from)
 
-After the last answer, it generates the Brand Kit document, walks you through
-it, and — after you give feedback or confirm there's none — recommends moving
-it to a shared repository so downstream agents can read it.
+After the last answer, it generates the Brand Kit document and points you at
+the two-page Review Sheet at the front: every field with its current wording,
+where it came from (your document, the README or LFX record, or the agent's
+inference), and a blank Approve / Edit column. You do not need to read the
+reference body. After you approve or edit, it marks the document ED-reviewed
+and recommends moving it to the project's common Drive folder, together with
+the `.fields.yaml` sidecar downstream agents read.
 
-## Output format (v0.3.0)
+## What changed in 0.4.0
+
+- **Existing documents first.** New Step 0a asks for the foundation's own
+  brand, messaging, audience or competitive documents before anything else;
+  fields they cover are quoted verbatim with their source, and the interview
+  shrinks to the gaps. A shared Project Inputs record means the Message
+  Foundation and ICP agents do not ask for the same files again.
+- **Review Sheet.** Two pages after the cover: the fields an ED or SME must
+  approve, with Source and Approve / Edit columns. Replaces the YOUR INPUT
+  closing section.
+- **Length budget.** 6–8 pages, hard cap 10, no section over 300 words.
+  Voice attributes become one three-column table; the personification
+  paragraph, the per-audience messaging table (§4) and the channel quick
+  reference (§9) are removed — audiences belong to the ICP document and
+  channel guidance is generated on demand.
+- **New fields.** Brand principle, Prefer / Avoid language table, What we
+  don't claim.
+- **Structured sidecar.** `[project-slug].brand-kit.fields.yaml` and
+  `[project-slug].inputs.yaml` are written next to the document.
+- **Shared spec.** `references/input-doc-mapping.md` (identical in all three
+  foundation plugins) holds the field registry, micro-templates, Review Sheet,
+  length budget and sidecar schema.
+
+## Output format (v0.4.0)
 
 Every Brand Kit is built on the Linux Foundation's **LF Agent DOCS Template**
 (Google Docs master: `docs.google.com/document/d/1RinjSuKojc9bqLLeviJfGE6yzSIfj8kSrTwIiWlH-HM`):
@@ -67,11 +100,11 @@ template spec, the logo/color sourcing order and the Google Docs delivery.
 
 ## Notes for maintainers
 
-- The output format lives in three files that are identical across the three
+- The output format lives in four files that are identical across the three
   foundation plugins (brand-guidelines-agent, message-foundation-agent,
   icp-target-markets-agent): `scripts/build_lf_doc.py`,
-  `assets/lf-agent-docs-template.docx` and `references/lf-docs-template.md`.
-  Change them in all three at once.
+  `assets/lf-agent-docs-template.docx`, `references/lf-docs-template.md` and
+  `references/input-doc-mapping.md`. Change them in all three at once.
 
 - The full document template (every section, the voice-attribute format, the
   five visual-identity components, and the WCAG contrast-check method) lives in
