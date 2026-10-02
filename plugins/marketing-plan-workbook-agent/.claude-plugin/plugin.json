@@ -1,7 +1,7 @@
 {
   "name": "marketing-plan-workbook-agent",
-  "version": "0.2.0",
-  "description": "LFX Marketing OS Marketing Plan Workbook Agent — generates a pre-filled, question-driven marketing plan workbook (.pptx, Google Slides-ready) for a Linux Foundation project/foundation, modeled on the PyTorch 2026 integrated plan. Pulls the LF master foundation tracker, past marketing plans from Google Drive, and LFX metrics; drafts every section with a DRAFT badge and ends each part with YOUR INPUT question slides for the ED/Project Leader to answer before a planning interview. Accepts the foundation's completed Quarterly Marketing Review workbook (qtrly-marketing-review-agent) as an input when available and surfaces its Executive Summary at the top of the plan workbook for the ED presentation. The completed workbook feeds the final marketing plan generation step.",
+  "version": "0.3.0",
+  "description": "LFX Marketing OS Marketing Plan Workbook Agent — builds the pre-filled .pptx workbook an ED completes before the planning interview. v0.3.0: First Plan mode with a 'Where we stand today' LFX baseline when no prior plan exists; goals tied to the four standard business outcomes, each with definition, KPI, budget share, timeline and risks; budget set by Strategy Profile (Conservative 12% / Aggressive 20% / Hyper-Growth 30% of revenue) and split into paid, LF services, third-party content and discretionary reserve; closes with a Goals Summary table and a Budget Summary slide. Skill: build-marketing-plan-workbook.",
   "author": {
     "name": "Paul Hinz, The Linux Foundation"
   },
@@ -10,7 +10,8 @@
     "marketing-plan",
     "workbook",
     "planning",
-    "discovery",
+    "budget",
+    "business-outcomes",
     "linux-foundation"
   ]
 }
