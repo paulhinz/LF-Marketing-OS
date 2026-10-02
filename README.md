@@ -32,7 +32,7 @@ The three foundation agents share one intake and format standard (`references/in
 
 **Planning**
 - `qtrly-marketing-review-agent` — Builds a workbook reviewing last quarter's marketing results.
-- `marketing-plan-workbook-agent` — Builds a pre-filled marketing plan workbook for a foundation leader to review.
+- `marketing-plan-workbook-agent` (v0.3.0) — Builds the pre-filled Marketing Plan Workbook an ED completes before the planning interview: a First Plan baseline when no prior plan exists, goals tied to the four business outcomes (KPI, budget share, timeline, risks), a Strategy Profile budget, and closing Goals Summary and Budget Summary slides.
 - `qtrly-plan-agent` — Builds the next quarter's marketing plan deck.
 - `qtrly-campaign-plan-agent` — Turns a quarterly plan into a campaign brief.
 - `hot-campaign-workbook-agent` — Builds a draft hot campaign workbook when a goal is off track or news, a release, a viral post, or a competitor move creates an opening; the ED and CFT answer its questions before the campaign is planned.
@@ -64,6 +64,8 @@ The three foundation agents share one intake and format standard (`references/in
 - `marketing-agent-class` — Delivers the Claude Agent Workshop training course as slide decks.
 
 ## 2a. Latest changes
+
+**2026-10-02 — marketing-plan-workbook-agent 0.3.0.** New skill `build-marketing-plan-workbook` replaces `create-marketing-plan-workbook`. After ED feedback on the x402 test: a First Plan mode opens with a "Where we stand today" LFX baseline (members and list-price revenue, new-membership trend, events, education, contributors, audience and content) when no prior plan or quarterly review exists; every goal ties to one of the four standard business outcomes (Fill the Seats, Grow the Audience, Nurture to Adoption, Secure & Retain Commitment) with a definition, KPI, budget share, timeline and risks on its own slide; Part IV is now the Budget — the ED picks a Strategy Profile (Conservative 12% / Aggressive 20% / Hyper-Growth 30% of revenue, paid pre-set at 30/40/50%), LF splits the remainder into services, third-party content and a discretionary reserve for hot and evergreen campaigns, and the total is allocated across goals; the deck closes with a consolidated Goals Summary table and a Budget Summary slide. Ships `scripts/budget_model.py` and a JSON-driven `scripts/build_workbook.js` generator plus a worked x402 example.
 
 **2026-09-29 — foundation agents 0.4.0 / 0.5.0 / 0.4.0.** After ED feedback, the Brand Kit, Message Foundation and ICP agents now: ask for existing documents first and interview only for the gaps; open with a two-page Review Sheet (field, current wording, source, approve/edit, notes) in place of the YOUR INPUT section; hold a length budget (6–8 / 8–10 / 8–10 pages, no section over 300 words); use fixed micro-templates (three-part messaging pillars, eleven-field personas, three-column voice attributes); add "what we don't claim" and "what NOT to say" fields; keep only sourced proof points; and write structured `.fields.yaml` and `.inputs.yaml` sidecars to the project's common Drive folder. Retired from storage: audience messaging tables in the Brand Kit, talking points, sound-bite banks, the tiered CTA library, the channel quick reference and the messaging handoff table — downstream agents generate these on demand.
 
