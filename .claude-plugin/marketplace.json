@@ -9,7 +9,7 @@
     {
       "name": "marketing-plan-workbook-agent",
       "source": "./plugins/marketing-plan-workbook-agent",
-      "description": "Generates a pre-filled, question-driven marketing plan workbook (.pptx, Google Slides-ready) for an LF project/foundation, modeled on the Linux Foundation template for an integrated plan — pulling the LF master tracker, past marketing plans, LFX metrics, and, when available, the foundation's completed Quarterly Marketing Review workbook (from qtrly-marketing-review-agent), whose Executive Summary is surfaced at the top of the plan workbook for the ED presentation. DRAFT badges and YOUR INPUT question slides for the foundation leader to complete before a planning interview; the completed workbook feeds the final marketing plan generation step.",
+      "description": "v0.3.0 — Builds the pre-filled Marketing Plan Workbook (.pptx) an ED completes before the planning interview. First Plan mode opens with a 'Where we stand today' LFX baseline when no prior plan exists; goals tie to the four standard business outcomes with KPI, budget share, timeline and risks; budget set by Strategy Profile (12/20/30% of revenue) and split into paid, LF services, third-party content and discretionary reserve; closes with a Goals Summary table and Budget Summary slide. Feeds the final marketing plan agent.",
       "category": "Planning Agents",
       "tags": [
         "marketing-plan",
