@@ -1,28 +1,37 @@
 # Marketing Plan Workbook Agent
 
-LFX Marketing OS **Planning** agent (Plan-type in the References | Plan | Create | Execute | Monitor landscape).
+LFX Marketing OS **Planning** agent (Plan-type in the References | Plan | Create | Execute | Monitor landscape). Current version: **0.3.0**. Skill: `build-marketing-plan-workbook` (replaces `create-marketing-plan-workbook`).
 
-Generates a pre-filled, question-driven **marketing plan workbook** (.pptx, Google Slides-ready) for one Linux Foundation project/foundation. The workbook is sent to the foundation's ED/Project Leader before a planning interview; their corrections and answers, captured in the workbook, feed the final marketing plan generation step.
+Builds the pre-filled, question-driven **Marketing Plan Workbook** (.pptx, Google Slides-ready) for one Linux Foundation project or foundation. The Executive Director corrects the DRAFT slides and answers the YOUR INPUT boxes before the planning interview; the completed workbook feeds the final marketing plan agent.
+
+## What changed in 0.3.0
+
+- **First Plan mode.** When no prior plan or Quarterly Marketing Review exists, the deck opens with *Where we stand today*: six LFX-sourced baseline tiles (members and list-price revenue, new-membership trend, events/speakers/sponsorships, education, contributors/participants, audience and content). Zeros are explained as floors or onboarding gaps. Renewal mode (a completed review workbook exists) keeps *Last Quarter at a Glance*.
+- **Goals tied to the four standard business outcomes** — Fill the Seats, Grow the Audience, Nurture to Adoption, Secure & Retain Commitment. One slide per goal with definition, KPI (one number, dated), budget share, timeline, risks, baseline and an ED confirm box.
+- **Part IV is the Budget.** Step 1: the ED chooses a Strategy Profile (Conservative Growth 12%, Aggressive Scale 20%, Hyper-Growth 30% of membership revenue; paid pre-set at 30/40/50% of total). Step 2: the remainder is split into LF marketing services/headcount, third-party content and a discretionary reserve for hot and evergreen campaigns, with a flat-pricing fee cross-check. Step 3: the total is allocated across the goals.
+- **Two summary slides** the final plan lifts verbatim: a Goals Summary table (goal, outcome, definition, KPI, budget % and $, timeline, risks) and a Budget Summary (total, LF services, paid, content, planned campaign spend vs discretionary reserve, allocation by outcome).
+- **Repeatable build.** `scripts/budget_model.py` computes the profile table from the LF_Marketing_Services_Matrix percentages; `scripts/build_workbook.js` renders a `workbook.json` spec to the deck, re-skinned with the foundation's Brand Kit palette. `references/example-x402-workbook.json` is a complete worked example.
 
 ## What it does
 
-1. **Pulls the data** — the LF master foundation tracker (roster, budgets, plan links, events), the foundation's past marketing plan and H2 update from Google Drive, LFX metrics (memberships by tier, contributors, contributing organizations), market context from the web, and — when available — the foundation's **completed Quarterly Marketing Review workbook** (produced by `qtrly-marketing-review-agent` and filled in by the marketing team).
-2. **Builds the workbook** — a ~25–32 slide deck mirroring the PyTorch Foundation 2026 integrated plan's five parts: The Story, The Goals (five, ranked), Message & Audiences, One Plan / One Engine, Execution.
-3. **Surfaces last quarter up front** — if a completed Quarterly Marketing Review workbook was provided, its Executive Summary (goals-vs-actuals scorecard, wins, gaps, decisions needed) appears at the top of the plan workbook, so the marketing team can present last quarter's outcomes to the Executive Director and marketing leader during the quarterly plan review — re-comparing baseline definitions and goals against market changes every quarter.
-4. **Marks every draft** — each pre-filled slide carries a `DRAFT — CONFIRM OR CORRECT` badge, slide notes carry data provenance, and each part ends with `YOUR INPUT` slides of lettered questions with answer boxes. Unknowns become questions, never invented facts.
+1. **Asks one question** — does a prior plan or Quarterly Marketing Review exist? That sets First Plan or Renewal mode.
+2. **Pulls the data** — the three foundation documents (Brand Kit, Message Foundation, ICP), the LF master foundation tracker, LFX standard metrics for every business-outcome baseline, HubSpot and social-listening connectors where authorized, published counters, and optional market context.
+3. **Drafts the decisions** — project stage, 4–6 ranked goals, the budget model, the goal allocation.
+4. **Builds and QAs the deck** — ~35 slides in the five-part skeleton (Story, Business Outcomes & Goals, Message & Audiences, Budget, Execution) plus the two summary slides and data notes.
 
 ## Usage
 
-Say: `create a marketing plan workbook for [foundation]` (e.g., OpenSSF, LF Energy).
+Say: `build the marketing plan workbook for [foundation]` or `first marketing plan for [project]`.
 
 ## Requirements
 
-- Google Drive connector (master tracker + past plans)
-- LFX connector (metrics baselines)
-- Web search (market stakes data)
+- Google Drive connector (foundation documents, master tracker, pricing sheet)
+- LFX connector (all baselines)
+- HubSpot connector (optional — audience baseline)
+- Node with `pptxgenjs`, Python 3 (build scripts)
 
-Missing connectors degrade gracefully: the gap becomes a question in the workbook.
+Missing connectors degrade gracefully: the gap becomes a labeled blank or a YOUR INPUT question.
 
 ## Workflow position
 
-Quarterly Marketing Review workbook (`qtrly-marketing-review-agent`, completed by the marketing team) → workbook (this agent) → foundation leader review → planning interview → **final marketing plan generation agent** (downstream) → planning/creating/executing agents.
+Quarterly Marketing Review workbook (`qtrly-marketing-review-agent`, optional) → **this workbook** → ED review → planning interview → final marketing plan agent → `qtrly-campaign-plan-agent` and the creating/executing agents.
