@@ -1,0 +1,1079 @@
+{
+  "meta": {
+    "foundation": "x402 Foundation",
+    "period": "Q4 2026 + 2027",
+    "date": "October 1, 2026",
+    "mode": "FIRST",
+    "preparedFor": "Michael Hursta, Executive Director",
+    "preparedBy": "Paul Hinz, The Linux Foundation",
+    "footer": "x402 Foundation · Q4 2026 + 2027 Marketing Plan Workbook · DRAFT v1 · First Plan"
+  },
+  "brand": {
+    "ink": "222222",
+    "slate": "676767",
+    "accent": "0A7739",
+    "neutral": "F1F1F1",
+    "white": "FFFFFF",
+    "headFont": "Cambria",
+    "bodyFont": "Arial"
+  },
+  "slides": [
+    {
+      "type": "cover",
+      "blurb": "Your first marketing plan: a pre-filled baseline of where x402 stands today, drafted goals tied to the four standard business outcomes, and a budget set by the Strategy Profile you choose. Correct the drafts, answer the input boxes, and we build the plan from it.",
+      "notes": "FIRST PLAN mode: no prior marketing plan or Quarterly Marketing Review exists for x402 Foundation (confirmed by requester 2026-09-30). Sources: x402 Message Foundation v3 ED Confirmed (2026-09-21), Brand Kit v3 ED Confirmed (2026-09-21), Target Markets & ICP (2026-09-17); LFX standard metrics read 2026-09-30 and 2026-10-01 UTC; LF Foundations Marketing Support master spreadsheet; LF_Marketing_Services_Matrix (Strategy Profile pricing); LFX Marketing OS Strategy deck (business outcomes, goal fields); web market context (drafts to verify)."
+    },
+    {
+      "type": "howto",
+      "eyebrow": "Read this first",
+      "title": "How to complete this workbook",
+      "steps": [
+        [
+          1,
+          "Read each drafted slide",
+          "Every slide with a green DRAFT — CONFIRM OR CORRECT badge was pre-filled from your foundation documents and live LFX data. Edit directly on the slide: strike what is wrong, add what is missing."
+        ],
+        [
+          2,
+          "Make the five decisions",
+          "Confirm the goal ranking, give one KPI number per goal, choose a Strategy Profile for the budget, confirm the budget split across goals, and name the anchor moments. Each Part ends with lettered YOUR INPUT boxes for exactly these."
+        ],
+        [
+          3,
+          "Return it before the interview",
+          "Send the edited file to Paul Hinz (phinz@linuxfoundation.org). The 45-minute interview walks through your corrections; the Goals Summary and Budget Summary slides at the end become the first page of the final plan."
+        ]
+      ],
+      "glance": "Estimated time: 45–60 minutes\n\nThis is a FIRST PLAN: no prior plan or quarterly review exists, so slide 3 shows where x402 stands today instead of last quarter's results.\n\nStructure:\nI. The Story\nII. Business Outcomes & Goals\nIII. Message & Audiences\nIV. Budget\nV. Execution\nGoals Summary · Budget Summary\n\nBadges:\nDRAFT — CONFIRM OR CORRECT = pre-filled, edit it\nYOUR INPUT = we need your answer",
+      "notes": "Contact: Paul Hinz. Five-part skeleton mirrors the PyTorch Foundation 2026 Marketing Plan; Part IV is the Budget; the deck closes with the two summary slides the final plan agent lifts verbatim."
+    },
+    {
+      "type": "stats",
+      "eyebrow": "First plan · Where we stand today",
+      "title": "Where x402 stands today: the baseline for every goal in this workbook",
+      "badge": "draft",
+      "tiles": [
+        {
+          "num": "54 orgs · $4.08M",
+          "label": "Members and list-price revenue",
+          "sub": "41 paying · 17 Premier ($3.4M) · 24 General ($675K) · 13 Associate ($0). LFX, Sep 30, 2026. List price, not dues billed."
+        },
+        {
+          "num": "53 in 6 months",
+          "label": "New memberships since April 2026",
+          "sub": "Apr 11 · May 13 · Jun 8 · Jul 9 · Aug 9 · Sep 3 (MTD). First renewals fall Apr–Jun 2027. LFX new_members."
+        },
+        {
+          "num": "0 · 0 · 0",
+          "label": "Owned events, speakers, sponsorships",
+          "sub": "No x402 events in the LF events system in the trailing year. Launch venue was MCP Dev Summit NY (Apr 2). 6 LFX meetings, 278 participants. LFX, Oct 1."
+        },
+        {
+          "num": "0 courses",
+          "label": "Education",
+          "sub": "No training enrollments or certifications in LF platforms (TI/edX). Developer docs at docs.x402.org; quickstarts for sellers and buyers."
+        },
+        {
+          "num": "1,406 · 226",
+          "label": "Contributors · contributing orgs (12 mo)",
+          "sub": "2,618 participants (any activity). Maintainer roster not onboarded (reads 0). Employer attribution thin. LFX, Oct 1, 2026."
+        },
+        {
+          "num": "6.6k ★ · 0",
+          "label": "GitHub stars · social mentions",
+          "sub": "GitHub 6.6k stars / 2.0k forks (Sep 21). LFX Lens: 0 keywords configured. HubSpot: no x402-tagged contacts found — team to supply. 3 mailing lists; 4 WG Slack channels."
+        }
+      ],
+      "source": "LFX standard metrics (memberships, new_members, event_registrations, speakers, event_sponsorships, training_enrollments, contributors, contributing_organizations, participants, maintainers, social_mentions) read 2026-09-30/10-01 UTC; count_lfx_resources; GitHub; HubSpot connector text search.",
+      "notes": "FIRST PLAN baseline, one tile per business-outcome area. Zeros are floors or onboarding gaps, not absences: events 0 = no x402-owned events registered in the LF events system; maintainers 0 = roster not onboarded to LFX; social mentions 0 = no Lens keywords; HubSpot 0 = free-text search for 'x402' on contacts returned 0 — a project property or list has not been identified, so the audience baseline is a YOUR INPUT. Revenue is LFX list price (memberships by tier); confirm the dues-billed figure with finance before the budget is final. Contributor employer attribution: 20,135 contribution activities sit in the unattributed account row vs 97 for the top named organization (Cardano Foundation)."
+    },
+    {
+      "type": "divider",
+      "part": "PART I",
+      "name": "The Story",
+      "blurb": "The era and its stakes, what makes x402 distinct from the alternatives, and the one-sentence positioning the plan hangs on. Drafted from the v3 Message Foundation and Brand Kit; market figures are web drafts to verify."
+    },
+    {
+      "type": "stats",
+      "eyebrow": "Part I · The Story",
+      "title": "The era: agents are becoming buyers, and the internet has no standard way to pay",
+      "badge": "draft",
+      "tiles": [
+        {
+          "num": "$1.5T",
+          "label": "Agentic commerce spend by 2030",
+          "sub": "Juniper Research forecast (Apr 2026), up from ~$8B in 2026. DRAFT — verify before external use."
+        },
+        {
+          "num": "$3–5T",
+          "label": "Retail spend agents could orchestrate by 2030",
+          "sub": "McKinsey estimate as cited in secondary sources. DRAFT — verify primary source."
+        },
+        {
+          "num": "75.41M",
+          "label": "x402 transactions, trailing 30 days",
+          "sub": "x402.org counter as displayed 2026-09-17 (Stat Bank S10). Refresh at each use; no public methodology."
+        }
+      ],
+      "era": {
+        "head": "Drafted era statement",
+        "text": "The HTTP specification has carried 402 Payment Required since January 1997 (RFC 2068). For nearly three decades APIs, paywalls, and now AI agents have created accounts, passed forms, and managed keys before a cent moved. As agents become buyers, the industry needs a payment primitive built into the request-and-response cycle itself. x402 is that primitive, and in 2026 the largest payment networks, cloud providers, and stablecoin issuers chose to build it together under neutral governance at the Linux Foundation rather than each shipping their own."
+      },
+      "source": "x402 Message Foundation v3 (S10, S24, elevator pitch); Juniper Research press release Apr 2026; McKinsey via secondary reports — market figures are drafts to verify.",
+      "notes": "Market figures found via web search 2026-09-30, not fetched in full; Morgan Stanley base case $190B US agentic commerce by 2030 is a third option. Ask the ED which one figure he trusts."
+    },
+    {
+      "type": "table",
+      "eyebrow": "Part I · The Story",
+      "title": "What makes x402 distinct: the combination, and who governs it",
+      "badge": "draft",
+      "header": [
+        "",
+        "x402",
+        "MPP (Stripe/Tempo)",
+        "AP2 (Google)",
+        "ACP / UCP",
+        "L402 (Lightning)",
+        "Card-network agent programs"
+      ],
+      "rows": [
+        [
+          "Who controls it",
+          "No single company — x402 Foundation at the LF, 54 member orgs",
+          "Two co-authors",
+          "Google + 60+ partners",
+          "OpenAI/Stripe · Google/Shopify",
+          "Lightning community",
+          "Visa / Mastercard"
+        ],
+        [
+          "Layer",
+          "Payment primitive",
+          "Payment primitive (peer)",
+          "Authorization (complement; x402 is an extension)",
+          "Commerce journey (adjacent)",
+          "Payment primitive",
+          "Network program (peer)"
+        ],
+        [
+          "Network / asset",
+          "Any supported network; crypto and fiat by design",
+          "Verify at mpp.dev",
+          "Rail-agnostic mandates",
+          "Merchant PSP rails",
+          "BTC only",
+          "Card rails"
+        ],
+        [
+          "Protocol fee",
+          "0",
+          "Do not quote pricing",
+          "n/a",
+          "n/a",
+          "Channel fees",
+          "Do not quote pricing"
+        ],
+        [
+          "Who can build on it",
+          "Anyone, including competitors",
+          "Anyone",
+          "Partners",
+          "Partners",
+          "Anyone",
+          "Program participants"
+        ]
+      ],
+      "colW": [
+        1.3,
+        1.6,
+        1.25,
+        1.35,
+        1.25,
+        1.1,
+        1.15
+      ],
+      "size": 8.2,
+      "caption": "Brand Kit discipline: differentiate by category, frame member-authored protocols as peers or complements, never name a competitor to criticize it, never quote anyone's pricing, never write 'the only HTTP-native payment standard'.",
+      "source": "x402 Target Markets & ICP §1.2; Brand Kit §6; Message Foundation S31, S33; LFX member_organizations read 2026-09-30 (54).",
+      "notes": "Member count 54 is the LFX read of 2026-09-30; x402.org/members shows 52 (external copy cites 52 per S26). ED to confirm the table is comfortable for member relations before it appears in any external deck."
+    },
+    {
+      "type": "cards",
+      "eyebrow": "Part I · The Story",
+      "title": "The 'only place to…' positioning",
+      "badge": "draft",
+      "dark": {
+        "head": "Drafted positioning sentence",
+        "text": "The x402 Foundation is the only place where the payment networks, cloud providers, stablecoin issuers, and commerce platforms that compete everywhere else sit at one table to set the open payment standard of the internet — and where no single one of them decides who may build on it.",
+        "proof": "Proof: 17 Premier members named July 14, 2026 · 54 member organizations in LFX (Sep 30, 2026) · charter §10 no exclusivity · every Participating Organization holds a TSC seat"
+      },
+      "cards": [
+        {
+          "head": "Locked positioning statement (v3)",
+          "text": "\"…x402 is an open payment standard native to the internet. Any client pays any server in one request, on any supported network, with zero protocol fees and no accounts. Unlike account-first payment APIs, e-commerce rails built for human checkout, single-asset micropayment networks, and company-authored agent-payment standards, x402 is governed neutrally at the Linux Foundation and controlled by no single company.\"",
+          "size": 8
+        },
+        {
+          "head": "Tagline candidates (not locked)",
+          "text": "Hero: \"The internet, open for business.\" (alt: \"Payments native to the internet.\")\nDeveloper: \"402 Payment Required. Finally.\"\nMember recruitment: \"Any client. Any server. Any network.\"\nHeld for LF Legal: \"The internet's payment standard.\"",
+          "size": 8.5
+        }
+      ],
+      "source": "x402 Message Foundation v3 §4, §3; Brand Kit v3. 'Only' is used here with proof in the same sentence, per voice rules.",
+      "notes": "Tagline lock still open (MF YOUR INPUT 2; Brand Kit YOUR INPUT 7). 'The internet's payment standard.' needs LF Legal review."
+    },
+    {
+      "type": "input",
+      "eyebrow": "Part I · The Story · Your input",
+      "questions": [
+        "What is the era-level story only x402 can tell? (One or two sentences; the drafted era statement is on slide 5.)",
+        "Who are x402's true alternatives in the mind of a Head of Payments, and what can they not claim?",
+        "What would you put on the positioning slide in one sentence, in your own words?",
+        "Which one market figure (Juniper $1.5T, McKinsey $3–5T, Morgan Stanley $190B US) do you trust enough to use externally?"
+      ]
+    },
+    {
+      "type": "divider",
+      "part": "PART II",
+      "name": "Business Outcomes & Goals",
+      "blurb": "Every marketing goal at the LF ties to one of four standard business outcomes: Fill the Seats (events and education), Grow the Audience (net new contacts), Nurture to Adoption (users, creators, ambassadors, contributors, maintainers), and Secure & Retain Commitment (members). Each drafted goal carries a definition, a KPI, a budget share, a timeline and risks. Lower-numbered goals win conflicts."
+    },
+    {
+      "type": "table",
+      "eyebrow": "Part II · Business Outcomes & Goals",
+      "title": "The four business outcomes, and where x402 stands on each",
+      "badge": "draft",
+      "header": [
+        "Business outcome",
+        "What it means for x402",
+        "Baseline (dated)",
+        "Proposed emphasis (% of budget)"
+      ],
+      "rows": [
+        [
+          "Secure & Retain Commitment\n(Memberships)",
+          "New Premier and General members; renew the first cohort; associate growth",
+          "54 member orgs · 41 paying · 17 Premier / 24 General / 13 Associate · $4.075M list price (LFX, Sep 30, 2026) · first renewals Apr–Jun 2027",
+          "35%"
+        ],
+        [
+          "Grow the Audience\n(net new contacts)",
+          "Payments, fintech and developer contacts in HubSpot carrying an x402 property; newsletter subscribers; social reach",
+          "No x402-tagged HubSpot contacts identified · 0 Lens keywords · 3 mailing lists · 6.6k GitHub stars (Sep 2026)",
+          "25%"
+        ],
+        [
+          "Nurture to Adoption\n(users, creators, ambassadors, contributors, maintainers)",
+          "Sellers and buyers on x402; contributors and maintainers; named adopters; facilitators and networks implementing the spec",
+          "1,406 contributors · 226 orgs · 2,618 participants (12 mo to Oct 1) · 22K sellers / 94.06K buyers (x402.org 30-day, Sep 17) · 15 facilitators · 0 ambassadors",
+          "25%"
+        ],
+        [
+          "Fill the Seats\n(events and education)",
+          "x402 presence and tracks at LF agentic/MCP events; a first x402 Day; first developer course",
+          "0 owned events · 0 speakers · 0 sponsorships · 0 enrollments (LFX, Oct 1) · 6 LFX meetings / 278 participants",
+          "15%"
+        ]
+      ],
+      "colW": [
+        1.9,
+        2.6,
+        3.2,
+        1.3
+      ],
+      "size": 8.5,
+      "caption": "Emphasis percentages are the agent's draft for a 'has product and community' foundation that does not yet own events or courses. They are re-stated per goal on the following slides and summed on the Budget slides.",
+      "source": "LFX Marketing OS Strategy deck (standard business outcomes); LFX standard metrics read 2026-09-30/10-01; x402.org counters via Message Foundation S10–S13, S28.",
+      "notes": "Message Foundation content tags map to these outcomes: Member Growth → Secure & Retain; Brand Visibility → Grow the Audience; Developer Adoption, Community Content, Ecosystem Integrations → Nurture to Adoption. Fill the Seats is small because x402 has no owned events or courses; it grows if the ED wants an x402 Day or a course in 2027."
+    },
+    {
+      "type": "cards",
+      "eyebrow": "Part II · Business Outcomes & Goals",
+      "title": "Project stage, what it implies, and what to retire",
+      "badge": "draft",
+      "cards": [
+        {
+          "head": "Stage: has product and community",
+          "text": "x402 has a shipping protocol (V2, Batch Settlement), 15 production facilitators and 1,400+ contributors, and a 54-organization membership. The Strategy deck's guidance for this stage: heavy focus on growth of members and on events/education.\n\nWhat is different for x402: the community is large but mostly unattributed and unmeasured (no Lens keywords, no HubSpot property, no maintainer roster), and there are no owned events or courses yet. The first plan therefore buys measurement first, then seats."
+        },
+        {
+          "head": "Implications for the goals",
+          "text": "• Memberships lead (Goal 1): the Premier pipeline is warm (six intent signatories not yet members) and the first renewal cohort lands in Q2 2027.\n• Audience building (Goal 2) needs a HubSpot property and Lens keywords before any number is credible — a Q4 2026 deliverable.\n• Adoption (Goals 3–4) already has volume; the job is attribution and named proof.\n• Fill the Seats (Goal 5) starts with presence at LF agentic events, not an owned conference."
+        },
+        {
+          "head": "Proposed for retirement or re-scoping",
+          "text": "• Any goal phrased around 'HTTP-native' as the differentiator — V2 is transport-agnostic and the ED de-emphasized HTTP in v3.\n• 'Launch press release' as a Premier benefit — the operational launch has passed (MF YOUR INPUT 12).\n• Cumulative 'over 100M payments' claim — retired from the Stat Bank.\n• Rule of conflict: when two goals compete for budget, slot or spokesperson, the lower-numbered goal wins.",
+          "hcolor": "B00020"
+        }
+      ],
+      "source": "LFX Marketing OS Strategy deck ('Focus May Vary Based on Project Type / Stage'); Message Foundation v3 change log.",
+      "notes": "Stage classification is the agent's draft; the ED confirms it on the Part II YOUR INPUT slide."
+    },
+    {
+      "type": "goal",
+      "eyebrow": "Part II · Goal 1",
+      "title": "Goal 1 — Member Growth and first-cohort renewal",
+      "badge": "draft",
+      "rank": 1,
+      "outcome": "Secure & Retain Commitment",
+      "goal": "Grow paying membership and renew the founding cohort",
+      "definition": "Add new Premier and General members from the warm pipeline and the ICP-B lookalike set, and renew the April–June 2026 cohort when its first terms end in Q2 2027.",
+      "kpi": "+48 to +60 new Premier + General memberships by Dec 31, 2027, including 3–5 Premier; ≥90% renewal of the 32 memberships installed Apr–Jun 2026.",
+      "budgetShare": "35% of total",
+      "timeline": "Pipeline outreach Q4 2026; renewal campaign Feb–Jun 2027; quarterly review.",
+      "risks": [
+        "16 of 17 Premier installs landed Apr–Jun 2026; straight-line extrapolation (~104/yr) is not credible",
+        "Member-authored peer protocols (MPP, AP2) may absorb budget and attention at prospects",
+        "Marketing lead and Marketing committee chair not yet named"
+      ],
+      "baseline": "54 member orgs · 41 paying · 17 Premier / 24 General / 13 Associate · 8.7 new memberships/month Jun–Aug 2026 (LFX, Sep 30, 2026). Premier pipeline starts with Microsoft, Sierra, PPRO, thirdweb, Base, Ampersend.ai (April 2 intent signatories not yet members).",
+      "source": "LFX memberships by tier, new_members by month, member_organizations, paying_member_organizations (2026-09-30); ICP §SOM proposal; Message Foundation S29.",
+      "notes": "Target range is the ICP document's SOM proposal (awaiting ED review). Renewal KPI assumes one-year terms; confirm term lengths with LF membership operations. Revenue is list price."
+    },
+    {
+      "type": "goal",
+      "eyebrow": "Part II · Goal 2",
+      "title": "Goal 2 — Build a measurable x402 audience",
+      "badge": "draft",
+      "rank": 2,
+      "outcome": "Grow the Audience",
+      "goal": "Create and grow the x402 contact base",
+      "definition": "Stand up the audience infrastructure (HubSpot x402 property and lists, LFX Lens keywords, newsletter), then grow net new contacts among payments and fintech leaders, merchants, API developers and agent builders.",
+      "kpi": "Proposed: 5,000 net new x402 contacts in HubSpot and 2,000 newsletter subscribers by Dec 31, 2027 (baseline set Q4 2026); share-of-voice baseline from Q1 2027.",
+      "budgetShare": "25% of total",
+      "timeline": "Measurement live Nov 30, 2026; contact growth and evergreen programs Q1–Q4 2027.",
+      "risks": [
+        "No audience baseline exists today — the 5,000 figure is a placeholder until the property is created and back-filled",
+        "Lens keyword slots are plan-limited and shared across LF workspaces",
+        "Brand voice forbids cold outreach; growth must come from content, events and paid"
+      ],
+      "baseline": "HubSpot: no x402-tagged contacts found (text search, Oct 1, 2026) — team to supply. LFX Lens: 0 mentions / 0 keywords. 3 lists.x402.org mailing lists; 4 WG Slack channels; GitHub 6.6k stars / 2.0k forks (Sep 21, 2026).",
+      "source": "HubSpot connector; LFX social_mentions (2026-09-30); count_lfx_resources groupsio_mailing_list; Message Foundation S25, S36.",
+      "notes": "The number 5,000 is a proposal with no baseline; the ED should replace it or accept it as the Q1 2027 re-baseline trigger. Strategy deck definition of Grow the Audience: net new contacts in the contact database."
+    },
+    {
+      "type": "goal",
+      "eyebrow": "Part II · Goal 3",
+      "title": "Goal 3 — Developer adoption with attribution",
+      "badge": "draft",
+      "rank": 3,
+      "outcome": "Nurture to Adoption",
+      "goal": "Grow contributors and sellers, and make the growth attributable",
+      "definition": "Increase distinct code contributors and active sellers/buyers on x402, onboard the maintainer roster to LFX, and publish a counter methodology note so adoption claims are defensible.",
+      "kpi": "+25% distinct code contributors YoY (1,406 → ~1,760 by Oct 2027); maintainer roster in LFX by Dec 2026; counter methodology note by Nov 30, 2026.",
+      "budgetShare": "15% of total",
+      "timeline": "Attribution fixes Q4 2026; contributor growth programs Q1–Q4 2027.",
+      "risks": [
+        "Employer attribution is thin (20,135 unattributed contribution activities vs 97 for the top named org) — per-company claims are not publishable",
+        "x402.org counters have no public methodology; objection 7 ('is the volume real?') stays open",
+        "Message Foundation S19/S20 recorded contributors as TBD on Sep 21; LFX now returns figures — re-verify before quoting"
+      ],
+      "baseline": "1,406 code contributors · 226 contributing orgs · 2,618 participants, 12 months to Oct 1, 2026 (LFX). Monthly contributors ranged 117–281 over the last year. 22K sellers / 94.06K buyers / 75.41M transactions (x402.org, 30 days to Sep 17).",
+      "source": "LFX contributors (period=month), contributing_organizations, participants, contributions by org, maintainers (2026-10-01); Message Foundation S10–S13, S19, S20.",
+      "notes": "Contributor counts are distinct people; never sum months. Maintainers read 0 because the roster is not onboarded, not because there are none."
+    },
+    {
+      "type": "goal",
+      "eyebrow": "Part II · Goal 4",
+      "title": "Goal 4 — Ecosystem proof: adopters, ambassadors, facilitators",
+      "badge": "draft",
+      "rank": 4,
+      "outcome": "Nurture to Adoption",
+      "goal": "Turn adoption into named proof and advocates",
+      "definition": "Recruit named adopters willing to be quoted, launch an ambassador/creator program, and widen the facilitator and network directory, including the first fiat (scheme, network) pair.",
+      "kpi": "1 named adopter case study by Mar 31, 2027, 4 by Dec 2027; 20 ambassadors by Jun 2027; +5 facilitators, +2 chain packages; first fiat pair specified.",
+      "budgetShare": "10% of total",
+      "timeline": "Adopter outreach Q4 2026; ambassador launch Q1 2027; directory growth 2027.",
+      "risks": [
+        "No adopter has agreed to be named (MF YOUR INPUT 4; ICP YOUR INPUT 6)",
+        "Member products that implement x402 may only be cited in the member's own words",
+        "Facilitator coverage is uneven and there is no facilitator-of-facilitators"
+      ],
+      "baseline": "15 production facilitators (5 multi-network; at least 5 run by members) · 9 chain packages · 3 SDK languages (docs.x402.org, Sep 21, 2026) · 0 ambassadors · 0 named adopters · 4 working groups.",
+      "source": "Message Foundation S14, S15, S27, S28, S40, S41; ICP §SOM ecosystem targets.",
+      "notes": "Ambassador target of 20 is a proposal sized to a new program; the Strategy deck example for a mature foundation is 50."
+    },
+    {
+      "type": "goal",
+      "eyebrow": "Part II · Goal 5",
+      "title": "Goal 5 — Fill the seats at the agentic events x402's audience already attends",
+      "badge": "draft",
+      "rank": 5,
+      "outcome": "Fill the Seats",
+      "goal": "Establish an x402 presence at LF agentic/MCP events and test a first x402 Day",
+      "definition": "Secure x402 talks, tracks or booths at the LF agentic-AI and MCP event series and KubeCon, drive registrations attributable to x402, and decide by Q2 2027 whether to host a co-located x402 Day.",
+      "kpi": "Proposed: 6 accepted x402 talks and 2 sponsored tracks across the 2026–27 LF event calendar; 500 registrations attributable to x402 promotion; go/no-go on an x402 Day by Jun 30, 2027.",
+      "budgetShare": "15% of total",
+      "timeline": "Q4 2026 LF agentic series and KubeCon NA; 2027 KubeCon EU, OSS NA, agentic series.",
+      "risks": [
+        "x402 owns no events and has no Events staff named in the master spreadsheet",
+        "Payments-industry events (Money20/20, Sibos) are outside the LF calendar and unpriced",
+        "Registration attribution needs UTM discipline that does not exist yet"
+      ],
+      "baseline": "0 x402 events, 0 speakers, 0 sponsorships in the LF events system (LFX, Oct 1, 2026). Launch venue: MCP Dev Summit NA, New York, Apr 2, 2026. 6 LFX meetings with 278 participants.",
+      "source": "LFX event_registrations, speakers, event_sponsorships (2026-10-01); LF Events calendar entries in the master spreadsheet (AAIF, CNCF, FINOS rows).",
+      "notes": "All event targets are proposals; the ED names the payments-industry events on the Part V YOUR INPUT slide. No education goal is drafted because x402 has no course; if the ED wants one, add it under Fill the Seats."
+    },
+    {
+      "type": "input",
+      "eyebrow": "Part II · Business Outcomes & Goals · Your input",
+      "questions": [
+        "Confirm or re-rank the five goals. Which business outcome matters most for x402 in 2027, and why?",
+        "Give the one number per goal that defines success by Dec 31, 2027 (members, contacts, contributors, adopters/ambassadors, registrations).",
+        "Is 'has product and community' the right stage? Should an education goal (first x402 course) be added under Fill the Seats?",
+        "Name anything from current messaging or activity that should be retired."
+      ],
+      "notes": "FIRST PLAN: replaces the 'what were last quarter's goals' question with a stage and priority question."
+    },
+    {
+      "type": "divider",
+      "part": "PART III",
+      "name": "Message & Audiences",
+      "blurb": "One messaging house mapped to the goals and the segment-to-goal matrix from the ICP document. Drafted from the v3 ED-confirmed documents; the ICP has not yet been revised for v3."
+    },
+    {
+      "type": "table",
+      "eyebrow": "Part III · Message & Audiences",
+      "title": "One messaging house, mapped to the goals (drafted)",
+      "badge": "draft",
+      "header": [
+        "Goal",
+        "Pillar",
+        "Key message",
+        "Proof (Stat Bank ID)",
+        "Sound bite"
+      ],
+      "rows": [
+        [
+          "1 Member Growth",
+          "Open & Neutral",
+          "Membership is a seat at the table where the payment layer of the internet is being set.",
+          "17 Premier (S2) · 54/52 orgs (S1/S26) · TSC seat per Participating Org (S34)",
+          "\"Fifty-plus organizations at one table, and no single one of them sets the rules.\""
+        ],
+        [
+          "2 Audience",
+          "Agentic Commerce",
+          "x402 is the native way for AI agents to pay: request, 402, pay, done.",
+          "94.06K buyers / 22K sellers (S12, S13) · AP2 extension since Sep 2025 (S31)",
+          "\"Agents don't fill out forms. x402 doesn't ask them to.\""
+        ],
+        [
+          "3 Developer adoption",
+          "The Standard",
+          "One line of middleware to charge; one request to pay; any supported network.",
+          "402 since Jan 1997 (S24) · SDKs TS/Python/Go (S14) · 75.41M txns (S10)",
+          "\"402 Payment Required has been in the HTTP spec since 1997. x402 finally uses it.\""
+        ],
+        [
+          "4 Ecosystem proof",
+          "Open & Neutral / The Standard",
+          "One spec to implement, a public directory to be listed in — anyone, including competitors, is welcome to build on it.",
+          "15 facilitators (S28) · 9 chain packages (S15) · 5 multi-network (S41)",
+          "\"Anyone — even a competitor — is welcome to build on x402, precisely because no single company controls it.\""
+        ],
+        [
+          "5 Fill the seats",
+          "Secure by Spec",
+          "Money moves only as the client intends, and the rules are public.",
+          "Scheme specs exact/upto/batch (S16) · zero protocol fees (S17) · escrow + signed limits (S35)",
+          "\"Security you can read in the spec, not in the brochure.\""
+        ]
+      ],
+      "colW": [
+        1.25,
+        1.25,
+        2.4,
+        2.0,
+        2.1
+      ],
+      "size": 8.5,
+      "source": "x402 Message Foundation v3 §7–§8 pillars, §10 Stat Bank.",
+      "notes": "Pillar-to-goal mapping is the agent's draft; the Message Foundation maps pillars to personas. All figures dated; counters refresh at each use."
+    },
+    {
+      "type": "table",
+      "eyebrow": "Part III · Message & Audiences",
+      "title": "Audience segments mapped to goals (drafted from the ICP document)",
+      "badge": "draft",
+      "header": [
+        "Segment (ICP)",
+        "Persona",
+        "Primary goal",
+        "Channel",
+        "CTA"
+      ],
+      "rows": [
+        [
+          "ICP-B Enterprise member org: payments network, PSP, bank, stablecoin issuer, hyperscaler, commerce platform",
+          "B1 Dana the Champion (Head of Payments / Agentic Commerce) · B2 Elena the Gatekeeper (Standards / Counsel)",
+          "1 Member Growth",
+          "LinkedIn, exec briefings, LF membership development, charter",
+          "C1 Join as Premier · L3 launch announcement · L4 charter"
+        ],
+        [
+          "Merchants and digital service providers — business leaders (added by ED in v3)",
+          "Business owner \"writing the check\"",
+          "2 Audience",
+          "LinkedIn dated-fact posts, press, case studies",
+          "L3 · C2 Join as General"
+        ],
+        [
+          "ICP-A Community & technical adopter: API-first or agent-building org",
+          "A1 Priya the Paywaller · A2 Marcus the Agent Builder",
+          "3 Developer adoption",
+          "docs, GitHub, X (code-first), Hacker News, Slack, MCP community",
+          "L1 Quickstart for Sellers · L2 @x402/fetch, @x402/mcp · E3 Slack"
+        ],
+        [
+          "ICP-C Ecosystem infrastructure: facilitator, wallet/custody, L1/L2 foundation, stablecoin provider",
+          "C1 Tomás the Facilitator · C2 Yuki the Network Lead",
+          "4 Ecosystem proof",
+          "docs dev-tools, specs, TSC, working groups",
+          "K2 implement /verify and /settle · K1 add your network · C3 Associate"
+        ],
+        [
+          "Legal, policy and compliance (card networks, regulated FIs)",
+          "B2 Elena the Gatekeeper",
+          "1 Member Growth · 5 Fill the seats (WG meetings)",
+          "Charter, LF Legal briefing, Identity/Tax/Card Acceptance WGs",
+          "L4 · E1 Card Acceptance WG · E2 Identity/Tax WG"
+        ]
+      ],
+      "colW": [
+        2.4,
+        2.1,
+        1.3,
+        1.7,
+        1.5
+      ],
+      "size": 8.5,
+      "source": "x402 Target Markets & ICP (Sep 17, 2026); Message Foundation v3 §6 audiences, §14 CTA library.",
+      "notes": "The ICP predates the v3 ED review (four audiences; ED 'name to confirm'). The merchant/business-leader audience was added by the ED in v3 and mapped here by the agent."
+    },
+    {
+      "type": "input",
+      "eyebrow": "Part III · Message & Audiences · Your input",
+      "questions": [
+        "Give one sound bite per goal in your own words (five short lines). The drafted ones are on slide 19.",
+        "Name the one primary audience per goal. Is 'merchants and business leaders' the lead audience for audience growth, as drafted?",
+        "Which tagline should the plan lock for the website hero, and has LF Legal cleared 'The internet's payment standard.'?"
+      ]
+    },
+    {
+      "type": "divider",
+      "part": "PART IV",
+      "name": "Budget",
+      "blurb": "The budget starts with one decision: your Strategy Profile. It sets the total as a percentage of membership revenue and pre-sets the paid-media share. The LF then splits the remainder across marketing services, third-party content and a discretionary reserve for hot and evergreen campaigns, and the total is allocated across the goals by the shares on the goal slides."
+    },
+    {
+      "type": "profile",
+      "eyebrow": "Part IV · Budget",
+      "title": "Step 1 — Choose a Strategy Profile (the ED's decision)",
+      "badge": "draft",
+      "model": "budget.json",
+      "revenueLabel": "= LFX list-price membership revenue as of Sep 30, 2026 (Premier $3.4M + General $675K). Confirm the dues-billed figure with finance.",
+      "source": "LF_Marketing_Services_Matrix (Strategy Profile, Flat Pricing tabs); LFX memberships by tier (2026-09-30). 60/20/20 split is a draft until LF confirms.",
+      "notes": "Strategy Profile: Conservative Growth 12% of revenue, paid 30% of total; Aggressive Scale 20%, paid 40%; Hyper-Growth 30%, paid 50%. Flat-pricing cross-check: LF Marketing Department tier (> $3M revenue) = $300K + 4% = $463,000, capped at $600K. The fee exceeds the 60% services bucket at all three profiles ($205K / $293K / $367K), so the interview must reconcile: move up a profile, reduce LF service scope, or change the split. Model computed by scripts/budget_model.py --revenue 4075000."
+    },
+    {
+      "type": "cards",
+      "eyebrow": "Part IV · Budget",
+      "title": "Step 2 — How the budget is split, and what each bucket pays for",
+      "badge": "draft",
+      "cards": [
+        {
+          "head": "Paid spend (pre-set by profile)",
+          "text": "Defined by medium in the plan:\n• Search and retargeting (developer and payments-leader intent)\n• LinkedIn and X paid social to ICP-B titles\n• Third-party developer newsletters and podcasts\n• Event promotion for Goal 5 registrations\n\nPass-through: ad management 20% of spend (15% above $250K/yr), at cost.\n\nPLANNED campaign spend.",
+          "size": 8.5
+        },
+        {
+          "head": "LF marketing services / headcount",
+          "text": "Fractional or dedicated marketing lead, marcomms/PR, social, creative, web, marketing ops and reporting — the people who run the plan.\n\nDraft: 60% of the remainder.\n\nCross-check against the flat-pricing fee for the Marketing Department tier ($463K). Where the fee exceeds the bucket, the ED and LF agree scope or move profile.",
+          "size": 8.5
+        },
+        {
+          "head": "Third-party content + Discretionary reserve",
+          "text": "Third-party content (draft 20% of remainder): research reports, case studies, video, localization. PLANNED campaign spend.\n\nDiscretionary reserve (draft 20% of remainder): HOT campaigns — 72-hour response to news, releases, viral posts, competitor moves — and EVERGREEN activity (social, newsletter, inbound, SEO/AEO). Spent within limits, reported every QBR.",
+          "size": 8.5
+        }
+      ],
+      "source": "LFX Marketing OS Strategy deck ('Budgets to Support Planned & Opportunistic Execution'); LF_Marketing_Services_Matrix pass-throughs.",
+      "notes": "Planned campaign spend = paid + third-party content. Discretionary = the reserve. The 60/20/20 split is a proposal; LF defines the final proportions."
+    },
+    {
+      "type": "allocation",
+      "eyebrow": "Part IV · Budget",
+      "title": "Step 3 — Allocate the total across the goals (drafted shares from Part II)",
+      "badge": "draft",
+      "model": "budget.json",
+      "rows": [
+        {
+          "goal": "1 · Member growth and first-cohort renewal",
+          "outcome": "Secure & Retain",
+          "share": 0.35
+        },
+        {
+          "goal": "2 · Build a measurable x402 audience",
+          "outcome": "Grow the Audience",
+          "share": 0.25
+        },
+        {
+          "goal": "3 · Developer adoption with attribution",
+          "outcome": "Nurture to Adoption",
+          "share": 0.15
+        },
+        {
+          "goal": "4 · Ecosystem proof: adopters, ambassadors, facilitators",
+          "outcome": "Nurture to Adoption",
+          "share": 0.1
+        },
+        {
+          "goal": "5 · Fill the seats at LF agentic events",
+          "outcome": "Fill the Seats",
+          "share": 0.15
+        }
+      ],
+      "caption": "Shares are of the TOTAL marketing budget (services, paid, content and reserve together). Dollar columns show the same share at each Strategy Profile; only the ED's chosen column survives into the final plan.",
+      "source": "Goal slides 12–16; scripts/budget_model.py.",
+      "notes": "Shares sum to 100%. Stage default for 'has product and community' is 35/25/20/20 across Secure/Fill/Audience/Nurture; adjusted here because x402 owns no events yet and needs audience measurement first."
+    },
+    {
+      "type": "input",
+      "eyebrow": "Part IV · Budget · Your input",
+      "questions": [
+        "Which Strategy Profile do you choose for 2027 — Conservative Growth (12%), Aggressive Scale (20%) or Hyper-Growth (30%)?",
+        "Confirm the revenue base the budget should use. LFX list price is $4.075M; what figure will finance recognize for 2027?",
+        "Confirm or change the split of the remainder (draft 60% LF services / 20% third-party content / 20% discretionary) and the goal shares (35/25/15/10/15).",
+        "What paid media do you want prioritized, and what rules should govern discretionary (hot campaign) spend — approval, cap per campaign, reporting?",
+        "The flat-pricing LF services fee ($463K) exceeds the services bucket at every profile. Prefer: move up a profile, reduce LF service scope, or change the split?"
+      ],
+      "notes": "Five budget decisions. Question E is the reconciliation the budget model flagged."
+    },
+    {
+      "type": "divider",
+      "part": "PART V",
+      "name": "Execution",
+      "blurb": "The anchor moments of the plan period, the team and systems the plan runs on, and the decisions the ED needs to take, each with a date. Team, SOW and budget lines are blank in the master spreadsheet and appear here as questions."
+    },
+    {
+      "type": "calendar",
+      "eyebrow": "Part V · Execution",
+      "title": "Anchor moments, Q4 2026 through 2027 (drafted from the LF Events calendar)",
+      "badge": "draft",
+      "columns": [
+        {
+          "head": "Q4 2026 — bridge quarter",
+          "highlight": true,
+          "items": [
+            "MCP Dev Summit Toronto · Oct 5–6",
+            "AGNTCon + MCPCon NA, San Jose · Oct 22–23",
+            "Open Source in Finance Forum NY · Nov 4–5",
+            "KubeCon NA, Salt Lake City · Nov 9–12 (Agentics Day Nov 9)",
+            "MCP Dev Summit Nairobi · Nov 19–20",
+            "Measurement live: HubSpot property, LFX Lens, methodology note"
+          ]
+        },
+        {
+          "head": "Q1 2027",
+          "items": [
+            "KubeCon + CloudNativeCon EU, Barcelona · Mar 15–18",
+            "First named adopter case study",
+            "Ambassador program launch",
+            "Renewal campaign opens (Feb)",
+            "YOUR INPUT: payments-industry events"
+          ]
+        },
+        {
+          "head": "Q2 2027",
+          "items": [
+            "First renewals of the Apr–Jun 2026 cohort",
+            "May 6 · two years since Coinbase launched x402",
+            "Open Source Summit NA, Vancouver · May 17–19",
+            "Go/no-go on an x402 Day (Jun 30)",
+            "YOUR INPUT: agent-commerce or payments summit tie-ins"
+          ]
+        },
+        {
+          "head": "Q3–Q4 2027",
+          "items": [
+            "Jul 14 · one year since operational launch (40 → ? members)",
+            "AGNTCon + MCPCon / MCP Dev Summit 2027 series (dates TBA)",
+            "KubeCon NA 2027 (TBA)",
+            "Annual State of x402 report with contributor-by-org figures"
+          ]
+        }
+      ],
+      "source": "LF Events calendar entries in the master spreadsheet (AAIF, CNCF, FINOS, Linux Kernel rows); Message Foundation timeline (S22, S7); LFX new_members install months.",
+      "notes": "x402's own master-spreadsheet row has no LF Events entries; anchors come from adjacent foundations' calendars where x402's audiences gather. No non-LF payments events were pulled — the ED names them."
+    },
+    {
+      "type": "table",
+      "eyebrow": "Part V · Execution",
+      "title": "Team, systems and measurement: what exists and what is missing",
+      "badge": "draft",
+      "header": [
+        "Line",
+        "What we found",
+        "Source",
+        "Question for the ED"
+      ],
+      "rows": [
+        [
+          "ED / Project Leader",
+          "Michael Hursta",
+          "Master spreadsheet; MF v3",
+          "Confirm; name a deputy for marketing decisions"
+        ],
+        [
+          "Marketing lead / Marketing committee chair",
+          "Not named; committee created in LFX Jul 30, 2026",
+          "MF YOUR INPUT 11; LFX committees",
+          "Who leads marketing and chairs the committee?"
+        ],
+        [
+          "LF MarCom, Events, PM/Community staff",
+          "blank",
+          "Master spreadsheet",
+          "Which LF staff support x402, and at what tier (Program vs Department)?"
+        ],
+        [
+          "Plan SOW / renewal date / budgets",
+          "blank",
+          "Master spreadsheet",
+          "Is there a marketing services SOW? Renewal date? 2027 budget lines?"
+        ],
+        [
+          "Audience systems",
+          "No HubSpot x402 property or list identified; no newsletter found",
+          "HubSpot connector",
+          "Who owns contact capture and the newsletter?"
+        ],
+        [
+          "Measurement",
+          "x402.org counters (no methodology) · LFX Insights (contributors visible; maintainers not onboarded) · LFX Lens (0 keywords) · no UTM scheme",
+          "LFX; x402.org",
+          "Approve the Q4 measurement deliverables (property, Lens, methodology, UTMs)"
+        ],
+        [
+          "Owned properties",
+          "x402.org, docs.x402.org, blog, GitHub x402-foundation (4 repos), slack.x402.org, lists.x402.org",
+          "x402.org",
+          "Site copy still pre-v3 ('HTTP-native'); who owns the refresh?"
+        ]
+      ],
+      "colW": [
+        1.8,
+        3.0,
+        1.6,
+        2.6
+      ],
+      "size": 8.5,
+      "source": "LF Foundations Marketing Support master spreadsheet (x402 row); LFX committees (2026-09-30); HubSpot connector; Message Foundation v3.",
+      "notes": "Master spreadsheet row 'x.402 Foundation' lists only the ED; MarCom, Events, Ambassador/Tech Lead, PM/Community, Plan Renewal Date, Plan SOW, Marketing Plan, H2 Plan Updates, Mktg Budget, Event Mktg Budget, Sub-Projects, Members, Rev Rank, LF Events and Website Slug are blank."
+    },
+    {
+      "type": "table",
+      "eyebrow": "Part V · Execution",
+      "title": "Decisions needed, with dates (drafted)",
+      "badge": "draft",
+      "header": [
+        "#",
+        "Decision",
+        "Owner",
+        "Needed by",
+        "Why it gates the plan"
+      ],
+      "rows": [
+        [
+          "1",
+          "Choose the Strategy Profile and confirm the revenue base",
+          "ED + LF finance",
+          "Interview date",
+          "Every dollar figure in the plan follows from it"
+        ],
+        [
+          "2",
+          "Confirm goal ranking, KPI numbers and budget shares",
+          "ED",
+          "Interview date",
+          "Campaign Plan agent cannot run without ranked, budgeted goals"
+        ],
+        [
+          "3",
+          "Reconcile LF services fee vs services bucket (scope, profile or split)",
+          "ED + LF",
+          "Nov 15, 2026",
+          "Determines the marketing team x402 actually gets"
+        ],
+        [
+          "4",
+          "Lock the tagline and confirm governance/trademark wording with LF Legal",
+          "ED + LF Legal",
+          "Oct 31, 2026",
+          "Website refresh and every campaign asset wait on it"
+        ],
+        [
+          "5",
+          "Name the marketing lead and the Marketing committee chair",
+          "ED + Governing Board",
+          "Nov 15, 2026",
+          "Owner for the shared calendar, reporting and discretionary spend"
+        ],
+        [
+          "6",
+          "Approve Q4 measurement deliverables: HubSpot property, Lens keywords, methodology note, UTM scheme",
+          "ED + LF staff",
+          "Nov 30, 2026",
+          "Goals 2 and 3 have no credible baseline without them"
+        ],
+        [
+          "7",
+          "Approve the Premier pipeline and the renewal campaign plan",
+          "ED + LF membership development",
+          "Nov 30, 2026",
+          "Goal 1 sequencing; renewals start Q2 2027"
+        ],
+        [
+          "8",
+          "Choose the named adopter for the first case study",
+          "ED + member relations",
+          "Dec 15, 2026",
+          "Goal 4; objection 7 stays open until one exists"
+        ]
+      ],
+      "colW": [
+        0.3,
+        3.4,
+        1.7,
+        1.1,
+        2.5
+      ],
+      "size": 8.5,
+      "source": "Budget model flag; open-items registers of the Message Foundation v3, Brand Kit v3 and ICP; dates are proposals for a Q4 2026 bridge quarter.",
+      "notes": "All dates are proposals; the ED sets them on the next slide."
+    },
+    {
+      "type": "input",
+      "eyebrow": "Part V · Execution · Your input",
+      "questions": [
+        "Name the 3–4 anchor moments of the plan period, including payments-industry events not on the LF calendar.",
+        "Confirm the team: LF MarCom, Events and PM/Community names, the marketing lead, and the Marketing committee chair.",
+        "Which decisions on slide 30 do you need, by when — and which are not yours to make (Governing Board, TSC, LF Legal)?",
+        "What constraints should the plan respect (spokesperson availability, member sensitivities, regulatory review, launch dates)?"
+      ]
+    },
+    {
+      "type": "summary",
+      "eyebrow": "Summary",
+      "title": "Goals Summary — the table the final plan starts from",
+      "badge": "draft",
+      "model": "budget.json",
+      "chosenProfile": null,
+      "goals": [
+        {
+          "rank": 1,
+          "goal": "Member growth and first-cohort renewal",
+          "outcome": "Secure & Retain Commitment",
+          "definition": "Add Premier and General members from the warm pipeline and ICP-B lookalikes; renew the Apr–Jun 2026 cohort in Q2 2027.",
+          "kpi": "+48–60 new Premier + General by Dec 31, 2027 (3–5 Premier); ≥90% renewal of first cohort",
+          "share": 0.35,
+          "timeline": "Q4 2026 outreach; Feb–Jun 2027 renewals",
+          "risks": [
+            "Premier installs front-loaded",
+            "peer protocols absorb attention"
+          ]
+        },
+        {
+          "rank": 2,
+          "goal": "Build a measurable x402 audience",
+          "outcome": "Grow the Audience",
+          "definition": "Stand up HubSpot property, Lens keywords and newsletter; grow net new contacts among payments leaders, merchants, developers, agent builders.",
+          "kpi": "5,000 net new x402 contacts and 2,000 subscribers by Dec 31, 2027 (baseline set Q4 2026)",
+          "share": 0.25,
+          "timeline": "Measurement live Nov 30, 2026; growth 2027",
+          "risks": [
+            "no baseline today",
+            "Lens slots limited"
+          ]
+        },
+        {
+          "rank": 3,
+          "goal": "Developer adoption with attribution",
+          "outcome": "Nurture to Adoption",
+          "definition": "Grow contributors and sellers; onboard maintainer roster; publish counter methodology.",
+          "kpi": "+25% contributors YoY (→ ~1,760 by Oct 2027); roster live Dec 2026; methodology note Nov 30, 2026",
+          "share": 0.15,
+          "timeline": "Attribution Q4 2026; growth 2027",
+          "risks": [
+            "thin employer attribution",
+            "counters lack methodology"
+          ]
+        },
+        {
+          "rank": 4,
+          "goal": "Ecosystem proof: adopters, ambassadors, facilitators",
+          "outcome": "Nurture to Adoption",
+          "definition": "Named adopters, an ambassador/creator program, a wider facilitator directory and the first fiat pair.",
+          "kpi": "1 case study by Mar 31 and 4 by Dec 2027; 20 ambassadors by Jun 2027; +5 facilitators, +2 chain packages; first fiat pair",
+          "share": 0.1,
+          "timeline": "Q4 2026 outreach; Q1 2027 launch",
+          "risks": [
+            "no adopter will be named yet",
+            "member quotes only in their words"
+          ]
+        },
+        {
+          "rank": 5,
+          "goal": "Fill the seats at LF agentic events",
+          "outcome": "Fill the Seats",
+          "definition": "x402 talks, tracks and booths at LF agentic/MCP events and KubeCon; decide on an x402 Day.",
+          "kpi": "6 talks, 2 sponsored tracks, 500 attributable registrations; x402 Day go/no-go by Jun 30, 2027",
+          "share": 0.15,
+          "timeline": "Q4 2026 series; 2027 calendar",
+          "risks": [
+            "no owned events or Events staff",
+            "payments events unpriced"
+          ]
+        }
+      ],
+      "caption": "Budget $ at Conservative / Aggressive / Hyper-Growth until the ED picks a profile (Part IV input). Every cell traces to slides 12–16 and 23–25.",
+      "source": "Goal slides 12–16; allocation slide 25; scripts/budget_model.py.",
+      "notes": "This table and the Budget Summary are the two slides the final-plan agent lifts verbatim. Shares sum to 100%."
+    },
+    {
+      "type": "budgetsummary",
+      "eyebrow": "Summary",
+      "title": "Budget Summary — total, LF services, planned campaign spend vs discretionary reserve",
+      "badge": "draft",
+      "model": "budget.json",
+      "chosenProfile": null,
+      "allocation": [
+        {
+          "goal": "1",
+          "outcome": "Secure & Retain",
+          "share": 0.35
+        },
+        {
+          "goal": "2",
+          "outcome": "Grow the Audience",
+          "share": 0.25
+        },
+        {
+          "goal": "3",
+          "outcome": "Nurture to Adoption",
+          "share": 0.15
+        },
+        {
+          "goal": "4",
+          "outcome": "Nurture to Adoption",
+          "share": 0.1
+        },
+        {
+          "goal": "5",
+          "outcome": "Fill the Seats",
+          "share": 0.15
+        }
+      ],
+      "source": "LF_Marketing_Services_Matrix (Strategy Profile and Flat Pricing); LFX memberships by tier (2026-09-30); allocation slide 25.",
+      "notes": "Three columns remain until the ED picks a profile. Planned campaign spend = paid + third-party content; discretionary reserve funds hot and evergreen campaigns and is reported each QBR. The flat-pricing LF services fee ($463K) exceeds the services bucket at every profile — decision 3 on slide 30."
+    },
+    {
+      "type": "next",
+      "steps": [
+        [
+          1,
+          "Return the workbook",
+          "Edit the DRAFT slides and answer the YOUR INPUT boxes — especially the Strategy Profile and the one number per goal. Send the file back to Paul Hinz (phinz@linuxfoundation.org)."
+        ],
+        [
+          2,
+          "Interview call (45 minutes)",
+          "We walk through your corrections, settle goal ranking, KPI numbers, the profile and the budget split, and resolve the LF services reconciliation with dates."
+        ],
+        [
+          3,
+          "Final plan generation",
+          "The Goals Summary and Budget Summary become page one of the Q4 2026 + 2027 Marketing Plan; the plan then feeds the Quarterly Campaign Brief, Pitch Deck, Website Designer and Case Study agents."
+        ]
+      ],
+      "footer": "Recommended: run the Q4 2026 Quarterly Marketing Review in January 2027 so the first 2027 plan review starts with a goals-vs-actuals scorecard.",
+      "notes": "Delivery: workbook to the ED named in the master spreadsheet; schedule interview; feed the completed workbook to the final-plan agent."
+    },
+    {
+      "type": "table",
+      "eyebrow": "Appendix",
+      "title": "Data notes: where every pre-filled figure came from",
+      "header": [
+        "Source",
+        "Used for",
+        "Date / version",
+        "Caveat"
+      ],
+      "rows": [
+        [
+          "x402 Message Foundation (Agency Safe) v3 ED Confirmed",
+          "Positioning, pillars, Stat Bank IDs S1–S41, CTAs, open items",
+          "Sep 21, 2026",
+          "Internal rows S5, S37, S39 omitted"
+        ],
+        [
+          "x402 Brand Kit (Agency Safe) v3 ED Confirmed",
+          "Voice, discipline rules, palette and fonts for this deck",
+          "Sep 21, 2026",
+          "Tagline not locked; Legal review pending"
+        ],
+        [
+          "x402 Target Markets & ICP (Agency Safe)",
+          "ICPs, personas, SOM proposal, competitive landscape",
+          "Sep 17, 2026",
+          "Not yet revised for v3 ED changes"
+        ],
+        [
+          "LFX standard metrics",
+          "All baselines: memberships, new_members, member orgs, contributors, orgs, participants, maintainers, events, speakers, sponsorships, training, social mentions, project health",
+          "Read Sep 30 – Oct 1, 2026 UTC",
+          "Revenue = list price; zeros are floors or onboarding gaps; employer attribution thin"
+        ],
+        [
+          "LF_Marketing_Services_Matrix (Google Sheet)",
+          "Strategy Profile percentages, paid shares, flat-pricing fee tiers",
+          "Read Oct 1, 2026",
+          "Remainder split 60/20/20 is the agent's draft, not in the sheet"
+        ],
+        [
+          "LFX Marketing OS Strategy deck",
+          "Four business outcomes; goal fields; planned vs discretionary budget; stage emphasis",
+          "2026 DRAFT",
+          "—"
+        ],
+        [
+          "LF Foundations Marketing Support master spreadsheet",
+          "Team, SOW, budget lines, LF Events calendar",
+          "Read Sep 30, 2026",
+          "x402 row blank except ED; events from adjacent foundations"
+        ],
+        [
+          "HubSpot connector",
+          "Audience baseline",
+          "Oct 1, 2026",
+          "Text search for 'x402' returned 0 contacts; no project property identified"
+        ],
+        [
+          "Web: Juniper Research, McKinsey (secondary)",
+          "Part I market stakes",
+          "Search Sep 30, 2026",
+          "Drafts — verify primary sources"
+        ]
+      ],
+      "colW": [
+        2.5,
+        3.0,
+        1.3,
+        2.2
+      ],
+      "size": 8,
+      "notes": "Where sources disagree (S1 53 vs LFX 54; S19/S20 TBD vs LFX 1,406 contributors; S8 28 meetings vs LFX v2 count 6) the slide notes name both and the mechanism."
+    }
+  ]
+}
