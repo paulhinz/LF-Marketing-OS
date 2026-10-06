@@ -1,82 +1,80 @@
-# LF 2025 Template guide
+# Style guide and layout keys (v2 — membership overview style)
 
-Source: Google Slides "LF 2025 Template" (id `1gOJakd6SdB7MLGflP-B0TVqsVU5lq-HGjI1TH4boCe8`, owned by LF Creative). Bundled export: `assets/LF-2025-Template.pptx`. Every Member Pitch Deck is built from this file by `scripts/build_deck.py`; the script only adds slides on the template's own layouts, so the visual system below is inherited, never re-created.
+This file replaces the v1 "LF 2025 Template guide". Every Member Pitch Deck is built by `scripts/build_deck.py`, which draws each slide from scratch in the style below. The spec supplies content and Brand Kit tokens; it cannot set per-slide fonts, sizes or colors.
 
-## Visual system (inherited — do not override)
+## Visual system (fixed by the builder)
 
-- Slide size 10 × 5.625 in (16:9)
-- Fonts: Open Sans Medium for titles, Open Sans for body; Arial fallback
-- Dark layouts: gradient background from `#3D3E5B` to `#100F18`, white title text, blue `#0094FF` subtitle text
-- Light layouts: white background, dark text
-- Accents: LF navy `#003778`, LF blue `#0094FF`, cyan `#12E2E2`; gradient footer bar (blue → cyan) and the LF logo on every content layout; slide number bottom right
-- Default sizes: 36pt titles on dark layouts, 27pt on logo layouts, 14–17pt body text on light content layouts, 10–14pt on the "content heavy" variants (appendix only). Body text does not auto-shrink — cut words instead.
+- Slide size 10 × 5.625 in (16:9), white canvas; `stats` uses the light-gray canvas; `ask` uses the dark canvas
+- **Display font** (titles, statements, big numbers, step numbers, timeline labels): Brand Kit display face, default *Instrument Serif*. Titles 22–26pt, title slide 40pt, statements 24pt, stat values 30pt
+- **Body font** (everything else): Brand Kit body face, default *Inter*. Card headings 11–13pt bold, body 8.5–12pt, eyebrows 7.5pt uppercase
+- **Color tokens**: `accent` (one Brand Kit color — card headings, step numbers, timeline labels, the highlighted step card, dashed callout border), `text` #1A1A1A, `muted` #5F6368, `card` #F3F3F3, `dark` #1E1E1E, `rule` #E3E3E3. Only `accent`, `display_font` and `body_font` normally change per project
+- Cards: light-gray rounded rectangles, no borders, no shadows; white cards with a hairline rule where they sit on gray or beside a highlighted card
+- Chrome: project wordmark bottom-left and slide number bottom-right on every content slide; "The Linux Foundation | project" lockup bottom-right on `title`, `statement` and `thanks`; `person` carries the lockup top-right of its gray panel
+- Fonts resolve in Google Slides when the Brand Kit names Google Fonts. LibreOffice renders (used for QA) substitute wider faces, so a render that *just* fits is a cut-words signal
+
+## Spec skeleton
+
+```json
+{
+  "project": {"name": "x402 Foundation", "short": "x402",
+              "logo": "assets/project/x402-wordmark.png",
+              "logo_dark": "assets/project/x402-wordmark-white.png",
+              "mark": "assets/project/x402-mark.png"},
+  "theme":   {"accent": "#0F6E3D", "display_font": "Instrument Serif", "body_font": "Inter"},
+  "slides":  [ {"layout": "title", "title": "...", "subtitle": "...", "date": "October 2026", "notes": "..."} ]
+}
+```
+
+Inline `**bold**` works in every text field. Every slide may carry `notes`.
 
 ## Layout keys
 
-Use the key in the left column in the JSON spec. The script maps it to the template layout in the middle column.
-
-| Key | Template layout | Background | Fields the spec fills | Use it for |
-|---|---|---|---|---|
-| `title` | TITLE | dark | `title`, `subtitle` | Slide 1 — project name + tagline / presenter / date |
-| `title_light` | TITLE_2 | light | `title`, `subtitle` | Alternate title slide (rarely) |
-| `title_image` | TITLE_1 | dark | `title`, `subtitle`, `image` (square) | Title slide with the project logo |
-| `section` | SECTION_HEADER | dark | `title` | Act dividers when needed (counts toward 20) |
-| `section_light` | SECTION_HEADER_2 | light | `title` | Light divider |
-| `statement` | SECTION_HEADER_1 | dark | `title` (big statement, left), `body` (bullets, right) | Slide 2 Their world, slide 4 One sentence, slide 5 Why now, slide 18 The ask |
-| `statement_image` | TITLE_1_1 | dark | `title`, `image` (small square) | A single bold claim beside a logo or icon |
-| `body_image` | TITLE_1_1_1 | dark | `bullets` (left), `image` (tall, right) | Case study with a member photo/visual |
-| `logos` | SECTION_HEADER_3 | dark | `title`, `images` (up to 4 squares) | Slide 13 Who's involved — member logo wall |
-| `logos_light` | SECTION_HEADER_3_1 | light | `title`, `images` (up to 4 squares) | Logo wall, light variant |
-| `content` | TITLE_AND_BODY | light | `title`, `bullets` | Default content slide (3, 9, 14, 17) |
-| `content_dense` | TITLE_AND_BODY_1 | light | `title`, `bullets` | Appendix only (slides 19–20) — smaller type |
-| `two_col` | TITLE_AND_TWO_COLUMNS | light | `title`, `left`, `right` | Slide 8 Landscape, slide 16 ROI (pain → benefit) |
-| `two_col_dense` | TITLE_AND_BODY_1_1 | light | `title`, `left`, `right` | Appendix only |
-| `content_image` | TITLE_AND_TWO_COLUMNS_1 | light | `title`, `bullets`, `image` (square) | Slide 6 Ecosystem, slide 7 How it works, slides 11–12 case studies |
-| `table` | TITLE_ONLY | light | `title`, `table` {`header`, `rows`} | Slide 15 Membership tiers & benefits |
-| `chart` | TITLE_ONLY | light | `title`, `image` (chart PNG) | Slide 10 Traction, slide 14 Roadmap timeline |
-| `title_only` | TITLE_ONLY | light | `title` | Free layout when nothing else fits |
-| `blank` | BLANK | light | — | Avoid |
-| `closing` | TITLE_2_1 | light | — | Optional final LF logo slide (counts toward 20) |
-
-## Spec fields
-
-- `title` — string; the main title placeholder
-- `subtitle` — string; second title-type placeholder on `title`, `title_light`, `title_image`
-- `bullets` / `body` — list; a string is a level-0 bullet, `["text", 1]` indents one level (max 2)
-- `left`, `right` — bullet lists for the two-column layouts
-- `image` — path to a PNG/JPG; `images` — list of paths for `logos` layouts (fills placeholders in order)
-- `table` — `{"header": [...], "rows": [[...], ...]}`; drawn in the body area of `table`
-- `notes` — speaker notes (the prep brief) for any slide
-
-Images placed in a picture placeholder are cropped to the placeholder's shape (squares on this template); prepare square logos with padding. Charts and other wide images go on the `chart` layout, which scales them to the body area without cropping.
-
-## Standard outline → default layouts
-
-| # | Slide | Key |
+| Key | Fields | Use it for (standard slide #) |
 |---|---|---|
-| 1 | Title | `title_image` (project logo) or `title` |
-| 2 | Their world | `statement` |
-| 3 | The cost of going it alone | `content` |
-| 4 | The project, in one sentence | `statement` |
-| 5 | Why now | `statement` |
-| 6 | The ecosystem | `content_image` or `chart` |
-| 7 | How it works at 1,000 feet | `content_image` or `chart` (architecture PNG) |
-| 8 | Landscape | `two_col` |
-| 9 | The value of membership | `content` |
-| 10 | Traction | `chart` |
-| 11 | Case study #1 | `content_image` or `body_image` |
-| 12 | Case study #2 / member voices | `content_image` or `two_col` |
-| 13 | Who's involved | `logos` |
-| 14 | Roadmap | `chart` or `content` |
-| 15 | Membership tiers & benefits | `table` |
-| 16 | ROI for you | `two_col` (pain points left, benefits right) |
-| 17 | Getting started | `content` |
-| 18 | The ask | `statement` |
-| 19–20 | Appendix/backup | `content_dense`, `two_col_dense`, `table` |
+| `title` | `title`, `subtitle`, `date`, [`image`] | 1 — Title |
+| `agenda` | `title`, `items[]` | 2 — Agenda (3 items) |
+| `statement` | `text`, [`sub`] | 3 — LF goal |
+| `image_full` | `title`, `image` | 4 — LF project mosaic |
+| `cards` | `title`, `cards[{heading,text,[eyebrow]}]`, [`cols`], [`highlight`], [`callout{heading,text}`] | 5 core factors, 10 architecture, 15 member value, 16 roadmap |
+| `two_col` | `title`, `left{heading,bullets[]}`, `right{heading,bullets[]}` | 6 — Foundation / Standard |
+| `vision` | `vision`, `mission`, [`strategy_label`], `strategy[]` | 7 — Vision, Mission, Strategy |
+| `rows` | `title`, `rows[{label,text}]`, [`footnote`] | 8 — Current state |
+| `steps` | `title`, `steps[{heading,text}]`, [`highlight_last`] | 9 — How it works |
+| `stats` | `title`, `stats[{value,label}]` | 11 — Production traction |
+| `logo_wall` | [`title`], `groups[{heading,images[],[cols]}]` | 12–13 — Member logos by tier |
+| `person` | `title`, `image`, `heading`, `text` | 14 — Leadership |
+| `tiers` | `title`, `tiers[{name,price,bullets[],highlight}]`, [`strip{heading,steps[{heading,text}]}`] | 17 — Tiers |
+| `table` | `title`, `columns[]`, `rows[[...]]`, [`widths[]`] | 18 ROI by role; appendix fees, matrix, rosters |
+| `timeline` | `title`, `steps[{when,heading,text}]` | 19 — First 90 days |
+| `ask` | `text`, [`link_text`, `link_url`], [`contact`] | 20 — The ask (dark) |
+| `thanks` | [`text`] | 21 — Thank you |
+| `bullets` | `title`, `bullets[]`, [`lead`] | Appendix / fallback |
+| `section` | `title`, [`subtitle`] | Divider (counts toward 22) |
+
+## Word budgets (text does not auto-shrink)
+
+| Element | Budget |
+|---|---|
+| Slide title | ≤ 12 words (two lines at most) |
+| Card heading / body | ≤ 5 words / ≤ 28 words (≤ 22 when the slide has a callout or 3 rows) |
+| Row label / text | ≤ 6 words / ≤ 30 words |
+| Step heading / text | ≤ 4 words / ≤ 22 words |
+| Stat value / label | ≤ 7 characters / ≤ 6 words |
+| Tier bullet | ≤ 5 words, ≤ 4 bullets |
+| Strip step heading / text | ≤ 3 words / ≤ 9 words |
+| Table cell | ≤ 18 words, ≤ 4 rows |
+| Timeline text | ≤ 24 words |
+| Statement / ask | ≤ 30 words |
+
+## Images
+
+- Wordmarks: PNG with transparency, dark-on-light for `logo`, light-on-dark for `logo_dark`; the builder scales to fit, never crops
+- Member logos: one PNG per member, horizontal, transparent or white background; the builder draws each in a white tile with a hairline rule, so pre-padded logos are not needed
+- Headshot: square PNG/JPG; the builder masks it to a circle
+- Project mosaic: the current LF-approved image, 16:9 or wider
 
 ## Checks before delivering
 
-- Render every slide to an image and look at it. Text must sit inside its placeholder; if it spills, cut words.
-- No empty placeholders remain (the script strips unused ones; if a "Click to add" box shows, the spec left a field blank on a layout that needed it — pick a different layout).
-- The LF footer bar and logo appear on every content slide; the title slide is dark.
-- Slide count ≤ 20 including any section or closing slides.
+- Fix every `!` line the builder prints (LONG text, missing image, logo-wall overflow)
+- Render every slide and look at it: nothing leaves its card, cards on a slide are parallel, arrows sit between steps, the wordmark and lockup are where the style puts them
+- Slide count ≤ 22 including dividers and logo-wall splits

@@ -1,0 +1,453 @@
+{
+ "project": {
+  "name": "x402 Foundation",
+  "short": "x402",
+  "logo": "assets/project/x402-wordmark.png",
+  "logo_dark": "assets/project/x402-wordmark-white.png",
+  "mark": "assets/project/x402-mark.png"
+ },
+ "theme": {
+  "accent": "#0F6E3D"
+ },
+ "slides": [
+  {
+   "layout": "title",
+   "title": "x402 Foundation",
+   "subtitle": "The open standard for internet-native payments",
+   "date": "October 2026",
+   "notes": "Open with who is in the room."
+  },
+  {
+   "layout": "agenda",
+   "items": [
+    "About the Linux Foundation",
+    "Introducing the x402 Foundation",
+    "How to Join as a Member"
+   ]
+  },
+  {
+   "layout": "statement",
+   "text": "The Linux Foundation's **goal is to create the greatest shared technology investment in history** by enabling open collaboration across companies, developers and users.",
+   "sub": "We are the nonprofit organization of choice to build ecosystems that accelerate open source technology development and commercial adoption on a global scale."
+  },
+  {
+   "layout": "image_full",
+   "title": "We are behind some of the most critical projects in the world",
+   "image": "assets/lf-project-mosaic.png"
+  },
+  {
+   "layout": "cards",
+   "title": "Successful open collaboration ecosystems come down to four core factors.",
+   "cols": 2,
+   "cards": [
+    {
+     "heading": "Neutrality",
+     "text": "No one company or organization can “take it away” from the community that forms around a project."
+    },
+    {
+     "heading": "IP Clarity",
+     "text": "Removal of Intellectual Property uncertainty enables anyone to get involved as a contributor or implement as a user."
+    },
+    {
+     "heading": "Open Governance Do-ocracy",
+     "text": "The most successful projects that have stood the test of time have neutral, open governance models where those who do the work make the decisions in a defined governance model."
+    },
+    {
+     "heading": "Financial Support Ecosystem",
+     "text": "Encouraging academic, government, and commercial engagement leads to jobs, faster adoption, new contributions and features that address new use cases."
+    }
+   ]
+  },
+  {
+   "layout": "two_col",
+   "title": "Introducing the x402 Foundation",
+   "left": {
+    "heading": "The x402 Foundation",
+    "bullets": [
+     "**Stewards** supporting the open development of the x402 standard",
+     "**Drives** development, open governance, and widespread adoption",
+     "**Ensures** a neutral, industry-led governance ecosystem",
+     "**Hosted** by the Linux Foundation"
+    ]
+   },
+   "right": {
+    "heading": "The x402 Standard",
+    "bullets": [
+     "**Neutral standard** for internet-native payments",
+     "**Purpose-built** for automated, machine-to-machine (M2M) transactions",
+     "**Extensible across internet payment networks**, including stablecoins, cards, and other rails",
+     "**Established** in 2026 as x402 a Series of LF Projects, LLC"
+    ]
+   }
+  },
+  {
+   "layout": "vision",
+   "vision": "The x402 Foundation champions open, neutral, agentic commerce.",
+   "mission": "x402 is a neutral open standard enabling direct, programmable internet payments, seamlessly integrating value transfer into web infrastructure and empowering developers, businesses, and users in a fairer digital economy.",
+   "strategy": [
+    "Develop and grow adoption of the x402 standard",
+    "Research, develop, and form industry consensus of complementary standards for concepts such as identity, reputation, and discovery",
+    "Develop global ecosystem to ensure the agentic web is open to all, through events, education, development grants, and more"
+   ]
+  },
+  {
+   "layout": "rows",
+   "title": "The Current State: every API call and every AI agent still has a human-shaped payment flow",
+   "rows": [
+    {
+     "label": "No account, no access",
+     "text": "Clients that can sign a request still can't pay for one without creating an account, entering a card, and clearing KYC first — a workflow built for people, not software."
+    },
+    {
+     "label": "Sub-dollar charges don't clear",
+     "text": "Per-transaction and percentage-based processor fees make pay-per-call, pay-per-query, and pay-per-inference pricing uneconomic below a few dollars."
+    },
+    {
+     "label": "One-off payment integrations per vendor",
+     "text": "Every new chain, wallet, or facilitator today means another bespoke integration — many separate chain packages exist because there is no shared interface."
+    }
+   ],
+   "footnote": "For example: Stripe/Tempo's Machine Payments Protocol, Google's Agent Payments Protocol, and proprietary card-network schemes — without a shared layer, agentic commerce fragments before it scales"
+  },
+  {
+   "layout": "steps",
+   "title": "One request, one response, paid.  Supporting a broad array of commerce.",
+   "steps": [
+    {
+     "heading": "Client requests",
+     "text": "A client calls a resource server for an API, dataset, content, or other goods and services."
+    },
+    {
+     "heading": "402 returned",
+     "text": "The server replies “402 Payment Required” with accepted payment options — no separate account or checkout flow."
+    },
+    {
+     "heading": "Client pays & retries",
+     "text": "The client signs a payment payload for the network it prefers, and resends the request."
+    },
+    {
+     "heading": "Verified & settled",
+     "text": "A facilitator verifies and settles the payment; the resource server returns 200 OK with the resource."
+    }
+   ]
+  },
+  {
+   "layout": "cards",
+   "title": "Designed for composability: seamless integration without vendor lock-in",
+   "cols": 3,
+   "cards": [
+    {
+     "eyebrow": "Core architecture",
+     "heading": "Focused scope",
+     "text": "x402 is strictly focused on supporting payment-specific communication between actors."
+    },
+    {
+     "eyebrow": "Active integrations",
+     "heading": "MCP & A2A Protocols",
+     "text": "Already integrated with Model Context Protocol (MCP) and Agent-to-Agent (A2A) frameworks for native, autonomous transaction handling."
+    },
+    {
+     "eyebrow": "Delegated authority",
+     "heading": "UCP & AP2 Alignment",
+     "text": "Works in tandem with Universal Commerce Protocol (UCP) and Agent Payments Protocol (AP2), passing delegated authority signals smoothly across layers."
+    }
+   ]
+  },
+  {
+   "layout": "stats",
+   "title": "x402 is already running in production",
+   "stats": [
+    {
+     "value": "75M+",
+     "label": "transactions / 30 days"
+    },
+    {
+     "value": "$24M+",
+     "label": "volume / 30 days"
+    },
+    {
+     "value": "94K+",
+     "label": "active buyers"
+    },
+    {
+     "value": "22K+",
+     "label": "active sellers"
+    },
+    {
+     "value": "53",
+     "label": "member organizations"
+    },
+    {
+     "value": "6,500+",
+     "label": "GitHub stars, 890+ dependent repos"
+    }
+   ],
+   "notes": "Source: x402.org live metrics, read 2026-09-21. Rounded per ED guidance."
+  },
+  {
+   "layout": "logo_wall",
+   "groups": [
+    {
+     "heading": "Premier Members",
+     "images": [
+      "assets/project/members/premier-01.png",
+      "assets/project/members/premier-02.png",
+      "assets/project/members/premier-03.png",
+      "assets/project/members/premier-04.png",
+      "assets/project/members/premier-05.png",
+      "assets/project/members/premier-06.png",
+      "assets/project/members/premier-07.png",
+      "assets/project/members/premier-08.png",
+      "assets/project/members/premier-09.png",
+      "assets/project/members/premier-10.png",
+      "assets/project/members/premier-11.png",
+      "assets/project/members/premier-12.png",
+      "assets/project/members/premier-13.png",
+      "assets/project/members/premier-14.png",
+      "assets/project/members/premier-15.png",
+      "assets/project/members/premier-16.png",
+      "assets/project/members/premier-17.png"
+     ]
+    }
+   ]
+  },
+  {
+   "layout": "logo_wall",
+   "groups": [
+    {
+     "heading": "General Members",
+     "images": [
+      "assets/project/members/general-01.png",
+      "assets/project/members/general-02.png",
+      "assets/project/members/general-03.png",
+      "assets/project/members/general-04.png",
+      "assets/project/members/general-05.png",
+      "assets/project/members/general-06.png",
+      "assets/project/members/general-07.png",
+      "assets/project/members/general-08.png",
+      "assets/project/members/general-09.png",
+      "assets/project/members/general-10.png",
+      "assets/project/members/general-11.png",
+      "assets/project/members/general-12.png",
+      "assets/project/members/general-13.png",
+      "assets/project/members/general-14.png",
+      "assets/project/members/general-15.png",
+      "assets/project/members/general-16.png",
+      "assets/project/members/general-17.png",
+      "assets/project/members/general-18.png",
+      "assets/project/members/general-19.png",
+      "assets/project/members/general-20.png",
+      "assets/project/members/general-21.png",
+      "assets/project/members/general-22.png"
+     ]
+    },
+    {
+     "heading": "Associate Members",
+     "images": [
+      "assets/project/members/associate-01.png",
+      "assets/project/members/associate-02.png",
+      "assets/project/members/associate-03.png",
+      "assets/project/members/associate-04.png",
+      "assets/project/members/associate-05.png",
+      "assets/project/members/associate-06.png",
+      "assets/project/members/associate-07.png",
+      "assets/project/members/associate-08.png",
+      "assets/project/members/associate-09.png",
+      "assets/project/members/associate-10.png",
+      "assets/project/members/associate-11.png"
+     ]
+    }
+   ]
+  },
+  {
+   "layout": "person",
+   "title": "Welcome, Michael Hursta!",
+   "image": "assets/project/ed-headshot.png",
+   "heading": "Michael joins the x402 Foundation as Executive Director.",
+   "text": "With over two decades in payments leadership, his full-stack view of the ecosystem – spanning issuers, processors, and platforms – prepares him to help align x402's members around one open standard."
+  },
+  {
+   "layout": "cards",
+   "title": "What members get that users don't",
+   "cols": 2,
+   "cards": [
+    {
+     "heading": "Influence",
+     "text": "Be at the center of the movement reshaping the payments ecosystem. A governing board seat (Premier) or elected representation (General) over budget, roadmap, and the specs that will run through your infrastructure."
+    },
+    {
+     "heading": "Access",
+     "text": "A direct line to the TSC (Technical Steering Committee) and working groups shaping use case and new network support — before they ship."
+    },
+    {
+     "heading": "Visibility",
+     "text": "Placement alongside Visa, Mastercard, AWS, Google, Stripe, and Coinbase in the member showcase, spotlights and blogs on x402.org."
+    },
+    {
+     "heading": "De-risking",
+     "text": "Neutral Linux Foundation governance and global ecosystem-wide development and adoption de-risks your adoption of and dependency on the protocol and associated technology stack."
+    }
+   ]
+  },
+  {
+   "layout": "cards",
+   "title": "What's next — and where members hold the pen",
+   "cols": 2,
+   "cards": [
+    {
+     "heading": "Card Acceptance working group",
+     "text": "Extending scheme support so card-funded flows can settle through x402 alongside stablecoins."
+    },
+    {
+     "heading": "Identity working group",
+     "text": "Defining how much identity a payment needs to carry — balancing accountless access with compliance."
+    },
+    {
+     "heading": "Tax working group",
+     "text": "Working through tax-reporting implications of high-frequency, low-value machine payments."
+    },
+    {
+     "heading": "Scheme & network extensions",
+     "text": "New schemes (beyond exact, upto, and batch-settlement) and new network support move through public CONTRIBUTING.md acceptance criteria — member engineers can propose and ship them."
+    }
+   ],
+   "callout": {
+    "heading": "Your priority here — this box is intentionally blank",
+    "text": "Have a technical area you care about that isn't on this list? Bring it! New working groups are chartered through the Technical Steering Committee (TSC) where every Participating Org holds a seat."
+   }
+  },
+  {
+   "layout": "tiers",
+   "title": "Three tiers, one governance structure, one open door",
+   "tiers": [
+    {
+     "name": "Premier",
+     "price": "$200,000",
+     "highlight": true,
+     "bullets": [
+      "Governing Board seat",
+      "Executive quote in launch press",
+      "Premier logo placement",
+      "Influence on budget & all committees"
+     ]
+    },
+    {
+     "name": "General",
+     "price": "$25K – $75K",
+     "bullets": [
+      "Fee scales by employee count",
+      "Vote for General Board rep",
+      "Named in press & member showcase",
+      "Access to general meetings"
+     ]
+    },
+    {
+     "name": "Associate",
+     "price": "$0",
+     "bullets": [
+      "Academic & nonprofit institutions",
+      "Standard logo placement",
+      "Foundation community access"
+     ]
+    }
+   ],
+   "strip": {
+    "heading": "Open to every member, at every tier",
+    "steps": [
+     {
+      "heading": "Join at any tier",
+      "text": "Premier, General, or Associate"
+     },
+     {
+      "heading": "Public meeting calendar",
+      "text": "Every technical meeting is listed openly"
+     },
+     {
+      "heading": "Attend technical meetings",
+      "text": "TSC and working-group calls are open to all members"
+     },
+     {
+      "heading": "Join a working group",
+      "text": "Card Acceptance, Identity, Tax — or propose a new one"
+     },
+     {
+      "heading": "Shape the standard",
+      "text": "Proposals go through public acceptance criteria"
+     }
+    ]
+   }
+  },
+  {
+   "layout": "table",
+   "title": "Membership ROI by Role",
+   "columns": [
+    "Persona",
+    "Their pain",
+    "What membership delivers"
+   ],
+   "widths": [
+    2,
+    3,
+    4
+   ],
+   "rows": [
+    [
+     "CTO / Platform Architect",
+     "Architecture risk from betting on a single vendor's payment rail",
+     "A Governing or General Board voice in the spec before it's locked in; no vendor lock-in"
+    ],
+    [
+     "Head of Product",
+     "Onboarding friction and slow time-to-monetization",
+     "Early access to scheme extensions (e.g. Card Acceptance) before general release, plus press & showcase visibility"
+    ],
+    [
+     "Lead Backend Engineer",
+     "Bespoke integration work for every network and facilitator",
+     "A seat in the working groups defining shared SDKs and facilitator standards; less to build in-house"
+    ],
+    [
+     "General Counsel",
+     "Privacy and cross-border compliance exposure",
+     "Direct input into the Identity and Tax working groups shaping how compliance is handled at the standard level"
+    ]
+   ]
+  },
+  {
+   "layout": "timeline",
+   "title": "Sign, onboard, ship — inside your first 90 days",
+   "steps": [
+    {
+     "when": "Week 1",
+     "heading": "Sign",
+     "text": "Apply and sign the membership agreement at enrollment.lfx.linuxfoundation.org/?project=x402-foundation"
+    },
+    {
+     "when": "Weeks 2–3",
+     "heading": "Onboard",
+     "text": "Get your Governing/General Board or working-group seat activated; join the public meeting calendar and Slack workspace"
+    },
+    {
+     "when": "Weeks 3–6",
+     "heading": "Integrate",
+     "text": "Ship a first integration with the existing SDKs — npm install @x402/core, pip install x402, or go get github.com/x402-foundation/x402/go/v2"
+    },
+    {
+     "when": "By day 90",
+     "heading": "Show up",
+     "text": "Bring your first proposal, question, or use case to a working group — General Members already voting on the Card Acceptance group's direction"
+    }
+   ]
+  },
+  {
+   "layout": "ask",
+   "text": "Sign up now as a member and take a seat at the table shaping how the internet pays.",
+   "link_text": "Sign up now as a member",
+   "link_url": "https://enrollment.lfx.linuxfoundation.org/?project=x402-foundation",
+   "contact": "Questions? Contact us at membership@x402.org"
+  },
+  {
+   "layout": "thanks"
+  }
+ ]
+}
