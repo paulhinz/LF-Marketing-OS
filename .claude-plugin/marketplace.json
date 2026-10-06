@@ -65,6 +65,19 @@
       ]
     },
     {
+      "name": "audience-lists-agent",
+      "source": "./plugins/audience-lists-agent",
+      "description": "v0.1.0 — Builds a project's Audience Lists document from its Brand Kit, Message Foundation and ICP: a tiered, prioritized earned media target list (the strategy deck's five tiers) with strategy and lead message per outlet and the news hooks to use; the top 5–15 social media voices already talking about the project from Octolens and LFX Lens, in three relationship tiers with next actions; and up to 20 existing audiences in HubSpot, Twilio Segment and LFX owned by other foundations with overlapping ICPs, with owner, size, overlapping message and CTA. One Word document on the LF Agent DOCS template re-skinned with the project's brand via lf-output-formatter. Read-only against every system.",
+      "category": "Foundation Agents",
+      "tags": [
+        "audience-lists",
+        "earned-media",
+        "social-listening",
+        "segmentation",
+        "foundation-setup"
+      ]
+    },
+    {
       "name": "lfx-marketing-os-qa",
       "source": "./plugins/lfx-marketing-os-qa",
       "description": "QA gate for the foundation documents and their derivatives: derives legal-entity and trademark wording from the LFX project record, re-runs every Live-LFX figure through the LFX MCP, refreshes published counters, sweeps the project site / GitHub org / LF press archive for material the intake missed, scans for competitors the brief left out, checks superlatives and dates, and applies a brand-review rubric with severity-ranked before/after fixes. Returns PASS / PASS WITH FIXES / FAIL, a ranked fix list with drop-in replacement text, and a two-page digest. Run before a Brand Kit, Message Foundation or ICP document is marked 'for review'.",
