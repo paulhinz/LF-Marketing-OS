@@ -1,0 +1,9 @@
+{
+  "name": "audience-lists-agent",
+  "version": "0.1.0",
+  "description": "Builds a project's Audience Lists document from its Brand Kit, Message Foundation and ICP: a tiered, prioritized earned media target list with strategy and messages per outlet; the top 5 to 15 social media voices already talking about the project (Octolens and LFX Lens); and up to 20 existing audiences in HubSpot, Segment and LFX owned by other foundations with overlapping ICPs. One Word document on the LF Agent DOCS template, re-skinned with the project's brand.",
+  "author": {
+    "name": "Paul Hinz, The Linux Foundation"
+  },
+  "keywords": ["audience-lists", "earned-media", "social-listening", "segmentation", "lfx", "hubspot", "marketing", "lfx-marketing-os"]
+}
