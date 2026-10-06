@@ -1,0 +1,17 @@
+{
+  "name": "social-sentiment-monitor",
+  "version": "0.1.0",
+  "description": "Scheduled social sentiment monitor for any LF project or foundation: flags negative posts and unusually high engagement or reach from LFX Lens (Octolens data in Snowflake) and the Octolens MCP, drafts replies with a recommended voice (foundation account, Executive Director, technical lead, ambassador), and delivers an LF-template Word brief plus Slack DMs to named recipients.",
+  "author": {
+    "name": "Paul Hinz, The Linux Foundation"
+  },
+  "keywords": [
+    "social-listening",
+    "sentiment",
+    "monitoring",
+    "octolens",
+    "lfx-lens",
+    "slack",
+    "lfx-marketing-os"
+  ]
+}
