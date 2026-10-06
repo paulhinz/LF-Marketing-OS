@@ -41,7 +41,7 @@ The three foundation agents share one intake and format standard (`references/in
 
 **Creating**
 - `linkedin-post-agent` — Drafts LinkedIn posts in the user's own voice.
-- `member-pitch-deck` — Builds the standard membership pitch deck for a project.
+- `member-pitch-deck` (v2.0.0) — Builds the standard membership overview deck for a project in the LF membership-overview style (About the LF → Introducing the Foundation → How to join), modeled on the Member Growth x402 deck.
 - `case-study-agent` — Turns a video, transcript, or notes into a case study or blog post.
 - `member-benefits-briefing` — Builds an executive briefing deck for a specific member company.
 
