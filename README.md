@@ -17,12 +17,13 @@ The agents are organized by where they sit in a marketing workflow:
 
 This repo is the distribution point for that agent set: a git-based marketplace that Cowork (or Claude Code) reads directly, so plugins can be installed and updated without emailing files around.
 
-## 2. The 29 plugins in this marketplace
+## 2. The 30 plugins in this marketplace
 
 **Foundation**
 - `brand-guidelines-agent` (v0.4.0) — Builds a project's Brand Kit: positioning, brand principle, voice, prefer/avoid language, what we don't claim, guardrails and visual identity, in 6–8 pages.
 - `message-foundation-agent` (v0.5.0) — Builds a project's Message Foundation document: vision, mission, positioning, locked copy, messaging pillars, sourced proof points and objections, in 8–10 pages.
 - `icp-target-markets-agent` (v0.4.0) — Builds a project's Target Markets and ICP document: firmographics, ICPs, 4–9 personas on one fixed template, Fit × Warmth rules, in 8–10 pages.
+- `audience-lists-agent` (v0.1.0) — Builds a project's Audience Lists document: a tiered, prioritized earned media target list with strategy and messages per outlet, the top 5–15 social media voices already talking about the project (Octolens, LFX Lens), and up to 20 existing HubSpot/Segment/LFX audiences from other foundations with overlapping ICPs.
 
 The three foundation agents share one intake and format standard (`references/input-doc-mapping.md`, identical in each): they first ask whether the foundation already has its own brand, messaging or audience documents and, if so, map them into the standard fields, quote the wording verbatim and interview only for the gaps; every document opens with a two-page Review Sheet the ED or SME approves; and each writes a `.fields.yaml` sidecar that downstream agents read instead of the document.
 - `website-designer-agent` — Builds and deploys a project website from the foundation documents.
@@ -65,6 +66,8 @@ The three foundation agents share one intake and format standard (`references/in
 - `marketing-agent-class` — Delivers the Claude Agent Workshop training course as slide decks.
 
 ## 2a. Latest changes
+
+**2026-10-06 — audience-lists-agent 0.1.0 (new).** Skill `build-audience-lists`: from the Brand Kit, Message Foundation and ICP it writes one Word document on the LF Agent DOCS template (re-skinned with the project's brand) with three sections: earned media targets by the strategy deck's five tiers, social media voices from Octolens and LFX Lens, and existing audiences in HubSpot, Segment and LFX. Read-only against every system. First run: x402 Foundation.
 
 **2026-10-02 — marketing-plan-workbook-agent 0.3.0.** New skill `build-marketing-plan-workbook` replaces `create-marketing-plan-workbook`. After ED feedback on the x402 test: a First Plan mode opens with a "Where we stand today" LFX baseline (members and list-price revenue, new-membership trend, events, education, contributors, audience and content) when no prior plan or quarterly review exists; every goal ties to one of the four standard business outcomes (Fill the Seats, Grow the Audience, Nurture to Adoption, Secure & Retain Commitment) with a definition, KPI, budget share, timeline and risks on its own slide; Part IV is now the Budget — the ED picks a Strategy Profile (Conservative 12% / Aggressive 20% / Hyper-Growth 30% of revenue, paid pre-set at 30/40/50%), LF splits the remainder into services, third-party content and a discretionary reserve for hot and evergreen campaigns, and the total is allocated across goals; the deck closes with a consolidated Goals Summary table and a Budget Summary slide. Ships `scripts/budget_model.py` and a JSON-driven `scripts/build_workbook.js` generator plus a worked x402 example.
 
