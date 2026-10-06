@@ -189,13 +189,13 @@
     {
       "name": "member-pitch-deck",
       "source": "./plugins/member-pitch-deck",
-      "description": "Member Pitch Deck (v1.0.0, replaces pitch-deck-agent): generates the standard first-meeting membership pitch deck (max 20 slides) for any Linux Foundation project or foundation, always formatted on the LF 2025 Google Slides template and grounded in the project's Brand Kit, Message Foundation, and ICP documents. Command: lf-member-pitch-deck.",
+      "description": "Member Pitch Deck (v2.0.0): generates the standard first-meeting membership overview deck (max 22 slides) for any Linux Foundation project or foundation — About the LF → Introducing the Foundation → How to join — in the LF membership-overview style (white canvas, project Brand Kit accent and fonts, LF co-brand lockup, card/stat/flow/tier layouts), grounded in the project's Brand Kit, Message Foundation, and ICP documents. Command: lf-member-pitch-deck.",
       "category": "Creating Agents",
       "tags": [
         "pitch-deck",
         "membership",
         "member-growth",
-        "lf-template"
+        "membership-overview"
       ]
     },
     {
