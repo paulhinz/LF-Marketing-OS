@@ -246,6 +246,21 @@
       ]
     },
     {
+      "name": "social-sentiment-monitor",
+      "source": "./plugins/social-sentiment-monitor",
+      "description": "Scheduled social sentiment monitor for any LF project or foundation (v0.1.0): asks which project to watch, how often to run, how many days to look back and who should receive the brief; flags negative posts and unusually high engagement or reach from LFX Lens (Octolens data in Snowflake) plus live Octolens MCP counters where available; drafts replies with a recommended voice (foundation account, Executive Director, technical lead, ambassador); delivers an LF-template Word brief and Slack DMs to named recipients; and sets itself up as a recurring scheduled task.",
+      "category": "Monitoring Agents",
+      "tags": [
+        "social-listening",
+        "sentiment",
+        "monitoring",
+        "octolens",
+        "lfx-lens",
+        "slack",
+        "scheduled"
+      ]
+    },
+    {
       "name": "run-marketing-impact-report",
       "source": "./plugins/run-marketing-impact-report",
       "description": "Marketing Dashboard as a Word document with live data: asks which LF project to run against (e.g. CNCF), pulls figures via the LFX connector (required) and HubSpot (optional), and mirrors the dashboard page by page — Summary, Paid, Social, Web, Direct, Defined Campaigns (goals → campaigns → tactics with KPIs), Budget, the five business outcomes, sources. Sections without a connector say 'Data not available, requires [x] connector'.",
