@@ -19,13 +19,15 @@ This repo is the distribution point for that agent set: a git-based marketplace 
 
 ## 2. The 30 plugins in this marketplace
 
-**Foundation**
-- `brand-guidelines-agent` (v0.4.0) — Builds a project's Brand Kit: positioning, brand principle, voice, prefer/avoid language, what we don't claim, guardrails and visual identity, in 6–8 pages.
-- `message-foundation-agent` (v0.5.0) — Builds a project's Message Foundation document: vision, mission, positioning, locked copy, messaging pillars, sourced proof points and objections, in 8–10 pages.
-- `icp-target-markets-agent` (v0.4.0) — Builds a project's Target Markets and ICP document: firmographics, ICPs, 4–9 personas on one fixed template, Fit × Warmth rules, in 8–10 pages.
-- `audience-lists-agent` (v0.1.0) — Builds a project's Audience Lists document: a tiered, prioritized earned media target list with strategy and messages per outlet, the top 5–15 social media voices already talking about the project (Octolens, LFX Lens), and up to 20 existing HubSpot/Segment/LFX audiences from other foundations with overlapping ICPs.
+**Foundation** — run in this order; each one's output is the next one's input
+1. `messaging-document` (v1.0.0) — Builds a project's Messaging Document: vision, mission, positioning, pillars, message house, proof points, objections and copy primitives, as a concise LF slide deck. Command `build-lf-messaging-doc`.
+2. `brand-guidelines` (v1.1.0) — Builds a project's Brand Guidelines from the Messaging Document: logo rules, palette, typography, iconography, voice and tone, as an image-led LF slide deck plus `brand.json`. Command `build-lf-brand-guidelines`.
+3. `icp-target-markets-agent` (v0.4.0) — Builds a project's Target Markets and ICP document: firmographics, ICPs, 4–9 personas on one fixed template, Fit × Warmth rules, in 8–10 pages.
+4. `audience-lists-agent` (v0.1.0) — Builds a project's Audience Lists document: a tiered, prioritized earned media target list with strategy and messages per outlet, the top 5–15 social media voices already talking about the project (Octolens, LFX Lens), and up to 20 existing HubSpot/Segment/LFX audiences from other foundations with overlapping ICPs.
 
-The three foundation agents share one intake and format standard (`references/input-doc-mapping.md`, identical in each): they first ask whether the foundation already has its own brand, messaging or audience documents and, if so, map them into the standard fields, quote the wording verbatim and interview only for the gaps; every document opens with a two-page Review Sheet the ED or SME approves; and each writes a `.fields.yaml` sidecar that downstream agents read instead of the document.
+The three foundation agents share one intake and format standard (`references/input-doc-mapping.md`, identical in each): they first ask whether the foundation already has its own messaging, brand or audience documents and, if so, map them into the standard fields, quote the wording verbatim and interview only for the gaps; every document opens with a Review Sheet the ED or SME approves; and each writes a `.fields.yaml` sidecar that downstream agents read instead of the document. The Messaging Document runs first and needs no Brand Kit; the Brand Guidelines read its sidecar and write the `brand.json` that re-skins every later deck and document.
+
+**Foundation (supporting)**
 - `website-designer-agent` — Builds and deploys a project website from the foundation documents.
 - `lfx-marketing-os-qa` — Fact-checks and reviews foundation documents before they go out.
 - `plain-writing` — Keeps all written output in a plain, simple style.
@@ -67,6 +69,8 @@ The three foundation agents share one intake and format standard (`references/in
 
 ## 2a. Latest changes
 
+**2026-10-08 — messaging-document 1.0.0 and brand-guidelines 1.1.0 replace message-foundation-agent and brand-guidelines-agent.** The foundation agents now run Messaging Document → Brand Guidelines → ICP. `messaging-document` (`build-lf-messaging-doc`) needs no Brand Kit: it maps the foundation's own documents, reads the site, README, press release and LFX record, asks up to ten PMM questions for the gaps, and delivers a 14–18 slide deck on the LF 2025 template (Review Sheet, communications framework, positioning, alternatives, pillars, message house, proof points, objections, copy primitives, CTAs) plus Markdown and a `.fields.yaml` sidecar. `brand-guidelines` (`build-lf-brand-guidelines`) reads that sidecar, documents the existing identity from the brand page, site CSS and logo files in the form of the published LF brand pages (x402, OSAIA, ASWF), derives voice and tone in the run, draws every logo rule on the project's own mark with `brand_graphics.py`, and writes the `brand.json` every later agent uses. Both open with a Review Sheet; the Word-document output is retired.
+
 **2026-10-06 — audience-lists-agent 0.1.0 (new).** Skill `build-audience-lists`: from the Brand Kit, Message Foundation and ICP it writes one Word document on the LF Agent DOCS template (re-skinned with the project's brand) with three sections: earned media targets by the strategy deck's five tiers, social media voices from Octolens and LFX Lens, and existing audiences in HubSpot, Segment and LFX. Read-only against every system. First run: x402 Foundation.
 
 **2026-10-02 — marketing-plan-workbook-agent 0.3.0.** New skill `build-marketing-plan-workbook` replaces `create-marketing-plan-workbook`. After ED feedback on the x402 test: a First Plan mode opens with a "Where we stand today" LFX baseline (members and list-price revenue, new-membership trend, events, education, contributors, audience and content) when no prior plan or quarterly review exists; every goal ties to one of the four standard business outcomes (Fill the Seats, Grow the Audience, Nurture to Adoption, Secure & Retain Commitment) with a definition, KPI, budget share, timeline and risks on its own slide; Part IV is now the Budget — the ED picks a Strategy Profile (Conservative 12% / Aggressive 20% / Hyper-Growth 30% of revenue, paid pre-set at 30/40/50%), LF splits the remainder into services, third-party content and a discretionary reserve for hot and evergreen campaigns, and the total is allocated across goals; the deck closes with a consolidated Goals Summary table and a Budget Summary slide. Ships `scripts/budget_model.py` and a JSON-driven `scripts/build_workbook.js` generator plus a worked x402 example.
@@ -86,7 +90,7 @@ If you use the Claude Code CLI instead of Cowork, the equivalent is:
 
 ```
 /plugin marketplace add paulhinz/LF-Marketing-OS
-/plugin install brand-guidelines-agent@lfx-marketing-os
+/plugin install messaging-document@lfx-marketing-os
 ```
 
 (swap in whichever plugin name you want, from the list above).
