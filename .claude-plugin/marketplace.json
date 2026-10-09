@@ -31,24 +31,24 @@
       ]
     },
     {
-      "name": "brand-guidelines-agent",
-      "source": "./plugins/brand-guidelines-agent",
-      "description": "Asks first for the foundation's own brand or messaging documents and maps them into the standard fields, pulls the project's LFX record and runs a research sweep, interviews only for the gaps (or pre-fills in batch mode), and generates a short project Brand Kit — a two-page Review Sheet for the ED, then positioning, brand principle, voice and prefer/avoid language, what we don't claim, competitive guardrails, LFX-derived governance and trademark wording, and a five-component visual identity direction — held to a 6–8 page budget, delivered Google Docs-ready on the LF Agent DOCS Template with a structured .fields.yaml sidecar for downstream agents.",
-      "category": "Foundation Agents",
-      "tags": [
-        "brand",
-        "brand-kit",
-        "foundation-setup"
-      ]
-    },
-    {
-      "name": "message-foundation-agent",
-      "source": "./plugins/message-foundation-agent",
-      "description": "Asks first for the foundation's own messaging documents and maps them into the standard fields, interviews only for the gaps (or pre-fills in batch mode), and produces a short '[Project Name] Message Foundation' built on the LF communications framework: a two-page Review Sheet for the ED, then Vision → Mission → Positioning Platform → Tagline, word-count-locked summaries, boilerplate, llms.txt and elevator pitch, 3–6 messaging pillars on a fixed scaffold with the Message Matrix derived from them, sourced proof points only, objections with honest admissions, what we don't claim, and four CTA anchors — held to an 8–10 page budget, with LFX-derived governance wording, a claims lint and a QA gate. Delivered Google Docs-ready on the LF Agent DOCS Template with a structured .fields.yaml sidecar.",
+      "name": "messaging-document",
+      "source": "./plugins/messaging-document",
+      "description": "v1.0.0 — Runs first of the foundation agents. Builds a project's Messaging Document (vision, mission, positioning, pillars, message house, proof points, objections, copy primitives) as a concise LF 2025 slide deck with a Review Sheet and a .fields.yaml sidecar. Command: build-lf-messaging-doc.",
       "category": "Foundation Agents",
       "tags": [
         "messaging",
         "positioning",
+        "foundation-setup"
+      ]
+    },
+    {
+      "name": "brand-guidelines",
+      "source": "./plugins/brand-guidelines",
+      "description": "v1.1.0 — Runs second, after the Messaging Document. Documents a project's logo rules, palette, typography, iconography, voice and tone in the form of the published LF brand pages, as an image-led LF 2025 slide deck, and writes the brand.json every later agent uses. Command: build-lf-brand-guidelines.",
+      "category": "Foundation Agents",
+      "tags": [
+        "brand",
+        "brand-guidelines",
         "foundation-setup"
       ]
     },
