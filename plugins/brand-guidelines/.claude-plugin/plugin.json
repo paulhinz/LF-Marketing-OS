@@ -1,0 +1,19 @@
+{
+  "name": "brand-guidelines",
+  "version": "1.1.0",
+  "description": "LFX Marketing OS Brand Guidelines Agent (runs second, after the Messaging Document). Documents a project's logo, palette, typography, iconography, voice and tone, and writes brand.json, as a concise LF 2025 slide deck in the project's own brand. Command: build-lf-brand-guidelines.",
+  "author": {
+    "name": "Paul Hinz, Linux Foundation"
+  },
+  "keywords": [
+    "lfx",
+    "marketing-os",
+    "brand",
+    "brand-guidelines",
+    "logo",
+    "palette",
+    "typography",
+    "voice",
+    "linux-foundation"
+  ]
+}
