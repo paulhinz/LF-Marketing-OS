@@ -1,0 +1,727 @@
+{
+  "_note": "x402 Foundation Messaging Document, example at the intended density. Content from the x402 Message Foundation v3 (ED confirmed 21 Sep 2026) and the x402 Brand Kit v3, which read x402.org, x402.org/members, docs.x402.org and the LF press release on 17 Sep 2026. Figures were not re-read for this example; refresh before use. Logo paths point at examples/logos/.",
+  "slides": [
+    {
+      "layout": "title_image",
+      "title": "x402 Messaging Document",
+      "subtitle": "Messaging source of truth · Draft v1 · October 2026",
+      "image": "logos/x402-logo-square-white.png",
+      "notes": "Sources read: x402.org, x402.org/members, docs.x402.org, github.com/x402-foundation/x402, LF press release (operational launch), LFX records x402 and x402-foundation, x402 Message Foundation v3 (ED confirmed 21 Sep 2026). Copy: Agency-safe (no list prices or LFX-export rosters)."
+    },
+    {
+      "layout": "table",
+      "title": "Review sheet: what needs your approval",
+      "table": {
+        "header": [
+          "#",
+          "Field",
+          "Current wording",
+          "Source",
+          "Approve / Edit",
+          "Notes"
+        ],
+        "col_widths": [
+          0.04,
+          0.15,
+          0.43,
+          0.13,
+          0.1,
+          0.15
+        ],
+        "font_size": 9.5,
+        "header_size": 11,
+        "rows": [
+          [
+            "1",
+            "Vision",
+            "A more free and fair internet, where value moves between clients and servers as natively as data does.",
+            "From your doc",
+            "",
+            ""
+          ],
+          [
+            "2",
+            "Mission",
+            "To steward x402 as an open, neutral standard for internet-native payments … without accounts, protocol fees, or lock-in.",
+            "From your doc",
+            "",
+            ""
+          ],
+          [
+            "3",
+            "Category",
+            "Open standard for internet-native payments; not a wallet, a network or a payments product.",
+            "Inferred",
+            "",
+            "TSC: 'standard' vs 'protocol'"
+          ],
+          [
+            "4",
+            "Positioning statement",
+            "For developers, merchants and digital service providers … under neutral governance at the Linux Foundation. (slide 7)",
+            "From your doc",
+            "",
+            "58 words; standard asks ≤40. Kept as written."
+          ],
+          [
+            "5",
+            "Tagline",
+            "The internet, open for business.",
+            "Inferred",
+            "",
+            "Recommended; trademark screen before lock"
+          ],
+          [
+            "6",
+            "Audiences",
+            "API developers · merchants and DSPs · AI-agent builders · payments and fintech leaders · wallet and facilitator operators",
+            "From your doc",
+            "",
+            "ICP agent defines them"
+          ],
+          [
+            "7",
+            "Alternatives",
+            "API keys and billing · card checkout · MPP (Stripe, member) · AP2 (Google, member) · L402",
+            "Site + sweep",
+            "",
+            "Members are peers"
+          ]
+        ]
+      },
+      "source": "Status: Draft — from your documents. 11 of 23 fields from the x402 Message Foundation v3 and Brand Kit v3; 8 from the site, README and LFX; 4 asked. One decision owed: the tagline lock."
+    },
+    {
+      "layout": "table",
+      "title": "Review sheet (continued)",
+      "table": {
+        "header": [
+          "#",
+          "Field",
+          "Current wording",
+          "Source",
+          "Approve / Edit",
+          "Notes"
+        ],
+        "col_widths": [
+          0.04,
+          0.15,
+          0.43,
+          0.13,
+          0.1,
+          0.15
+        ],
+        "font_size": 10,
+        "header_size": 11,
+        "rows": [
+          [
+            "8",
+            "25-word summary",
+            "x402 is an open, Linux Foundation-governed standard for internet-native payments: any client pays any server in one request, with no accounts and zero protocol fees.",
+            "Inferred",
+            "",
+            ""
+          ],
+          [
+            "9",
+            "Boilerplate",
+            "Slide 9. Governance sentence awaiting LF Legal.",
+            "Inferred",
+            "",
+            ""
+          ],
+          [
+            "10",
+            "Pillar: open-neutral",
+            "x402 is a standard no single company controls.",
+            "From your doc",
+            "",
+            ""
+          ],
+          [
+            "11",
+            "Pillar: the-standard",
+            "x402 works the way the internet already works.",
+            "From your doc",
+            "",
+            ""
+          ],
+          [
+            "12",
+            "Pillar: secure-by-spec",
+            "x402 keeps funds under the client's control.",
+            "From your doc",
+            "",
+            ""
+          ],
+          [
+            "13",
+            "Pillar: agentic-commerce",
+            "x402 lets AI agents transact on their own.",
+            "From your doc",
+            "",
+            ""
+          ],
+          [
+            "14",
+            "Proof points",
+            "7 sourced; strongest P1 (52 member orgs), P2 (75.41M tx / 30 days), P4 (402 in HTTP since 1997)",
+            "Site + RFC",
+            "",
+            "Refresh P1, P2 before use"
+          ]
+        ]
+      }
+    },
+    {
+      "layout": "table",
+      "title": "Review sheet (continued)",
+      "table": {
+        "header": [
+          "#",
+          "Field",
+          "Current wording",
+          "Source",
+          "Approve / Edit",
+          "Notes"
+        ],
+        "col_widths": [
+          0.04,
+          0.15,
+          0.43,
+          0.13,
+          0.1,
+          0.15
+        ],
+        "font_size": 10,
+        "header_size": 11,
+        "rows": [
+          [
+            "15",
+            "Objection",
+            "\"Isn't this just crypto payments with extra steps?\"",
+            "Asked",
+            "",
+            ""
+          ],
+          [
+            "16",
+            "Objection",
+            "\"Stripe and Google have their own agent-payment protocols. Why x402?\"",
+            "Asked",
+            "",
+            ""
+          ],
+          [
+            "17",
+            "Objection",
+            "\"Who is liable when an agent pays for the wrong thing?\"",
+            "Asked",
+            "",
+            ""
+          ],
+          [
+            "18",
+            "What we don't claim",
+            "Not 'the only' HTTP-native payment standard · not fee-free end to end · not proven on every network",
+            "Inferred",
+            "",
+            ""
+          ],
+          [
+            "19",
+            "CTA anchors",
+            "Learn: docs.x402.org · Engage: Slack · Contribute: GitHub · Commit: x402.org/members#benefits",
+            "From site",
+            "",
+            ""
+          ]
+        ]
+      }
+    },
+    {
+      "layout": "statement",
+      "title": "One source of truth for what x402 says, and what it can prove.",
+      "body": [
+        "**Say it —** framework, positioning, four pillars, the message house",
+        "**Prove it —** seven sourced proof points, three honest objections",
+        "**Reuse it —** summaries, boilerplate, pitch, CTAs, terminology, verbatim",
+        "**Next —** Brand Guidelines derive voice and tone from this deck"
+      ]
+    },
+    {
+      "layout": "table",
+      "title": "The x402 communications framework",
+      "table": {
+        "header": [
+          "Element",
+          "x402",
+          "Shelf-life",
+          "Audience"
+        ],
+        "col_widths": [
+          0.18,
+          0.56,
+          0.12,
+          0.14
+        ],
+        "font_size": 12,
+        "rows": [
+          [
+            "Vision",
+            "A more free and fair internet, where value moves between clients and servers as natively as data does.",
+            "Longest",
+            "Internal, board"
+          ],
+          [
+            "Mission",
+            "To steward x402 as an open, neutral standard for internet-native payments, so that humans, applications, and AI agents can pay for any resource on any network without accounts, protocol fees, or lock-in.",
+            "Long",
+            "Members, partners"
+          ],
+          [
+            "Positioning platform",
+            "x402 is an open standard for internet-native payments: built into the request-and-response cycle the internet already uses, network-agnostic, and governed neutrally at the Linux Foundation.",
+            "Medium",
+            "Industry, press"
+          ],
+          [
+            "Tagline",
+            "The internet, open for business. (Recommended, awaiting lock)",
+            "Shortest",
+            "Users, events"
+          ]
+        ]
+      },
+      "source": "Vision and mission: x402 Message Foundation v3, ED confirmed 21 Sep 2026. Positioning platform is the short form of the positioning statement; both say 'an', not 'the'."
+    },
+    {
+      "layout": "content_dense",
+      "title": "The positioning statement",
+      "bullets": [
+        "**For** developers, merchants and digital service providers that need to charge for anything on the internet, **x402** is an open payment standard native to the internet: any client pays any server in one request, over HTTP or other transport, on any supported network, with zero protocol fees and no accounts, under neutral governance at the Linux Foundation rather than the control of any single company.",
+        "**Category —** open standard for internet-native payments; not a wallet, a network or a payments product.",
+        "**Audiences —** API developers · merchants and digital service providers · AI-agent builders · payments and fintech leaders · wallet and facilitator operators",
+        "**Unlike —** per-vendor API keys and billing, or one company's agent-payment protocol."
+      ],
+      "source": "'An', not 'the': a peer open standard from a Premier member exists. No superlative without its proof point. 58 words in the ED's wording; the ≤40-word platform is on the framework slide."
+    },
+    {
+      "layout": "two_col",
+      "title": "What x402 is, and who governs it",
+      "left": [
+        "**What it is —** a specification other products implement: the server answers 402 Payment Required; the client pays and retries.",
+        "**For adopters —** one line of middleware to charge for any endpoint.",
+        "**For members —** a TSC seat per Participating Organization; public meetings."
+      ],
+      "right": [
+        "**Two entities**",
+        [
+          "x402, a Series of LF Projects, LLC — the technical project; holds the code and spec.",
+          1
+        ],
+        [
+          "x402 Foundation — the membership program at the Linux Foundation.",
+          1
+        ],
+        "**Governance sentence —** x402 is developed in the open under the Apache License 2.0 as x402, a Series of LF Projects, LLC, and is stewarded by the x402 Foundation, an open-governance body at the Linux Foundation."
+      ],
+      "source": "Copy the sentence; do not paraphrase it. x402 is a trademark of LF Projects, LLC. Never write 'x402 Foundation, a Series of LF Projects, LLC'. LF Legal to confirm."
+    },
+    {
+      "layout": "content_dense",
+      "title": "Copy primitives: use these verbatim",
+      "bullets": [
+        "**25 words —** x402 is an open, Linux Foundation-governed standard for internet-native payments: any client pays any server in one request, with no accounts and zero protocol fees.",
+        "**50 words —** x402 is an open standard for internet-native payments. Built on the HTTP 402 Payment Required status code, it lets any client pay any server in one request, on any supported network, with no accounts and zero protocol fees, so humans, applications and AI agents can pay for the resources they use.",
+        "**Elevator pitch —** Payments on the internet still assume a human filling out a form. x402 fixes that at the protocol level: a server answers a request with 402 Payment Required, the client pays and retries, and the resource is served. No account, no API key, no protocol fee, any supported network. It is an open standard at the Linux Foundation, so anyone, including a competitor, can build on it."
+      ],
+      "notes": "llms.txt\n\n# x402\n\n> x402 is an open standard for internet-native payments: any client pays any server in one request, with no accounts and zero protocol fees, governed at the Linux Foundation.\n\n## Docs\n- [Quickstart for sellers](https://docs.x402.org/getting-started/quickstart-for-sellers)\n- [Quickstart for buyers](https://docs.x402.org/getting-started/quickstart-for-buyers)\n\n## Community\n- [Get involved](https://x402.org/get-involved/)\n- [Members](https://x402.org/members/)\n\n## Source\n- [GitHub](https://github.com/x402-foundation/x402)"
+    },
+    {
+      "layout": "content_dense",
+      "title": "Boilerplate: use this verbatim",
+      "bullets": [
+        "**Boilerplate —** x402 is an open standard for internet-native payments. Built on the HTTP 402 Payment Required status code, it lets any client pay any server in one request, on any supported network, with no accounts and zero protocol fees, so humans, applications and AI agents can pay for the resources they use. x402 is developed in the open under the Apache License 2.0 as x402, a Series of LF Projects, LLC, and is stewarded by the x402 Foundation, an open-governance body at the Linux Foundation, whose member organizations include card networks, payment service providers, cloud providers and stablecoin issuers. x402 is a trademark of LF Projects, LLC. Learn more at x402.org."
+      ],
+      "source": "Governance sentence awaiting LF Legal confirmation. llms.txt is in the notes of the previous slide."
+    },
+    {
+      "layout": "table",
+      "title": "Alternatives, and where x402 differs",
+      "table": {
+        "header": [
+          "Alternative",
+          "What it is",
+          "Where x402 differs"
+        ],
+        "col_widths": [
+          0.26,
+          0.37,
+          0.37
+        ],
+        "font_size": 11,
+        "rows": [
+          [
+            "Per-vendor API keys and billing (status quo)",
+            "Account, KYC, prepaid credits, key rotation per provider",
+            "No account or key; pay per request at the protocol level"
+          ],
+          [
+            "Card-rail checkout",
+            "Human form, chargebacks, per-transaction fees",
+            "Machine-native; the client's signed payload is the authorization"
+          ],
+          [
+            "Machine Payments Protocol — MPP (Stripe, member, peer)",
+            "A peer open standard; Stripe supports both MPP and x402",
+            "Neutral governance; network-agnostic by design"
+          ],
+          [
+            "Agent Payments Protocol — AP2 (Google, member, peer)",
+            "Agent commerce protocol; x402 is an extension within AP2 since Sep 2025 [P7]",
+            "A complement, not an alternative"
+          ],
+          [
+            "L402 (Lightning)",
+            "HTTP 402 over the Lightning Network",
+            "Any supported network, not one settlement network"
+          ]
+        ]
+      },
+      "source": "Members are never competitors in copy. Differentiate by property (neutral governance, open standard, network-agnostic, no lock-in), not by name. Who we actually lose to: see the ICP document."
+    },
+    {
+      "layout": "table",
+      "title": "Four messaging pillars",
+      "table": {
+        "header": [
+          "",
+          "open-neutral",
+          "the-standard",
+          "secure-by-spec",
+          "agentic-commerce"
+        ],
+        "col_widths": [
+          0.12,
+          0.22,
+          0.22,
+          0.22,
+          0.22
+        ],
+        "font_size": 10,
+        "header_size": 11,
+        "rows": [
+          [
+            "What's happening",
+            "Payments standards are being proposed by single companies; adopters fear lock-in.",
+            "402 Payment Required has sat unused in HTTP since January 1997 [P4].",
+            "Agent payments raise the question of who can move funds.",
+            "Agents cannot fill out forms, create accounts or pass KYC."
+          ],
+          [
+            "Why it matters",
+            "No merchant or wallet wants to build on a rail one competitor controls.",
+            "A payment built into the request cycle needs no new integration.",
+            "Merchants and wallets need a bounded trust model before they integrate.",
+            "Without machine-native payment, agentic commerce stalls at checkout."
+          ],
+          [
+            "How x402 helps",
+            "Every Participating Organization has a TSC seat; meetings are public [P3]; 52 member organizations [P1].",
+            "HTTP first; MCP and A2A since V2; one line of middleware [P5].",
+            "A facilitator can only move what the client's signed payload authorizes; every scheme spec is public [P6].",
+            "Clients for fetch and MCP; an extension within Google's AP2 [P7]; 75.41M transactions in 30 days [P2]."
+          ]
+        ]
+      },
+      "source": "Goals vocabulary: Brand Visibility · Member + Event Growth · Community Content · Project Adoption · Education Growth."
+    },
+    {
+      "layout": "table",
+      "title": "The message house on one page",
+      "table": {
+        "header": [
+          "",
+          "open-neutral",
+          "the-standard",
+          "secure-by-spec",
+          "agentic-commerce"
+        ],
+        "col_widths": [
+          0.12,
+          0.22,
+          0.22,
+          0.22,
+          0.22
+        ],
+        "font_size": 10,
+        "header_size": 11,
+        "rows": [
+          {
+            "label": "Mission",
+            "text": "To steward x402 as an open, neutral standard for internet-native payments, so that humans, applications, and AI agents can pay for any resource on any network without accounts, protocol fees, or lock-in.",
+            "span": true
+          },
+          {
+            "label": "Positioning",
+            "text": "x402 is an open standard for internet-native payments: built into the request-and-response cycle the internet already uses, network-agnostic, and governed neutrally at the Linux Foundation.",
+            "span": true
+          },
+          [
+            "Value proposition",
+            "Build on a standard no single company controls.",
+            "Charge for anything you already serve, the way the internet works.",
+            "Funds stay under the client's control.",
+            "Let agents pay for what they use, with no form."
+          ],
+          [
+            "Key message",
+            "x402 is a standard no single company controls.",
+            "x402 works the way the internet already works.",
+            "x402 keeps funds under the client's control.",
+            "x402 lets AI agents transact on their own."
+          ],
+          [
+            "Supporting points",
+            "P1, P3",
+            "P4, P5",
+            "P6",
+            "P2, P7"
+          ],
+          [
+            "Sound bite",
+            "\"Anyone, even a competitor, is welcome to build on x402, precisely because no single company controls it.\"",
+            "\"402 Payment Required has been in the HTTP spec since 1997. x402 finally uses it.\"",
+            "\"The facilitator settles the payment. It can only move what you signed for.\"",
+            "\"Agents don't fill out forms. x402 doesn't ask them to.\""
+          ]
+        ]
+      },
+      "source": "Derived from the pillars; no cell carries a claim that is not in a pillar."
+    },
+    {
+      "layout": "table",
+      "title": "Seven proof points, each with a source",
+      "table": {
+        "header": [
+          "ID",
+          "Claim",
+          "Pillar",
+          "Source",
+          "As of"
+        ],
+        "col_widths": [
+          0.06,
+          0.42,
+          0.16,
+          0.24,
+          0.12
+        ],
+        "font_size": 10.5,
+        "rows": [
+          [
+            "P1",
+            "52 member organizations",
+            "open-neutral",
+            "x402.org/members",
+            "2026-09-17"
+          ],
+          [
+            "P2",
+            "75.41M transactions in 30 days",
+            "agentic-commerce",
+            "x402.org counter",
+            "2026-09-17"
+          ],
+          [
+            "P3",
+            "Every Participating Organization has a TSC seat; meetings public",
+            "open-neutral",
+            "x402 technical charter",
+            "2026-09-17"
+          ],
+          [
+            "P4",
+            "402 Payment Required in HTTP since January 1997",
+            "the-standard",
+            "RFC 2068 §10.4.3",
+            "1997-01"
+          ],
+          [
+            "P5",
+            "HTTP first; MCP and A2A since V2; one line of middleware",
+            "the-standard",
+            "README, x402.org",
+            "2026-09-17"
+          ],
+          [
+            "P6",
+            "Facilitator cannot move funds beyond the signed payload",
+            "secure-by-spec",
+            "docs.x402.org scheme specs",
+            "2026-09-17"
+          ],
+          [
+            "P7",
+            "x402 an extension within Google's AP2",
+            "agentic-commerce",
+            "Google AP2 announcement",
+            "2025-09"
+          ]
+        ]
+      },
+      "source": "Seven sourced proof points; the bench is thin on end-user outcomes (no named adopter case yet). Refresh P1 and P2 before every use; no list prices in this copy."
+    },
+    {
+      "layout": "table",
+      "title": "Three objections, and what we admit",
+      "table": {
+        "header": [
+          "The challenge",
+          "Our thesis",
+          "Evidence",
+          "What we admit"
+        ],
+        "col_widths": [
+          0.25,
+          0.27,
+          0.16,
+          0.32
+        ],
+        "font_size": 10,
+        "rows": [
+          [
+            "\"Isn't this just crypto payments with extra steps?\"",
+            "x402 is a payment standard built into HTTP; stablecoins are the first rail, not the definition.",
+            "P4, P5",
+            "Today's volume settles on stablecoins; fiat rails are extensible but not yet shipped."
+          ],
+          [
+            "\"Stripe and Google have their own agent-payment protocols. Why x402?\"",
+            "Both are members; x402 is the neutral, network-agnostic standard their products can implement.",
+            "P1, P7",
+            "A peer open standard exists; x402 is 'an', not 'the'."
+          ],
+          [
+            "\"Who is liable when an agent pays for the wrong thing?\"",
+            "The client's signed payload bounds what any facilitator can move.",
+            "P6",
+            "Dispute and refund flows are scheme-specific and still maturing."
+          ]
+        ]
+      },
+      "notes": "Full objection text and sources in the Markdown §9. Never disparage a named competitor; no motive attributed to a member without its published words."
+    },
+    {
+      "layout": "two_col",
+      "title": "What we don't claim, and how we say the name",
+      "left": [
+        "**We don't claim**",
+        [
+          "'The only' HTTP-native payment standard (MPP exists).",
+          1
+        ],
+        [
+          "Fee-free end to end (network fees apply).",
+          1
+        ],
+        [
+          "Production-proven on every supported network.",
+          1
+        ],
+        [
+          "'First' or 'largest' without a proof point in the sentence.",
+          1
+        ],
+        [
+          "That membership is required to build on x402.",
+          1
+        ]
+      ],
+      "right": [
+        "**Terminology**",
+        [
+          "'x402' in lowercase, always, even at sentence start.",
+          1
+        ],
+        [
+          "'Organizations' when counting members; every figure with window and date.",
+          1
+        ],
+        [
+          "'Standard' pending TSC decision on 'standard' vs 'protocol'.",
+          1
+        ],
+        [
+          "Must say: the governance sentence, verbatim.",
+          1
+        ],
+        [
+          "Must not say: a member's product is a competitor; 'unhackable'; chain jargon (gas, RPC, nonce).",
+          1
+        ]
+      ]
+    },
+    {
+      "layout": "two_col",
+      "title": "Four calls to action, one origin",
+      "left": [
+        "**CTA anchors**",
+        [
+          "Learn — Read the quickstart for sellers (docs.x402.org)",
+          1
+        ],
+        [
+          "Engage — Join the x402 Slack workspace",
+          1
+        ],
+        [
+          "Contribute — Open a pull request (github.com/x402-foundation/x402)",
+          1
+        ],
+        [
+          "Commit — Join the x402 Foundation (x402.org/members#benefits)",
+          1
+        ]
+      ],
+      "right": [
+        "**Origin**",
+        [
+          "Coinbase created and contributed x402; HTTP had carried 402 unused since 1997 [P4].",
+          1
+        ],
+        [
+          "The LF announced the x402 Foundation's operational launch with founding members across card networks, PSPs, cloud and stablecoins.",
+          1
+        ],
+        [
+          "52 member organizations; 75.41M transactions in 30 days [P1, P2].",
+          1
+        ]
+      ],
+      "source": "Dates from the LF press release and RFC 2068; LFX formation dates are not used.",
+      "notes": "Tagline alternates (not locked): Payments native to the internet. · 402 Payment Required. Finally. · Any client. Any server. Any network. Dates: LF press release (operational launch) and RFC 2068; LFX formation dates are not used."
+    },
+    {
+      "layout": "two_col",
+      "title": "Before this is approved: your decisions",
+      "left": [
+        "**Tagline —** lock the recommended line or an alternate.",
+        "**'Standard' or 'protocol' —** settle the noun.",
+        "**Governance sentence —** confirm before the boilerplate is locked.",
+        "**Named adopter —** supply one confirmed organization, or leave the bench as stated."
+      ],
+      "right": [
+        "Executive Director, after a trademark screen",
+        "Technical Steering Committee",
+        "LF Legal",
+        "Executive Director",
+        "**Next:** build-lf-brand-guidelines reads this deck's sidecar and brand.json."
+      ]
+    },
+    {
+      "layout": "closing"
+    }
+  ]
+}
