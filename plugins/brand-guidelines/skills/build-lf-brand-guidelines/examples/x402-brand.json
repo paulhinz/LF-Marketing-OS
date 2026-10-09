@@ -1,0 +1,31 @@
+{
+  "project_name": "x402 Foundation",
+  "logo": {
+    "light": "logos/x402-logo-color.png",
+    "dark": "logos/x402-logo-white.png"
+  },
+  "palette": {
+    "primary": "#0A7739",
+    "secondary": "#222222",
+    "accent": "#676767",
+    "neutral_dark": "#222222",
+    "neutral_light": "#F1F1F1"
+  },
+  "fonts": {
+    "heading": "Instrument Serif",
+    "body": "Inter"
+  },
+  "dark_gradient": [
+    "#2A2A2A",
+    "#111111"
+  ],
+  "iconography": "Single-weight line drawings of the protocol flow (client, 402, payment, 200) and real code; Signal Green for the one featured element; no coins, lightning bolts, padlocks or gradients.",
+  "footer_address": null,
+  "cobrand": true,
+  "_source": {
+    "logo": "https://x402.org/wp-content/uploads/sites/10/2026/06/x402_logo.svg, read 2026-10-07; filled #222222 (light) and #FFFFFF (dark)",
+    "palette": "x402.org/brand-guidelines (read 2026-10-08): primary Ink #000000 / Paper #FFFFFF, secondary four grey tints; roles here use the site's Ink #222222, Slate #676767, Mist #F1F1F1 (CSS, 2026-09-17) and the site link color Signal Green #0A7739 as primary for template bars and headers (UI color, not a brand color)",
+    "fonts": "x402.org @font-face: Instrument Serif (headlines), Inter 400/500 (body, UI)",
+    "iconography": "Proposed — the site ships no icon set"
+  }
+}
