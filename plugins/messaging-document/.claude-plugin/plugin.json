@@ -1,0 +1,18 @@
+{
+  "name": "messaging-document",
+  "version": "1.0.0",
+  "description": "LFX Marketing OS Messaging Document Agent (runs first, before Brand Guidelines and ICP). Builds a project's messaging source of truth — framework, positioning, pillars, message house, proof points, objections, copy primitives — as a concise LF 2025 slide deck. Command: build-lf-messaging-doc.",
+  "author": {
+    "name": "Paul Hinz, Linux Foundation"
+  },
+  "keywords": [
+    "marketing",
+    "messaging",
+    "linux-foundation",
+    "lfx-marketing-os",
+    "positioning",
+    "message-house",
+    "proof-points",
+    "product-marketing"
+  ]
+}
