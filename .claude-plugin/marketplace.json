@@ -31,9 +31,9 @@
       ]
     },
     {
-      "name": "lfx-position-and-brand",
-      "source": "./plugins/lfx-position-and-brand",
-      "description": "v0.4.0 — NEW. Brand & Positioning: six stateless skills that replace messaging-document, brand-guidelines and icp-target-markets-agent. messaging-framework drafts the messaging framework with ICPs and message house; boilerplates and faq draft from the approved framework; brand-kit reads the project's real logos and site and renders the 16-page brand kit book (HTML, PDF); presentation-template renders a 16:9 .pptx with 12 slide masters; one-pager renders a letter-size page (HTML, PDF). Input object in, JSON or files out; no workflow state.",
+      "name": "lfx-mos-brand-positioning",
+      "source": "./plugins/lfx-mos-brand-positioning",
+      "description": "v0.5.0 — NEW. Brand & Positioning: six stateless skills that replace messaging-document, brand-guidelines and icp-target-markets-agent. messaging-framework drafts the messaging framework with ICPs and message house; boilerplates and faq draft from the approved framework; brand-kit reads the project's real logos and site and renders the 16-page brand kit book (HTML, PDF); presentation-template renders a 16:9 .pptx with 12 slide masters; one-pager renders a letter-size page (HTML, PDF). Renderers check WCAG 2.2 AA contrast and produce tagged PDFs. Input object in, JSON or files out; no workflow state.",
       "category": "Foundation Agents",
       "tags": [
         "messaging-framework",
