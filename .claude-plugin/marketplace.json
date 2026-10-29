@@ -50,7 +50,7 @@
     {
       "name": "lfx-mos-website",
       "source": "./plugins/lfx-mos-website",
-      "description": "v0.1.0 — NEW. Builds a Linux Foundation project's website from its brand and positioning kit, checked for WCAG 2.2 AA, as a .zip with an offline copy editor. Use it beside `lfx-mos-brand-positioning`.",
+      "description": "v0.5.0 — Builds a Linux Foundation project's website from its brand and positioning kit: checked for WCAG 2.2 AA, agent-ready (Markdown twins, Link headers and Markdown negotiation at the edge), with blog posts and events and an editor in the Marketing OS look. After the build you choose where it lives: Marketing OS, LF GitHub, a separate GitHub, or WordPress (an Asana request to the Web team). references/ui-flow.md specifies the Marketing OS screens. Use it beside `lfx-mos-brand-positioning`.",
       "category": "Foundation Agents",
       "tags": [
         "website",
