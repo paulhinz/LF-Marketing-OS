@@ -1,55 +1,38 @@
-# lfx-mos-website · v0.1.0
+# lfx-mos-website (plugin) · v0.5.0
 
-Builds a Linux Foundation project's website from its brand and positioning kit, checked for WCAG 2.2 AA, as a .zip with an offline copy editor. Use it beside `lfx-mos-brand-positioning`.
+Author: Craig Ross <ccr@linuxfoundation.org>
 
-## How to run it
+One skill that turns a project's brand and positioning work into a website, used beside `lfx-mos-brand-positioning`.
 
-Replace the [brackets] with the project's details. Run it in the same conversation as the brand and positioning skills, or point it at the folder that holds their outputs.
+| Skill | Kind | Reads | Returns |
+|---|---|---|---|
+| `website` | Renders | `mh`, `bp`, `kit` (required); `mf`, `nums`, `faq`, `icp`; logo SVGs | A staged, audited site, then the package for the chosen hosting option |
 
-### Option A · Kit and website in one prompt
+**Where it lives.** After the build and audit, the person chooses: (1) Maintain in Marketing OS, (2) Publish on LF GitHub, (3) Export for a separate GitHub, or (4) Host on WordPress. 1 and 2 hand a launch request to the publish skill; 3 is a zip with a GitHub Pages workflow; 4 files an Asana request in the Web Team's Web Requests project. See `skills/website/references/hosting.md`.
 
-```
-Build the full brand and positioning kit for [Project name] ([domain]) with the lfx-mos-brand-positioning plugin (messaging-framework, boilerplates, faq, brand-kit), then build the website with the lfx-mos-website plugin. Sources: [website], [press release link or attached file], [deck or integrated marketing plan, if any]. Logo files: [attached SVGs or zip]. Notes: [audience, words to avoid]. Save every output to one folder, give me the website .zip, and tell me the WCAG audit result, how many placeholders are left and which sources couldn't be read.
-```
+**The site package** holds 11 pages (Home, About, Governing Board, Technical Committee, Members, Contact, Events, News, Get involved, Join, Campaign), `assets/site.css` and `site.js`, the real logos, `404.html`, `robots.txt`, `sitemap.xml`, `llms.txt`, `llms-full.txt`, JSON-LD in every page, `site.json`, `ACCESSIBILITY.md`, a README, and **`edit.html`**: an offline copy editor with a live preview that downloads a new zip.
 
-### Option B · The kit already exists
+**Agent-ready.** Every page ships a Markdown twin, robots.txt carries Content Signals, and `agent-edge/worker.js` adds Link headers and Markdown negotiation in front of GitHub Pages: 6 of 7 (86%) on isitagentready.com's content profile, the same as akrites.org. See `skills/website/references/agent-ready.md`.
 
-**From this conversation or a folder**
+**Posts and events.** Blog posts and events with a rich-text body (headings, lists, links, quotes, images with alt text, inline code and code blocks) get their own pages. In Marketing OS hosting they're added in the editor; for LF GitHub, a posts and events editor sends them to the repo as a pull request.
 
-```
-Build the website for [Project] ([domain]) from the messaging framework, boilerplates, FAQ and brand kit [in this conversation / in the outputs folder], with the logo files [attached / in the folder]. Give me the .zip and the WCAG audit result.
-```
+**Required LF scripts.** Every page carries LF's fixed, pre-approved scripts, never editable: the Transcend consent manager as the first element in `<head>`, then at the end of `<body>` the cookie-settings handler (a footer "Cookie settings" link reopens Transcend), LFX Segment, ZoomInfo and HubSpot. Transcend's banner replaces the site's own cookie bar.
 
-**From the Marketing OS Kit**
+**Marketing OS screens.** `skills/website/references/ui-flow.md` describes the five steps as they appear in Marketing OS, matching the Website Skill Prototype.
 
-```
-Build the website for [Project] from its content and logos in the Marketing OS Kit. Give me the .zip and the WCAG audit result.
-```
+**Accessibility.** Built to WCAG 2.2 AA. Colours come from the brand kit through accessible working tokens (brand colours kept where they pass); each build is audited in headless Chrome with axe-core and a rendered contrast check at 1280 and 320 px, menus open and closed. See `DEVELOPER.md`.
 
-### Then make copy edits
+**Publishing.** Options 1 and 2 need the `publish` skill (domain, LF GitHub repo, Pages, DNS through the LF infrastructure API), which is specified but not yet built; until then they produce a launch request that waits for it. `site.json` is also the hand-off format for the WordPress build.
 
-1. Unzip and open `edit.html` in a browser. It works offline.
-2. Pick a page on the left, edit the fields and watch the preview (desktop or mobile). "Before launch" lists the placeholders and avoid-list phrases left on that page.
-3. Click **Download .zip**. The new zip holds the edited site and the editor, so you can keep going. Edits are also kept in your browser until you download.
+## Ask Claude
+- "Build the website for Akrites from its messaging framework and brand kit."
+- "Make the OpenGrid website from the outputs in this folder, then export it for their GitHub."
+- "Build the x402 site and request a WordPress build from the web team."
+- "Here's the edited site.json for x402: rebuild it, re-check WCAG and export it again."
 
-### Re-check after editing
-
-```
-Here's the edited site.json for [Project]. Rebuild the website zip from it and re-run the WCAG check.
-```
-
-### What you get
-
-- 11 pages: Home, About, Governing Board, Technical Committee, Members, Contact, Events, News, Get involved, Join, Campaign
-- `edit.html`: the offline copy editor
-- The project's real logos, colours and typeface from the brand kit
-- Newsletter sign-up with the LF consent text, and a cookie choice bar
-- JSON-LD in every page, `sitemap.xml`, `robots.txt`, `llms.txt`, a 404 page
-- `ACCESSIBILITY.md` with the audit result, and `site.json` with every field
-
-### Before launch
-
-- Replace the [bracketed] placeholders: board, members, events and contacts the sources don't cover.
-- Connect the sign-up form: add the LFX form endpoint under Site settings in the editor.
-- Colours, fonts and layout can't be changed in the editor. To change them, update the brand kit and rebuild.
-- A framework or brand kit change means a fresh build, which doesn't carry over copy edits from the old zip.
+## Changes
+- **0.5.0** Marketing OS look and flow. The editor uses the Marketing OS (LFX Insights) tokens: Roboto Slab headings, Inter body, Roboto Mono labels, LFX blue, pill buttons, light panels with shadows, 3:1 field borders. New `skills/website/references/ui-flow.md` specifies the five-step screens (step bar with live statuses, fixed action bar, gates and confirmations, hand-off per option) from the reviewed prototype. Author: Craig Ross.
+- **0.4.0** Agent-ready: Markdown twin of every page, Content-Signal in robots.txt, `alternate` link in every head, `_headers`, and the `agent-edge` Cloudflare Worker; `scripts/agent-check.js` (57% on GitHub Pages alone, 86% behind the Worker). Blog posts and events with their own pages and a rich-text editor (images with required alt text, inline code, code blocks). Managed mode allows adding posts and events; LF GitHub mode is edited in the repo, with a posts and events editor that saves a content update. Author: Craig Ross.
+- **0.3.0** Hosting choice after the build: `build.js` now stages the audited site (no zip; `--zip` keeps the old one-step export) and `finalize.js --hosting managed|lf-github|export|wordpress` packages it. Managed mode locks the editor to existing fields. Export adds `.nojekyll` and a GitHub Pages workflow. WordPress writes the Asana request for Web Requests. ZoomInfo and HubSpot added to the required scripts.
+- **0.2.0** LF's required scripts on every page: Transcend first in the head; cookie-settings handler and LFX Segment at the end of the body; "Cookie settings" link in the footer. The built-in cookie bar is removed in favour of Transcend's. The editor preview leaves the scripts out so it stays offline; every exported page has them. Audit fix: text on its own opaque background (the skip link) is measured against that background.
+- **0.1.0** First release. Engine ported from the Marketing OS Kit website mockup (same pages, LF consent sign-up, cookie choice, JSON-LD, llms.txt) and reworked for WCAG 2.2 AA: accessible tokens, disclosure menus, in-flow cookie bar, visible labels, 24 px targets, 320 px reflow. Adds the offline editor, the axe-core audit and folder/site.json inputs. GitHub Pages and WordPress packages from the mockup are not included.
