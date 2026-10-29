@@ -1,9 +1,10 @@
 {
   "name": "lfx-mos-website",
-  "version": "0.1.0",
-  "description": "LFX Marketing OS · Website: renders a Linux Foundation project's 11-page static website from its messaging framework, boilerplates, FAQ and brand kit, audits it for WCAG 2.2 AA, and returns a .zip with an offline copy editor. Companion to lfx-mos-brand-positioning.",
+  "version": "0.5.0",
+  "description": "LFX Marketing OS \u00b7 Website: renders a Linux Foundation project's static website from its messaging framework, boilerplates, FAQ and brand kit, audits it for WCAG 2.2 AA, makes it agent-ready (Markdown twins, Link headers and Markdown negotiation at the edge), and packages it for Marketing OS, LF GitHub, a separate GitHub, or WordPress. Blog posts and events with a rich-text editor. Companion to lfx-mos-brand-positioning.",
   "author": {
-    "name": "Craig, LF Marketing"
+    "name": "Craig Ross",
+    "email": "ccr@linuxfoundation.org"
   },
   "keywords": [
     "linux-foundation",
