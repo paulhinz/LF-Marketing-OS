@@ -16,6 +16,7 @@ const CONTRAST = () => {
   const hex = c => "#" + c.slice(0, 3).map(v => Math.round(v).toString(16).padStart(2, "0")).join("").toUpperCase();
   function bgAt(el) {
     const r = el.getBoundingClientRect(); if (!r.width || !r.height) return null;
+    const own = parse(getComputedStyle(el).backgroundColor); if (own && own[3] >= 1) return own;   // text on its own opaque ground (e.g. a skip link shown on focus)
     const x = Math.min(innerWidth - 1, Math.max(0, r.left + Math.min(r.width / 2, 8))), y = Math.min(innerHeight - 1, Math.max(0, r.top + Math.min(r.height / 2, 12)));
     const layers = [];
     for (const e of document.elementsFromPoint(x, y)) {
@@ -53,7 +54,7 @@ async function audit(dir, files) {
   try { browser = await puppeteer.launch({ headless: "shell", args: ["--no-sandbox", "--allow-file-access-from-files"] }); }
   catch (e) { return { ran: false, note: "headless Chrome didn't start (" + String(e.message).split("\n")[0] + "); browser audit skipped." }; }
   const axeVersion = require(path.join(path.dirname(axePath), "package.json")).version;
-  const result = { ran: true, tool: `axe-core ${axeVersion} (${TAGS.join(", ")}) + rendered text-contrast check`, viewports: VIEWPORTS.map(v => v.join("×")), pages: [], violations: {}, incomplete: {}, textChecked: 0, contrastFails: [], reflow: [], states: ["default", "mobile menu open", "About submenu open", "cookie bar shown"] };
+  const result = { ran: true, tool: `axe-core ${axeVersion} (${TAGS.join(", ")}) + rendered text-contrast check`, viewports: VIEWPORTS.map(v => v.join("×")), pages: [], violations: {}, incomplete: {}, textChecked: 0, contrastFails: [], reflow: [], states: ["default", "mobile menu open", "About submenu open", "Transcend consent banner (when its CDN loads)"] };
   const runAxe = pg => pg.evaluate(async tags => { const r = await window.axe.run(document, { runOnly: { type: "tag", values: tags }, resultTypes: ["violations", "incomplete"] });
     const slim = list => list.map(v => ({ id: v.id, impact: v.impact, help: v.help, url: v.helpUrl, nodes: v.nodes.slice(0, 5).map(n => ({ target: n.target.join(" "), summary: (n.failureSummary || "").split("\n").slice(0, 3).join(" ") })), count: v.nodes.length }));
     return { violations: slim(r.violations), incomplete: slim(r.incomplete) }; }, TAGS);
