@@ -17,10 +17,10 @@ Status reflects the LFX Marketing OS marketplace (`paulhinz/LF-Marketing-OS`) as
 
 | Asset type | Creation agent | Status | What the brief must hand it |
 |---|---|---|---|
-| Social post copy (LinkedIn series, X/Bluesky threads, ambassador/leader posts) | `linkedin-post-agent` (Social Post agent); `ambassador-content-assignment` for speaker/ambassador kits | Installed | Source entry: persona, key messages, CTA + link (UTM), posting cadence, hashtags/tags, brand voice pointer |
+| Social post copy (LinkedIn series, X/Bluesky threads, ambassador/leader posts) | `lfx-mos-linkedin-post` (Social Post agent); `ambassador-content-assignment` for speaker/ambassador kits | Installed | Source entry: persona, key messages, CTA + link (UTM), posting cadence, hashtags/tags, brand voice pointer |
 | Social plan / weekly queue | Social Content agent ("Draft · Queue · Publish") | TBD — manual via Sprout Social | Campaign calendar, message sequence, post count per source |
-| Blog post, case study, article, executive summary, Q&A, contributor spotlight | `case-study-agent` (Convert Content to Branded Doc) | Installed | Source content to convert (talk, interview, notes) or the angle; persona; pillar; CTA block to embed |
-| eBook / "State of X" report / topic guide | Blog/Case Study/eBook agent | TBD — `case-study-agent` for long-form drafts, Creative & Web for layout | Outline, personas, proof points, gated vs. ungated decision (LF default: ungated, enrich on visit) |
+| Blog post, case study, article, executive summary, Q&A, contributor spotlight | `lfx-mos-case-study` (Convert Content to Branded Doc) | Installed | Source content to convert (talk, interview, notes) or the angle; persona; pillar; CTA block to embed |
+| eBook / "State of X" report / topic guide | Blog/Case Study/eBook agent | TBD — `lfx-mos-case-study` for long-form drafts, Creative & Web for layout | Outline, personas, proof points, gated vs. ungated decision (LF default: ungated, enrich on visit) |
 | Newsletter issue or feature slot | Newsletter Composition agent ("Aggregate · Draft · Schedule"); VIP Newsletter | TBD — manual via HubSpot / Beehiiv | Blurb brief: headline, 2–3 sentences, link with UTM, image spec, issue dates |
 | Email: Invite / Email: Reminder copy | Email content agent | TBD — draft with `marketing:email-sequence` or `marketing:draft-content` if installed; execute in HubSpot | Segment, persona, subject-line direction, key message, CTA, send dates, reminder logic |
 | Landing page copy and structure | Landing Page agent; `website-designer-agent` for full sites | TBD for standalone LP — `website-designer-agent` when the page lives on the project's Hugo site; HubSpot LP otherwise | Offer, persona, proof points, primary CTA, form fields (minimal), UTM and HubSpot campaign |
@@ -28,7 +28,7 @@ Status reflects the LFX Marketing OS marketplace (`paulhinz/LF-Marketing-OS`) as
 | Web page copy updates (homepage hero, members page) | Web Page (CCR) agent — TBD; `website-designer-agent` — Installed (whole-site scope) | Mixed | Page, section, new copy, CTA, live dates |
 | Banner and ad creative | Banner Design agent | TBD — Creative & Web | Sizes, copy, CTA, brand assets, placements and dates |
 | Pitch deck / prospect-specific prep brief | `pitch-deck-agent` | Installed | Persona/prospect list from the membership or sponsorship campaign |
-| Member executive briefing deck | `member-benefits-briefing` | Installed | Named member/prospect company |
+| Member executive briefing deck | `lfx-mos-member-benefits-briefing` | Installed | Named member/prospect company |
 | Survey (post-event, member, student) | Survey agent | TBD — manual (LFX Surveys / HubSpot forms) | Audience, questions tied to the Accepted-stage campaign, send date |
 | Award submission, post-event coverage, newsjack calendar | Newsjack / Award / Post Coverage agents | TBD | Trigger events, dates, key messages |
 | Video clips / podcast episode / owned-media flywheel | Owned Media Production agent | TBD — LF Media | Source recording, clip spec, distribution sources |
@@ -38,16 +38,16 @@ Status reflects the LFX Marketing OS marketplace (`paulhinz/LF-Marketing-OS`) as
 | Medium / source | Execution agent | Status | What the brief must hand it |
 |---|---|---|---|
 | Social (all organic sources) | Social publishing via Sprout Social; Social Content agent queue | TBD — manual scheduling in Sprout Social | Approved posts, schedule, accounts, UTMs |
-| Social listening for the campaign's keywords and echo | `social-listening-report` (Voices That Matter, Campaign Echo) | Installed | Campaign keywords/hashtags, launch dates, follower thresholds; keyword-slot request (plan-limited) |
+| Social listening for the campaign's keywords and echo | `lfx-mos-social-listening-report` (Voices That Matter, Campaign Echo) | Installed | Campaign keywords/hashtags, launch dates, follower thresholds; keyword-slot request (plan-limited) |
 | Direct Message | ABM outreach — Membership Sales / Events sponsorship team | Manual | Target list, DM templates, sequence, owner |
 | Newsletter / Email: Invite / Email: Reminder | HubSpot marketing email + workflows (`manage_marketing_email`, `manage_segment` via HubSpot connector) | Connector available; Email execution agent TBD | Segment definition, approved copy, send/reminder schedule, HubSpot campaign name |
-| Contact lists / segments | Segmentation agent ("Personas · Segments · Sync") — TBD; List Builder (member, event, edu) — TBD; `member-360` — Installed (its ranked member-engagement output doubles as a target list) | Mixed | ICP/persona criteria, source systems (HubSpot, Segment, LFX), exclusions |
+| Contact lists / segments | Segmentation agent ("Personas · Segments · Sync") — TBD; List Builder (member, event, edu) — TBD; `lfx-mos-member-360` — Installed (its ranked member-engagement output doubles as a target list) | Mixed | ICP/persona criteria, source systems (HubSpot, Segment, LFX), exclusions |
 | Web: Landing Page, CTAs, Blogs | HubSpot CMS (`manage_landing_page`, `manage_blog_post`, `manage_website_page`) — connector available; project-site deploy via `website-designer-agent` — Installed; Web Page Deployer agent — TBD | Mixed | Approved copy and creative, URL slug, UTM, go-live date |
 | Web: Banners on LF or project properties | Web team (shared-resource booking) | Manual | Creative, placement, dates, conflict check |
 | Paid: Paid Social, Adwords / Google Ads, Retargeting | Campaign Design agent ("SEM · LinkedIn · Reddit · UTMs") | TBD — manual in LinkedIn Campaign Manager / Google Ads / Reddit Ads; audiences from Segment | Budget, dates, audience definition, creative variants, LP, conversion events, ROAS floor |
 | Paid: 3rd-party ads / newsletters / affiliate | Partner media buying — MarComs / LF Media | Manual | Placement, dates, creative, tracked links |
 | Event execution milestones | Event Execution agent (12-week milestone plan) | TBD — Events team | Event date, attendance goal, budget |
-| Monitoring / optimization | Insights agent — TBD; Campaign Performance dashboard — LFX; `aeo-geo-analyzer` for web content answerability — Installed | Mixed | Campaign IDs, KPIs, alert thresholds from the brief |
+| Monitoring / optimization | Insights agent — TBD; Campaign Performance dashboard — LFX; `lfx-mos-aeo-geo-analyzer` for web content answerability — Installed | Mixed | Campaign IDs, KPIs, alert thresholds from the brief |
 
 ## Routing rules
 

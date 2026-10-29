@@ -17,7 +17,7 @@ The agents are organized by where they sit in a marketing workflow:
 
 This repo is the distribution point for that agent set: a git-based marketplace that Cowork (or Claude Code) reads directly, so plugins can be installed and updated without emailing files around.
 
-## 2. The 31 plugins in this marketplace
+## 2. The 30 plugins in this marketplace
 
 **Foundation** — run in this order; each one's output is the next one's input
 - **NEW** `lfx-mos-brand-positioning` (v0.5.1, renamed from `lfx-position-and-brand`) — Six skills that draft and build a Linux Foundation project's brand and positioning kit, with renderers checked to WCAG 2.2 AA.  (replaces: `messaging-document` `brand-guidelines` `icp-target-markets-agent`)
@@ -29,7 +29,7 @@ This repo is the distribution point for that agent set: a git-based marketplace 
 
 **Foundation (supporting)**
 - `lfx-marketing-os-qa` — Fact-checks and reviews foundation documents before they go out.
-- `plain-writing` — Keeps all written output in a plain, simple style.
+- `lfx-mos-plain-writing` (renamed from `plain-writing`) — Keeps all written output in a plain, simple style.
 - `marketing-committee-chair-recommendation` — Reviews project's committee members and recommends marketing members.
 
 **Planning**
@@ -42,20 +42,20 @@ This repo is the distribution point for that agent set: a git-based marketplace 
 - `lf-zoom-hubspot-notes-logger` — Logs Zoom meeting notes into HubSpot and creates follow-up tasks.
 
 **Creating**
-- `linkedin-post-agent` — Drafts LinkedIn posts in the user's own voice.
-- `member-pitch-deck` (v2.0.0) — Builds the standard membership overview deck for a project in the LF membership-overview style (About the LF → Introducing the Foundation → How to join), modeled on the Member Growth x402 deck.
-- `case-study-agent` — Turns a video, transcript, or notes into a case study or blog post.
-- `member-benefits-briefing` — Builds an executive briefing deck for a specific member company.
+- `lfx-mos-linkedin-post` (renamed from `linkedin-post-agent`) — Drafts LinkedIn posts in the user's own voice.
+- `lfx-mos-member-pitch-deck` (v2.0.1, renamed from `member-pitch-deck`) — Builds the standard membership overview deck for a project in the LF membership-overview style (About the LF → Introducing the Foundation → How to join), modeled on the Member Growth x402 deck.
+- `lfx-mos-case-study` (renamed from `case-study-agent`) — Turns a video, transcript, or notes into a case study or blog post.
+- `lfx-mos-member-benefits-briefing` (renamed from `member-benefits-briefing`) — Builds an executive briefing deck for a specific member company.
 
 **Monitoring**
-- `aeo-geo-analyzer` — Scores how well a website shows up in AI search and answer engines.
-- `social-listening-report` — Reports what people are saying about a project on social media.
-- `social-sentiment-monitor` — Flags negative posts and unusually high engagement about a project on a schedule, drafts replies with a recommended voice, and sends the brief to named Slack recipients.
+- `lfx-mos-aeo-geo-analyzer` (renamed from `aeo-geo-analyzer`) — Scores how well a website shows up in AI search and answer engines.
+- `lfx-mos-social-listening-report` (renamed from `social-listening-report`) — Reports what people are saying about a project on social media.
+- `lfx-mos-social-sentiment-monitor` (renamed from `social-sentiment-monitor`) — Flags negative posts and unusually high engagement about a project on a schedule, drafts replies with a recommended voice, and sends the brief to named Slack recipients.
 - `run-marketing-impact-report` — Builds a marketing performance report from live LFX and HubSpot data.
 - `member-marketing-benefits-audit` — Reports how much of their marketing benefits each member has used.
 
 **Community Engagement**
-- `member-360` — Scores each member's engagement and recommends a next action.
+- `lfx-mos-member-360` (renamed from `member-360`) — Scores each member's engagement and recommends a next action.
 - `ambassador-content-assignment` — Assigns event content to ambassadors and tracks who posts.
 - `committee-health-agent` — Flags inactive committee representatives and drafts follow-up outreach.
 - `community-monitor-agent` — Watches Slack and GitHub for community questions and drafts replies.
@@ -63,10 +63,9 @@ This repo is the distribution point for that agent set: a git-based marketplace 
 **Shared Skills**
 - `lf-output-formatter` — Puts every agent's deck, document, or letter on the approved LF templates.
 
-**Additional (not part of the core Marketing OS)**
-- `marketing-agent-class` — Delivers the Claude Agent Workshop training course as slide decks.
-
 ## 2a. Latest changes
+
+**2026-10-29 — Nine plugins renamed to the `lfx-mos-` convention; marketing-agent-class removed.** Following the naming used for `lfx-mos-brand-positioning` and `lfx-mos-website`, these plugins drop "agent" and take the `lfx-mos-` prefix: `plain-writing` → `lfx-mos-plain-writing`, `linkedin-post-agent` → `lfx-mos-linkedin-post`, `member-pitch-deck` → `lfx-mos-member-pitch-deck`, `case-study-agent` → `lfx-mos-case-study`, `member-benefits-briefing` → `lfx-mos-member-benefits-briefing`, `aeo-geo-analyzer` → `lfx-mos-aeo-geo-analyzer`, `social-listening-report` → `lfx-mos-social-listening-report`, `social-sentiment-monitor` → `lfx-mos-social-sentiment-monitor`, `member-360` → `lfx-mos-member-360`. Each now has an "LFX Marketing OS · …" display name and a patch version bump. Skill names inside the plugins are unchanged. If you installed any of these under the old name, uninstall it and install it again under the new name. The `marketing-agent-class` plugin has been removed from the marketplace.
 
 **2026-10-29 — lfx-mos-brand-positioning 0.5.1.** Brand kit book fixes from the AAIF run: symbol pages show the symbol alone (found automatically in the lockup when no symbol crop is supplied, instead of stretching the full logo), the stacked lockup is built from symbol and wordmark, logos never overflow their tiles, the cover subtext is the same standard line for every project, spacing under the primary lockup is fixed, and all icons use one colour.
 
@@ -88,7 +87,7 @@ This repo is the distribution point for that agent set: a git-based marketplace 
 
 1. Open **Customize** in the sidebar, then **Plugins**.
 2. Click **Add marketplace** and enter this repo: `paulhinz/LF-Marketing-OS` (or the full URL, `https://github.com/paulhinz/LF-Marketing-OS`).
-3. Click **Browse plugins** — the 31 plugins above will be listed.
+3. Click **Browse plugins** — the 30 plugins above will be listed.
 4. Select and **Install** whichever ones you need.
 
 This repo is public, so anyone can browse the code or add it as a marketplace without needing collaborator access or GitHub sign-in. To get updates later, come back to Customize → Plugins, find this marketplace, and click **Update**.

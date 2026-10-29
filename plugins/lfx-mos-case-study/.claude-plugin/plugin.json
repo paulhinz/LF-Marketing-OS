@@ -1,0 +1,18 @@
+{
+  "name": "lfx-mos-case-study",
+  "version": "0.1.1",
+  "description": "LFX Marketing OS Case Study Agent — converts any source content (YouTube video, interview transcript, meeting notes, recording, or raw text) into an on-brand Word document for an LF project or foundation. Defaults to a case study; can also produce blog posts, articles, or summaries.",
+  "author": {
+    "name": "Paul Hinz, Linux Foundation"
+  },
+  "keywords": [
+    "lfx",
+    "marketing",
+    "case-study",
+    "content",
+    "video",
+    "transcript",
+    "docx"
+  ],
+  "displayName": "LFX Marketing OS · Case Study"
+}

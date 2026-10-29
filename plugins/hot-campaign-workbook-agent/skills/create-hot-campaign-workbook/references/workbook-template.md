@@ -139,7 +139,7 @@ b. Satisfaction check, three scores and one line.
 
 ## 14. Next steps and handoff
 
-Numbered: return the workbook by [date] → `hot-campaign-plan-agent` builds the Segmentation List and the Hot Campaign Plan from the approved workbook → messages approved, clock starts → content creation agents and source execution (QA gate, one UTM per source) → push to the Hot Campaigns dashboard → daily pulse → close-out report (attribution, outcomes, spend vs. discretionary, learnings to next quarter's plan). Name the agents where they exist (`linkedin-post-agent`, `case-study-agent`, `social-listening-report`, `run-marketing-impact-report`) and "manual: [owner/tool]" where they do not.
+Numbered: return the workbook by [date] → `hot-campaign-plan-agent` builds the Segmentation List and the Hot Campaign Plan from the approved workbook → messages approved, clock starts → content creation agents and source execution (QA gate, one UTM per source) → push to the Hot Campaigns dashboard → daily pulse → close-out report (attribution, outcomes, spend vs. discretionary, learnings to next quarter's plan). Name the agents where they exist (`lfx-mos-linkedin-post`, `lfx-mos-case-study`, `lfx-mos-social-listening-report`, `run-marketing-impact-report`) and "manual: [owner/tool]" where they do not.
 
 ## Appendix
 

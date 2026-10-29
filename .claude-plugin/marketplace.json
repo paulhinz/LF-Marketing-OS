@@ -122,8 +122,8 @@
       ]
     },
     {
-      "name": "plain-writing",
-      "source": "./plugins/plain-writing",
+      "name": "lfx-mos-plain-writing",
+      "source": "./plugins/lfx-mos-plain-writing",
       "description": "Writes and revises prose in a plain style: simple words, complete sentences, no dashes, no jargon, no filler. Includes an optional HTML revision view that shows what changed and why.",
       "category": "Foundation Agents",
       "tags": [
@@ -209,8 +209,8 @@
       ]
     },
     {
-      "name": "linkedin-post-agent",
-      "source": "./plugins/linkedin-post-agent",
+      "name": "lfx-mos-linkedin-post",
+      "source": "./plugins/lfx-mos-linkedin-post",
       "description": "Drafts LinkedIn posts about Linux Foundation and open source ecosystem work in the user's authentic voice. Learns the user's profile and tone once, then turns any piece of content into ready-to-post options.",
       "category": "Creating Agents",
       "tags": [
@@ -220,8 +220,8 @@
       ]
     },
     {
-      "name": "member-pitch-deck",
-      "source": "./plugins/member-pitch-deck",
+      "name": "lfx-mos-member-pitch-deck",
+      "source": "./plugins/lfx-mos-member-pitch-deck",
       "description": "Member Pitch Deck (v2.0.0): generates the standard first-meeting membership overview deck (max 22 slides) for any Linux Foundation project or foundation — About the LF → Introducing the Foundation → How to join — in the LF membership-overview style (white canvas, project Brand Kit accent and fonts, LF co-brand lockup, card/stat/flow/tier layouts), grounded in the project's Brand Kit, Message Foundation, and ICP documents. Command: lf-member-pitch-deck.",
       "category": "Creating Agents",
       "tags": [
@@ -232,8 +232,8 @@
       ]
     },
     {
-      "name": "case-study-agent",
-      "source": "./plugins/case-study-agent",
+      "name": "lfx-mos-case-study",
+      "source": "./plugins/lfx-mos-case-study",
       "description": "Converts any source content — a YouTube video, interview transcript, meeting notes, recording, or raw text — into an on-brand Word document for an LF project or foundation. Loads the project's Brand Kit and Message Foundation (web-research fallback) and produces a first-draft case study by default, or a blog post, article, summary, or Q&A on request.",
       "category": "Creating Agents",
       "tags": [
@@ -245,8 +245,8 @@
       ]
     },
     {
-      "name": "member-benefits-briefing",
-      "source": "./plugins/member-benefits-briefing",
+      "name": "lfx-mos-member-benefits-briefing",
+      "source": "./plugins/lfx-mos-member-benefits-briefing",
       "description": "Builds the LF CEO-style member executive briefing deck — “[Company] and the Linux Foundation” — for any LF member: pulls the member's live LFX footprint (memberships, dues, code contributions, maintainers, event participation, training), merges it with the standing LF and open-source-AI narrative, and produces a PowerPoint styled to the LF executive briefing template.",
       "category": "Creating Agents",
       "tags": [
@@ -257,8 +257,8 @@
       ]
     },
     {
-      "name": "aeo-geo-analyzer",
-      "source": "./plugins/aeo-geo-analyzer",
+      "name": "lfx-mos-aeo-geo-analyzer",
+      "source": "./plugins/lfx-mos-aeo-geo-analyzer",
       "description": "Analyzes any website's AEO (Answer Engine Optimization) and GEO (Generative Engine Optimization) performance — AI crawler access, llms.txt, on-page answerability, structured data, and third-party citation authority — and produces a scored report with prioritized recommendations.",
       "category": "Monitoring Agents",
       "tags": [
@@ -269,8 +269,8 @@
       ]
     },
     {
-      "name": "social-listening-report",
-      "source": "./plugins/social-listening-report",
+      "name": "lfx-mos-social-listening-report",
+      "source": "./plugins/lfx-mos-social-listening-report",
       "description": "On-demand social listening reports from LFX Lens data: Voices That Matter (high-reach creators), Campaign Echo (launch/announcement pickup), and Ask-Anything briefings — with Google Doc output for historical tracking.",
       "category": "Monitoring Agents",
       "tags": [
@@ -279,8 +279,8 @@
       ]
     },
     {
-      "name": "social-sentiment-monitor",
-      "source": "./plugins/social-sentiment-monitor",
+      "name": "lfx-mos-social-sentiment-monitor",
+      "source": "./plugins/lfx-mos-social-sentiment-monitor",
       "description": "Scheduled social sentiment monitor for any LF project or foundation (v0.1.0): asks which project to watch, how often to run, how many days to look back and who should receive the brief; flags negative posts and unusually high engagement or reach from LFX Lens (Octolens data in Snowflake) plus live Octolens MCP counters where available; drafts replies with a recommended voice (foundation account, Executive Director, technical lead, ambassador); delivers an LF-template Word brief and Slack DMs to named recipients; and sets itself up as a recurring scheduled task.",
       "category": "Monitoring Agents",
       "tags": [
@@ -309,8 +309,8 @@
       ]
     },
     {
-      "name": "member-360",
-      "source": "./plugins/member-360",
+      "name": "lfx-mos-member-360",
+      "source": "./plugins/lfx-mos-member-360",
       "description": "Scores each LF project member's engagement across events, speaking, ambassadors, committees, content, and marketing activity; identifies gaps; and recommends the next best action for Marketing, Member Success, or Sales. Outputs a ranked spreadsheet built for quarterly business reviews.",
       "category": "Community Engagement Agents",
       "tags": [
@@ -369,17 +369,6 @@
         "github",
         "monitoring",
         "response"
-      ]
-    },
-    {
-      "name": "marketing-agent-class",
-      "source": "./plugins/marketing-agent-class",
-      "description": "Delivers The Linux Foundation's Claude Agent Workshop marketing training as personalized PowerPoint decks, one section at a time, with live student Q&A captured in a companion deck.",
-      "category": "Additional",
-      "tags": [
-        "training",
-        "course",
-        "pptx"
       ]
     },
     {

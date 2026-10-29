@@ -64,7 +64,7 @@ Use the same sub-structure for every campaign so readers can navigate by number.
 
 **4.n.5 Message sequence** (include whenever the campaign sends more than one message in any source, or coordinates messages across sources) — table: Seq # · Date or trigger (e.g., "T-42 days", "on registration", "48h before early-bird ends") · Medium: Source · Audience/segment · Message theme (one line) · Asset used · CTA · Owner · Status. Group the whole campaign's messages here, across all sources, in chronological order; the per-source tables refer to sequence numbers rather than repeating dates. Note where creation agents should draft the sequence as one job (e.g., "invite + 2 reminders drafted together for consistent thread").
 
-**4.n.6 Measurement and alerts** — table: Campaign KPI · Leading indicators per source (weekly) · Threshold and action (e.g., "registrations < 40% of target at week 6 → alert leader and ED; shift budget between this goal's campaigns, or ask ED/PL to trigger a HOT campaign from the discretionary reserve") · Dashboard/report (Campaign Performance dashboard filter: Campaign Type × Channel Type; `social-listening-report` echo report for launch dates) · Review dates.
+**4.n.6 Measurement and alerts** — table: Campaign KPI · Leading indicators per source (weekly) · Threshold and action (e.g., "registrations < 40% of target at week 6 → alert leader and ED; shift budget between this goal's campaigns, or ask ED/PL to trigger a HOT campaign from the discretionary reserve") · Dashboard/report (Campaign Performance dashboard filter: Campaign Type × Channel Type; `lfx-mos-social-listening-report` echo report for launch dates) · Review dates.
 
 ## 5. Asset production list (consolidated)
 

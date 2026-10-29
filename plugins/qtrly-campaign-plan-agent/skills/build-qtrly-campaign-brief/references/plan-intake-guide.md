@@ -57,6 +57,6 @@ Ask for these only if they are not already clear, and accept "unknown" without b
 - **Calendar constraints** — event dates, CFP and early-bird deadlines, release dates, holidays, other projects' major sends that compete for shared LF lists and banners.
 - **Prior campaign results** — from the Quarterly Marketing Review workbook (`qtrly-marketing-review-agent`) or the plan's Review slide; use them to prefer channels that converted last quarter.
 - **Existing assets** — prospectus, benefits guide, event social-card templates, recorded talks, last quarter's emails. Reuse where possible.
-- **Member/target lists** — `member-360` output (ranked member engagement) is a ready-made list for membership renewal and event-sponsorship targeting; `search_members` / `get_membership_key_contacts` from LFX give member key contacts.
+- **Member/target lists** — `lfx-mos-member-360` output (ranked member engagement) is a ready-made list for membership renewal and event-sponsorship targeting; `search_members` / `get_membership_key_contacts` from LFX give member key contacts.
 
 Record the source of every number and name in the brief's final "Sources and assumptions" section, using the same convention as the plan: `LFX`, `document (name)`, `HubSpot`, or `(manual — who)`.

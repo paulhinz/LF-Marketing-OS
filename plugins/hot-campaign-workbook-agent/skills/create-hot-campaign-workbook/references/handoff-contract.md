@@ -134,10 +134,10 @@ ed_satisfaction:
 
 agents_to_run_in_order:
   - "hot-campaign-plan-agent → Segmentation List + Hot Campaign Plan"
-  - "[creation agents, e.g. case-study-agent, linkedin-post-agent] → assets"
+  - "[creation agents, e.g. lfx-mos-case-study, lfx-mos-linkedin-post] → assets"
   - "[execution: HubSpot email/LP via connector, Sprout Social manual, paid manual] → tactics scheduled, QA gate"
   - "push to Hot Campaigns dashboard"
-  - "social-listening-report (campaign echo) + run-marketing-impact-report → daily pulse"
+  - "lfx-mos-social-listening-report (campaign echo) + run-marketing-impact-report → daily pulse"
   - "close-out report → learnings to next quarter's plan workbook"
 
 provenance:

@@ -41,7 +41,7 @@ Nothing is sent to any candidate. The ED makes the invitation.
 - **Octolens connector** (optional): 30-day social search on X and LinkedIn.
 - **Google Drive connector** (optional): Google Doc output.
 
-Works well alongside `committee-health-agent` (who is inactive) and `member-360` (who is engaged).
+Works well alongside `committee-health-agent` (who is inactive) and `lfx-mos-member-360` (who is engaged).
 
 ## Cadence
 

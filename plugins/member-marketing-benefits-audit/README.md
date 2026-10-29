@@ -8,4 +8,4 @@ Built for CNCF (cncf.io) by default; parameterised for other foundations with th
 
 **Output:** an .xlsx workbook with three reconciling tabs — Summary (content counts per member), Benefit Utilisation (allowance / used / remaining with evidence), and the complete Content Audit (every item with URL, date, and whether it consumed a benefit).
 
-Complements `member-360`: Member 360 scores overall engagement; this agent audits marketing-benefit consumption in depth. Requested by the CNCF team (Federica Nocerino) after a hackathon run of Member 360 showed marketing-benefit usage had to be assembled by hand.
+Complements `lfx-mos-member-360`: Member 360 scores overall engagement; this agent audits marketing-benefit consumption in depth. Requested by the CNCF team (Federica Nocerino) after a hackathon run of Member 360 showed marketing-benefit usage had to be assembled by hand.
