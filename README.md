@@ -20,24 +20,12 @@ This repo is the distribution point for that agent set: a git-based marketplace 
 ## 2. The 31 plugins in this marketplace
 
 **Foundation** — run in this order; each one's output is the next one's input
-- **NEW** `lfx-mos-brand-positioning` (v0.5.1) — (replaces:`messaging-document` `brand-guidelines` `icp-target-markets-agent`)  Positioning and Brand plugin with six stateless skills that replace plugins 1–3 below: `messaging-framework` (messaging framework, ICPs, message house and key numbers as JSON), `boilerplates` (one-liner, 25/50/100-word descriptions), `faq` (grouped Q&A from the sources, unanswered questions flagged), `brand-kit` (kit tokens from the project's real logos and site, plus the 16-page brand kit book as HTML and PDF), `presentation-template` (16:9 .pptx with 12 slide masters and a brand-reference appendix) and `one-pager` (letter-size HTML and PDF). Renderers check WCAG 2.2 AA contrast and produce tagged PDFs. Input object in, JSON or files out; no workflow state.
-- **NEW** `lfx-mos-website` (v0.1.0) — Builds a Linux Foundation project's website from its brand and positioning kit, checked for WCAG 2.2 AA, as a .zip with an offline copy editor. Use it beside `lfx-mos-brand-positioning`.
+- **NEW** `lfx-mos-brand-positioning` (v0.5.1, renamed from `lfx-position-and-brand`) — Six skills that draft and build a Linux Foundation project's brand and positioning kit, with renderers checked to WCAG 2.2 AA.  (replaces: `messaging-document` `brand-guidelines` `icp-target-markets-agent`)
+- **NEW** `lfx-mos-website` (v0.5.0) — Builds a Linux Foundation project's website from its brand and positioning kit, checked for WCAG 2.2 AA and agent-ready, with blog posts and events. After the build you choose where it lives: Marketing OS, LF GitHub, a separate GitHub, or WordPress. Use it beside `lfx-mos-brand-positioning`.
 1. REPLACED `messaging-document` (v1.0.0) — Builds a project's Messaging Document: vision, mission, positioning, pillars, message house, proof points, objections and copy primitives, as a concise LF slide deck. Command `build-lf-messaging-doc`.
 2. REPLACED `brand-guidelines` (v1.1.0) — Builds a project's Brand Guidelines from the Messaging Document: logo rules, palette, typography, iconography, voice and tone, as an image-led LF slide deck plus `brand.json`. Command `build-lf-brand-guidelines`.
 3. REPLACED `icp-target-markets-agent` (v0.4.0) — Builds a project's Target Markets and ICP document: firmographics, ICPs, 4–9 personas on one fixed template, Fit × Warmth rules, in 8–10 pages.
 4. `audience-lists-agent` (v0.1.0) — Builds a project's Audience Lists document: a tiered, prioritized earned media target list with strategy and messages per outlet, the top 5–15 social media voices already talking about the project (Octolens, LFX Lens), and up to 20 existing HubSpot/Segment/LFX audiences from other foundations with overlapping ICPs.
-
-To run `lfx-mos-brand-positioning`
-
-Option 1. Build the full brand and positioning kit for [Project name] ([domain]), using all six skills in the `lfx-mos-brand-positioning` plugin, in this order: messaging-framework, boilerplates, faq, brand-kit, one-pager, presentation-template. Sources: [website], [press release link or attached file], [deck or integrated marketing plan, if any]. Logo files: [attached SVGs or zip]. Notes: [audience, words to avoid]. Save each skill's JSON output and every file it produces to one folder, then list what was created, which sources couldn't be read and which gaps need an answer from the team.
-
-Option 2. One skill at a time, in this order
-1. Messaging framework - Draft the messaging framework for [Project] ([domain]) from [sources]. Save the output as messaging-framework.json.
-2. Boilerplates - Write the boilerplates for [Project] from the messaging framework and sources. Save as boilerplates.json.
-3. FAQ - Write the FAQ for [Project] from the sources and the messaging framework. Save as faq.json.
-4. Brand kit - Draft the brand kit for [Project] from the attached logo files and [domain]/brand, save as brand-kit.json, then build the brand kit book (HTML and PDF).
-5. One pager - Build the one pager for [Project] from the outputs folder.
-6. Presentation template - Build the presentation template for [Project] from the outputs folder.
 
 **Foundation (supporting)**
 - `lfx-marketing-os-qa` — Fact-checks and reviews foundation documents before they go out.
@@ -81,6 +69,8 @@ Option 2. One skill at a time, in this order
 ## 2a. Latest changes
 
 **2026-10-29 — lfx-mos-brand-positioning 0.5.1.** Brand kit book fixes from the AAIF run: symbol pages show the symbol alone (found automatically in the lockup when no symbol crop is supplied, instead of stretching the full logo), the stacked lockup is built from symbol and wordmark, logos never overflow their tiles, the cover subtext is the same standard line for every project, spacing under the primary lockup is fixed, and all icons use one colour.
+
+**2026-10-29 — lfx-mos-website 0.5.0 (from 0.1.0).** After the build and WCAG audit you choose where the site lives: Maintain in Marketing OS (locked editor for copy, posts and events), Publish on LF GitHub (edited in the repo; posts and events by pull request), Export for a separate GitHub (zip with a GitHub Pages workflow), or Host on WordPress (an Asana request to the Web team). `finalize.js` packages each option; options 1 and 2 hand a launch request to the publish skill, which is specified but not built yet. Every page carries LF's required scripts (Transcend first in the head; cookie settings, LFX Segment, ZoomInfo and HubSpot at the end of the body). Sites are agent-ready: a Markdown twin of every page, Content Signals, and an edge Worker for Link headers and Markdown negotiation (86% on isitagentready.com's content profile, the same as akrites.org). Blog posts and events get their own pages, written in a rich-text editor with images (alt text required), inline code and code blocks. The editor now uses the Marketing OS look, and the new `references/ui-flow.md` specifies the five website screens in Marketing OS, from the reviewed Website Skill Prototype.
 
 **2026-10-16 — lfx-mos-brand-positioning 0.5.0 (renamed from lfx-position-and-brand).** The plugin now uses its source name, matching what `lfx-mos-website` already references; reinstall it under the new name. 0.5.0 brings the renderers to WCAG 2.2 AA: accessible working colors, logo recoloring on dark and light grounds, a rendered contrast check that corrects and reports, tagged PDFs and logo alt text, and a fix for grey-on-grey logos when no reversed logo is supplied. 0.4.1 lets the renderers take a folder of skill outputs (`scripts/assemble.js` combines the JSON files and logo SVGs) and name the skill to run when something is missing.
 

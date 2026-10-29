@@ -14,9 +14,15 @@ Six skills, one per brand & positioning artifact.
 All six are stateless: an input object in, JSON or files out. They hold no workflow: no queue, storage, review, sign-off, version history, activity trail, feeds, visibility or live LFX data. Those belong to the host app. See `DEVELOPER.md`.
 
 ## Ask Claude
-- "Draft the messaging framework for Valkey."
-- "Write boilerplates for OpenSSF from its approved framework."
-- "Build the presentation template and one pager for Akrites."
+Option 1. Build the full brand and positioning kit for [Project name] ([domain]), using all six skills in the `lfx-mos-brand-positioning` plugin, in this order: messaging-framework, boilerplates, faq, brand-kit, one-pager, presentation-template. Sources: [website], [press release link or attached file], [deck or integrated marketing plan, if any]. Logo files: [attached SVGs or zip]. Notes: [audience, words to avoid]. Save each skill's JSON output and every file it produces to one folder, then list what was created, which sources couldn't be read and which gaps need an answer from the team.
+
+Option 2. One skill at a time, in this order
+1. Messaging framework - Draft the messaging framework for [Project] ([domain]) from [sources]. Save the output as messaging-framework.json.
+2. Boilerplates - Write the boilerplates for [Project] from the messaging framework and sources. Save as boilerplates.json.
+3. FAQ - Write the FAQ for [Project] from the sources and the messaging framework. Save as faq.json.
+4. Brand kit - Draft the brand kit for [Project] from the attached logo files and [domain]/brand, save as brand-kit.json, then build the brand kit book (HTML and PDF).
+5. One pager - Build the one pager for [Project] from the outputs folder.
+6. Presentation template - Build the presentation template for [Project] from the outputs folder.
 
 ## Changes
 - **0.5.1** Brand kit book: symbol pages show the symbol alone (found automatically in the lockup when no crop is supplied; works when the brand dark is pure black); stacked lockup built from symbol and wordmark; logos never overflow their tiles; fixed cover subtext; one-colour icons; spacing under the primary lockup. DEVELOPER.md: Marketing OS supplies the project context, so the plugin's UI is one project's Brand & Positioning workspace (no project list or portfolio view).

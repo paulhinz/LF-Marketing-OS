@@ -1,10 +1,11 @@
 #!/usr/bin/env node
-/* Build the project website as a .zip.
-   usage: node build.js <input.json | outputs folder | site.json> [out_dir] [--name "Project" --domain project.org] [--pretty] [--no-audit] [--unzipped]
+/* Build and audit the project website, staged for review (no zip yet: the hosting choice comes next, see finalize.js).
+   usage: node build.js <input.json | outputs folder | site.json> [out_dir] [--name "Project" --domain project.org] [--pretty] [--no-audit] [--zip]
    - input.json: the renderer input (project, content {mh, mf, icp, nums, bp, faq, kit}, logos), as in references/input.md
    - outputs folder: the brand-positioning skills' JSON outputs and logo SVGs (assembled like the other renderers)
    - site.json: a site.json from an earlier zip (after copy edits in edit.html), to rebuild and re-audit it
-   Writes <slug>-website.zip (and <slug>-a11y-report.json) to out_dir and prints a JSON summary. */
+   Writes the staged site to out_dir/<slug>-website/ (open index.html to preview, edit.html to edit), <slug>-a11y-report.json,
+   and with --zip also <slug>-website.zip (the old one-step export). Prints a JSON summary. */
 const fs = require("fs"), path = require("path"), os = require("os");
 const S = require("./sitegen");
 const { loadInput, parseFlags, missingFor } = require("./assemble");
@@ -18,8 +19,8 @@ function writeTree(root, files) {
 }
 
 (async () => {
-  const argv = process.argv.slice(2), pretty = argv.includes("--pretty"), noAudit = argv.includes("--no-audit"), unzipped = argv.includes("--unzipped");
-  const { opts, rest } = parseFlags(argv.filter(a => !["--pretty", "--no-audit", "--unzipped"].includes(a))), [inp, out = "."] = rest;
+  const argv = process.argv.slice(2), pretty = argv.includes("--pretty"), noAudit = argv.includes("--no-audit"), wantZip = argv.includes("--zip");
+  const { opts, rest } = parseFlags(argv.filter(a => !["--pretty", "--no-audit", "--unzipped", "--zip"].includes(a))), [inp, out = "."] = rest;
   if (!inp) throw new Error('usage: node build.js <input.json | outputs folder | site.json> [out_dir] [--name "Project" --domain project.org] [--pretty] [--no-audit]');
 
   /* 1. site.json: generated from the skill outputs, or an edited one passed back in */
@@ -40,23 +41,25 @@ function writeTree(root, files) {
   let files = S.files(site, { engine: ENGINE, editor: EDITOR });
   writeTree(root, files);
   let a = { ran: false, note: "audit skipped (--no-audit)" };
-  if (!noAudit) a = await audit(root, S.PAGES.map(p => (p.path === "/" ? "" : p.path.slice(1)) + "index.html").concat(["edit.html"]));
+  if (!noAudit) a = await audit(root, Object.keys(files).filter(f => /(^|\/)index\.html$/.test(f)).concat(["edit.html"]));   // every page, including post and event pages
 
   /* 3. record the audit in site.json / ACCESSIBILITY.md and package */
   site.meta.audit = a.ran ? { at: new Date().toISOString().slice(0, 16).replace("T", " ") + " UTC", tool: a.tool, viewports: a.viewports, pages: S.PAGES.length, states: a.states,
     violations: a.violations.reduce((s, v) => s + v.where.reduce((t, w) => t + w.count, 0), 0), incomplete: a.incomplete.length, textChecked: a.textChecked, contrastFails: a.contrastFails.length, reflow: a.reflow.length, passed: a.passed, edited: false } : null;
+  if (site.meta.audit) site.meta.audit.pages = Object.keys(files).filter(f => /(^|\/)index\.html$/.test(f)).length;
   if (rebuilt) site.meta.edited_at = site.meta.edited_at || null;
   files = S.files(site, { engine: ENGINE, editor: EDITOR });
   fs.mkdirSync(out, { recursive: true });
   const zipPath = path.join(out, slug + ".zip"), reportPath = path.join(out, slug.replace(/-website$/, "") + "-a11y-report.json");
-  fs.writeFileSync(zipPath, S.zip(files, slug + "/"));
+  if (wantZip) fs.writeFileSync(zipPath, S.zip(files, slug + "/"));
   fs.writeFileSync(reportPath, JSON.stringify(a, null, 1));
-  if (unzipped) writeTree(path.join(out, slug), files);
+  const staged = path.join(out, slug); fs.rmSync(staged, { recursive: true, force: true }); writeTree(staged, files);
   fs.rmSync(tmp, { recursive: true, force: true });
 
   const T = S.tokens(site.brand), ck = S.check(site);
   console.log(JSON.stringify({
-    zip: zipPath, report: reportPath, files: Object.keys(files).length, source: rebuilt ? "site.json (rebuilt)" : "skill outputs", from: site.meta.from,
+    staged, preview: path.join(staged, "index.html"), editor: path.join(staged, "edit.html"), zip: wantZip ? zipPath : null, report: reportPath,
+    next: "Ask where the site should live, then run: node finalize.js " + staged + " <out_dir> --hosting managed|lf-github|export|wordpress", files: Object.keys(files).length, source: rebuilt ? "site.json (rebuilt)" : "skill outputs", from: site.meta.from,
     logos: !!site.brand.logo_light, colours: T.notes, colourPairsFailing: T.pairs.filter(p => !p.pass).map(p => p.what),
     a11y: a.ran ? { passed: a.passed, violations: a.violations.map(v => ({ id: v.id, impact: v.impact, help: v.help, where: v.where.map(w => `${w.page} @${w.viewport} (${w.state}) ×${w.count}`) })),
       contrastFails: a.contrastFails.slice(0, 20), reflow: a.reflow, textChecked: a.textChecked, incomplete: a.incomplete.map(v => v.id) } : { ran: false, note: a.note },

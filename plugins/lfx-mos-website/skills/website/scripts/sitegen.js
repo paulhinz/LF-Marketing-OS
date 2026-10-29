@@ -1,6 +1,6 @@
 /* sitegen.js — the lfx-mos-website engine.
    Runs in Node (build.js) and in the browser (edit.html embeds this file's source, so an edited site can be re-zipped offline).
-   Ported from the Marketing OS Kit website mockup (SiteGen: same 11 pages, LF consent sign-up, cookie choice, JSON-LD, llms.txt),
+   Ported from the Marketing OS Kit website mockup (SiteGen: same 11 pages, LF consent sign-up, JSON-LD, llms.txt) plus LF's required Transcend and Segment scripts,
    with WCAG 2.2 AA built in: every colour pair is derived from the brand kit and checked here, so copy edits can't break contrast.
    Keep this file free of the literal sequences "</scr" + "ipt" and "<!" + "--": it is embedded inside a script tag. */
 (function (root, factory) {
@@ -8,7 +8,7 @@
   else root.SiteGen = factory();
 })(typeof self !== "undefined" ? self : this, function () {
   "use strict";
-  const VERSION = "0.1.0";
+  const VERSION = "0.5.0";
 
   /* ---------------------------------------------------------------- pages */
   const PAGES = [
@@ -195,6 +195,7 @@
         campaign: { seo_description: "", eyebrow: "[Campaign]", headline: "[Campaign headline]", sub: "[One sentence on why this matters now.]", body: "[Two to three short paragraphs.]", cta: "[Call to action]", cta_url: "" },
       },
       voice: { attrs: [], say: [], avoid: [] },
+      launch: { hosting: null, chosen_at: null },
       meta: { generator: "lfx-mos-website " + VERSION, generated_at: new Date().toISOString(), from: [], audit: null, edited_at: null },
     };
   }
@@ -330,6 +331,11 @@ section.band{padding:84px 0}section.band.mist{background:var(--mist)}section.ban
 .list{display:grid;gap:0;list-style:none;padding:0;margin:0}.row{display:flex;gap:18px;align-items:center;justify-content:space-between;border-bottom:1px solid var(--hair);padding:18px 0;flex-wrap:wrap}
 .row h3{margin:0;font-size:1.1rem}.meta{font-size:15px;color:var(--muted)}
 .tier ul{padding-left:20px;margin:12px 0 0}.prose{max-width:72ch}.prose h2{margin-top:1.4em}.prose h2:first-child{margin-top:0}
+.post img{max-width:100%;height:auto;border-radius:10px;display:block;margin:8px 0 20px}.post .back{margin-top:36px}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.9em;background:var(--mist);color:var(--heading);padding:.12em .38em;border-radius:5px;border:1px solid var(--hair)}
+.code{margin:0 0 1.2em;border:1px solid var(--hair);border-radius:10px;background:var(--mist);overflow-x:auto;max-width:100%}.code pre{margin:0;padding:14px 16px}.code code{background:none;border:0;padding:0;font-size:14.5px;line-height:1.55;color:var(--heading);white-space:pre}
+blockquote{margin:0 0 1.2em;padding:4px 0 4px 18px;border-left:4px solid var(--spark);color:var(--text)}blockquote p:last-child{margin-bottom:0}
+.prose ul,.prose ol{padding-left:22px;margin:0 0 1em}.prose li+li{margin-top:4px}.prose h3{margin-top:1.3em}
 .faq details{border-bottom:1px solid var(--hair);padding:6px 0}.faq summary{cursor:pointer;font-weight:600;color:var(--heading);padding:10px 0;min-height:44px}.faq details p{margin:0 0 12px;max-width:72ch}
 .signup{background:var(--mist);border-top:1px solid var(--hair);padding:60px 0}.signup .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;align-items:start}.signup h2{margin:0 0 6px}
 .signup form{display:flex;flex-direction:column;gap:12px}.signup label{font-weight:600;color:var(--heading);font-size:15px}.row2{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
@@ -354,6 +360,149 @@ footer .legal{border-top:1px solid rgba(255,255,255,.2);margin-top:36px;padding-
 `;
   }
 
+  /* ---------------------------------------------------------------- required LF scripts (fixed, pre-approved; on every page, never editable) */
+  /* Transcend consent manager: the first element in <head>, above everything else */
+  const LF_TRANSCEND = `<script
+  src="https://transcend-cdn.com/cm/f484e2d0-ad2e-43a9-9d64-d07f6fa20966/airgap.js"
+  data-cfasync="false"
+  data-prompt="auto"
+><\/script>`;
+  /* end of <body>: any link whose text is "Cookie settings" opens Transcend's consent manager */
+  const LF_COOKIE_SETTINGS = `<script>
+document.addEventListener('click', function (e) {
+  var link = e.target.closest('a');
+
+  if (
+    link &&
+    link.textContent.trim().toLowerCase() === 'cookie settings'
+  ) {
+    e.preventDefault();
+
+    if (window.transcend && typeof transcend.showConsentManager === 'function') {
+      transcend.showConsentManager();
+    }
+  }
+});
+<\/script>`;
+  /* end of <body>: LFX Segment analytics (default configuration, no write key) */
+  const LF_SEGMENT = "<" + "!-- LFX Segments Analytics --" + ">" + `
+<script src="https://lfx-segment.platform.linuxfoundation.org/latest/lfx-segment-analytics.min.js"><\/script>
+<script>
+  // Initialize with default configuration (no custom write key needed)
+  LfxAnalytics.LfxSegmentsAnalytics.getInstance().init();
+<\/script>`;
+
+  /* end of <body>: ZoomInfo tag (sets ZIProjectKey, loads https://js.zi-scripts.com/zi-tag.js on window load) */
+  const LF_ZOOMINFO = `<script>
+window[(function(_gCK,_oT){var _5f='';for(var _Dr=0;_Dr<_gCK.length;_Dr++){_Ey!=_Dr;var _Ey=_gCK[_Dr].charCodeAt();_Ey-=_oT;_Ey+=61;_Ey%=94;_oT>7;_5f==_5f;_Ey+=33;_5f+=String.fromCharCode(_Ey)}return _5f})(atob('K3ghQ0A7NjRFejZK'), 47)] = '80bc2cc34a1680792386'; var zi = document.createElement('script'); (zi.type = 'text/javascript'), (zi.async = true), (zi.src = (function(_9lG,_cz){var _8U='';for(var _K5=0;_K5<_9lG.length;_K5++){_8U==_8U;_rF!=_K5;var _rF=_9lG[_K5].charCodeAt();_cz>6;_rF-=_cz;_rF+=61;_rF%=94;_rF+=33;_8U+=String.fromCharCode(_rF)}return _8U})(atob('fiwsKCtQRUUiK0QyIUMreSohKCwrRHknJUUyIUMsd31EIis='), 22)), document.readyState === 'complete'?document.body.appendChild(zi): window.addEventListener('load', function(){ document.body.appendChild(zi) });
+<\/script>`;
+  /* end of <body>: HubSpot embed (portal 8112310) */
+  const LF_HUBSPOT = "<" + "!-- Start of HubSpot Embed Code --" + ">" + `
+<script type="text/javascript" id="hs-script-loader" async defer src="https://js.hs-scripts.com/8112310.js"><\/script>
+` + "<" + "!-- End of HubSpot Embed Code --" + ">";
+  const LF_BODY_END = () => [LF_COOKIE_SETTINGS, LF_SEGMENT, LF_ZOOMINFO, LF_HUBSPOT].join("\n");
+
+  /* ---------------------------------------------------------------- where the site lives (chosen after the build) */
+  const HOSTING = {
+    managed: { label: "Maintain in Marketing OS", short: "Marketing OS", text: "LF publishes and hosts the site. Edits happen only in the Marketing OS editor: existing fields, plus new blog posts and events. Other structure, the design and the domain are locked." },
+    "lf-github": { label: "Publish on LF GitHub", short: "LF GitHub", text: "The publish skill creates the repo in the LF GitHub org, deploys it and sets up DNS. The site is edited only in the repo; posts and events can also come from Marketing OS." },
+    export: { label: "Export for a separate GitHub", short: "Export", text: "A .zip with a GitHub Pages workflow, for the project to publish and maintain in its own GitHub org." },
+    wordpress: { label: "Host on WordPress", short: "WordPress", text: "An Asana request to the Web Engineering team, with the site package attached, to build it in WordPress." },
+  };
+  const PAGES_WORKFLOW = `name: Deploy to GitHub Pages
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: \${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Leave the editor and source files out of the published site
+        run: rm -rf edit.html .github agent-edge
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+      - id: deployment
+        uses: actions/deploy-pages@v4
+`;
+
+  /* ---------------------------------------------------------------- agent readiness at the edge (isitagentready.com, content profile)
+     GitHub Pages can't send custom headers or negotiate content, so these two checks need a layer in front of it:
+     the Cloudflare Worker below (any plan), or a host that reads _headers (Cloudflare Pages, Netlify) for the Link header. */
+  const HEADERS_FILE = `/
+  Link: </index.md>; rel="alternate"; type="text/markdown"
+  Link: </llms.txt>; rel="describedby"; type="text/plain"
+  Link: </sitemap.xml>; rel="sitemap"; type="application/xml"
+/*/
+  Link: <index.md>; rel="alternate"; type="text/markdown"
+/*.md
+  Content-Type: text/markdown; charset=utf-8
+`;
+  const EDGE_WORKER = `/* Cloudflare Worker for an LF project site on GitHub Pages: agent-ready Link headers and Markdown for agents.
+   Route it on the site's zone (e.g. example.org/*) with the DNS record proxied. It changes nothing for browsers.
+   - Every HTML page gets Link headers: its Markdown twin (rel="alternate"), /llms.txt (rel="describedby") and /sitemap.xml.
+   - A request with "Accept: text/markdown" gets the page's index.md as text/markdown (the site ships one per page).
+   Generated by lfx-mos-website. */
+export default {
+  async fetch(request) {
+    const url = new URL(request.url), accept = request.headers.get("Accept") || "";
+    const isPage = url.pathname.endsWith("/") || url.pathname.endsWith(".html");
+    const mdPath = (url.pathname.endsWith("/") ? url.pathname : url.pathname.replace(/[^/]*$/, "")) + "index.md";
+    if (isPage && /\\btext\\/markdown\\b/i.test(accept) && (request.method === "GET" || request.method === "HEAD")) {
+      const r = await fetch(new URL(mdPath, url).toString(), { headers: { Accept: "text/markdown, text/plain;q=0.9" } });
+      if (r.ok) {
+        const h = new Headers(r.headers);
+        h.set("Content-Type", "text/markdown; charset=utf-8");
+        h.set("Vary", "Accept");
+        h.set("Content-Signal", "ai-train=yes, search=yes, ai-input=yes");
+        h.append("Link", "<" + url.pathname + ">; rel=\\"canonical\\"");
+        return new Response(request.method === "HEAD" ? null : r.body, { status: 200, headers: h });
+      }
+    }
+    const res = await fetch(request);
+    const type = res.headers.get("Content-Type") || "";
+    if (url.pathname.endsWith(".md")) { const h = new Headers(res.headers); h.set("Content-Type", "text/markdown; charset=utf-8"); return new Response(res.body, { status: res.status, headers: h }); }
+    if (!/text\\/html/i.test(type)) return res;
+    const h = new Headers(res.headers);
+    h.append("Link", "<" + mdPath + ">; rel=\\"alternate\\"; type=\\"text/markdown\\"");
+    h.append("Link", "</llms.txt>; rel=\\"describedby\\"; type=\\"text/plain\\"");
+    h.append("Link", "</sitemap.xml>; rel=\\"sitemap\\"; type=\\"application/xml\\"");
+    h.append("Vary", "Accept");
+    return new Response(res.body, { status: res.status, statusText: res.statusText, headers: h });
+  },
+};
+`;
+  const EDGE_README = `# Agent-ready edge (isitagentready.com, content profile)
+
+The site already passes four of the seven content-profile checks on any host: robots.txt, sitemap, AI bot rules (wildcard) and Content Signals in robots.txt. Two more need HTTP behaviour GitHub Pages can't provide:
+
+| Check | Needs | Provided by |
+|---|---|---|
+| Link headers | A \`Link\` response header with an agent-useful relation (\`alternate\`, \`describedby\`) | \`worker.js\`, or \`_headers\` on Cloudflare Pages / Netlify |
+| Markdown negotiation | \`text/markdown\` returned for \`Accept: text/markdown\` | \`worker.js\` (serves each page's \`index.md\`), or Cloudflare's Markdown for Agents setting (Pro plan and above) |
+
+With both, the site scores 6 of 7 (86%). The seventh, DNS-AID, needs DNSSEC-signed SVCB records and isn't required for the target.
+
+## Set up on Cloudflare (in front of GitHub Pages)
+1. Proxy the site's DNS record through Cloudflare (orange cloud) once GitHub Pages has issued its certificate; SSL mode Full (strict).
+2. Create a Worker from \`worker.js\` and add a route for \`<domain>/*\` (and \`www.<domain>/*\`).
+3. Check: \`curl -sI https://<domain>/ | grep -i ^link\` and \`curl -s -H "Accept: text/markdown" -D - https://<domain>/ -o /dev/null | grep -i content-type\`.
+4. Scan: https://isitagentready.com/<domain>?profile=content
+`;
+
   /* ---------------------------------------------------------------- behaviour (progressive: the site works without it) */
   const SITE_JS = `(function(){"use strict";var d=document,h=d.documentElement;h.className=h.className.replace(/\\bno-js\\b/,"js");
 function store(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}}
@@ -365,22 +514,21 @@ d.addEventListener("click",function(e){if(!e.target.closest||!e.target.closest("
 d.addEventListener("focusin",function(e){subs.forEach(function(b){var li=b.parentNode;if(li&&!li.contains(e.target))b.setAttribute("aria-expanded","false")})});
 d.addEventListener("keydown",function(e){if(e.key!=="Escape")return;var o=subs.filter(function(b){return b.getAttribute("aria-expanded")==="true"})[0];
 if(o){closeSubs();o.focus()}else if(t&&t.getAttribute("aria-expanded")==="true"){setMenu(false);t.focus()}});
-var c=d.getElementById("cookie");if(c){var k="lf-cookie-choice";if(!store(k))c.hidden=false;c.addEventListener("click",function(e){var b=e.target.closest&&e.target.closest("[data-consent]");if(!b)return;
-store(k,b.getAttribute("data-consent"));c.hidden=true;var m=d.getElementById("main");if(m){m.setAttribute("tabindex","-1");m.focus()}})}
 [].forEach.call(d.querySelectorAll("form.lf-signup"),function(f){f.addEventListener("submit",function(e){var s=f.querySelector(".form-status");
 if(!f.getAttribute("data-endpoint")){e.preventDefault();if(s)s.textContent="Sign-up isn't connected yet: wire this form to the LFX form endpoint before launch."}})});
-d.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[data-page]");if(a&&window.parent!==window){e.preventDefault();window.parent.postMessage({lfxPage:a.getAttribute("data-page")},"*")}});
+d.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[data-page],a[data-detail]");if(a&&window.parent!==window){e.preventDefault();window.parent.postMessage(a.hasAttribute("data-detail")?{lfxDetail:a.getAttribute("data-detail")}:{lfxPage:a.getAttribute("data-page")},"*")}});
 })();`;
 
   /* ---------------------------------------------------------------- page parts */
   function ctx(site, key, o) {
-    const depth = byKey(key).path.split("/").filter(Boolean).length, up = o.pretty ? "/" : "../".repeat(depth);
+    const depth = (o.path || byKey(key).path).split("/").filter(Boolean).length, up = o.pretty ? "/" : "../".repeat(depth);
     const L = o.preview ? logoFiles(site) : null;
     return {
       site, key, o, up,
       href: to => { const p = byKey(to).path; if (o.preview) return `href="#" data-page="${to}"`; if (o.pretty) return `href="${p}"`; return `href="${up}${p === "/" ? "" : p.slice(1)}index.html"`; },
       asset: name => o.preview ? (name === "site.css" ? "" : (L[name] ? dataUri(L[name]) : "")) : up + "assets/" + name,
       url: u => { u = safeUrl(u); const pg = PAGES.find(p => p.path === u); return pg ? ctxHref(pg.key) : `href="${esc(u)}"`; },
+      detailHref: d => o.preview ? `href="#" data-detail="${d.kind}:${d.i}"` : o.pretty ? `href="${d.path}"` : `href="${up}${d.path.slice(1)}index.html"`,
     };
     function ctxHref(to) { const p = byKey(to).path; if (o.preview) return `href="#" data-page="${to}"`; if (o.pretty) return `href="${p}"`; return `href="${up}${p === "/" ? "" : p.slice(1)}index.html"`; }
   }
@@ -392,18 +540,16 @@ d.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest(
   function header(C) {
     const { site, key } = C, cur = byKey(key);
     const item = n => {
-      const p = byKey(n.key), here = n.key === key, inSec = n.children && (n.children.includes(key) || here);
+      const p = byKey(n.key), here = n.key === key && !C.o.path, inSec = n.children && (n.children.includes(key) || here);
       if (n.children) {
         const kids = n.children.map(c => `<li><a ${C.href(c)}${c === key ? ' aria-current="page"' : ""}>${esc(byKey(c).title)}</a></li>`).join("");
         return `<li class="has-sub${inSec ? " in-section" : ""}"><a ${C.href(n.key)}${here ? ' aria-current="page"' : ""}>${esc(p.title)}</a><button type="button" class="sub-toggle" aria-expanded="false" aria-controls="sub-${n.key}"><span class="sr-only">${esc(p.title)} pages</span></button><ul class="sub" id="sub-${n.key}">${kids}</ul></li>`;
       }
-      return `<li><a ${C.href(n.key)}${here ? ' aria-current="page"' : ""}>${esc(p.title)}</a></li>`;
+      return `<li${n.key === key && C.o.path ? ' class="in-section"' : ""}><a ${C.href(n.key)}${here ? ' aria-current="page"' : ""}>${esc(p.title)}</a></li>`;
     };
     const a = site.announcement || {};
     const ann = has(a.text) ? `<div class="announce">${esc(a.text)}${has(a.link) ? ` <a href="${esc(safeUrl(a.link))}">Learn more<span class="sr-only">: ${esc(a.text)}</span></a>` : ""}</div>` : "";
-    const cookie = `<section class="cookie" id="cookie" aria-label="Cookie choices"${C.o.preview ? "" : " hidden"}><div class="wrap"><p>We use cookies to understand how the site is used. Analytics stay off until you choose. <a href="https://www.linuxfoundation.org/legal/privacy-policy">Privacy policy</a></p>
-<div class="cookie-actions"><button type="button" class="btn alt" data-consent="reject">Reject all</button><button type="button" class="btn" data-consent="accept">Accept all</button></div></div></section>`;
-    return `<a class="skip" href="#main">Skip to content</a>${cookie}
+    return `<a class="skip" href="#main">Skip to content</a>
 <div class="lfbar"><div class="wrap"><a href="https://www.linuxfoundation.org/projects">The Linux Foundation</a> Projects</div></div>${ann}
 <header class="site"><div class="wrap"><a class="brand" ${C.href("home")}>${logoTag(C, false, site.project.name + " home")}</a>
 <nav class="main" aria-label="Main"><button type="button" class="menu-toggle" aria-expanded="false" aria-controls="menu"><span class="bars" aria-hidden="true"></span>Menu</button>
@@ -425,7 +571,7 @@ d.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest(
     return `<footer class="site"><div class="wrap"><div class="cols"><div><a class="brand" ${C.href("home")}>${logoTag(C, true, site.project.name + " home")}</a>${has(site.project.tagline) ? `<p class="tag">${esc(site.project.tagline)}</p>` : ""}</div>
 <div><h2>About</h2><ul>${lst(["about"].concat(ABOUT_KIDS))}</ul></div><div><h2>Community</h2><ul>${lst(["get_involved", "events", "blog", "join"])}</ul></div>
 <div><h2>Connect</h2><ul>${soc || `<li><a href="#signup">Newsletter</a></li>`}</ul></div></div>
-<div class="legal"><p>${esc(site.project.legal)}</p><p><a href="https://www.linuxfoundation.org/legal/trademark-usage">Trademarks</a> · <a href="https://www.linuxfoundation.org/legal/privacy-policy">Privacy</a> · <a href="https://www.linuxfoundation.org/legal/terms">Terms</a></p></div></div></footer>`;
+<div class="legal"><p>${esc(site.project.legal)}</p><p><a href="https://www.linuxfoundation.org/legal/trademark-usage">Trademarks</a> · <a href="https://www.linuxfoundation.org/legal/privacy-policy">Privacy</a> · <a href="https://www.linuxfoundation.org/legal/terms">Terms</a> · <a href="#cookie-settings">Cookie settings</a></p></div></div></footer>`;
   }
   function pageHead(C) {
     const { site, key } = C, p = byKey(key), d = site.pages[key] || {};
@@ -440,8 +586,9 @@ d.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest(
       const pillars = (h.pillars || []).filter(x => has(x.title)).map((x, i) => `<li class="card pillar"><p class="num" aria-hidden="true">0${i + 1}</p><h3>${esc(x.title)}</h3>${has(x.text) ? `<p>${esc(x.text)}</p>` : ""}${(x.points || []).filter(has).length ? `<ul class="points">${x.points.filter(has).map(q => `<li>${esc(q)}</li>`).join("")}</ul>` : ""}</li>`).join("");
       const stats = (h.stats || []).filter(s => has(s.value)).map(s => `<li class="stat"><b>${esc(s.value)}</b><span>${esc(s.label)}</span></li>`).join("");
       const mem = (C.site.pages.members.tiers || []).flatMap(t => t.members || []).filter(has).slice(0, 10).map(m => `<li class="logo-slot">${esc(m)}</li>`).join("");
-      const ev = (C.site.pages.events.items || []).filter(e => has(e.name)).slice(0, 3).map(e => `<li class="row"><h3>${esc(e.name)}</h3><span class="meta">${esc([e.date, e.location].filter(has).join(" · "))}</span></li>`).join("");
-      const posts = (C.site.pages.blog.posts || []).filter(p => has(p.title)).slice(0, 2).map(p => `<li class="card" style="margin-bottom:12px"><p class="meta">${esc(p.date)}</p><h3>${esc(p.title)}</h3>${has(p.excerpt) ? `<p>${esc(p.excerpt)}</p>` : ""}</li>`).join("");
+      const evD = byIndex(details(C.site, "event")), poD = byIndex(details(C.site, "post"));
+      const ev = (C.site.pages.events.items || []).map((e, i) => ({ e, i })).filter(r => has(r.e.name)).slice(0, 3).map(({ e, i }) => `<li class="row"><h3>${evD[i] ? `<a ${C.detailHref(evD[i])}>${esc(e.name)}</a>` : esc(e.name)}</h3><span class="meta">${esc([e.date, e.location].filter(has).join(" · "))}</span></li>`).join("");
+      const posts = (C.site.pages.blog.posts || []).map((p, i) => ({ p, i })).filter(r => has(r.p.title)).slice(0, 2).map(({ p, i }) => `<li class="card" style="margin-bottom:12px"><p class="meta">${esc(p.date)}</p><h3>${poD[i] ? `<a ${C.detailHref(poD[i])}>${esc(p.title)}</a>` : esc(p.title)}</h3>${has(p.excerpt) ? `<p>${esc(p.excerpt)}</p>` : ""}</li>`).join("");
       const faq = (h.faq || []).filter(f => has(f.q) && has(f.a)).map(f => `<details><summary>${esc(f.q)}</summary><p>${esc(f.a)}</p></details>`).join("");
       return `<section class="hero ${dark ? "dark" : "light"}"><div class="${dark ? "hero-grid" : ""}"><div class="wrap">${has(hero.eyebrow) ? `<p class="eyebrow">${esc(hero.eyebrow)}</p>` : ""}
 <h1>${esc(text(hero.headline) || C.site.project.name)}</h1>${has(hero.sub) ? `<p class="lede">${esc(hero.sub)}</p>` : ""}
@@ -466,14 +613,124 @@ ${aud ? `<section class="band mist" aria-labelledby="h-aud"><div class="wrap"><h
     technical_committee: C => { const d = C.site.pages.technical_committee; return pageHead(C) + `<section class="band"><div class="wrap">${people(d.people)}${has(d.charter_url) && safeUrl(d.charter_url) !== "#" ? `<p style="margin-top:24px"><a href="${esc(safeUrl(d.charter_url))}">Read the technical charter</a></p>` : ""}</div></section>`; },
     members: C => pageHead(C) + (C.site.pages.members.tiers || []).filter(t => has(t.name)).map((t, i) => `<section class="band${i % 2 ? " mist" : ""}" aria-labelledby="h-tier-${i}"><div class="wrap"><h2 id="h-tier-${i}">${esc(t.name)} members</h2><ul class="logos">${(t.members || []).filter(has).map(m => `<li class="logo-slot">${esc(m)}</li>`).join("")}</ul></div></section>`).join("") + `<section class="band" aria-labelledby="h-cta"><div class="wrap"><div class="cta-band"><h2 id="h-cta">Become a member</h2><a class="btn" ${C.href("join")}>Join</a></div></div></section>`,
     contact: C => pageHead(C) + `<section class="band"><div class="wrap"><ul class="grid" style="list-style:none;padding:0;margin:0">${(C.site.pages.contact.channels || []).filter(c => has(c.label)).map(c => { const v = text(c.value); const isMail = /^[^\s@[\]]+@[^\s@[\]]+\.[a-z]{2,}$/i.test(v); return `<li class="card"><h2 style="font-size:1.25rem">${esc(c.label)}</h2><p>${isMail ? `<a href="mailto:${esc(v)}">${esc(v)}</a>` : esc(v)}</p></li>`; }).join("")}</ul></div></section>`,
-    events: C => pageHead(C) + `<section class="band"><div class="wrap"><ul class="list">${(C.site.pages.events.items || []).filter(e => has(e.name)).map(e => `<li class="row"><div><h2 style="font-size:1.15rem;margin:0">${esc(e.name)}</h2><p class="meta" style="margin:0">${esc([e.date, e.location].filter(has).join(" · "))}</p></div>${has(e.url) && safeUrl(e.url) !== "#" ? `<a class="btn alt" href="${esc(safeUrl(e.url))}">Details<span class="sr-only"> about ${esc(e.name)}</span></a>` : ""}</li>`).join("")}</ul></div></section>`,
-    blog: C => pageHead(C) + `<section class="band"><div class="wrap"><ul class="grid" style="list-style:none;padding:0;margin:0">${(C.site.pages.blog.posts || []).filter(p => has(p.title)).map(p => `<li class="card"><article><p class="meta">${esc([p.date, p.author].filter(has).join(" · "))}</p><h2 style="font-size:1.25rem">${has(p.url) && safeUrl(p.url) !== "#" ? `<a href="${esc(safeUrl(p.url))}">${esc(p.title)}</a>` : esc(p.title)}</h2>${has(p.excerpt) ? `<p>${esc(p.excerpt)}</p>` : ""}</article></li>`).join("")}</ul></div></section>`,
+    events: C => { const D = byIndex(details(C.site, "event")); return pageHead(C) + `<section class="band"><div class="wrap"><ul class="list">${(C.site.pages.events.items || []).map((e, i) => ({ e, i })).filter(r => has(r.e.name)).map(({ e, i }) => `<li class="row"><div><h2 style="font-size:1.15rem;margin:0">${D[i] ? `<a ${C.detailHref(D[i])}>${esc(e.name)}</a>` : esc(e.name)}</h2><p class="meta" style="margin:0">${esc([e.date, e.location].filter(has).join(" · "))}</p></div>${D[i] ? `<a class="btn alt" ${C.detailHref(D[i])}>Details<span class="sr-only"> about ${esc(e.name)}</span></a>` : has(e.url) && safeUrl(e.url) !== "#" ? `<a class="btn alt" href="${esc(safeUrl(e.url))}">Details<span class="sr-only"> about ${esc(e.name)}</span></a>` : ""}</li>`).join("")}</ul></div></section>`; },
+    blog: C => { const D = byIndex(details(C.site, "post")); return pageHead(C) + `<section class="band"><div class="wrap"><ul class="grid" style="list-style:none;padding:0;margin:0">${(C.site.pages.blog.posts || []).map((p, i) => ({ p, i })).filter(r => has(r.p.title)).map(({ p, i }) => `<li class="card"><article><p class="meta">${esc([p.date, p.author].filter(has).join(" · "))}</p><h2 style="font-size:1.25rem">${D[i] ? `<a ${C.detailHref(D[i])}>${esc(p.title)}</a>` : has(p.url) && safeUrl(p.url) !== "#" ? `<a href="${esc(safeUrl(p.url))}">${esc(p.title)}</a>` : esc(p.title)}</h2>${has(p.excerpt) ? `<p>${esc(p.excerpt)}</p>` : ""}</article></li>`).join("")}</ul></div></section>`; },
     get_involved: C => pageHead(C) + `<section class="band"><div class="wrap"><ul class="ways" style="list-style:none;padding:0;margin:0">${(C.site.pages.get_involved.ways || []).filter(w => has(w.title)).map(w => `<li class="card"><h2 style="font-size:1.25rem">${esc(w.title)}</h2>${has(w.text) ? `<p>${esc(w.text)}</p>` : ""}${has(w.cta) ? `<a ${C.url(w.url)}>${esc(w.cta)}</a>` : ""}</li>`).join("")}</ul></div></section>`,
     join: C => { const d = C.site.pages.join; return pageHead(C) + `<section class="band"><div class="wrap"><ul class="grid" style="list-style:none;padding:0;margin:0">${(d.tiers || []).filter(t => has(t.name)).map(t => `<li class="card tier"><h2 style="font-size:1.35rem">${esc(t.name)}</h2>${has(t.text) ? `<p>${esc(t.text)}</p>` : ""}${(t.benefits || []).filter(has).length ? `<ul>${t.benefits.filter(has).map(b => `<li>${esc(b)}</li>`).join("")}</ul>` : ""}</li>`).join("")}</ul>
 <p style="margin-top:28px"><a class="btn" href="${esc(safeUrl(d.cta_url))}">${esc(d.cta || "Start membership")}</a></p></div></section>`; },
     campaign: C => { const d = C.site.pages.campaign, dark = C.site.brand.hero !== "light"; return `<section class="hero ${dark ? "dark" : "light"}"><div class="wrap">${has(d.eyebrow) ? `<p class="eyebrow">${esc(d.eyebrow)}</p>` : ""}<h1>${esc(text(d.headline) || "Campaign")}</h1>${has(d.sub) ? `<p class="lede">${esc(d.sub)}</p>` : ""}${has(d.cta) ? `<div class="ctas"><a class="btn" href="${esc(safeUrl(d.cta_url))}">${esc(d.cta)}</a></div>` : ""}</div></section>
 <section class="band"><div class="wrap prose">${paras(d.body)}</div></section>`; },
   };
+
+  /* ---------------------------------------------------------------- rich text for posts and events: a small, safe Markdown subset
+     # / ## / ### headings, **bold**, *italic*, [links](https://…), - and 1. lists, > quotes, `inline code`, ``` code blocks,
+     ![alt text](media:<id>) for uploaded images (stored in site.media) or ![alt](https://…). Everything else is escaped text. */
+  const unesc = s => String(s).replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&amp;/g, "&");
+  const MEDIA_EXT = { "image/png": "png", "image/jpeg": "jpg", "image/gif": "gif", "image/webp": "webp" };
+  const mediaPath = (site, id) => { const m = (site.media || {})[id]; return m && MEDIA_EXT[m.type] ? "assets/media/" + id + "." + MEDIA_EXT[m.type] : null; };
+  const b64bytes = b => Uint8Array.from(atob(b), c => c.charCodeAt(0));
+  function imgTag(alt, src, C) {
+    src = unesc(src); let url = null;
+    const mm = src.match(/^media:([a-z0-9]+)$/i);
+    if (mm) { const m = (C.site.media || {})[mm[1]], p = mediaPath(C.site, mm[1]); if (!m || !p) return ""; url = C.o.preview ? "data:" + m.type + ";base64," + m.data : C.up + p; }
+    else if (/^https:\/\//i.test(src)) url = src;
+    return url ? `<img src="${esc(url)}" alt="${alt}" loading="lazy">` : "";
+  }
+  function mdInline(s, C) {
+    const codes = [];
+    s = String(s).replace(/`([^`\n]+)`/g, (m, c) => { codes.push(c); return "\u0000" + (codes.length - 1) + "\u0000"; });
+    s = esc(s)
+      .replace(/!\[([^\]]*)\]\(([^)\s]+)\)/g, (m, alt, src) => imgTag(alt, src, C))
+      .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (m, t, u) => `<a href="${esc(safeUrl(unesc(u)))}">${t}</a>`)
+      .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
+      .replace(/(^|[^*\w])\*([^*\n]+)\*(?!\w)/g, "$1<em>$2</em>");
+    return s.replace(/\u0000(\d+)\u0000/g, (m, i) => `<code>${esc(codes[+i])}</code>`);
+  }
+  function md(src, C) {
+    const L = String(src || "").replace(/\r\n?/g, "\n").split("\n"), out = []; let i = 0;
+    const ul = /^\s*[-*]\s+/, ol = /^\s*\d+[.)]\s+/, startsBlock = l => /^```/.test(l) || /^#{1,4}\s/.test(l) || /^>\s?/.test(l) || ul.test(l) || ol.test(l);
+    while (i < L.length) {
+      const l = L[i]; let m;
+      if (!l.trim()) { i++; continue; }
+      if (/^```/.test(l)) {
+        const lang = l.slice(3).trim(), buf = []; i++;
+        while (i < L.length && !/^```/.test(L[i])) buf.push(L[i++]);
+        i++;
+        out.push(`<div class="code" role="region" tabindex="0" aria-label="${esc(lang ? lang + " code example" : "Code example")}"><pre><code${lang ? ` class="language-${slug(lang)}"` : ""}>${esc(buf.join("\n"))}</code></pre></div>`);
+        continue;
+      }
+      if ((m = l.match(/^(#{1,4})\s+(.*)$/))) { const lv = Math.max(2, m[1].length); out.push(`<h${lv}>${mdInline(m[2], C)}</h${lv}>`); i++; continue; }
+      if (/^>\s?/.test(l)) { const buf = []; while (i < L.length && /^>\s?/.test(L[i])) buf.push(L[i++].replace(/^>\s?/, "")); out.push(`<blockquote>${md(buf.join("\n"), C)}</blockquote>`); continue; }
+      if (ul.test(l) || ol.test(l)) {
+        const isOl = ol.test(l), re = isOl ? ol : ul, items = [];
+        while (i < L.length && re.test(L[i])) items.push(L[i++].replace(re, ""));
+        out.push(`<${isOl ? "ol" : "ul"}>${items.map(t => `<li>${mdInline(t, C)}</li>`).join("")}</${isOl ? "ol" : "ul"}>`);
+        continue;
+      }
+      const buf = []; while (i < L.length && L[i].trim() && !startsBlock(L[i])) buf.push(L[i++]);
+      out.push(`<p>${mdInline(buf.join(" "), C)}</p>`);
+    }
+    return out.join("\n");
+  }
+  const mdPlain = s => String(s || "").replace(/```[\s\S]*?```/g, " ").replace(/!\[[^\]]*\]\([^)]*\)/g, " ").replace(/\[([^\]]+)\]\([^)]*\)/g, "$1").replace(/^[\s>#*-]+|^\s*\d+[.)]\s+/gm, "").replace(/[`*]/g, "").replace(/\s+/g, " ").trim();
+
+  /* posts and events with a body get their own page: /news/<slug>/ and /events/<slug>/ */
+  const DETAIL = {
+    post: { list: s => (s.pages.blog && s.pages.blog.posts) || [], key: "blog", base: "/news/", title: x => x.title, label: "News", all: "All news" },
+    event: { list: s => (s.pages.events && s.pages.events.items) || [], key: "events", base: "/events/", title: x => x.name, label: "Event", all: "All events" },
+  };
+  function details(site, kind) {
+    const D = DETAIL[kind], seen = {};
+    return D.list(site).map((x, i) => ({ x, i })).filter(r => has(D.title(r.x)) && has(r.x.body)).map(r => {
+      const s0 = (slug(r.x.slug || D.title(r.x)).slice(0, 60).replace(/-+$/, "")) || kind; let sl = s0, n = 2;
+      while (seen[sl]) sl = s0 + "-" + n++;
+      seen[sl] = 1;
+      return { kind, i: r.i, item: r.x, slug: sl, path: D.base + sl + "/", key: D.key };
+    });
+  }
+  const allDetails = site => details(site, "post").concat(details(site, "event"));
+  const byIndex = list => { const o = {}; list.forEach(d => { o[d.i] = d; }); return o; };
+  function detailBody(C, d) {
+    const x = d.item, D = DETAIL[d.kind], isPost = d.kind === "post";
+    const meta = (isPost ? [x.date, x.author] : [x.date, x.location]).filter(has).join(" · ");
+    const trail = `<nav class="crumbs" aria-label="Breadcrumb"><ol><li><a ${C.href("home")}>Home</a></li><li><a ${C.href(D.key)}>${esc(byKey(D.key).title)}</a></li><li><a ${C.detailHref(d)} aria-current="page">${esc(D.title(x))}</a></li></ol></nav>`;
+    const ext = !isPost && has(x.url) && safeUrl(x.url) !== "#" ? `<p><a class="btn" href="${esc(safeUrl(x.url))}">Event website<span class="sr-only">: ${esc(x.name)}</span></a></p>` : "";
+    return `<section class="page-head"><div class="wrap">${trail}<p class="eyebrow">${D.label}</p><h1>${esc(D.title(x))}</h1>${meta ? `<p>${esc(meta)}</p>` : ""}</div></section>
+<section class="band"><div class="wrap"><article class="prose post">${md(x.body, C)}${ext}<p class="back"><a ${C.href(D.key)}>${D.all}</a></p></article></div></section>`;
+  }
+
+  /* Markdown twins: every page also ships as index.md for agents (served on Accept: text/markdown at the edge) */
+  function htmlToMd(html, site) {
+    const base = baseUrl(site), keep = [];
+    const absu = u => { u = unesc(u); return /^(https?:|mailto:)/i.test(u) ? u : u.startsWith("/") ? base + u : null; };
+    let s = String(html)
+      .replace(/<nav class="crumbs"[\s\S]*?<\/nav>/g, "")
+      .replace(/<span class="sr-only">[\s\S]*?<\/span>/g, "")
+      .replace(/<p class="num"[^>]*>[\s\S]*?<\/p>/g, "")
+      .replace(/<div class="code"[^>]*><pre><code(?: class="language-([a-z0-9-]+)")?>([\s\S]*?)<\/code><\/pre><\/div>/g, (m, lang, c) => { keep.push("```" + (lang || "") + "\n" + unesc(c) + "\n```"); return "\n\n\u0001" + (keep.length - 1) + "\u0001\n\n"; })
+      .replace(/<\/b><span>/g, "</b> <span>");
+    s = s.replace(/<ol>((?:(?!<ol>)[\s\S])*?)<\/ol>/g, (m, inner) => { let n = 0; return "\n\n" + inner.replace(/<li[^>]*>([\s\S]*?)<\/li>/g, (mm, t) => "\n" + (++n) + ". " + t.trim()) + "\n\n"; });
+    for (let guard = 0; guard < 50 && /<li[\s>]/.test(s); guard++)
+      s = s.replace(/<li[^>]*>((?:(?!<li[\s>])[\s\S])*?)<\/li>/g, (m, inner) => /<(h[1-6]|p|article|div)[\s>]/.test(inner) ? "\n\n" + inner + "\n\n" : "\n- " + inner.trim());
+    s = s.replace(/<summary>([\s\S]*?)<\/summary>/g, "\n\n### $1\n\n")
+      .replace(/<h([1-6])[^>]*>([\s\S]*?)<\/h\1>/g, (m, n, t) => "\n\n" + "#".repeat(+n) + " " + t.replace(/<a [^>]*>([\s\S]*?)<\/a>/g, "$1").replace(/<[^>]+>/g, "").trim() + "\n\n")
+      .replace(/<img [^>]*?src="([^"]*)"[^>]*?alt="([^"]*)"[^>]*>/g, (m, src, alt) => { const u = absu(src); return u ? `![${alt}](${u})` : ""; })
+      .replace(/<a [^>]*?href="([^"]*)"[^>]*>([\s\S]*?)<\/a>/g, (m, h, t) => { const u = absu(h), tt = t.replace(/<[^>]+>/g, "").trim(); return u && tt ? `[${tt}](${u})` : tt; })
+      .replace(/\)\[/g, ") [")
+      .replace(/<(strong|b)>([\s\S]*?)<\/\1>/g, "**$2**").replace(/<em>([\s\S]*?)<\/em>/g, "*$1*")
+      .replace(/<code>([\s\S]*?)<\/code>/g, "`$1`")
+      .replace(/<blockquote>/g, "\n\n> ")
+      .replace(/<\/(p|ul|ol|section|div|article|blockquote|details|h[1-6])>/g, "\n\n")
+      .replace(/<br\s*\/?>/g, "\n").replace(/<[^>]+>/g, "");
+    s = unesc(s).replace(/[ \t]+\n/g, "\n").replace(/\n[ \t]+/g, "\n").replace(/\n{3,}/g, "\n\n").trim();
+    return s.replace(/\u0001(\d+)\u0001/g, (m, i) => keep[+i]);
+  }
+  function mdTwin(site, key, d) {
+    const C = ctx(site, d ? d.key : key, d ? { pretty: true, path: d.path } : { pretty: true });
+    const body = d ? detailBody(C, d) : BODY[key](C), url = abs(site, d ? d.path : byKey(key).path);
+    const title = d ? `${DETAIL[d.kind].title(d.item)} | ${site.project.name}` : pageTitle(site, key);
+    return `---\ntitle: ${JSON.stringify(title)}\nurl: ${url}\n---\n\n${htmlToMd(body, site)}\n`;
+  }
 
   /* ---------------------------------------------------------------- SEO / AEO */
   const baseUrl = site => "https://" + (cleanDomain(site.project.domain) || "example.org");
@@ -493,40 +750,59 @@ ${aud ? `<section class="band mist" aria-labelledby="h-aud"><div class="wrap"><h
     if (key !== "home") graph.push({ "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: abs(site, "/") }]
       .concat(p.parent ? [{ "@type": "ListItem", position: 2, name: byKey(p.parent).title, item: abs(site, byKey(p.parent).path) }] : [])
       .concat([{ "@type": "ListItem", position: p.parent ? 3 : 2, name: p.title, item: url }]) });
-    if (key === "events") (d.items || []).filter(e => real(e.name) && real(e.date)).forEach(e => graph.push({ "@type": "Event", name: e.name, startDate: e.date, location: { "@type": "Place", name: e.location }, organizer: { "@id": org }, url: /^https?:/.test(e.url || "") ? e.url : url }));
-    if (key === "blog") graph.push({ "@type": "Blog", "@id": url + "#blog", name: site.project.name + " news", blogPost: (d.posts || []).filter(x => real(x.title)).map(x => ({ "@type": "BlogPosting", headline: x.title, datePublished: real(x.date) ? x.date : undefined, author: { "@type": "Person", name: real(x.author) ? x.author : site.project.name }, description: x.excerpt })) });
+    if (key === "events") { const D = byIndex(details(site, "event")); (d.items || []).forEach((e, i) => { if (real(e.name) && real(e.date)) graph.push({ "@type": "Event", name: e.name, startDate: e.date, location: { "@type": "Place", name: e.location }, organizer: { "@id": org }, url: D[i] ? abs(site, D[i].path) : /^https?:/.test(e.url || "") ? e.url : url }); }); }
+    if (key === "blog") { const D = byIndex(details(site, "post")); graph.push({ "@type": "Blog", "@id": url + "#blog", name: site.project.name + " news", blogPost: (d.posts || []).map((x, i) => ({ x, i })).filter(r => real(r.x.title)).map(({ x, i }) => ({ "@type": "BlogPosting", headline: x.title, datePublished: real(x.date) ? x.date : undefined, author: { "@type": "Person", name: real(x.author) ? x.author : site.project.name }, description: x.excerpt || undefined, url: D[i] ? abs(site, D[i].path) : undefined })) }); }
     if (key === "home" && (d.faq || []).some(f => real(f.q) && real(f.a))) graph.push({ "@type": "FAQPage", mainEntity: d.faq.filter(f => real(f.q) && real(f.a)).map(f => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) });
     if (key === "governing_board" || key === "technical_committee") { const ppl = (d.people || []).filter(x => real(x.name)); if (ppl.length) graph.push({ "@type": "ItemList", name: byKey(key).title, itemListElement: ppl.map((x, i) => ({ "@type": "ListItem", position: i + 1, item: { "@type": "Person", name: x.name, jobTitle: real(x.title) ? x.title : undefined, worksFor: real(x.org) ? { "@type": "Organization", name: x.org } : undefined } })) }); }
     return JSON.stringify({ "@context": "https://schema.org", "@graph": graph }, null, 1).replace(/</g, "\\u003c");
+  }
+  function jsonldDetail(site, d) {
+    const x = d.item, url = abs(site, d.path), org = abs(site, "/#organization"), D = DETAIL[d.kind];
+    const plain = clip(x.excerpt || mdPlain(x.body), 300);
+    const first = String(x.body || "").match(/!\[[^\]]*\]\((media:[a-z0-9]+|https:[^)\s]+)\)/i);
+    const img = !first ? undefined : first[1].startsWith("media:") ? (mediaPath(site, first[1].slice(6)) ? abs(site, "/" + mediaPath(site, first[1].slice(6))) : undefined) : first[1];
+    const main = d.kind === "post"
+      ? { "@type": "BlogPosting", "@id": url + "#post", headline: x.title, datePublished: real(x.date) ? x.date : undefined, author: { "@type": "Person", name: real(x.author) ? x.author : site.project.name }, publisher: { "@id": org }, description: plain, image: img, url, mainEntityOfPage: url, isPartOf: { "@id": abs(site, "/news/#blog") }, inLanguage: "en" }
+      : { "@type": "Event", "@id": url + "#event", name: x.name, startDate: real(x.date) ? x.date : undefined, location: real(x.location) ? { "@type": "Place", name: x.location } : undefined, description: plain, image: img, organizer: { "@id": org }, url };
+    const crumbs = { "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: abs(site, "/") }, { "@type": "ListItem", position: 2, name: byKey(D.key).title, item: abs(site, byKey(D.key).path) }, { "@type": "ListItem", position: 3, name: D.title(x), item: url }] };
+    return JSON.stringify({ "@context": "https://schema.org", "@graph": [{ "@type": "Organization", "@id": org, name: site.project.name, url: abs(site, "/") }, main, crumbs] }, null, 1).replace(/</g, "\\u003c");
   }
   function fontsHref(site) { const f = String(site.brand.font || "Inter"); return `https://fonts.googleapis.com/css2?family=${encodeURIComponent(f).replace(/%20/g, "+")}:wght@400;500;600;700&display=swap`; }
 
   /* one full HTML page. o: {preview, pretty} */
   function page(site, key, o = {}) {
-    const C = ctx(site, key, o), b = site.brand, url = abs(site, byKey(key).path), T = tokens(b);
-    const body = header(C) + `<main id="main">${BODY[key](C)}</main>` + signup(C) + footer(C);
+    const d = o.detail ? details(site, o.detail.kind).find(x => x.i === o.detail.i) : null;
+    if (d) { key = d.key; o = Object.assign({}, o, { path: d.path }); }
+    const C = ctx(site, key, o), b = site.brand, url = abs(site, d ? d.path : byKey(key).path), T = tokens(b);
+    const body = header(C) + `<main id="main">${d ? detailBody(C, d) : BODY[key](C)}</main>` + signup(C) + footer(C);
+    const title = d ? `${DETAIL[d.kind].title(d.item)} | ${site.project.name}` : pageTitle(site, key);
+    const description = d ? clip(d.item.excerpt || mdPlain(d.item.body), 160) : desc(site, key);
     const fav = hasLogo(site, false) && b.symbol ? "favicon.svg" : (hasLogo(site, false) ? "logo.svg" : "");
     const style = o.preview ? `<style>${css(site)}</style>` : `<link rel="stylesheet" href="${C.up}assets/site.css">`;
     const script = o.preview ? "" : `<script src="${C.up}assets/site.js" defer><\/script>`, tail = o.preview ? `<script>${SITE_JS}<\/script>` : "";
     return `<!doctype html>
-<html lang="en" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>${esc(pageTitle(site, key))}</title><meta name="description" content="${esc(desc(site, key))}">
+<html lang="en" class="no-js"><head>${o.preview ? "" : LF_TRANSCEND + "\n"}<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>${esc(title)}</title><meta name="description" content="${esc(description)}">
 <link rel="canonical" href="${url}"><meta name="theme-color" content="${T.dark}">
-<meta property="og:type" content="website"><meta property="og:site_name" content="${esc(site.project.name)}"><meta property="og:title" content="${esc(pageTitle(site, key))}">
-<meta property="og:description" content="${esc(desc(site, key))}"><meta property="og:url" content="${url}"><meta name="twitter:card" content="summary">
-${fav && !o.preview ? `<link rel="icon" href="${C.up}assets/${fav}" type="image/svg+xml">` : ""}${o.preview ? "" : `<link rel="manifest" href="${C.up}site.webmanifest"><link rel="alternate" type="text/plain" href="${C.up}llms.txt" title="llms.txt">`}
+<meta property="og:type" content="${d && d.kind === "post" ? "article" : "website"}"><meta property="og:site_name" content="${esc(site.project.name)}"><meta property="og:title" content="${esc(title)}">
+<meta property="og:description" content="${esc(description)}"><meta property="og:url" content="${url}"><meta name="twitter:card" content="summary">
+${fav && !o.preview ? `<link rel="icon" href="${C.up}assets/${fav}" type="image/svg+xml">` : ""}${o.preview ? "" : `<link rel="manifest" href="${C.up}site.webmanifest"><link rel="alternate" type="text/markdown" href="index.md" title="Markdown version"><link rel="alternate" type="text/plain" href="${C.up}llms.txt" title="llms.txt">`}
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="${fontsHref(site)}">
-${style}<script type="application/ld+json">${jsonld(site, key)}<\/script>${script}</head>
-<body>${body}${tail}</body></html>
+${style}<script type="application/ld+json">${d ? jsonldDetail(site, d) : jsonld(site, key)}<\/script>${script}</head>
+<body>${body}${tail}${o.preview ? "" : "\n" + LF_BODY_END() + "\n"}</body></html>
 `;
   }
   function llms(site, full) {
     const lines = [`# ${site.project.name}`, "", `> ${text(site.project.description)}`, "", `${site.project.name} is a project hosted by the Linux Foundation.`, "", "## Pages", ""];
     PAGES.filter(p => p.key !== "campaign").forEach(p => lines.push(`- [${p.title}](${abs(site, p.path)}): ${desc(site, p.key)}`));
-    lines.push("", "## Optional", "", `- [Full text](${abs(site, "/llms-full.txt")}): every page as plain text`);
+    const po = details(site, "post"), ev = details(site, "event");
+    if (po.length) { lines.push("", "## News", ""); po.forEach(d => lines.push(`- [${d.item.title}](${abs(site, d.path)}): ${clip(d.item.excerpt || mdPlain(d.item.body), 160)}`)); }
+    if (ev.length) { lines.push("", "## Events", ""); ev.forEach(d => lines.push(`- [${d.item.name}](${abs(site, d.path)}): ${[d.item.date, d.item.location].filter(has).join(", ")}`)); }
+    lines.push("", "## Optional", "", `- [Full text](${abs(site, "/llms-full.txt")}): every page as Markdown`, "", "Every page is also available as Markdown at <page>/index.md, or by requesting it with Accept: text/markdown.");
     if (!full) return lines.join("\n") + "\n";
     const out = [`# ${site.project.name}: full site text`, ""];
-    PAGES.forEach(p => out.push(`## ${p.title} (${abs(site, p.path)})`, "", text(BODY[p.key](ctx(site, p.key, { pretty: true }))), ""));
+    PAGES.forEach(p => out.push(mdTwin(site, p.key).replace(/^---[\s\S]*?---\n\n/, ""), ""));
+    allDetails(site).forEach(d => out.push(mdTwin(site, null, d).replace(/^---[\s\S]*?---\n\n/, ""), ""));
     return out.join("\n");
   }
 
@@ -554,7 +830,7 @@ ${T.notes.length ? `\nSubstitutions: ${T.notes.join("; ")}.\n` : ""}
 - Skip link, landmarks (banner, main navigation, breadcrumb, main, footer), one h1 per page and ordered headings
 - Keyboard-operable menus (disclosure buttons with aria-expanded, Escape closes and returns focus); everything reachable without JavaScript
 - Visible 3px focus ring on every interactive element, white on dark grounds
-- Cookie choice sits in the page flow at the top, so it never covers focused content (2.4.11)
+- Consent is LF's Transcend consent manager, loaded first in every page head; "Cookie settings" in the footer reopens it. Its banner is LF's shared component and is audited as rendered
 - Form fields have visible labels, a 3:1 border, native required-field errors and a status message region
 - Targets at least 24 × 24 px (2.5.8); reflows to 320 px wide with no horizontal scroll (1.4.10)
 - Respects reduced-motion; links in text are underlined, not colour-only (1.4.1)
@@ -566,6 +842,29 @@ ${T.notes.length ? `\nSubstitutions: ${T.notes.join("; ")}.\n` : ""}
 - Plain-language review of edited copy, and link text that makes sense out of context
 - A manual screen-reader and keyboard pass on the final hosted site
 `;
+  }
+  function hostingNote(site) {
+    const h = (site.launch || {}).hosting;
+    if (h === "export") return `## Publish on your own GitHub
+1. Create a repository in your GitHub org and push this folder's contents to \`main\`.
+2. Settings → Pages → Source: **GitHub Actions**. The included \`.github/workflows/pages.yml\` deploys on every push (it leaves \`edit.html\` out of the published site).
+3. Custom domain: add it under Settings → Pages and point DNS at \`<your-org>.github.io\`.
+The project hosts and maintains this site; keep LF's required scripts in every page.
+
+`;
+    if (h === "managed") return `## Maintained in Marketing OS
+LF hosts this site. Change text in the Marketing OS editor (existing fields), and add blog posts and events there with text, images and code. Save your changes and ask Claude to publish them. Other structure, the design and the domain are locked.
+
+`;
+    if (h === "lf-github") return `## Published on LF GitHub
+The site is edited only in its repository in the LF GitHub org: change \`site.json\` (or the templates) and open a pull request; the workflow rebuilds and re-audits on merge. Blog posts and events can also be written in the Marketing OS posts and events editor; Claude merges them into \`site.json\` as a pull request.
+
+`;
+    if (h === "wordpress") return `## Requested for WordPress
+This package was sent to the Web Engineering team with an Asana request to build the site in WordPress. \`site.json\` holds every field per page.
+
+`;
+    return "";
   }
   function readme(site, o) {
     const n = site.project.name, ck = check(site);
@@ -583,35 +882,38 @@ Open \`edit.html\`: pick a page, edit the fields, watch the preview, then **Down
 - Replace every placeholder in [brackets] (${ck.placeholders.length} left when this zip was made; edit.html lists them).
 - Connect the newsletter form (\`form.lf-signup\`) to the LFX form endpoint: set it under Site settings in edit.html. Until then the form shows a "not connected yet" message.
 - Add \`assets/og.png\` (1200 × 630) for social previews and a link to it in each page head, if wanted.
-- Analytics: load them only after the visitor accepts in the cookie bar (choice is stored as \`lf-cookie-choice\` in localStorage).
+- Consent and analytics: every page carries LF's required scripts: Transcend first in the head, the cookie-settings handler and LFX Segment at the end of the body. They are fixed; don't edit or remove them.
 - Hosting: any static host. ${o.pretty ? "Links are root-relative (/about/)." : "Links point at \`…/index.html\` so the folder previews locally; rebuild with pretty URLs for hosting if preferred."}
 
 ## What's here
 | Path | What |
 |---|---|
 | \`index.html\`, \`about/…\`, \`events/\`, \`news/\`, \`get-involved/\`, \`join/\`, \`campaign/\` | the 11 pages |
-| \`assets/site.css\`, \`assets/site.js\` | styles (brand tokens) and progressive behaviour (menu, cookie choice, form status) |
+| \`assets/site.css\`, \`assets/site.js\` | styles (brand tokens) and progressive behaviour (menu, form status) |
 | \`assets/logo*.svg\` | the project's real logo files, recoloured only where WCAG needs it |
 | \`404.html\`, \`robots.txt\`, \`sitemap.xml\`, \`llms.txt\`, \`llms-full.txt\`, \`site.webmanifest\` | SEO / answer-engine files; JSON-LD is in each page head |
 | \`site.json\` | all copy and settings; the source for edit.html and for a future WordPress import |
 | \`ACCESSIBILITY.md\` | WCAG 2.2 AA audit summary and colour pairs |
 
-## WordPress (later)
+${hostingNote(site)}## WordPress (later)
 This package is static on purpose. Moving to WordPress on Pantheon is being worked out with LF IT and the product team; \`site.json\` holds every field per page so it can be mapped to blocks or an import file then.
 `;
   }
   function files(site, o = {}) {
     const pretty = o.pretty != null ? o.pretty : !!(site.meta && site.meta.pretty);
     const f = {}, oo = { pretty };
-    PAGES.forEach(p => { f[(p.path === "/" ? "" : p.path.slice(1)) + "index.html"] = page(site, p.key, oo); });
+    PAGES.forEach(p => { const dir = p.path === "/" ? "" : p.path.slice(1); f[dir + "index.html"] = page(site, p.key, oo); f[dir + "index.md"] = mdTwin(site, p.key); });
+    allDetails(site).forEach(d => { f[d.path.slice(1) + "index.html"] = page(site, d.key, Object.assign({}, oo, { detail: { kind: d.kind, i: d.i } })); f[d.path.slice(1) + "index.md"] = mdTwin(site, null, d); });
+    Object.keys(site.media || {}).forEach(id => { const p = mediaPath(site, id); if (p) f[p] = b64bytes(site.media[id].data); });
     f["assets/site.css"] = css(site);
     f["assets/site.js"] = SITE_JS + "\n";
     const L = logoFiles(site); Object.keys(L).forEach(k => { f["assets/" + k] = L[k]; });
     f["404.html"] = page(site, "home", { pretty: true }).replace(/<main id="main">[\s\S]*<\/main>/, `<main id="main"><section class="page-head"><div class="wrap"><h1>Page not found</h1><p>Try the <a href="/">home page</a>.</p></div></section></main>`)
       .replace(/<title>[^<]*<\/title>/, `<title>Page not found | ${esc(site.project.name)}</title><meta name="robots" content="noindex">`);
-    f["robots.txt"] = `User-agent: *\nAllow: /\n\nSitemap: ${abs(site, "/sitemap.xml")}\n`;
+    const signal = (site.agent && site.agent.content_signal) || "ai-train=yes, search=yes, ai-input=yes";
+    f["robots.txt"] = `# Agents and crawlers: every page is also served as Markdown (see /llms.txt)\nUser-agent: *\nContent-Signal: ${signal}\nAllow: /\n\nSitemap: ${abs(site, "/sitemap.xml")}\n`;
     const today = new Date().toISOString().slice(0, 10);
-    f["sitemap.xml"] = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${PAGES.map(p => `  <url><loc>${abs(site, p.path)}</loc><lastmod>${today}</lastmod></url>`).join("\n")}\n</urlset>\n`;
+    f["sitemap.xml"] = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${PAGES.map(p => p.path).concat(allDetails(site).map(d => d.path)).map(pth => `  <url><loc>${abs(site, pth)}</loc><lastmod>${today}</lastmod></url>`).join("\n")}\n</urlset>\n`;
     f["llms.txt"] = llms(site, false);
     f["llms-full.txt"] = llms(site, true);
     const icon = L["favicon.svg"] ? "favicon.svg" : (L["logo.svg"] ? "logo.svg" : null);
@@ -619,33 +921,39 @@ This package is static on purpose. Moving to WordPress on Pantheon is being work
     f["README.md"] = readme(site, { pretty });
     f["ACCESSIBILITY.md"] = a11yDoc(site);
     f["site.json"] = JSON.stringify(site, null, 2);
+    f["_headers"] = HEADERS_FILE;
+    f["agent-edge/worker.js"] = EDGE_WORKER;
+    f["agent-edge/README.md"] = EDGE_README;
     if (o.engine && o.editor) f["edit.html"] = editorHtml(site, o);
+    if ((site.launch || {}).hosting === "export") { f[".nojekyll"] = ""; f[".github/workflows/pages.yml"] = PAGES_WORKFLOW; }
     return f;
   }
 
   /* ---------------------------------------------------------------- the offline editor's shell (its logic is editor.js) */
-  const EDITOR_CSS = `:root{color-scheme:light;--bg:#F8FAFC;--surface:#fff;--sunk:#F1F5F9;--ink:#0F172A;--text:#334155;--muted:#475569;--rule:#CBD5E1;--line:#E2E8F0;--accent:#005A9E;--accent-soft:#E8F2FB;--warn:#8A4B00;--warn-soft:#FFF7E6;--ok:#046C4E;--ok-soft:#E7F6EF;--bad:#B42318}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 Inter,system-ui,-apple-system,"Segoe UI",sans-serif}button,input,textarea,select{font:inherit;color:inherit}
-:focus-visible{outline:3px solid var(--accent);outline-offset:2px}.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
-.bar{position:sticky;top:0;z-index:5;background:var(--surface);border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center;padding:10px 16px;flex-wrap:wrap}
-.bar h1{font-size:17px;margin:0;color:var(--ink)}.bar .sp{flex:1}.btn{border:1.5px solid var(--rule);background:var(--surface);color:var(--ink);border-radius:999px;padding:7px 14px;cursor:pointer;font-weight:600;min-height:36px}
-.btn:hover{border-color:var(--accent);color:var(--accent)}.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}.btn.primary:hover{background:#004A82;color:#fff}.btn.sm{padding:3px 10px;font-size:13px;min-height:28px}
-.btn[aria-pressed=true]{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+  const EDITOR_CSS = `:root{color-scheme:light;--bg:#F9FAFB;--surface:#fff;--sunk:#F1F5F9;--ink:#0F172A;--text:#334155;--muted:#5A6A7E;--rule:#8796A9;--line:#E2E8F0;--accent:#006DBE;--accent-hover:#005A9E;--accent-bright:#0094FF;--accent-soft:#EBF5FF;--warn:#B45309;--warn-soft:#FFFBEB;--ok:#047857;--ok-soft:#ECFDF5;--bad:#B91C1C;--shadow:0 1px 3px 0 #0000001a,0 1px 2px -1px #0000001a;--slab:"Roboto Slab",Georgia,serif;--mono:"Roboto Mono",ui-monospace,Menlo,Consolas,monospace}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:14.5px/1.5 Inter,system-ui,-apple-system,"Segoe UI",sans-serif}button,input,textarea,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent-bright);outline-offset:2px}.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+.bar{position:sticky;top:0;z-index:5;background:var(--surface);border-bottom:1px solid var(--line);box-shadow:var(--shadow);display:flex;gap:10px;align-items:center;padding:10px 16px;flex-wrap:wrap}
+.bar h1{font:700 17px var(--slab);margin:0;color:var(--ink)}.bar .sp{flex:1}.btn{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:7px 14px;cursor:pointer;font-weight:500;font-size:13.5px;min-height:36px;white-space:nowrap}
+.btn:hover{border-color:var(--accent-bright);color:var(--accent)}.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}.btn.primary:hover{background:var(--accent-hover);color:#fff}.btn.sm{padding:3px 10px;font-size:13px;min-height:28px}
+.btn[aria-pressed=true]{background:var(--accent-soft);border-color:var(--accent-bright);color:var(--accent)}
 .layout{display:grid;grid-template-columns:200px minmax(320px,420px) minmax(0,1fr);gap:16px;padding:16px;align-items:start}
 .pages{position:sticky;top:70px;display:flex;flex-direction:column;gap:2px}.pages button{text-align:left;border:0;background:transparent;padding:8px 10px;border-radius:8px;cursor:pointer;color:var(--ink);display:flex;justify-content:space-between;gap:8px}
 .pages button:hover{background:var(--sunk)}.pages button[aria-current=true]{background:var(--accent-soft);color:var(--accent);font-weight:600}
 .cnt{font-size:12px;background:var(--warn-soft);color:var(--warn);border-radius:999px;padding:0 7px;align-self:center}
-.fields{display:flex;flex-direction:column;gap:12px;min-width:0}.f{display:flex;flex-direction:column;gap:4px}.f label,.f legend{font-size:13px;font-weight:600;color:var(--ink)}
-.f input,.f textarea{width:100%;border:1.5px solid var(--rule);border-radius:8px;padding:8px 10px;background:var(--surface);color:var(--ink)}.f textarea{min-height:76px;resize:vertical}
+.fields{display:flex;flex-direction:column;gap:12px;min-width:0}.f{display:flex;flex-direction:column;gap:4px}.f label,.f legend{font-size:12.5px;font-weight:600;color:var(--ink)}
+.f input,.f textarea{width:100%;border:1px solid var(--rule);border-radius:6px;padding:8px 10px;background:var(--surface);color:var(--ink)}.f textarea{min-height:76px;resize:vertical}
 .f .hint{font-size:12.5px;color:var(--muted)}.f .warnline{font-size:12.5px;color:var(--warn)}
-fieldset{border:1px solid var(--line);border-radius:10px;padding:10px 12px 12px;margin:0;background:var(--surface);display:flex;flex-direction:column;gap:10px}
+fieldset{border:1px solid var(--line);border-radius:10px;padding:10px 12px 12px;margin:0;background:var(--surface);box-shadow:var(--shadow);display:flex;flex-direction:column;gap:10px}
 .obj{border-top:1px solid var(--line);padding-top:10px;display:flex;flex-direction:column;gap:8px}.obj:first-of-type{border-top:0;padding-top:0}.objbar{display:flex;gap:6px;align-items:center}.objbar b{flex:1;font-size:13px;color:var(--ink)}
-.preview{position:sticky;top:70px;min-width:0}.frame{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff;margin:0 auto;transition:width .2s}.frame iframe{display:block;width:100%;height:calc(100vh - 130px);border:0}
-.ptools{display:flex;gap:6px;align-items:center;margin-bottom:8px;flex-wrap:wrap}.ptools .addr{flex:1;font:12.5px ui-monospace,Menlo,monospace;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.checks{border:1px solid var(--line);border-radius:10px;background:var(--surface);padding:10px 12px}.checks h2{font-size:14px;margin:0 0 6px;color:var(--ink)}.checks ul{margin:0;padding-left:18px;font-size:13px}
-.checks .ok{color:var(--ok)}.notice{border:1px solid var(--accent);background:var(--accent-soft);color:var(--ink);border-radius:10px;padding:10px 12px;font-size:13.5px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.preview{position:sticky;top:70px;min-width:0}.frame{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff;box-shadow:var(--shadow);margin:0 auto;transition:width .2s}.frame iframe{display:block;width:100%;height:calc(100vh - 130px);border:0}
+.ptools{display:flex;gap:6px;align-items:center;margin-bottom:8px;flex-wrap:wrap}.ptools .addr{flex:1;font:12px var(--mono);color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.checks{border:1px solid var(--line);border-radius:10px;background:var(--surface);padding:10px 12px;box-shadow:var(--shadow)}.checks h2{font:700 14px var(--slab);margin:0 0 6px;color:var(--ink)}.checks ul{margin:0;padding-left:18px;font-size:13px}
+.checks .ok{color:var(--ok)}.notice{border:1px solid var(--accent-bright);background:var(--accent-soft);color:var(--ink);border-radius:10px;padding:10px 12px;font-size:13.5px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .status{font-size:13px;color:var(--muted)}
 @media (max-width:1100px){.layout{grid-template-columns:1fr}.pages{position:static;flex-direction:row;flex-wrap:wrap}.preview{position:static}.frame iframe{height:70vh}}
+.rich .rtools{display:flex;flex-wrap:wrap;gap:4px}.richtext{font-family:var(--mono);font-size:13.5px;min-height:240px}
+.imgform{border:1px solid var(--rule);border-radius:8px;padding:10px;display:flex;flex-direction:column;gap:6px;background:var(--sunk)}.imgform[hidden]{display:none}.imgform .row{display:flex;gap:6px;flex-wrap:wrap}.err{color:var(--bad);font-size:13px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}`;
   function editorHtml(site, o) {
     const json = JSON.stringify(site).replace(/</g, "\\u003c").replace(/\u2028/g, "\\u2028").replace(/\u2029/g, "\\u2029");
@@ -678,8 +986,8 @@ fieldset{border:1px solid var(--line);border-radius:10px;padding:10px 12px 12px;
     technical_committee: [ST("pages.technical_committee.headline", "Headline"), SA("pages.technical_committee.intro", "Intro"), SO("pages.technical_committee.people", "Committee members", [["name", "Name"], ["role", "Role"], ["title", "Title"], ["org", "Organization"]]), ST("pages.technical_committee.charter_url", "Technical charter link")],
     members: [ST("pages.members.headline", "Headline"), SA("pages.members.intro", "Intro"), SO("pages.members.tiers", "Tiers", [["name", "Tier"], ["members", "Members (one per line)", "lines"]])],
     contact: [ST("pages.contact.headline", "Headline"), SA("pages.contact.intro", "Intro"), SO("pages.contact.channels", "Contact channels", [["label", "Label"], ["value", "Email or text"]])],
-    events: [ST("pages.events.headline", "Headline"), SA("pages.events.intro", "Intro"), SO("pages.events.items", "Events", [["name", "Name"], ["date", "Date (YYYY-MM-DD for structured data)"], ["location", "Location"], ["url", "Link"]])],
-    blog: [ST("pages.blog.headline", "Headline"), SA("pages.blog.intro", "Intro"), SO("pages.blog.posts", "Posts", [["title", "Title"], ["date", "Date"], ["author", "Author"], ["excerpt", "Excerpt", "area"], ["url", "Link"]])],
+    events: [ST("pages.events.headline", "Headline"), SA("pages.events.intro", "Intro"), SO("pages.events.items", "Events", [["name", "Name"], ["date", "Date (YYYY-MM-DD for structured data)"], ["location", "Location"], ["url", "Event website link"], ["body", "Event details (gives the event its own page)", "rich"]])],
+    blog: [ST("pages.blog.headline", "Headline"), SA("pages.blog.intro", "Intro"), SO("pages.blog.posts", "Posts", [["title", "Title"], ["date", "Date (YYYY-MM-DD)"], ["author", "Author"], ["excerpt", "Summary (lists, search results)", "area"], ["body", "Post (gives the post its own page)", "rich"], ["url", "Link elsewhere (used only without a post body)"]])],
     get_involved: [ST("pages.get_involved.headline", "Headline"), SA("pages.get_involved.intro", "Intro"), SO("pages.get_involved.ways", "Ways to get involved", [["title", "Title"], ["text", "Text", "area"], ["cta", "Link text"], ["url", "Link (https://…, /events/, /join/ or #signup)"]])],
     join: [ST("pages.join.headline", "Headline"), SA("pages.join.intro", "Intro"), SO("pages.join.tiers", "Membership tiers", [["name", "Tier"], ["text", "Description", "area"], ["benefits", "Benefits (one per line)", "lines"]]), ST("pages.join.cta", "Button"), ST("pages.join.cta_url", "Button link")],
     campaign: [ST("pages.campaign.eyebrow", "Eyebrow"), SA("pages.campaign.headline", "Headline"), SA("pages.campaign.sub", "Subhead"), SA("pages.campaign.body", "Body (blank line between paragraphs)"), ST("pages.campaign.cta", "Button"), ST("pages.campaign.cta_url", "Button link"), SA("pages.campaign.seo_description", "SEO description")],
@@ -714,5 +1022,5 @@ fieldset{border:1px solid var(--line);border-radius:10px;padding:10px 12px 12px;
   }
 
   const isSite = o => !!(o && typeof o === "object" && o.version && o.pages && o.pages.home && o.project);
-  return { VERSION, PAGES, FIELDS, fromContent, defaults, tokens, check, css, page, jsonld, files, editorHtml, zip, slug, text, ratio, isSite, SITE_JS };
+  return { VERSION, HOSTING, details, md, mdTwin, htmlToMd, MEDIA_EXT, HEADERS_FILE, EDGE_WORKER, LF_TRANSCEND, LF_COOKIE_SETTINGS, LF_SEGMENT, LF_ZOOMINFO, LF_HUBSPOT, PAGES, FIELDS, fromContent, defaults, tokens, check, css, page, jsonld, files, editorHtml, zip, slug, text, ratio, isSite, SITE_JS };
 });
