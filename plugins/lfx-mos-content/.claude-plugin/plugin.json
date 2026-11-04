@@ -1,0 +1,19 @@
+{
+  "name": "lfx-mos-content",
+  "version": "0.1.0",
+  "description": "LFX Marketing OS \u00b7 Content: two skills that create blog posts, decks, one-pagers, infographics, ads and docs for a Linux Foundation project from its brand and positioning outputs, and review an existing file against them. Supports locked or open brand colors, references, revising, versions and delete.",
+  "author": {
+    "name": "Craig, LF Marketing"
+  },
+  "keywords": [
+    "linux-foundation",
+    "lfx-marketing-os",
+    "marketing",
+    "content",
+    "brand",
+    "review",
+    "infographic",
+    "ads"
+  ],
+  "displayName": "LFX Marketing OS \u00b7 Content"
+}

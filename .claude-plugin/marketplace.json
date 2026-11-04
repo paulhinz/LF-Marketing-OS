@@ -245,6 +245,20 @@
       ]
     },
     {
+      "name": "lfx-mos-content",
+      "source": "./plugins/lfx-mos-content",
+      "description": "v0.1.0 — NEW. Content: two skills. content-creation makes a blog post, deck, one-pager, infographic, ad or doc from a project's brand and positioning outputs and website, with a guided brief or your own prompt, optional references, colors locked to the brand kit or open, size, format and destination (download or Canva), then supports revising, direct edits, versions and delete. content-review checks an uploaded file or Drive document against the same sources plus plain accessibility checks and offers an updated copy. Needs lfx-mos-brand-positioning; uses the Design, Codesign and SEO Writers plugins, with Marketing and Canva optional.",
+      "category": "Creating Agents",
+      "tags": [
+        "content",
+        "blog",
+        "infographic",
+        "ads",
+        "review",
+        "brand"
+      ]
+    },
+    {
       "name": "lfx-mos-member-benefits-briefing",
       "source": "./plugins/lfx-mos-member-benefits-briefing",
       "description": "Builds the LF CEO-style member executive briefing deck — “[Company] and the Linux Foundation” — for any LF member: pulls the member's live LFX footprint (memberships, dues, code contributions, maintainers, event participation, training), merges it with the standing LF and open-source-AI narrative, and produces a PowerPoint styled to the LF executive briefing template.",

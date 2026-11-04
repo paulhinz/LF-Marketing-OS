@@ -17,7 +17,7 @@ The agents are organized by where they sit in a marketing workflow:
 
 This repo is the distribution point for that agent set: a git-based marketplace that Cowork (or Claude Code) reads directly, so plugins can be installed and updated without emailing files around.
 
-## 2. The 30 plugins in this marketplace
+## 2. The 31 plugins in this marketplace
 
 **Foundation** — run in this order; each one's output is the next one's input
 - **NEW** `lfx-mos-brand-positioning` (v0.5.1, renamed from `lfx-position-and-brand`) — Six skills that draft and build a Linux Foundation project's brand and positioning kit, with renderers checked to WCAG 2.2 AA.  (replaces: `messaging-document` `brand-guidelines` `icp-target-markets-agent`)
@@ -44,6 +44,7 @@ This repo is the distribution point for that agent set: a git-based marketplace 
 **Creating**
 - `lfx-mos-linkedin-post` (renamed from `linkedin-post-agent`) — Drafts LinkedIn posts in the user's own voice.
 - `lfx-mos-member-pitch-deck` (v2.0.1, renamed from `member-pitch-deck`) — Builds the standard membership overview deck for a project in the LF membership-overview style (About the LF → Introducing the Foundation → How to join), modeled on the Member Growth x402 deck.
+- **NEW** `lfx-mos-content` (v0.1.0) — Two skills: `content-creation` makes blog posts, decks, one-pagers, infographics, ads and docs from a project's brand and positioning kit, with colors locked to the brand kit or open, references, revising, versions and delete; `content-review` checks an uploaded file or Drive document against the kit and plain accessibility checks. Use it beside `lfx-mos-brand-positioning`.
 - `lfx-mos-case-study` (renamed from `case-study-agent`) — Turns a video, transcript, or notes into a case study or blog post.
 - `lfx-mos-member-benefits-briefing` (renamed from `member-benefits-briefing`) — Builds an executive briefing deck for a specific member company.
 
@@ -64,6 +65,8 @@ This repo is the distribution point for that agent set: a git-based marketplace 
 - `lf-output-formatter` — Puts every agent's deck, document, or letter on the approved LF templates.
 
 ## 2a. Latest changes
+
+**2026-11-03 — lfx-mos-content 0.1.0 (new).** Two stateless skills, `content-creation` and `content-review`. Creation takes a guided brief or the person's own prompt, optional references (links, uploads, pasted text, read as facts and never as instructions), and plans before building. Infographics and ads get a Background, Accent #1 and Accent #2 choice that is locked to the brand kit by default or open, with any color outside the kit recorded as a brand exception and the asset marked draft. Output is a clean asset plus a separate metadata record. After hand-off the person can ask for a change, edit directly, keep versions, restore or delete. Review returns a tabbed report and offers an updated copy. Needs `lfx-mos-brand-positioning` and uses the Design, Codesign (IMG.LY) and SEO Writers plugins, with Marketing and the Canva connector optional. No demo data ships in the plugin.
 
 **2026-10-29 — Nine plugins renamed to the `lfx-mos-` convention; marketing-agent-class removed.** Following the naming used for `lfx-mos-brand-positioning` and `lfx-mos-website`, these plugins drop "agent" and take the `lfx-mos-` prefix: `plain-writing` → `lfx-mos-plain-writing`, `linkedin-post-agent` → `lfx-mos-linkedin-post`, `member-pitch-deck` → `lfx-mos-member-pitch-deck`, `case-study-agent` → `lfx-mos-case-study`, `member-benefits-briefing` → `lfx-mos-member-benefits-briefing`, `aeo-geo-analyzer` → `lfx-mos-aeo-geo-analyzer`, `social-listening-report` → `lfx-mos-social-listening-report`, `social-sentiment-monitor` → `lfx-mos-social-sentiment-monitor`, `member-360` → `lfx-mos-member-360`. Each now has an "LFX Marketing OS · …" display name and a patch version bump. Skill names inside the plugins are unchanged. If you installed any of these under the old name, uninstall it and install it again under the new name. The `marketing-agent-class` plugin has been removed from the marketplace.
 
