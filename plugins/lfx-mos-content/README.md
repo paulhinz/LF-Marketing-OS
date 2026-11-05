@@ -6,10 +6,17 @@ Create and review marketing content for a Linux Foundation project. It is the co
 
 | Skill | What it does |
 | --- | --- |
-| content-creation | Makes a new pitch or sales deck, blog post, one-pager, infographic, ad, doc or other asset (not social). Guided brief or your own prompt, optional references, plan first, then the asset. Images get a locked or open color choice, a size, a format and a destination (download, Canva or both). After hand-off it supports revising, direct edits, versions and delete. |
+| create-content | Router. Asks which kind of asset and hands off to the matching skill below. |
+| create-content-blog | Blog post. SEO Writers audits, two alternative titles and a meta description kept in the record. |
+| create-content-one-pager | One page: message house, 50-word boilerplate, proof, call to action. |
+| create-content-infographic | Process, key numbers, comparison or structure graphic. Your size in pixels, PNG or SVG, download or Canva, colors locked to the kit or open. |
+| create-content-pitch-deck | Pitch or sales deck on the project's presentation template. Speaker notes kept out of the shared file. |
+| create-content-ad | Copy variants and a graphic at a common ad size or your own. |
+| create-content-doc | Doc or any other asset that is not one of the above. |
+| content-core | Shared rules, loaded by every create-content skill (not run on its own): brief, sources of truth, companions, voice, clean asset, image colors, metadata record, revise, edit, versions and delete. |
 | content-review | Reviews an uploaded file or a Google Drive document against the brand and positioning outputs plus plain accessibility checks, returns a tabbed report, and offers an updated copy. |
 
-Both skills return two separate things: the clean asset, and a metadata record (status, sources, references, colors, brand exceptions, things to confirm, versions). Storage, review assignment, the dashboard and sign-off belong to the host app.
+The creation skills and content-review each return two separate things: the clean asset, and a metadata record (status, sources, references, colors, brand exceptions, things to confirm, versions). Storage, review assignment, the dashboard and sign-off belong to the host app.
 
 ## Install these first
 
@@ -25,6 +32,10 @@ Optional:
 - **Marketing** (Anthropic): seo-audit, brand-review, and its Ahrefs connector for choosing blog topics.
 - **Canva connector** (a connected app, not a plugin): only for the Canva destination of an infographic or ad. Canva imports from a web address, so the host must give the exported file one.
 
+## Coming later
+
+A separate content-curation plugin (not built yet) will let people pick pre-curated articles and posts from the web as sources. The create-content skills already treat selected curated items as references and do nothing if the plugin is not installed.
+
 ## Rules the skills follow
 
 - The brand kit and message house win over any companion's suggestion.
@@ -35,4 +46,4 @@ Optional:
 
 ## Version
 
-0.1.0. Built from the content-creation and content-review skills. No demo or sample data ships in the plugin: every fact, number, color and name is read from the project's own sources at run time.
+0.2.0. The content-creation skill is split into one skill per asset plus a shared core; content-review is unchanged. No demo or sample data ships in the plugin: every fact, number, color and name is read from the project's own sources at run time.

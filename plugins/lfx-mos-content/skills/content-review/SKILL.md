@@ -5,7 +5,7 @@ description: "Review an uploaded file or Google Drive document against a project
 
 # Content review (Marketing OS content)
 
-Use this when someone made a piece of content outside the Marketing OS (pitch deck, sales deck, blog post, one-pager, infographic, doc) and wants to know whether it is on brand and on message. It is the review half of the Marketing OS content plugin, and the counterpart of content-creation. Keep step 2 identical between the two.
+Use this when someone made a piece of content outside the Marketing OS (pitch deck, sales deck, blog post, one-pager, infographic, doc) and wants to know whether it is on brand and on message. It is the review half of the Marketing OS content plugin, and the counterpart of the create-content skills. Keep step 2 identical to content-core step 2.
 
 Like the other Marketing OS skills it is stateless: it takes the content and the project's brand and positioning outputs in, and returns a review out. Storing the review, assigning it and sign-off belong to the host app.
 

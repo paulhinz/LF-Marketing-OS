@@ -247,7 +247,7 @@
     {
       "name": "lfx-mos-content",
       "source": "./plugins/lfx-mos-content",
-      "description": "v0.1.0 — NEW. Content: two skills. content-creation makes a blog post, deck, one-pager, infographic, ad or doc from a project's brand and positioning outputs and website, with a guided brief or your own prompt, optional references, colors locked to the brand kit or open, size, format and destination (download or Canva), then supports revising, direct edits, versions and delete. content-review checks an uploaded file or Drive document against the same sources plus plain accessibility checks and offers an updated copy. Needs lfx-mos-brand-positioning; uses the Design, Codesign and SEO Writers plugins, with Marketing and Canva optional.",
+      "description": "v0.2.0 — NEW. Content: one skill per asset. create-content-blog, -one-pager, -infographic, -pitch-deck, -ad and -doc make new content from a project's brand and positioning outputs and website, with a guided brief or your own prompt, optional references, colors locked to the brand kit or open, size, format and destination (download or Canva), then support revising, direct edits, versions and delete. A create-content router picks the skill and content-core holds the shared rules. content-review checks an uploaded file or Drive document against the same sources plus plain accessibility checks and offers an updated copy. Needs lfx-mos-brand-positioning; uses the Design, Codesign and SEO Writers plugins, with Marketing and Canva optional.",
       "category": "Creating Agents",
       "tags": [
         "content",
